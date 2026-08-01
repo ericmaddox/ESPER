@@ -32,7 +32,7 @@ export default function Header({ activeIncidentsCount, activeCamerasCount, activ
             </h1>
             <span className="flex items-center space-x-1 text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 hidden lg:inline-flex">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-              <span>GEOSPATIAL INTELLIGENCE</span>
+              <span>REAL TIME OPERATIONS</span>
             </span>
           </div>
           <p className="text-[11px] text-slate-400 font-mono tracking-tight hidden xl:block">
