@@ -13,53 +13,57 @@ export default function VideoFeedModal({ camera, onClose }) {
   const hlsRef = useRef(null);
 
   useEffect(() => {
-    if (!camera || !videoRef.current) return;
-    const video = videoRef.current;
-    const url = camera.videoUrl;
+    if (!camera) return;
     setStreamFailed(false);
 
-    if (hlsRef.current) {
-      hlsRef.current.destroy();
-      hlsRef.current = null;
-    }
+    const timer = setTimeout(() => {
+      const video = videoRef.current;
+      if (!video) return;
+      const url = camera.videoUrl;
 
-    if (url && (url.endsWith('.m3u8') || url.includes('.m3u8'))) {
-      if (Hls.isSupported()) {
-        const hls = new Hls({
-          enableWorker: true,
-          lowLatencyMode: true,
-          maxBufferLength: 30,
-          manifestLoadingTimeOut: 5000,
-          manifestLoadingMaxRetry: 2
-        });
-        hls.loadSource(url);
-        hls.attachMedia(video);
+      if (hlsRef.current) {
+        hlsRef.current.destroy();
+        hlsRef.current = null;
+      }
 
-        hls.on(Hls.Events.MANIFEST_PARSED, () => {
-          video.play().catch(() => {});
-        });
+      if (url && (url.endsWith('.m3u8') || url.includes('.m3u8'))) {
+        if (Hls.isSupported()) {
+          const hls = new Hls({
+            enableWorker: true,
+            lowLatencyMode: true,
+            maxBufferLength: 30,
+            manifestLoadingTimeOut: 5000,
+            manifestLoadingMaxRetry: 2
+          });
+          hls.loadSource(url);
+          hls.attachMedia(video);
 
-        hls.on(Hls.Events.ERROR, (event, data) => {
-          if (data.fatal) {
-            console.warn('HLS stream failed, switching to live image fallback:', data);
-            setStreamFailed(true);
-            if (hlsRef.current) {
-              hlsRef.current.destroy();
-              hlsRef.current = null;
+          hls.on(Hls.Events.MANIFEST_PARSED, () => {
+            video.play().catch(() => {});
+          });
+
+          hls.on(Hls.Events.ERROR, (event, data) => {
+            if (data.fatal) {
+              console.warn('HLS stream error:', data);
+              if (hlsRef.current) {
+                hlsRef.current.destroy();
+                hlsRef.current = null;
+              }
             }
-          }
-        });
-        hlsRef.current = hls;
-      } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+          });
+          hlsRef.current = hls;
+        } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+          video.src = url;
+          video.play().catch(() => {});
+        }
+      } else if (url) {
         video.src = url;
         video.play().catch(() => {});
       }
-    } else if (url) {
-      video.src = url;
-      video.play().catch(() => {});
-    }
+    }, 50);
 
     return () => {
+      clearTimeout(timer);
       if (hlsRef.current) {
         hlsRef.current.destroy();
         hlsRef.current = null;
@@ -139,12 +143,19 @@ export default function VideoFeedModal({ camera, onClose }) {
           ) : (
             <video
               ref={videoRef}
+              src={camera.videoUrl}
               poster={camera.posterUrl}
               autoPlay
               loop
               muted
               playsInline
-              onError={() => setStreamFailed(true)}
+              crossOrigin="anonymous"
+              onCanPlay={() => setStreamFailed(false)}
+              onError={(e) => {
+                console.warn('Video stream load warning:', e);
+                // Only set stream failed if no video src or HLS fatal
+                if (!camera.videoUrl) setStreamFailed(true);
+              }}
               className="w-full h-full object-cover transition-transform duration-200"
               style={{
                 transform: `scale(${zoomLevel}) translate(${panX}px, ${panY}px)`
