@@ -22,8 +22,7 @@ export default function Header({ activeIncidentsCount, activeCamerasCount, activ
       {/* Brand & System Title */}
       <div className="flex items-center space-x-3">
         <div className="relative flex items-center justify-center w-9 h-9 rounded-lg bg-gradient-to-br from-cyan-500/20 to-blue-600/30 border border-cyan-400/40 text-cyan-400">
-          <Shield className="w-5 h-5 text-cyan-300 animate-pulse" />
-          <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-cyan-400 rounded-full animate-ping"></span>
+          <Shield className="w-5 h-5 text-cyan-300" />
         </div>
         <div>
           <div className="flex items-center space-x-2">
