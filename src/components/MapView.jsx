@@ -520,48 +520,47 @@ const MapView = forwardRef(({
         if (map.getSource('dedrone-coverage')) map.removeSource('dedrone-coverage');
       }
 
-      // Dedrone Detected Rogue / Unauthorized UAS Alert Markers
+      // Dedrone Detected Unauthorized UAS Markers (Dedrone C-UAS Purple Theme)
       if (layers.dedrone && rogueDrones) {
         rogueDrones.forEach(rogue => {
           const el = document.createElement('div');
           el.style.cursor = 'pointer';
-          el.className = 'rogue-drone-marker';
+          el.className = 'dedrone-target-marker';
           el.innerHTML = `
-            <div style="position:relative; width:40px; height:40px;">
-              <div class="pulse-ring" style="position:absolute; inset:0; border-radius:50%; border:2px solid #ef4444;"></div>
-              <div style="position:absolute; inset:4px; background:rgba(239,68,68,0.3); border:2px solid #ef4444; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 0 18px #ef4444;">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
-                  <line x1="12" y1="9" x2="12" y2="13"></line>
-                  <line x1="12" y1="17" x2="12.01" y2="17"></line>
+            <div style="position:relative; width:38px; height:38px;">
+              <div class="pulse-ring" style="position:absolute; inset:0; border-radius:50%; border:2px solid #a855f7;"></div>
+              <div style="position:absolute; inset:3px; background:rgba(20,10,35,0.92); border:2px solid #a855f7; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 0 16px rgba(168,85,247,0.7);">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c084fc" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"></path>
+                  <circle cx="12" cy="12" r="3" fill="#c084fc"></circle>
                 </svg>
               </div>
             </div>
           `;
 
-          const popup = new maplibregl.Popup({ offset: 25, closeButton: true })
+          const popup = new maplibregl.Popup({ offset: 22, closeButton: true })
             .setHTML(`
               <div style="width:280px; box-sizing:border-box; font-family:'JetBrains Mono',monospace; font-size:11px; color:#e2e8f0; line-height:1.45; overflow:hidden;">
                 
-                <div style="display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid rgba(239,68,68,0.4); padding-bottom:4px; margin-bottom:6px;">
-                  <span style="color:#ef4444; font-weight:700; font-size:11px;">🚨 DEDRONE: ${rogue.id}</span>
-                  <span style="color:#f87171; font-weight:700; font-size:9px; background:rgba(239,68,68,0.2); padding:2px 6px; border-radius:4px; border:1px solid rgba(239,68,68,0.4);">
+                <div style="display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid rgba(168,85,247,0.4); padding-bottom:4px; margin-bottom:6px;">
+                  <span style="color:#c084fc; font-weight:700; font-size:11px;">📡 DEDRONE TRACK: ${rogue.id}</span>
+                  <span style="color:#e9d5ff; font-weight:700; font-size:9px; background:rgba(168,85,247,0.25); padding:2px 6px; border-radius:4px; border:1px solid rgba(168,85,247,0.5);">
                     ${rogue.threatLevel}
                   </span>
                 </div>
                 
-                <div style="color:#f87171; font-weight:700; font-size:11px; margin-bottom:6px; word-break:break-word;">
+                <div style="color:#e9d5ff; font-weight:700; font-size:11px; margin-bottom:6px; word-break:break-word;">
                   ${rogue.classification}
                 </div>
                 
-                <div style="background:rgba(15,23,42,0.85); padding:8px; border-radius:6px; border:1px solid rgba(239,68,68,0.3); margin-bottom:6px; box-sizing:border-box;">
+                <div style="background:rgba(20,10,35,0.85); padding:8px; border-radius:6px; border:1px solid rgba(168,85,247,0.3); margin-bottom:6px; box-sizing:border-box;">
                   <div style="display:flex; justify-content:space-between; margin-bottom:2px;">
                     <span style="color:#94a3b8;">SERIAL SN:</span>
                     <strong style="color:#38bdf8;">${rogue.serialNumber}</strong>
                   </div>
                   <div style="display:flex; justify-content:space-between; margin-bottom:2px;">
                     <span style="color:#94a3b8;">REMOTE ID:</span>
-                    <strong style="color:#a855f7;">FAA Direct RF</strong>
+                    <strong style="color:#c084fc;">FAA Direct RF</strong>
                   </div>
                   <div style="display:flex; justify-content:space-between; margin-bottom:2px;">
                     <span style="color:#94a3b8;">FAA REG:</span>
@@ -573,10 +572,10 @@ const MapView = forwardRef(({
                   </div>
                 </div>
 
-                <div style="display:grid; grid-template-columns:1fr 1fr; gap:4px; margin-bottom:6px; background:rgba(15,23,42,0.5); padding:6px; border-radius:4px; border:1px solid rgba(255,255,255,0.05); box-sizing:border-box;">
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:4px; margin-bottom:6px; background:rgba(15,23,42,0.6); padding:6px; border-radius:4px; border:1px solid rgba(255,255,255,0.05); box-sizing:border-box;">
                   <div>
                     <div style="color:#64748b; font-size:9px;">ALTITUDE</div>
-                    <div style="color:#ef4444; font-weight:700;">${rogue.altitude}m AGL</div>
+                    <div style="color:#f43f5e; font-weight:700;">${rogue.altitude}m AGL</div>
                   </div>
                   <div>
                     <div style="color:#64748b; font-size:9px;">CLIMB RATE</div>
@@ -592,16 +591,16 @@ const MapView = forwardRef(({
                   </div>
                 </div>
 
-                <div style="background:rgba(239,68,68,0.1); padding:8px; border-radius:6px; border:1px solid rgba(239,68,68,0.3); margin-bottom:6px; box-sizing:border-box;">
-                  <div style="color:#fca5a5; font-weight:700; font-size:10px; margin-bottom:2px;">📍 PILOT ESTIMATE:</div>
-                  <div style="color:#fee2e2; font-size:10px; font-weight:600; word-break:break-word;">${rogue.pilotLocationEst}</div>
-                  <div style="color:#fca5a5; font-size:9px; margin-top:2px;">RANGE: ${rogue.pilotDistance}</div>
-                  <div style="color:#fca5a5; font-size:9px; word-break:break-word;">HOME: ${rogue.homePoint}</div>
+                <div style="background:rgba(168,85,247,0.12); padding:8px; border-radius:6px; border:1px solid rgba(168,85,247,0.3); margin-bottom:6px; box-sizing:border-box;">
+                  <div style="color:#d8b4fe; font-weight:700; font-size:10px; margin-bottom:2px;">📍 PILOT ESTIMATE:</div>
+                  <div style="color:#f3e8ff; font-size:10px; font-weight:600; word-break:break-word;">${rogue.pilotLocationEst}</div>
+                  <div style="color:#d8b4fe; font-size:9px; margin-top:2px;">RANGE: ${rogue.pilotDistance}</div>
+                  <div style="color:#d8b4fe; font-size:9px; word-break:break-word;">HOME: ${rogue.homePoint}</div>
                 </div>
 
                 <div style="display:flex; align-items:center; justify-content:space-between; font-size:9px; border-top:1px solid rgba(255,255,255,0.1); padding-top:4px;">
-                  <span style="color:#94a3b8;">ARRAY: LAPD HQ & City Hall</span>
-                  <span style="color:#ef4444; font-weight:700;">JAMMER ARMED</span>
+                  <span style="color:#94a3b8;">SENSORS: LAPD HQ & City Hall</span>
+                  <span style="color:#a855f7; font-weight:700;">JAMMER ARMED</span>
                 </div>
 
               </div>
