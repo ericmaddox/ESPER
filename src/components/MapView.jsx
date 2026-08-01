@@ -172,6 +172,9 @@ const MapView = forwardRef(({
   incidents,
   cameras,
   units,
+  skydioDrones = [],
+  dedroneSensors = [],
+  rogueDrones = [],
   layers,
   onSelectCamera,
   onSelectIncident
@@ -179,6 +182,7 @@ const MapView = forwardRef(({
   const containerRef = useRef(null);
   const mapRef = useRef(null);
   const markersRef = useRef([]);
+  const droneAnimRefs = useRef([]);
   const searchMarkerRef = useRef(null);
   const heliAnimRef = useRef(null);
 
@@ -208,13 +212,11 @@ const MapView = forwardRef(({
     showSearchLocation: (loc) => {
       if (!mapRef.current) return;
 
-      // Remove existing search target marker
       if (searchMarkerRef.current) {
         searchMarkerRef.current.remove();
         searchMarkerRef.current = null;
       }
 
-      // Fly to searched location
       mapRef.current.flyTo({
         center: [loc.longitude, loc.latitude],
         zoom: 17.5,
@@ -224,7 +226,6 @@ const MapView = forwardRef(({
         essential: true
       });
 
-      // Create tactical search target marker
       const el = document.createElement('div');
       el.className = 'search-target-marker';
       el.innerHTML = `
@@ -277,6 +278,7 @@ const MapView = forwardRef(({
 
     return () => {
       if (heliAnimRef.current) cancelAnimationFrame(heliAnimRef.current);
+      droneAnimRefs.current.forEach(refId => cancelAnimationFrame(refId));
       markersRef.current.forEach(m => m.remove());
       if (searchMarkerRef.current) searchMarkerRef.current.remove();
       map.remove();
@@ -300,6 +302,8 @@ const MapView = forwardRef(({
         cancelAnimationFrame(heliAnimRef.current);
         heliAnimRef.current = null;
       }
+      droneAnimRefs.current.forEach(refId => cancelAnimationFrame(refId));
+      droneAnimRefs.current = [];
 
       if (map.getLayer('3d-buildings')) {
         map.setLayoutProperty('3d-buildings', 'visibility', layers.buildings ? 'visible' : 'none');
@@ -308,6 +312,7 @@ const MapView = forwardRef(({
         map.setLayoutProperty('3d-buildings-edges', 'visibility', layers.buildings ? 'visible' : 'none');
       }
 
+      // Incidents
       if (layers.incidents && incidents) {
         incidents.forEach(inc => {
           const color = inc.severity === 'critical' ? '#ef4444' :
@@ -343,6 +348,7 @@ const MapView = forwardRef(({
         });
       }
 
+      // Cameras
       if (layers.cameras && cameras) {
         cameras.forEach(cam => {
           const el = document.createElement('div');
@@ -385,20 +391,13 @@ const MapView = forwardRef(({
               id: 'camera-cones-fill',
               type: 'fill',
               source: 'camera-cones',
-              paint: {
-                'fill-color': '#00f3ff',
-                'fill-opacity': 0.12
-              }
+              paint: { 'fill-color': '#00f3ff', 'fill-opacity': 0.12 }
             });
             map.addLayer({
               id: 'camera-cones-outline',
               type: 'line',
               source: 'camera-cones',
-              paint: {
-                'line-color': '#00f3ff',
-                'line-width': 1.5,
-                'line-opacity': 0.5
-              }
+              paint: { 'line-color': '#00f3ff', 'line-width': 1.5, 'line-opacity': 0.5 }
             });
           }
         } else {
@@ -408,6 +407,167 @@ const MapView = forwardRef(({
         }
       }
 
+      // Skydio Autonomous DFR Drones Layer
+      if (layers.drones && skydioDrones) {
+        skydioDrones.forEach((drone, idx) => {
+          const el = document.createElement('div');
+          el.style.cursor = 'pointer';
+          el.className = 'skydio-drone-marker';
+          el.innerHTML = `
+            <div style="width:34px; height:34px; background:rgba(10,25,45,0.95); border:2px solid #38bdf8; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow: 0 0 14px rgba(56,189,248,0.6);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 19 21 12 17 5 21 12 2"></polygon>
+              </svg>
+            </div>
+          `;
+
+          const popup = new maplibregl.Popup({ offset: 22, closeButton: true })
+            .setHTML(`
+              <div style="min-width:200px">
+                <div style="color:#38bdf8; font-weight:700; font-size:12px; margin-bottom:2px;">🚁 ${drone.callsign}</div>
+                <div style="color:#94a3b8; font-size:10px;">MISSION: ${drone.mission}</div>
+                <div style="color:#cbd5e1; font-size:10px; margin-top:4px;">ALT: <strong>${drone.altitude}m AGL</strong> | SPEED: <strong>${drone.speed}</strong></div>
+                <div style="color:#84cc16; font-size:10px; margin-top:2px;">BATTERY: <strong>${drone.battery}</strong> | AUTONOMY: <strong>${drone.autonomyMode}</strong></div>
+                <div style="color:#38bdf8; font-size:10px; margin-top:4px; font-weight:600;">PAYLOAD: ${drone.payload}</div>
+              </div>
+            `);
+
+          const droneMarker = new maplibregl.Marker({ element: el, anchor: 'center' })
+            .setLngLat([drone.longitude, drone.latitude])
+            .setPopup(popup)
+            .addTo(map);
+
+          markersRef.current.push(droneMarker);
+
+          // Animate Skydio flight path
+          const centerLng = drone.longitude;
+          const centerLat = drone.latitude;
+          const radius = 0.0035 * (idx + 1);
+          let angle = idx * 1.5;
+
+          const animateDrone = () => {
+            angle += 0.004;
+            const lng = centerLng + radius * Math.cos(angle);
+            const lat = centerLat + radius * Math.sin(angle);
+            droneMarker.setLngLat([lng, lat]);
+            const animId = requestAnimationFrame(animateDrone);
+            droneAnimRefs.current.push(animId);
+          };
+          animateDrone();
+        });
+      }
+
+      // Dedrone Counter-UAS Sensors & Detection Domes
+      if (layers.dedrone && dedroneSensors) {
+        dedroneSensors.forEach(sensor => {
+          const el = document.createElement('div');
+          el.style.cursor = 'pointer';
+          el.className = 'dedrone-sensor-marker';
+          el.innerHTML = `
+            <div style="width:34px; height:34px; background:rgba(20,10,35,0.95); border:2px solid #a855f7; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow: 0 0 14px rgba(168,85,247,0.6);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"></path>
+                <circle cx="12" cy="12" r="3" fill="#a855f7"></circle>
+              </svg>
+            </div>
+          `;
+
+          const popup = new maplibregl.Popup({ offset: 22, closeButton: true })
+            .setHTML(`
+              <div style="min-width:210px">
+                <div style="color:#a855f7; font-weight:700; font-size:12px; margin-bottom:2px;">📡 ${sensor.name}</div>
+                <div style="color:#94a3b8; font-size:10px;">TYPE: ${sensor.type}</div>
+                <div style="color:#cbd5e1; font-size:10px; margin-top:4px;">RF SPECTRUM: <strong>${sensor.frequencyBands}</strong></div>
+                <div style="color:#a855f7; font-size:10px; margin-top:2px;">COVERAGE: <strong>${sensor.detectionRadiusMeters}m RF Sphere</strong></div>
+                <div style="color:#34d399; font-size:10px; margin-top:4px; font-weight:600;">STATUS: ${sensor.status} (${sensor.detectedThreatsCount} THREATS DETECTED)</div>
+              </div>
+            `);
+
+          const sensorMarker = new maplibregl.Marker({ element: el, anchor: 'center' })
+            .setLngLat([sensor.longitude, sensor.latitude])
+            .setPopup(popup)
+            .addTo(map);
+
+          markersRef.current.push(sensorMarker);
+        });
+
+        // Dedrone RF Detection Coverage Domes (GeoJSON polygons)
+        const sensorCircles = dedroneSensors.map(sensor => {
+          const circlePoints = generateGeoCircle(sensor.longitude, sensor.latitude, sensor.detectionRadiusMeters);
+          return {
+            type: 'Feature',
+            geometry: { type: 'Polygon', coordinates: [circlePoints] },
+            properties: { id: sensor.id }
+          };
+        });
+
+        if (map.getSource('dedrone-coverage')) {
+          map.getSource('dedrone-coverage').setData({ type: 'FeatureCollection', features: sensorCircles });
+        } else {
+          map.addSource('dedrone-coverage', {
+            type: 'geojson',
+            data: { type: 'FeatureCollection', features: sensorCircles }
+          });
+          map.addLayer({
+            id: 'dedrone-coverage-fill',
+            type: 'fill',
+            source: 'dedrone-coverage',
+            paint: { 'fill-color': '#a855f7', 'fill-opacity': 0.08 }
+          });
+          map.addLayer({
+            id: 'dedrone-coverage-outline',
+            type: 'line',
+            source: 'dedrone-coverage',
+            paint: { 'line-color': '#a855f7', 'line-width': 1.5, 'line-dasharray': [2, 2], 'line-opacity': 0.6 }
+          });
+        }
+      } else {
+        if (map.getLayer('dedrone-coverage-fill')) map.removeLayer('dedrone-coverage-fill');
+        if (map.getLayer('dedrone-coverage-outline')) map.removeLayer('dedrone-coverage-outline');
+        if (map.getSource('dedrone-coverage')) map.removeSource('dedrone-coverage');
+      }
+
+      // Dedrone Detected Rogue / Unauthorized UAS Alert Markers
+      if (layers.dedrone && rogueDrones) {
+        rogueDrones.forEach(rogue => {
+          const el = document.createElement('div');
+          el.style.cursor = 'pointer';
+          el.className = 'rogue-drone-marker';
+          el.innerHTML = `
+            <div style="position:relative; width:40px; height:40px;">
+              <div class="pulse-ring" style="position:absolute; inset:0; border-radius:50%; border:2px solid #ef4444;"></div>
+              <div style="position:absolute; inset:4px; background:rgba(239,68,68,0.3); border:2px solid #ef4444; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 0 18px #ef4444;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                  <line x1="12" y1="9" x2="12" y2="13"></line>
+                  <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                </svg>
+              </div>
+            </div>
+          `;
+
+          const popup = new maplibregl.Popup({ offset: 25, closeButton: true })
+            .setHTML(`
+              <div style="min-width:220px">
+                <div style="color:#ef4444; font-weight:700; font-size:12px; margin-bottom:2px;">🚨 ${rogue.id}: ${rogue.classification}</div>
+                <div style="color:#f87171; font-weight:600; font-size:10px;">VIOLATION: ${rogue.violation}</div>
+                <div style="color:#cbd5e1; font-size:10px; margin-top:4px;">ALTITUDE: <strong style="color:#ef4444">${rogue.altitude}m AGL (>400ft LIMIT)</strong> | SPEED: <strong>${rogue.speed}</strong></div>
+                <div style="color:#cbd5e1; font-size:10px; margin-top:2px;">RF SIGNAL: <strong>${rogue.rfFrequency} (${rogue.signalDb})</strong></div>
+                <div style="color:#f59e0b; font-size:10px; margin-top:4px; font-weight:600;">PILOT EST: ${rogue.pilotLocationEst}</div>
+                <div style="color:#94a3b8; font-size:9px; margin-top:2px;">SENSORS: ${rogue.detectedBy}</div>
+              </div>
+            `);
+
+          const rogueMarker = new maplibregl.Marker({ element: el, anchor: 'center' })
+            .setLngLat([rogue.longitude, rogue.latitude])
+            .setPopup(popup)
+            .addTo(map);
+
+          markersRef.current.push(rogueMarker);
+        });
+      }
+
+      // Ground Unit markers
       if (layers.units && units) {
         units.forEach(unit => {
           if (unit.id === 'AIR-1') {
@@ -485,7 +645,7 @@ const MapView = forwardRef(({
         });
       }
     }
-  }, [incidents, cameras, units, layers]);
+  }, [incidents, cameras, units, skydioDrones, dedroneSensors, rogueDrones, layers]);
 
   return (
     <div className="absolute inset-0 z-0">
@@ -524,5 +684,23 @@ function generateConeFan(lng, lat, headingDeg, fovDeg, rangeMtrs) {
   }
 
   points.push([lng, lat]);
+  return points;
+}
+
+// Generate circular polygon points for Dedrone C-UAS RF coverage dome
+function generateGeoCircle(centerLng, centerLat, radiusMeters, steps = 36) {
+  const points = [];
+  const metersPerDegreeLng = 111320 * Math.cos(centerLat * Math.PI / 180);
+  const metersPerDegreeLat = 110540;
+  const rLng = radiusMeters / metersPerDegreeLng;
+  const rLat = radiusMeters / metersPerDegreeLat;
+
+  for (let i = 0; i <= steps; i++) {
+    const angleRad = (i * 360 / steps) * Math.PI / 180;
+    const lng = centerLng + rLng * Math.cos(angleRad);
+    const lat = centerLat + rLat * Math.sin(angleRad);
+    points.push([lng, lat]);
+  }
+
   return points;
 }

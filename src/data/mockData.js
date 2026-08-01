@@ -2521,3 +2521,98 @@ export const MOCK_UNITS = [
   { id: 'UNIT-12', callsign: 'Central Patrol 12', type: 'Ford Police Interceptor', latitude: 34.0480, longitude: -118.2560, altitude: 12, speed: '28 mph', heading: 45, status: 'EN ROUTE TO INC-901', driver: 'Ofcr. Miller / Ofcr. Davis' },
   { id: 'ENG-11', callsign: 'LAFD Engine 11', type: 'Heavy Fire Engine', latitude: 34.0460, longitude: -118.2620, altitude: 15, speed: '35 mph', heading: 270, status: 'ON SCENE', captain: 'Capt. Rodriguez' }
 ];
+
+// Skydio DFR (Drone as First Responder) Fleet
+export const MOCK_SKYDIO_DRONES = [
+  {
+    id: 'SKYDIO-DFR-1',
+    callsign: 'Skydio DFR Alpha (X10)',
+    type: 'Skydio X10 DFR Autonomous',
+    latitude: 34.0530,
+    longitude: -118.2520,
+    altitude: 120, // meters AGL
+    speed: '34 mph',
+    heading: 135,
+    battery: '88%',
+    autonomyMode: 'SKYDIO AUTONOMY 3D',
+    status: 'ACTIVE PATROL',
+    mission: 'Bunker Hill / DTLA Corridor Overwatch',
+    payload: '4K Optical 64x Zoom + FLIR Thermal 640x512',
+    videoUrl: 'https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8'
+  },
+  {
+    id: 'SKYDIO-DFR-2',
+    callsign: 'Skydio DFR Bravo (X2)',
+    type: 'Skydio X2 NightVision',
+    latitude: 34.0415,
+    longitude: -118.2650,
+    altitude: 95,
+    speed: '22 mph',
+    heading: 270,
+    battery: '64%',
+    autonomyMode: 'SKYDIO DOCK AUTO-LAUNCH',
+    status: 'DISPATCHED',
+    mission: 'Perimeter Overwatch @ Crypto.com Arena',
+    payload: 'Dual Thermal / Color NightVision',
+    videoUrl: 'https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8'
+  }
+];
+
+// Dedrone Counter-UAS Sensor Grid (RF + Optical Scanners)
+export const MOCK_DEDRONE_SENSORS = [
+  {
+    id: 'DEDRONE-RF-101',
+    name: 'DedroneSensRF 100 (LAPD HQ)',
+    type: 'RF Tracker + Optical PTZ',
+    latitude: 34.0515,
+    longitude: -118.2435,
+    detectionRadiusMeters: 1200,
+    frequencyBands: '2.4 GHz / 5.8 GHz / Sub-1 GHz',
+    status: 'ONLINE',
+    detectedThreatsCount: 1,
+    location: 'LAPD Police Administration Building Rooftop'
+  },
+  {
+    id: 'DEDRONE-RF-102',
+    name: 'DedroneSensRF 300 (US Bank Tower)',
+    type: 'High Elevation RF Array',
+    latitude: 34.0511,
+    longitude: -118.2544,
+    detectionRadiusMeters: 1500,
+    frequencyBands: 'All-Band Commercial & Custom Drone RF',
+    status: 'ONLINE',
+    detectedThreatsCount: 0,
+    location: 'US Bank Tower SkyDeck Array'
+  },
+  {
+    id: 'DEDRONE-RF-103',
+    name: 'DedroneTracker AI (City Hall)',
+    type: 'Radar + AI Optical Classifier',
+    latitude: 34.0537,
+    longitude: -118.2427,
+    detectionRadiusMeters: 1000,
+    frequencyBands: 'Optical AI Vision + 3D Micro-Radar',
+    status: 'ONLINE',
+    detectedThreatsCount: 1,
+    location: 'LA City Hall North Tower'
+  }
+];
+
+// Dedrone Detected Unauthorized / Rogue UAS Threats
+export const MOCK_ROGUE_DRONES = [
+  {
+    id: 'ROGUE-UAS-01',
+    classification: 'DJI Mavic 3 Pro (Unregistered)',
+    threatLevel: 'CRITICAL',
+    latitude: 34.0545,
+    longitude: -118.2460,
+    altitude: 180, // meters AGL (>400ft FAA limit!)
+    speed: '41 mph',
+    heading: 195,
+    rfFrequency: '5.825 GHz (OcuSync 3.0)',
+    signalDb: '-62 dBm',
+    pilotLocationEst: '1st St & Spring St (RF Bearing 142°)',
+    violation: 'Restricted Airspace Breach // FAA Height Limit Violation',
+    detectedBy: 'DEDRONE-RF-101 & DEDRONE-RF-103'
+  }
+];

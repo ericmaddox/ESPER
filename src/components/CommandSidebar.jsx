@@ -1,17 +1,21 @@
 import React, { useState } from 'react';
 import { 
   AlertTriangle, Eye, Navigation, MapPin, ChevronLeft, ChevronRight, 
-  Radio, Shield, Search, ExternalLink, Play, Crosshair, Sparkles
+  Radio, Shield, Search, Play, Crosshair, Radar, ShieldAlert, Cpu
 } from 'lucide-react';
 
 export default function CommandSidebar({
   incidents,
   cameras,
   units,
+  skydioDrones = [],
+  dedroneSensors = [],
+  rogueDrones = [],
   laPresets,
   onFlyToPreset,
   onSelectCamera,
   onFlyToIncident,
+  onFlyToLocation,
   selectedIncident,
   selectedCamera
 }) {
@@ -68,16 +72,16 @@ export default function CommandSidebar({
         </div>
 
         {/* Tab Selection Navigation */}
-        <div className="grid grid-cols-4 border-b border-cyan-500/20 bg-slate-950/40 text-[11px] font-mono">
+        <div className="grid grid-cols-5 border-b border-cyan-500/20 bg-slate-950/40 text-[10px] font-mono">
           <button
             onClick={() => setActiveTab('incidents')}
-            className={`py-2 px-1 flex flex-col items-center justify-center border-b-2 transition-all ${
+            className={`py-2 px-0.5 flex flex-col items-center justify-center border-b-2 transition-all ${
               activeTab === 'incidents'
                 ? 'border-red-500 text-red-400 bg-red-500/10 font-bold'
                 : 'border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-900/40'
             }`}
           >
-            <div className="flex items-center space-x-1">
+            <div className="flex items-center space-x-0.5">
               <AlertTriangle className="w-3 h-3" />
               <span>CALLS</span>
             </div>
@@ -86,13 +90,13 @@ export default function CommandSidebar({
 
           <button
             onClick={() => setActiveTab('cameras')}
-            className={`py-2 px-1 flex flex-col items-center justify-center border-b-2 transition-all ${
+            className={`py-2 px-0.5 flex flex-col items-center justify-center border-b-2 transition-all ${
               activeTab === 'cameras'
                 ? 'border-cyan-400 text-cyan-300 bg-cyan-500/10 font-bold'
                 : 'border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-900/40'
             }`}
           >
-            <div className="flex items-center space-x-1">
+            <div className="flex items-center space-x-0.5">
               <Eye className="w-3 h-3" />
               <span>CCTV</span>
             </div>
@@ -100,14 +104,29 @@ export default function CommandSidebar({
           </button>
 
           <button
+            onClick={() => setActiveTab('drones')}
+            className={`py-2 px-0.5 flex flex-col items-center justify-center border-b-2 transition-all ${
+              activeTab === 'drones'
+                ? 'border-sky-400 text-sky-300 bg-sky-500/10 font-bold'
+                : 'border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-900/40'
+            }`}
+          >
+            <div className="flex items-center space-x-0.5">
+              <Radar className="w-3 h-3 text-sky-400" />
+              <span>UAS</span>
+            </div>
+            <span className="text-[9px] text-slate-500">({skydioDrones.length + rogueDrones.length})</span>
+          </button>
+
+          <button
             onClick={() => setActiveTab('units')}
-            className={`py-2 px-1 flex flex-col items-center justify-center border-b-2 transition-all ${
+            className={`py-2 px-0.5 flex flex-col items-center justify-center border-b-2 transition-all ${
               activeTab === 'units'
                 ? 'border-amber-400 text-amber-300 bg-amber-500/10 font-bold'
                 : 'border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-900/40'
             }`}
           >
-            <div className="flex items-center space-x-1">
+            <div className="flex items-center space-x-0.5">
               <Radio className="w-3 h-3" />
               <span>UNITS</span>
             </div>
@@ -116,13 +135,13 @@ export default function CommandSidebar({
 
           <button
             onClick={() => setActiveTab('presets')}
-            className={`py-2 px-1 flex flex-col items-center justify-center border-b-2 transition-all ${
+            className={`py-2 px-0.5 flex flex-col items-center justify-center border-b-2 transition-all ${
               activeTab === 'presets'
                 ? 'border-purple-400 text-purple-300 bg-purple-500/10 font-bold'
                 : 'border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-900/40'
             }`}
           >
-            <div className="flex items-center space-x-1">
+            <div className="flex items-center space-x-0.5">
               <MapPin className="w-3 h-3" />
               <span>PRESETS</span>
             </div>
@@ -231,7 +250,136 @@ export default function CommandSidebar({
             </div>
           )}
 
-          {/* TAB 3: FIELD UNITS */}
+          {/* TAB 3: SKYDIO DFR & DEDRONE C-UAS */}
+          {activeTab === 'drones' && (
+            <div className="space-y-3 font-mono">
+              
+              {/* SECTION: Dedrone Detected Rogue UAS */}
+              <div>
+                <div className="text-[10px] font-bold text-red-400 uppercase tracking-wider mb-1.5 flex items-center space-x-1">
+                  <ShieldAlert className="w-3.5 h-3.5 animate-pulse" />
+                  <span>DEDRONE DETECTED ROGUE UAS ({rogueDrones.length})</span>
+                </div>
+
+                {rogueDrones.map(rogue => (
+                  <div key={rogue.id} className="p-3 rounded-lg border border-red-500/50 bg-red-950/20 space-y-1.5">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-red-500/30 text-red-300 border border-red-500/50">
+                        🚨 {rogue.id}
+                      </span>
+                      <span className="text-[10px] text-red-400 font-bold animate-pulse">
+                        {rogue.threatLevel} THREAT
+                      </span>
+                    </div>
+
+                    <h4 className="text-xs font-bold text-slate-100">{rogue.classification}</h4>
+                    <p className="text-[10px] text-red-300">{rogue.violation}</p>
+
+                    <div className="pt-1.5 border-t border-red-500/30 grid grid-cols-2 gap-1 text-[10px] text-slate-300">
+                      <div>ALTITUDE: <span className="text-red-400 font-bold">{rogue.altitude}m AGL</span></div>
+                      <div>SPEED: <span className="text-red-400 font-bold">{rogue.speed}</span></div>
+                      <div>RF FREQ: <span className="text-slate-300">{rogue.rfFrequency}</span></div>
+                      <div>SIGNAL: <span className="text-slate-300">{rogue.signalDb}</span></div>
+                    </div>
+
+                    <div className="text-[10px] text-amber-300 bg-slate-950/80 p-1.5 rounded border border-slate-800">
+                      PILOT EST: {rogue.pilotLocationEst}
+                    </div>
+
+                    <button
+                      onClick={() => onFlyToLocation && onFlyToLocation(rogue.latitude, rogue.longitude, 18)}
+                      className="w-full mt-1 py-1 rounded bg-red-500/20 hover:bg-red-500/40 border border-red-500/40 text-red-300 text-[10px] font-bold flex items-center justify-center space-x-1 transition-all"
+                    >
+                      <Crosshair className="w-3 h-3 text-red-400" />
+                      <span>TRACK ROGUE DRONE IN 3D</span>
+                    </button>
+                  </div>
+                ))}
+              </div>
+
+              {/* SECTION: Skydio DFR Autonomous Fleet */}
+              <div>
+                <div className="text-[10px] font-bold text-sky-400 uppercase tracking-wider mb-1.5 flex items-center space-x-1">
+                  <Cpu className="w-3.5 h-3.5" />
+                  <span>SKYDIO DFR FLEET ({skydioDrones.length})</span>
+                </div>
+
+                {skydioDrones.map(drone => (
+                  <div key={drone.id} className="p-3 rounded-lg border border-sky-500/30 bg-slate-900/70 space-y-1.5">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-sky-500/20 text-sky-300 border border-sky-500/40">
+                        🚁 {drone.id}
+                      </span>
+                      <span className="text-[10px] text-emerald-400 font-bold">{drone.status}</span>
+                    </div>
+
+                    <h4 className="text-xs font-bold text-slate-100">{drone.callsign}</h4>
+                    <p className="text-[10px] text-slate-400">{drone.mission}</p>
+
+                    <div className="pt-1.5 border-t border-slate-800 grid grid-cols-2 gap-1 text-[10px] text-slate-300">
+                      <div>ALT: <span className="text-sky-300 font-bold">{drone.altitude}m</span></div>
+                      <div>SPEED: <span className="text-sky-300 font-bold">{drone.speed}</span></div>
+                      <div>BATTERY: <span className="text-emerald-400 font-bold">{drone.battery}</span></div>
+                      <div>AUTONOMY: <span className="text-sky-400 font-bold">{drone.autonomyMode}</span></div>
+                    </div>
+
+                    <div className="flex items-center justify-between pt-1">
+                      <button
+                        onClick={() => onSelectCamera && onSelectCamera({
+                          id: drone.id,
+                          name: drone.callsign,
+                          videoUrl: drone.videoUrl,
+                          latitude: drone.latitude,
+                          longitude: drone.longitude,
+                          height: drone.altitude,
+                          fov: 80,
+                          status: 'LIVE SKYDIO EO/IR',
+                          network: 'Skydio DFR Fleet Link'
+                        })}
+                        className="px-2 py-1 rounded bg-sky-500/20 hover:bg-sky-500/40 border border-sky-500/40 text-sky-300 text-[10px] font-bold flex items-center space-x-1"
+                      >
+                        <Play className="w-3 h-3 text-sky-300" />
+                        <span>PAYLOAD FEED</span>
+                      </button>
+
+                      <button
+                        onClick={() => onFlyToLocation && onFlyToLocation(drone.latitude, drone.longitude, 17.5)}
+                        className="px-2 py-1 rounded bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 text-[10px] font-bold flex items-center space-x-1"
+                      >
+                        <Crosshair className="w-3 h-3 text-sky-400" />
+                        <span>FLY TO 3D</span>
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* SECTION: Dedrone RF Sensor Grid */}
+              <div>
+                <div className="text-[10px] font-bold text-purple-400 uppercase tracking-wider mb-1.5 flex items-center space-x-1">
+                  <Radar className="w-3.5 h-3.5 text-purple-400" />
+                  <span>DEDRONE C-UAS SENSOR GRID ({dedroneSensors.length})</span>
+                </div>
+
+                {dedroneSensors.map(sensor => (
+                  <div key={sensor.id} className="p-2.5 rounded-lg border border-purple-500/30 bg-slate-900/70 text-[10px]">
+                    <div className="flex items-center justify-between font-bold text-purple-300">
+                      <span>{sensor.name}</span>
+                      <span className="text-emerald-400">● {sensor.status}</span>
+                    </div>
+                    <div className="text-slate-400 mt-0.5">{sensor.location}</div>
+                    <div className="text-slate-400 mt-1 flex justify-between">
+                      <span>RF RADIUS: <strong className="text-purple-300">{sensor.detectionRadiusMeters}m</strong></span>
+                      <span>THREATS: <strong className="text-red-400">{sensor.detectedThreatsCount}</strong></span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+            </div>
+          )}
+
+          {/* TAB 4: FIELD UNITS */}
           {activeTab === 'units' && (
             <div className="space-y-2">
               {units.map((unit) => (
@@ -257,7 +405,7 @@ export default function CommandSidebar({
             </div>
           )}
 
-          {/* TAB 4: LA 3D PRESETS */}
+          {/* TAB 5: LA 3D PRESETS */}
           {activeTab === 'presets' && (
             <div className="space-y-2">
               {laPresets.map((preset) => (

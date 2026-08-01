@@ -5,7 +5,15 @@ import CommandSidebar from './components/CommandSidebar';
 import LayerToolbar from './components/LayerToolbar';
 import VideoFeedModal from './components/VideoFeedModal';
 
-import { MOCK_INCIDENTS, MOCK_CAMERAS, MOCK_UNITS, LA_PRESETS } from './data/mockData';
+import {
+  MOCK_INCIDENTS,
+  MOCK_CAMERAS,
+  MOCK_UNITS,
+  MOCK_SKYDIO_DRONES,
+  MOCK_DEDRONE_SENSORS,
+  MOCK_ROGUE_DRONES,
+  LA_PRESETS
+} from './data/mockData';
 
 export default function App() {
   const mapRef = useRef(null);
@@ -13,6 +21,10 @@ export default function App() {
   const [incidents] = useState(MOCK_INCIDENTS);
   const [cameras] = useState(MOCK_CAMERAS);
   const [units] = useState(MOCK_UNITS);
+  const [skydioDrones] = useState(MOCK_SKYDIO_DRONES);
+  const [dedroneSensors] = useState(MOCK_DEDRONE_SENSORS);
+  const [rogueDrones] = useState(MOCK_ROGUE_DRONES);
+
   const [selectedCamera, setSelectedCamera] = useState(null);
   const [selectedIncident, setSelectedIncident] = useState(null);
 
@@ -22,7 +34,9 @@ export default function App() {
     cameras: true,
     cameraCones: true,
     incidents: true,
-    units: true
+    units: true,
+    drones: true,
+    dedrone: true
   });
 
   const handleToggleLayer = (layerKey) => {
@@ -36,6 +50,12 @@ export default function App() {
     setSelectedIncident(inc);
     if (mapRef.current) {
       mapRef.current.flyToLocation(inc.latitude, inc.longitude, 17, 55, 30);
+    }
+  };
+
+  const handleFlyToLocation = (lat, lng, zoom = 17) => {
+    if (mapRef.current) {
+      mapRef.current.flyToLocation(lat, lng, zoom, 55, 30);
     }
   };
 
@@ -65,7 +85,7 @@ export default function App() {
       <Header
         activeIncidentsCount={incidents.length}
         activeCamerasCount={cameras.filter(c => c.status === 'LIVE').length}
-        activeUnitsCount={units.length}
+        activeUnitsCount={units.length + skydioDrones.length}
         toggleFullscreen={toggleFullscreen}
         onSelectLocation={handleSelectSearchLocation}
       />
@@ -76,6 +96,9 @@ export default function App() {
         incidents={incidents}
         cameras={cameras}
         units={units}
+        skydioDrones={skydioDrones}
+        dedroneSensors={dedroneSensors}
+        rogueDrones={rogueDrones}
         layers={layers}
         onSelectCamera={setSelectedCamera}
         onSelectIncident={setSelectedIncident}
@@ -86,10 +109,14 @@ export default function App() {
         incidents={incidents}
         cameras={cameras}
         units={units}
+        skydioDrones={skydioDrones}
+        dedroneSensors={dedroneSensors}
+        rogueDrones={rogueDrones}
         laPresets={LA_PRESETS}
         onFlyToPreset={handleFlyToPreset}
         onSelectCamera={setSelectedCamera}
         onFlyToIncident={handleFlyToIncident}
+        onFlyToLocation={handleFlyToLocation}
         selectedIncident={selectedIncident}
         selectedCamera={selectedCamera}
       />

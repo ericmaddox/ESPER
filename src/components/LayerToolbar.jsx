@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Layers, Building2, Eye, Cone, AlertTriangle, Radio, Compass, Compass as Drone, ChevronUp, ChevronDown, SlidersHorizontal } from 'lucide-react';
+import { Layers, Building2, Eye, Cone, AlertTriangle, Radio, Compass, Compass as Drone, ChevronUp, ChevronDown, SlidersHorizontal, Navigation, Radar } from 'lucide-react';
 
 export default function LayerToolbar({ layers, onToggleLayer, onFlyToPreset, laPresets }) {
   const [isOpen, setIsOpen] = useState(true);
@@ -23,7 +23,7 @@ export default function LayerToolbar({ layers, onToggleLayer, onFlyToPreset, laP
         <div className="flex flex-col space-y-2 animate-fade-in">
           
           {/* 3D Map Layers Panel */}
-          <div className="glass-panel p-2.5 rounded-xl border border-cyan-500/20 shadow-xl w-48 font-mono text-xs">
+          <div className="glass-panel p-2.5 rounded-xl border border-cyan-500/20 shadow-xl w-52 font-mono text-xs">
             <div className="flex items-center justify-between pb-2 mb-2 border-b border-cyan-500/20 text-cyan-400 font-bold uppercase text-[11px]">
               <div className="flex items-center space-x-1.5">
                 <SlidersHorizontal className="w-3.5 h-3.5" />
@@ -45,6 +45,36 @@ export default function LayerToolbar({ layers, onToggleLayer, onFlyToPreset, laP
                   <span>3D Buildings</span>
                 </div>
                 <span className="text-[10px]">{layers.buildings ? 'ON' : 'OFF'}</span>
+              </button>
+
+              <button
+                onClick={() => onToggleLayer('drones')}
+                className={`w-full px-2.5 py-1.5 rounded flex items-center justify-between transition-all ${
+                  layers.drones
+                    ? 'bg-sky-500/20 text-sky-300 border border-sky-500/40 font-bold'
+                    : 'bg-slate-900/40 text-slate-500 hover:text-slate-300 border border-transparent'
+                }`}
+              >
+                <div className="flex items-center space-x-2">
+                  <Navigation className="w-3.5 h-3.5 text-sky-400" />
+                  <span>Skydio Drones</span>
+                </div>
+                <span className="text-[10px]">{layers.drones ? 'ON' : 'OFF'}</span>
+              </button>
+
+              <button
+                onClick={() => onToggleLayer('dedrone')}
+                className={`w-full px-2.5 py-1.5 rounded flex items-center justify-between transition-all ${
+                  layers.dedrone
+                    ? 'bg-purple-500/20 text-purple-300 border border-purple-500/40 font-bold'
+                    : 'bg-slate-900/40 text-slate-500 hover:text-slate-300 border border-transparent'
+                }`}
+              >
+                <div className="flex items-center space-x-2">
+                  <Radar className="w-3.5 h-3.5 text-purple-400" />
+                  <span>Dedrone C-UAS</span>
+                </div>
+                <span className="text-[10px]">{layers.dedrone ? 'ON' : 'OFF'}</span>
               </button>
 
               <button
@@ -110,7 +140,7 @@ export default function LayerToolbar({ layers, onToggleLayer, onFlyToPreset, laP
           </div>
 
           {/* Quick Camera Angle Presets */}
-          <div className="glass-panel p-2 rounded-xl border border-cyan-500/20 shadow-xl w-48 font-mono text-xs space-y-1">
+          <div className="glass-panel p-2 rounded-xl border border-cyan-500/20 shadow-xl w-52 font-mono text-xs space-y-1">
             <div className="px-1 text-[10px] text-slate-400 uppercase tracking-wider mb-1">CAMERA MODES</div>
             
             <button
