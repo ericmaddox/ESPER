@@ -2558,11 +2558,11 @@ export const MOCK_SKYDIO_DRONES = [
   }
 ];
 
-// Dedrone Counter-UAS Sensor Grid (RF + Optical Scanners)
-export const MOCK_DEDRONE_SENSORS = [
+// Counter-UAS Sensor Grid (RF + Optical Scanners)
+export const MOCK_CUAS_SENSORS = [
   {
-    id: 'DEDRONE-RF-101',
-    name: 'DedroneSensRF 100 (LAPD HQ)',
+    id: 'CUAS-RF-101',
+    name: 'RF-Scan 100 (LAPD HQ)',
     type: 'RF Tracker + Optical PTZ',
     latitude: 34.0515,
     longitude: -118.2435,
@@ -2573,8 +2573,8 @@ export const MOCK_DEDRONE_SENSORS = [
     location: 'LAPD Police Administration Building Rooftop'
   },
   {
-    id: 'DEDRONE-RF-102',
-    name: 'DedroneSensRF 300 (US Bank Tower)',
+    id: 'CUAS-RF-102',
+    name: 'RF-Scan 300 (US Bank Tower)',
     type: 'High Elevation RF Array',
     latitude: 34.0511,
     longitude: -118.2544,
@@ -2585,8 +2585,8 @@ export const MOCK_DEDRONE_SENSORS = [
     location: 'US Bank Tower SkyDeck Array'
   },
   {
-    id: 'DEDRONE-RF-103',
-    name: 'DedroneTracker AI (City Hall)',
+    id: 'CUAS-RF-103',
+    name: 'SkyWatch AI (City Hall)',
     type: 'Radar + AI Optical Classifier',
     latitude: 34.0537,
     longitude: -118.2427,
@@ -2598,11 +2598,11 @@ export const MOCK_DEDRONE_SENSORS = [
   }
 ];
 
-// Dedrone Detected Non-Cooperative / Unauthorized UAS Detections (DedroneTracker.AI Schema)
+// C-UAS Detected Non-Cooperative / Unauthorized UAS Detections
 export const MOCK_ROGUE_DRONES = [
   {
     id: 'UNAUTHORIZED-UAS-01',
-    dedroneTrackId: 'TRK-90412-DEDRONE',
+    cuasTrackId: 'TRK-90412-CUAS',
     classification: 'DJI Mavic 3 Pro (Unregistered)',
     serialNumber: '1582F4ZAA2208123X',
     remoteIdBroadcast: 'FAA Standard Remote ID (Direct RF)',
@@ -2623,7 +2623,7 @@ export const MOCK_ROGUE_DRONES = [
     pilotDistance: '210m @ 142° SE',
     airspaceZone: 'Class D Restricted (LAX Inner Surface) + FAA 400ft Height Breach',
     violation: 'Restricted Airspace Breach // FAA Height Limit Violation',
-    detectedBy: 'DEDRONE-RF-101 & DEDRONE-RF-103 (AoA Triangulation)',
+    detectedBy: 'CUAS-RF-101 & CUAS-RF-103 (AoA Triangulation)',
     mitigationStatus: 'DEFEND READY // RF JAMMER ARMED'
   }
 ];

@@ -63,18 +63,18 @@ export default function LayerToolbar({ layers, onToggleLayer, onFlyToPreset, laP
               </button>
 
               <button
-                onClick={() => onToggleLayer('dedrone')}
+                onClick={() => onToggleLayer('cuas')}
                 className={`w-full px-2.5 py-1.5 rounded flex items-center justify-between transition-all ${
-                  layers.dedrone
+                  layers.cuas
                     ? 'bg-purple-500/20 text-purple-300 border border-purple-500/40 font-bold'
                     : 'bg-slate-900/40 text-slate-500 hover:text-slate-300 border border-transparent'
                 }`}
               >
                 <div className="flex items-center space-x-2">
                   <Radar className="w-3.5 h-3.5 text-purple-400" />
-                  <span>Dedrone C-UAS</span>
+                  <span>C-UAS Detection</span>
                 </div>
-                <span className="text-[10px]">{layers.dedrone ? 'ON' : 'OFF'}</span>
+                <span className="text-[10px]">{layers.cuas ? 'ON' : 'OFF'}</span>
               </button>
 
               <button

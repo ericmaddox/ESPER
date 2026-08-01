@@ -9,7 +9,7 @@ export default function CommandSidebar({
   cameras,
   units,
   skydioDrones = [],
-  dedroneSensors = [],
+  cuasSensors = [],
   rogueDrones = [],
   laPresets,
   onFlyToPreset,
@@ -323,15 +323,15 @@ export default function CommandSidebar({
             </div>
           )}
 
-          {/* TAB 3: SKYDIO DFR & DEDRONE C-UAS */}
+          {/* TAB 3: SKYDIO DFR & C-UAS DETECTION */}
           {activeTab === 'drones' && (
             <div className="space-y-3 font-mono">
               
-              {/* SECTION: Dedrone Detected Unauthorized UAS */}
+              {/* SECTION: C-UAS Detected Unauthorized UAS */}
               <div>
                 <div className="text-[10px] font-bold text-red-400 uppercase tracking-wider mb-1.5 flex items-center space-x-1">
                   <ShieldAlert className="w-3.5 h-3.5 animate-pulse" />
-                  <span>DEDRONE DETECTED UNAUTHORIZED UAS ({rogueDrones.length})</span>
+                  <span>C-UAS DETECTED UNAUTHORIZED UAS ({rogueDrones.length})</span>
                 </div>
 
                 {rogueDrones.map(rogue => (
@@ -436,14 +436,14 @@ export default function CommandSidebar({
                 ))}
               </div>
 
-              {/* SECTION: Dedrone RF Sensor Grid */}
+              {/* SECTION: C-UAS RF Sensor Grid */}
               <div>
                 <div className="text-[10px] font-bold text-purple-400 uppercase tracking-wider mb-1.5 flex items-center space-x-1">
                   <Radar className="w-3.5 h-3.5 text-purple-400" />
-                  <span>DEDRONE C-UAS SENSOR GRID ({dedroneSensors.length})</span>
+                  <span>C-UAS RF SENSOR GRID ({cuasSensors.length})</span>
                 </div>
 
-                {dedroneSensors.map(sensor => (
+                {cuasSensors.map(sensor => (
                   <div key={sensor.id} className="p-2.5 rounded-lg border border-purple-500/30 bg-slate-900/70 text-[10px]">
                     <div className="flex items-center justify-between font-bold text-purple-300">
                       <span>{sensor.name}</span>

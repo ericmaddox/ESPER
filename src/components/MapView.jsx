@@ -173,7 +173,7 @@ const MapView = forwardRef(({
   cameras,
   units,
   skydioDrones = [],
-  dedroneSensors = [],
+  cuasSensors = [],
   rogueDrones = [],
   citizenStreams = [],
   layers,
@@ -459,12 +459,12 @@ const MapView = forwardRef(({
         });
       }
 
-      // Dedrone Counter-UAS Sensors & Detection Domes
-      if (layers.dedrone && dedroneSensors) {
-        dedroneSensors.forEach(sensor => {
+      // Counter-UAS Sensors & Detection Domes
+      if (layers.cuas && cuasSensors) {
+        cuasSensors.forEach(sensor => {
           const el = document.createElement('div');
           el.style.cursor = 'pointer';
-          el.className = 'dedrone-sensor-marker';
+          el.className = 'cuas-sensor-marker';
           el.innerHTML = `
             <div style="width:34px; height:34px; background:rgba(20,10,35,0.95); border:2px solid #a855f7; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow: 0 0 14px rgba(168,85,247,0.6);">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -493,8 +493,8 @@ const MapView = forwardRef(({
           markersRef.current.push(sensorMarker);
         });
 
-        // Dedrone RF Detection Coverage Domes (GeoJSON polygons)
-        const sensorCircles = dedroneSensors.map(sensor => {
+        // C-UAS RF Detection Coverage Domes (GeoJSON polygons)
+        const sensorCircles = cuasSensors.map(sensor => {
           const circlePoints = generateGeoCircle(sensor.longitude, sensor.latitude, sensor.detectionRadiusMeters);
           return {
             type: 'Feature',
@@ -503,31 +503,31 @@ const MapView = forwardRef(({
           };
         });
 
-        if (map.getSource('dedrone-coverage')) {
-          map.getSource('dedrone-coverage').setData({ type: 'FeatureCollection', features: sensorCircles });
+        if (map.getSource('cuas-coverage')) {
+          map.getSource('cuas-coverage').setData({ type: 'FeatureCollection', features: sensorCircles });
         } else {
-          map.addSource('dedrone-coverage', {
+          map.addSource('cuas-coverage', {
             type: 'geojson',
             data: { type: 'FeatureCollection', features: sensorCircles }
           });
           map.addLayer({
-            id: 'dedrone-coverage-outline',
+            id: 'cuas-coverage-outline',
             type: 'line',
-            source: 'dedrone-coverage',
+            source: 'cuas-coverage',
             paint: { 'line-color': '#a855f7', 'line-width': 1.5, 'line-dasharray': [3, 3], 'line-opacity': 0.7 }
           });
         }
       } else {
-        if (map.getLayer('dedrone-coverage-outline')) map.removeLayer('dedrone-coverage-outline');
-        if (map.getSource('dedrone-coverage')) map.removeSource('dedrone-coverage');
+        if (map.getLayer('cuas-coverage-outline')) map.removeLayer('cuas-coverage-outline');
+        if (map.getSource('cuas-coverage')) map.removeSource('cuas-coverage');
       }
 
-      // Dedrone Detected Unauthorized UAS Markers (Dedrone C-UAS Purple Theme)
-      if (layers.dedrone && rogueDrones) {
+      // C-UAS Detected Unauthorized UAS Markers (Purple Theme)
+      if (layers.cuas && rogueDrones) {
         rogueDrones.forEach(rogue => {
           const el = document.createElement('div');
           el.style.cursor = 'pointer';
-          el.className = 'dedrone-target-marker';
+          el.className = 'cuas-target-marker';
           el.innerHTML = `
             <div style="position:relative; width:38px; height:38px;">
               <div class="pulse-ring" style="position:absolute; inset:0; border-radius:50%; border:2px solid #a855f7;"></div>
@@ -545,7 +545,7 @@ const MapView = forwardRef(({
               <div style="width:280px; box-sizing:border-box; font-family:'JetBrains Mono',monospace; font-size:11px; color:#e2e8f0; line-height:1.45; overflow:hidden;">
                 
                 <div style="display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid rgba(168,85,247,0.4); padding-bottom:4px; margin-bottom:6px;">
-                  <span style="color:#c084fc; font-weight:700; font-size:11px;">📡 DEDRONE TRACK: ${rogue.id}</span>
+                  <span style="color:#c084fc; font-weight:700; font-size:11px;">📡 C-UAS TRACK: ${rogue.id}</span>
                   <span style="color:#e9d5ff; font-weight:700; font-size:9px; background:rgba(168,85,247,0.25); padding:2px 6px; border-radius:4px; border:1px solid rgba(168,85,247,0.5);">
                     ${rogue.threatLevel}
                   </span>
@@ -750,7 +750,7 @@ const MapView = forwardRef(({
         console.error('Error updating map markers:', err);
       }
     }
-  }, [incidents, cameras, units, skydioDrones, dedroneSensors, rogueDrones, citizenStreams, layers]);
+  }, [incidents, cameras, units, skydioDrones, cuasSensors, rogueDrones, citizenStreams, layers]);
 
   return (
     <div className="absolute inset-0 z-0">
@@ -792,7 +792,7 @@ function generateConeFan(lng, lat, headingDeg, fovDeg, rangeMtrs) {
   return points;
 }
 
-// Generate circular polygon points for Dedrone C-UAS RF coverage dome
+// Generate circular polygon points for C-UAS RF coverage dome
 function generateGeoCircle(centerLng, centerLat, radiusMeters, steps = 36) {
   const points = [];
   const metersPerDegreeLng = 111320 * Math.cos(centerLat * Math.PI / 180);

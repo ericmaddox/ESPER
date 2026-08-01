@@ -10,7 +10,7 @@ import {
   MOCK_CAMERAS,
   MOCK_UNITS,
   MOCK_SKYDIO_DRONES,
-  MOCK_DEDRONE_SENSORS,
+  MOCK_CUAS_SENSORS,
   MOCK_ROGUE_DRONES,
   MOCK_CITIZEN_STREAMS,
   LA_PRESETS
@@ -23,7 +23,7 @@ export default function App() {
   const [cameras] = useState(MOCK_CAMERAS);
   const [units] = useState(MOCK_UNITS);
   const [skydioDrones] = useState(MOCK_SKYDIO_DRONES);
-  const [dedroneSensors] = useState(MOCK_DEDRONE_SENSORS);
+  const [cuasSensors] = useState(MOCK_CUAS_SENSORS);
   const [rogueDrones] = useState(MOCK_ROGUE_DRONES);
   const [citizenStreams] = useState(MOCK_CITIZEN_STREAMS);
 
@@ -38,7 +38,7 @@ export default function App() {
     incidents: true,
     units: true,
     drones: true,
-    dedrone: true,
+    cuas: true,
     citizen: true
   });
 
@@ -100,7 +100,7 @@ export default function App() {
         cameras={cameras}
         units={units}
         skydioDrones={skydioDrones}
-        dedroneSensors={dedroneSensors}
+        cuasSensors={cuasSensors}
         rogueDrones={rogueDrones}
         citizenStreams={citizenStreams}
         layers={layers}
@@ -108,13 +108,13 @@ export default function App() {
         onSelectIncident={setSelectedIncident}
       />
 
-      {/* Left FususONE Command Sidebar */}
+      {/* Left Tactical Command Sidebar */}
       <CommandSidebar
         incidents={incidents}
         cameras={cameras}
         units={units}
         skydioDrones={skydioDrones}
-        dedroneSensors={dedroneSensors}
+        cuasSensors={cuasSensors}
         rogueDrones={rogueDrones}
         citizenStreams={citizenStreams}
         laPresets={LA_PRESETS}
