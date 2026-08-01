@@ -1,0 +1,119 @@
+@import "tailwindcss";
+@import "maplibre-gl/dist/maplibre-gl.css";
+
+@layer base {
+  body {
+    font-family: 'Inter', sans-serif;
+  }
+
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+/* Glassmorphism Tactical UI */
+.glass-panel {
+  background: rgba(10, 15, 29, 0.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 243, 255, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+}
+
+.glass-panel-danger {
+  background: rgba(29, 10, 15, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 59, 48, 0.3);
+  box-shadow: 0 0 20px rgba(255, 59, 48, 0.2);
+}
+
+.glass-panel-amber {
+  background: rgba(29, 20, 10, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 149, 0, 0.3);
+}
+
+/* Custom Tactical Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.6);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 243, 255, 0.3);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 243, 255, 0.6);
+}
+
+/* MapLibre overrides */
+.maplibregl-ctrl-attrib {
+  font-size: 10px !important;
+  background: rgba(10, 15, 29, 0.7) !important;
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.maplibregl-ctrl-attrib a {
+  color: rgba(0, 243, 255, 0.6) !important;
+}
+
+.maplibregl-popup-content {
+  background: rgba(10, 15, 29, 0.92) !important;
+  border: 1px solid rgba(0, 243, 255, 0.3) !important;
+  color: #e2e8f0 !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 11px !important;
+  padding: 10px 14px !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6) !important;
+}
+
+.maplibregl-popup-tip {
+  border-top-color: rgba(10, 15, 29, 0.92) !important;
+}
+
+.maplibregl-popup-close-button {
+  color: rgba(0, 243, 255, 0.7) !important;
+  font-size: 16px !important;
+}
+
+/* Pulse animation for markers */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+.pulse-ring {
+  animation: pulse-ring 1.8s ease-out infinite;
+}
+
+/* Incident marker styling */
+.incident-marker {
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.incident-marker:hover {
+  transform: scale(1.15);
+}
+
+.camera-marker {
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.camera-marker:hover {
+  transform: scale(1.2);
+}
