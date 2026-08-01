@@ -541,36 +541,74 @@ const MapView = forwardRef(({
 
           const popup = new maplibregl.Popup({ offset: 25, closeButton: true })
             .setHTML(`
-              <div style="min-width:260px; font-family:'JetBrains Mono',monospace;">
-                <div style="color:#ef4444; font-weight:700; font-size:12px; margin-bottom:4px; border-b:1px solid #ef444455; pb-1 flex justify-between">
-                  <span>🚨 DEDRONE TRACK: ${rogue.id}</span>
-                  <span style="color:#f87171; font-size:10px;">[${rogue.threatLevel}]</span>
+              <div style="width:290px; font-family:'JetBrains Mono',monospace; font-size:11px; color:#e2e8f0; line-height:1.4;">
+                
+                {/* Header Badge */}
+                <div style="display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid rgba(239,68,68,0.4); padding-bottom:4px; margin-bottom:6px;">
+                  <span style="color:#ef4444; font-weight:700; font-size:11px;">🚨 DEDRONE: ${rogue.id}</span>
+                  <span style="color:#f87171; font-weight:700; font-size:9px; background:rgba(239,68,68,0.2); padding:2px 6px; border-radius:4px; border:1px solid rgba(239,68,68,0.4);">
+                    ${rogue.threatLevel}
+                  </span>
                 </div>
                 
-                <div style="color:#f87171; font-weight:700; font-size:11px; margin-bottom:4px;">${rogue.classification}</div>
+                <div style="color:#f87171; font-weight:700; font-size:11px; margin-bottom:6px;">
+                  ${rogue.classification}
+                </div>
                 
-                <div style="background:rgba(15,23,42,0.8); p:6px; border-radius:4px; border:1px solid #ef444433; margin-bottom:6px;">
-                  <div style="color:#cbd5e1; font-size:10px;">SERIAL SN: <strong style="color:#38bdf8">${rogue.serialNumber}</strong></div>
-                  <div style="color:#cbd5e1; font-size:10px;">REMOTE ID: <strong style="color:#a855f7">${rogue.remoteIdBroadcast}</strong></div>
-                  <div style="color:#cbd5e1; font-size:10px;">FAA REG: <strong style="color:#f59e0b">${rogue.faaRegistration}</strong></div>
-                  <div style="color:#cbd5e1; font-size:10px;">MAC ADDR: <strong style="color:#94a3b8">${rogue.macAddress}</strong></div>
+                {/* Identifier Data Box */}
+                <div style="background:rgba(15,23,42,0.85); padding:8px; border-radius:6px; border:1px solid rgba(239,68,68,0.3); margin-bottom:6px;">
+                  <div style="display:flex; justify-content:space-between; margin-bottom:2px;">
+                    <span style="color:#94a3b8;">SERIAL SN:</span>
+                    <strong style="color:#38bdf8;">${rogue.serialNumber}</strong>
+                  </div>
+                  <div style="display:flex; justify-content:space-between; margin-bottom:2px;">
+                    <span style="color:#94a3b8;">REMOTE ID:</span>
+                    <strong style="color:#a855f7;">FAA Direct RF</strong>
+                  </div>
+                  <div style="display:flex; justify-content:space-between; margin-bottom:2px;">
+                    <span style="color:#94a3b8;">FAA REG:</span>
+                    <strong style="color:#f59e0b;">${rogue.faaRegistration}</strong>
+                  </div>
+                  <div style="display:flex; justify-content:space-between;">
+                    <span style="color:#94a3b8;">MAC ADDR:</span>
+                    <strong style="color:#cbd5e1;">${rogue.macAddress}</strong>
+                  </div>
                 </div>
 
-                <div style="color:#cbd5e1; font-size:10px; margin-bottom:2px;">ALTITUDE: <strong style="color:#ef4444">${rogue.altitude}m AGL (${rogue.altitudeMsl}m MSL)</strong></div>
-                <div style="color:#cbd5e1; font-size:10px; margin-bottom:2px;">CLIMB RATE: <strong style="color:#cbd5e1">${rogue.verticalRate}</strong></div>
-                <div style="color:#cbd5e1; font-size:10px; margin-bottom:4px;">SPEED & HEADING: <strong style="color:#cbd5e1">${rogue.speed} @ ${rogue.heading}°</strong></div>
-
-                <div style="color:#cbd5e1; font-size:10px; margin-bottom:2px;">RF SPECTRUM: <strong style="color:#a855f7">${rogue.rfFrequency}</strong></div>
-                <div style="color:#cbd5e1; font-size:10px; margin-bottom:6px;">SIGNAL STRENGTH: <strong style="color:#34d399">${rogue.signalDb}</strong></div>
-
-                <div style="background:rgba(239,68,68,0.12); padding:6px; border-radius:4px; border:1px solid #ef444455; margin-bottom:6px;">
-                  <div style="color:#fca5a5; font-size:10px; font-weight:700;">📍 PILOT COORDS: ${rogue.pilotLocationEst}</div>
-                  <div style="color:#fca5a5; font-size:10px;">BEARING & RANGE: ${rogue.pilotDistance}</div>
-                  <div style="color:#fca5a5; font-size:10px;">HOME POINT: ${rogue.homePoint}</div>
+                {/* Flight & Signal Telemetry */}
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:4px; margin-bottom:6px; background:rgba(15,23,42,0.5); padding:6px; border-radius:4px; border:1px solid rgba(255,255,255,0.05);">
+                  <div>
+                    <div style="color:#64748b; font-size:9px;">ALTITUDE</div>
+                    <div style="color:#ef4444; font-weight:700;">${rogue.altitude}m AGL</div>
+                  </div>
+                  <div>
+                    <div style="color:#64748b; font-size:9px;">CLIMB RATE</div>
+                    <div style="color:#cbd5e1; font-weight:600;">${rogue.verticalRate}</div>
+                  </div>
+                  <div>
+                    <div style="color:#64748b; font-size:9px;">SPEED</div>
+                    <div style="color:#cbd5e1; font-weight:600;">${rogue.speed}</div>
+                  </div>
+                  <div>
+                    <div style="color:#64748b; font-size:9px;">RF SIGNAL</div>
+                    <div style="color:#34d399; font-weight:600;">${rogue.signalDb}</div>
+                  </div>
                 </div>
 
-                <div style="color:#94a3b8; font-size:9px;">DETECTING ARRAY: ${rogue.detectedBy}</div>
-                <div style="color:#ef4444; font-size:9px; font-weight:700; margin-top:2px;">C-UAS STATUS: ${rogue.mitigationStatus}</div>
+                {/* Pilot & Home Point Location */}
+                <div style="background:rgba(239,68,68,0.1); padding:8px; border-radius:6px; border:1px solid rgba(239,68,68,0.3); margin-bottom:6px;">
+                  <div style="color:#fca5a5; font-weight:700; font-size:10px; margin-bottom:2px;">📍 PILOT ESTIMATE:</div>
+                  <div style="color:#fee2e2; font-size:10px; font-weight:600;">${rogue.pilotLocationEst}</div>
+                  <div style="color:#fca5a5; font-size:9px; margin-top:2px;">RANGE: ${rogue.pilotDistance}</div>
+                  <div style="color:#fca5a5; font-size:9px;">HOME: ${rogue.homePoint}</div>
+                </div>
+
+                {/* Countermeasure Status */}
+                <div style="display:flex; align-items:center; justify-content:space-between; font-size:9px; border-t:1px solid rgba(255,255,255,0.1); padding-top:4px;">
+                  <span style="color:#94a3b8;">ARRAY: LAPD HQ & City Hall</span>
+                  <span style="color:#ef4444; font-weight:700;">JAMMER ARMED</span>
+                </div>
+
               </div>
             `);
 
