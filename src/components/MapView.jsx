@@ -509,20 +509,13 @@ const MapView = forwardRef(({
             data: { type: 'FeatureCollection', features: sensorCircles }
           });
           map.addLayer({
-            id: 'dedrone-coverage-fill',
-            type: 'fill',
-            source: 'dedrone-coverage',
-            paint: { 'fill-color': '#a855f7', 'fill-opacity': 0.08 }
-          });
-          map.addLayer({
             id: 'dedrone-coverage-outline',
             type: 'line',
             source: 'dedrone-coverage',
-            paint: { 'line-color': '#a855f7', 'line-width': 1.5, 'line-dasharray': [2, 2], 'line-opacity': 0.6 }
+            paint: { 'line-color': '#a855f7', 'line-width': 1.5, 'line-dasharray': [3, 3], 'line-opacity': 0.7 }
           });
         }
       } else {
-        if (map.getLayer('dedrone-coverage-fill')) map.removeLayer('dedrone-coverage-fill');
         if (map.getLayer('dedrone-coverage-outline')) map.removeLayer('dedrone-coverage-outline');
         if (map.getSource('dedrone-coverage')) map.removeSource('dedrone-coverage');
       }
