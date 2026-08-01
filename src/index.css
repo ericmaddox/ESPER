@@ -63,17 +63,23 @@
   color: rgba(0, 243, 255, 0.6) !important;
 }
 
+.maplibregl-popup {
+  max-width: none !important;
+}
+
 .maplibregl-popup-content {
   background: rgba(10, 15, 29, 0.95) !important;
   border: 1px solid rgba(0, 243, 255, 0.3) !important;
   color: #e2e8f0 !important;
   font-family: 'JetBrains Mono', monospace !important;
   font-size: 11px !important;
-  padding: 12px !important;
+  padding: 14px !important;
   border-radius: 10px !important;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8) !important;
-  backdrop-filter: blur(12px) !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.85) !important;
+  backdrop-filter: blur(14px) !important;
+  width: max-content !important;
   max-width: 360px !important;
+  box-sizing: border-box !important;
 }
 
 .maplibregl-popup-tip {
