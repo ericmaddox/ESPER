@@ -4,9 +4,17 @@
 
 ---
 
+![ESPER 3D Digital Twin Command Center Viewport](./docs/hero-map.png)
+
+---
+
 ## Overview
 
 **ESPER** is a real-time, interactive 3D digital twin public safety platform designed for high-density urban situational awareness. Built with zero proprietary API key dependencies, ESPER streams vector tiles, 3D building extrusions, high-resolution DEM terrain, and live Caltrans HLS video feeds directly in the browser.
+
+### Live Tactical Video Telemetry & PTZ Controls
+
+![Live Caltrans HLS Stream Modal](./docs/camera-stream-modal.png)
 
 ---
 
@@ -16,9 +24,10 @@
 - **Elevation DEM Terrain**: Real 3D terrain elevation for the Los Angeles basin, Hollywood Hills, Griffith Park, and Santa Monica Mountains using AWS Terrarium DEM tiles.
 - **150+ Live Caltrans HLS Feeds**: Direct HTTP Live Streaming (`.m3u8`) integration from Caltrans District 7 (Los Angeles & Ventura County) traffic cameras with cross-browser `hls.js` decryption.
 - **Tactical Video Player**: Interactive PTZ controls (Pan, Tilt, Zoom) with Heads-Up Display (HUD) telemetry overlays and automatic live-snapshot fallback.
+- **Real-Time Address & Landmark Geocoding**: Instant search bar powered by OpenStreetMap Nominatim with smooth 3D camera fly-to and target marker placement.
 - **Interactive 3D Vision Cones**: GeoJSON-powered field-of-view (FOV) frustums projected onto the 3D map for every CCTV node.
 - **Live Dispatch & Unit Tracking**: Real-time position tracking and telemetry for airborne LAPD Air Support (`AIR-1`) and ground units (`UNIT-12`, `ENG-11`).
-- **Tactical Command Interface**: Glassmorphism sidebars, incident prioritization badges, preset location fly-overs, and full-screen tactical modes.
+- **Tactical Command Interface**: Glassmorphism sidebars, incident prioritization badges, preset location fly-overs, collapsible layers menu, and full-screen tactical modes.
 
 ---
 
@@ -29,6 +38,7 @@
 - **3D Map Engine**: MapLibre GL JS 5.1
 - **Tile Architecture**: OpenFreeMap Vector Tiles + AWS Terrarium DEM
 - **Video Decryption**: HLS.js (`.m3u8` HTTP Live Streaming)
+- **Geocoding API**: OpenStreetMap Nominatim
 - **Icons**: Lucide React
 
 ---
@@ -83,12 +93,16 @@ npm run preview
 
 ```
 ESPER/
+├── docs/
+│   ├── hero-map.png             # Main 3D viewport screenshot
+│   └── camera-stream-modal.png  # Live HLS CCTV stream modal screenshot
 ├── src/
 │   ├── components/
 │   │   ├── Header.jsx           # Top HUD navbar with metrics & clock
+│   │   ├── AddressSearch.jsx    # Real-time address geocoding search bar
 │   │   ├── MapView.jsx          # MapLibre GL JS 3D viewport & markers
 │   │   ├── CommandSidebar.jsx   # Tactical dispatch panel & search
-│   │   ├── LayerToolbar.jsx     # Tactical map layer toggles & presets
+│   │   ├── LayerToolbar.jsx     # Collapsible tactical map layer toggles & presets
 │   │   └── VideoFeedModal.jsx   # HLS .m3u8 video player & PTZ controls
 │   ├── data/
 │   │   └── mockData.js          # Scraped Caltrans D7 camera & incident feeds
@@ -109,6 +123,7 @@ ESPER/
 | **Vector Tiles** | OpenFreeMap | OpenMapTiles Protocol | None (Open Source) |
 | **Terrain DEM** | AWS Open Data | Terrarium PNG DEM | None (Public Domain) |
 | **CCTV Video** | Caltrans District 7 | HLS (`.m3u8`) | None (Public DOT) |
+| **Address Search** | OpenStreetMap | Nominatim Geocoding API | None (Open Source) |
 
 ---
 
