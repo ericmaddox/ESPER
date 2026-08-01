@@ -615,6 +615,55 @@ const MapView = forwardRef(({
         });
       }
 
+      // Citizen App Live Mobile Video Streams
+      if (layers.citizen && citizenStreams) {
+        citizenStreams.forEach(stream => {
+          const el = document.createElement('div');
+          el.style.cursor = 'pointer';
+          el.className = 'citizen-stream-marker';
+          el.innerHTML = `
+            <div style="position:relative; width:36px; height:36px;">
+              <div class="pulse-ring" style="position:absolute; inset:0; border-radius:50%; border:2px solid #f97316;"></div>
+              <div style="position:absolute; inset:3px; background:rgba(25,15,10,0.92); border:2px solid #f97316; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 0 14px rgba(249,115,22,0.6);">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M23 7l-7 5 7 5V7z"></path>
+                  <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+                </svg>
+              </div>
+            </div>
+          `;
+
+          el.addEventListener('click', () => onSelectCamera({
+            id: stream.id,
+            name: `${stream.title} (${stream.broadcaster})`,
+            location: stream.address,
+            videoUrl: stream.videoUrl,
+            status: `LIVE CITIZEN BROADCAST (${stream.viewersCount} VIEWERS)`,
+            network: 'Citizen Crowdsourced Mobile Video Network',
+            height: 15,
+            fov: 75
+          }));
+
+          const popup = new maplibregl.Popup({ offset: 20, closeButton: true })
+            .setHTML(`
+              <div style="min-width:200px font-family:'JetBrains Mono',monospace;">
+                <div style="color:#f97316; font-weight:700; font-size:12px; margin-bottom:2px;">📱 ${stream.id}</div>
+                <div style="color:#fdba74; font-weight:700; font-size:11px;">${stream.title}</div>
+                <div style="color:#94a3b8; font-size:10px; margin-top:2px;">${stream.address}</div>
+                <div style="color:#cbd5e1; font-size:10px; margin-top:4px;">BROADCASTER: <strong style="color:#f97316">${stream.broadcaster}</strong></div>
+                <div style="color:#84cc16; font-size:10px; margin-top:2px; font-weight:600;">● ${stream.status} (${stream.viewersCount} VIEWERS)</div>
+              </div>
+            `);
+
+          const marker = new maplibregl.Marker({ element: el, anchor: 'center' })
+            .setLngLat([stream.longitude, stream.latitude])
+            .setPopup(popup)
+            .addTo(map);
+
+          markersRef.current.push(marker);
+        });
+      }
+
       // Ground Unit markers
       if (layers.units && units) {
         units.forEach(unit => {

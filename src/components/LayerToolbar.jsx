@@ -78,6 +78,21 @@ export default function LayerToolbar({ layers, onToggleLayer, onFlyToPreset, laP
               </button>
 
               <button
+                onClick={() => onToggleLayer('citizen')}
+                className={`w-full px-2.5 py-1.5 rounded flex items-center justify-between transition-all ${
+                  layers.citizen
+                    ? 'bg-orange-500/20 text-orange-300 border border-orange-500/40 font-bold'
+                    : 'bg-slate-900/40 text-slate-500 hover:text-slate-300 border border-transparent'
+                }`}
+              >
+                <div className="flex items-center space-x-2">
+                  <Radio className="w-3.5 h-3.5 text-orange-400" />
+                  <span>Citizen Feeds</span>
+                </div>
+                <span className="text-[10px]">{layers.citizen ? 'ON' : 'OFF'}</span>
+              </button>
+
+              <button
                 onClick={() => onToggleLayer('cameras')}
                 className={`w-full px-2.5 py-1.5 rounded flex items-center justify-between transition-all ${
                   layers.cameras

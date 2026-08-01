@@ -12,6 +12,7 @@ import {
   MOCK_SKYDIO_DRONES,
   MOCK_DEDRONE_SENSORS,
   MOCK_ROGUE_DRONES,
+  MOCK_CITIZEN_STREAMS,
   LA_PRESETS
 } from './data/mockData';
 
@@ -24,6 +25,7 @@ export default function App() {
   const [skydioDrones] = useState(MOCK_SKYDIO_DRONES);
   const [dedroneSensors] = useState(MOCK_DEDRONE_SENSORS);
   const [rogueDrones] = useState(MOCK_ROGUE_DRONES);
+  const [citizenStreams] = useState(MOCK_CITIZEN_STREAMS);
 
   const [selectedCamera, setSelectedCamera] = useState(null);
   const [selectedIncident, setSelectedIncident] = useState(null);
@@ -36,7 +38,8 @@ export default function App() {
     incidents: true,
     units: true,
     drones: true,
-    dedrone: true
+    dedrone: true,
+    citizen: true
   });
 
   const handleToggleLayer = (layerKey) => {
@@ -99,6 +102,7 @@ export default function App() {
         skydioDrones={skydioDrones}
         dedroneSensors={dedroneSensors}
         rogueDrones={rogueDrones}
+        citizenStreams={citizenStreams}
         layers={layers}
         onSelectCamera={setSelectedCamera}
         onSelectIncident={setSelectedIncident}
@@ -112,6 +116,7 @@ export default function App() {
         skydioDrones={skydioDrones}
         dedroneSensors={dedroneSensors}
         rogueDrones={rogueDrones}
+        citizenStreams={citizenStreams}
         laPresets={LA_PRESETS}
         onFlyToPreset={handleFlyToPreset}
         onSelectCamera={setSelectedCamera}

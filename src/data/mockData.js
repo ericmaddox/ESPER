@@ -2627,3 +2627,46 @@ export const MOCK_ROGUE_DRONES = [
     mitigationStatus: 'DEFEND READY // RF JAMMER ARMED'
   }
 ];
+
+// Citizen App Crowdsourced Live Mobile Video Streams (Los Angeles)
+export const MOCK_CITIZEN_STREAMS = [
+  {
+    id: 'CITIZEN-LA-101',
+    broadcaster: 'Citizen Stringer @LA_LiveCam',
+    title: 'Heavy Smoke & Active Fire Response',
+    address: '7th St & Grand Ave, DTLA',
+    latitude: 34.0475,
+    longitude: -118.2552,
+    viewersCount: 1420,
+    timeAgo: 'Live (3m ago)',
+    status: 'LIVE STREAM',
+    network: 'Citizen Mobile Broadcaster Network',
+    videoUrl: 'https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8'
+  },
+  {
+    id: 'CITIZEN-LA-102',
+    broadcaster: 'Citizen User @Hollywood_Eye',
+    title: 'LAPD Air Support Overhead & Ground Units',
+    address: 'Hollywood Blvd & Highland Ave',
+    latitude: 34.1016,
+    longitude: -118.3388,
+    viewersCount: 850,
+    timeAgo: 'Live (8m ago)',
+    status: 'LIVE STREAM',
+    network: 'Citizen Mobile Broadcaster Network',
+    videoUrl: 'https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8'
+  },
+  {
+    id: 'CITIZEN-LA-103',
+    broadcaster: 'Citizen Stringer @Westside_Dispatch',
+    title: 'Traffic Collision & Tow Operations',
+    address: 'Wilshire Blvd & Westwood Blvd',
+    latitude: 34.0588,
+    longitude: -118.4431,
+    viewersCount: 2100,
+    timeAgo: 'Live (1m ago)',
+    status: 'LIVE STREAM',
+    network: 'Citizen Mobile Broadcaster Network',
+    videoUrl: 'https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8'
+  }
+];
