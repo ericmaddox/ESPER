@@ -175,6 +175,7 @@ const MapView = forwardRef(({
   skydioDrones = [],
   dedroneSensors = [],
   rogueDrones = [],
+  citizenStreams = [],
   layers,
   onSelectCamera,
   onSelectIncident
@@ -296,14 +297,15 @@ const MapView = forwardRef(({
     updateMarkers();
 
     function updateMarkers() {
-      markersRef.current.forEach(m => m.remove());
-      markersRef.current = [];
-      if (heliAnimRef.current) {
-        cancelAnimationFrame(heliAnimRef.current);
-        heliAnimRef.current = null;
-      }
-      droneAnimRefs.current.forEach(refId => cancelAnimationFrame(refId));
-      droneAnimRefs.current = [];
+      try {
+        markersRef.current.forEach(m => m.remove());
+        markersRef.current = [];
+        if (heliAnimRef.current) {
+          cancelAnimationFrame(heliAnimRef.current);
+          heliAnimRef.current = null;
+        }
+        droneAnimRefs.current.forEach(refId => cancelAnimationFrame(refId));
+        droneAnimRefs.current = [];
 
       if (map.getLayer('3d-buildings')) {
         map.setLayoutProperty('3d-buildings', 'visibility', layers.buildings ? 'visible' : 'none');
@@ -741,8 +743,11 @@ const MapView = forwardRef(({
           }
         });
       }
+      } catch (err) {
+        console.error('Error updating map markers:', err);
+      }
     }
-  }, [incidents, cameras, units, skydioDrones, dedroneSensors, rogueDrones, layers]);
+  }, [incidents, cameras, units, skydioDrones, dedroneSensors, rogueDrones, citizenStreams, layers]);
 
   return (
     <div className="absolute inset-0 z-0">
