@@ -2598,21 +2598,32 @@ export const MOCK_DEDRONE_SENSORS = [
   }
 ];
 
-// Dedrone Detected Unauthorized / Rogue UAS Threats
+// Dedrone Detected Unauthorized / Rogue UAS Threats (DedroneTracker.AI Live Schema)
 export const MOCK_ROGUE_DRONES = [
   {
     id: 'ROGUE-UAS-01',
+    dedroneTrackId: 'TRK-90412-DEDRONE',
     classification: 'DJI Mavic 3 Pro (Unregistered)',
+    serialNumber: '1582F4ZAA2208123X',
+    remoteIdBroadcast: 'FAA Standard Remote ID (Direct RF)',
+    faaRegistration: 'FA39109X78 (UNREGISTERED)',
+    macAddress: '60:60:1F:B4:9C:12',
     threatLevel: 'CRITICAL',
     latitude: 34.0545,
     longitude: -118.2460,
     altitude: 180, // meters AGL (>400ft FAA limit!)
-    speed: '41 mph',
+    altitudeMsl: 285, // meters MSL
+    verticalRate: '+2.4 m/s (Ascending)',
+    speed: '41 mph (18.3 m/s)',
     heading: 195,
-    rfFrequency: '5.825 GHz (OcuSync 3.0)',
-    signalDb: '-62 dBm',
-    pilotLocationEst: '1st St & Spring St (RF Bearing 142°)',
+    rfFrequency: '5.825 GHz (OcuSync 3.0 Ch 165)',
+    signalDb: '-62 dBm (Strong Line-of-Sight)',
+    homePoint: '34.0538° N, -118.2448° W (Grand Park)',
+    pilotLocationEst: '1st St & Spring St (34.0529° N, -118.2449° W)',
+    pilotDistance: '210m @ 142° SE',
+    airspaceZone: 'Class D Restricted (LAX Inner Surface) + FAA 400ft Height Breach',
     violation: 'Restricted Airspace Breach // FAA Height Limit Violation',
-    detectedBy: 'DEDRONE-RF-101 & DEDRONE-RF-103'
+    detectedBy: 'DEDRONE-RF-101 & DEDRONE-RF-103 (AoA Triangulation)',
+    mitigationStatus: 'DEFEND READY // RF JAMMER ARMED'
   }
 ];

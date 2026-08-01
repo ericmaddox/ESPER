@@ -273,17 +273,26 @@ export default function CommandSidebar({
                     </div>
 
                     <h4 className="text-xs font-bold text-slate-100">{rogue.classification}</h4>
-                    <p className="text-[10px] text-red-300">{rogue.violation}</p>
+                    <p className="text-[10px] text-red-300 font-semibold">{rogue.violation}</p>
 
-                    <div className="pt-1.5 border-t border-red-500/30 grid grid-cols-2 gap-1 text-[10px] text-slate-300">
-                      <div>ALTITUDE: <span className="text-red-400 font-bold">{rogue.altitude}m AGL</span></div>
-                      <div>SPEED: <span className="text-red-400 font-bold">{rogue.speed}</span></div>
-                      <div>RF FREQ: <span className="text-slate-300">{rogue.rfFrequency}</span></div>
-                      <div>SIGNAL: <span className="text-slate-300">{rogue.signalDb}</span></div>
+                    <div className="p-2 rounded bg-slate-950/80 border border-red-500/30 space-y-1 text-[10px]">
+                      <div>SN: <strong className="text-sky-400">{rogue.serialNumber}</strong></div>
+                      <div>REMOTE ID: <strong className="text-purple-400">{rogue.remoteIdBroadcast}</strong></div>
+                      <div>MAC ADDR: <strong className="text-slate-400">{rogue.macAddress}</strong></div>
+                      <div>FAA REG: <strong className="text-amber-400">{rogue.faaRegistration}</strong></div>
                     </div>
 
-                    <div className="text-[10px] text-amber-300 bg-slate-950/80 p-1.5 rounded border border-slate-800">
-                      PILOT EST: {rogue.pilotLocationEst}
+                    <div className="pt-1 grid grid-cols-2 gap-1 text-[10px] text-slate-300">
+                      <div>ALTITUDE: <span className="text-red-400 font-bold">{rogue.altitude}m AGL ({rogue.altitudeMsl}m MSL)</span></div>
+                      <div>CLIMB: <span className="text-slate-300 font-bold">{rogue.verticalRate}</span></div>
+                      <div>SPEED: <span className="text-red-400 font-bold">{rogue.speed}</span></div>
+                      <div>RF FREQ: <span className="text-purple-300">{rogue.rfFrequency}</span></div>
+                    </div>
+
+                    <div className="text-[10px] text-amber-300 bg-slate-950/90 p-2 rounded border border-amber-500/30 space-y-0.5">
+                      <div className="font-bold text-amber-400">📍 PILOT LOC: {rogue.pilotLocationEst}</div>
+                      <div className="text-slate-400">BEARING & RANGE: {rogue.pilotDistance}</div>
+                      <div className="text-slate-400">HOME POINT: {rogue.homePoint}</div>
                     </div>
 
                     <button
