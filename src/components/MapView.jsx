@@ -31,46 +31,11 @@ const DARK_STYLE = {
     'sky-horizon-blend': 0.5
   },
   layers: [
-    // Background
-    {
-      id: 'background',
-      type: 'background',
-      paint: { 'background-color': '#080c16' }
-    },
-    // Water
-    {
-      id: 'water',
-      type: 'fill',
-      source: 'openmaptiles',
-      'source-layer': 'water',
-      paint: { 'fill-color': '#0a1628', 'fill-opacity': 0.9 }
-    },
-    // Land use (parks, etc.)
-    {
-      id: 'landuse-park',
-      type: 'fill',
-      source: 'openmaptiles',
-      'source-layer': 'landuse',
-      filter: ['in', 'class', 'park', 'cemetery', 'grass'],
-      paint: { 'fill-color': '#0b1a12', 'fill-opacity': 0.7 }
-    },
-    {
-      id: 'landuse-other',
-      type: 'fill',
-      source: 'openmaptiles',
-      'source-layer': 'landuse',
-      filter: ['!in', 'class', 'park', 'cemetery', 'grass'],
-      paint: { 'fill-color': '#0d111d', 'fill-opacity': 0.5 }
-    },
-    // Land cover
-    {
-      id: 'landcover',
-      type: 'fill',
-      source: 'openmaptiles',
-      'source-layer': 'landcover',
-      paint: { 'fill-color': '#0b1a12', 'fill-opacity': 0.3 }
-    },
-    // Roads — casing (dark outline)
+    { id: 'background', type: 'background', paint: { 'background-color': '#080c16' } },
+    { id: 'water', type: 'fill', source: 'openmaptiles', 'source-layer': 'water', paint: { 'fill-color': '#0a1628', 'fill-opacity': 0.9 } },
+    { id: 'landuse-park', type: 'fill', source: 'openmaptiles', 'source-layer': 'landuse', filter: ['in', 'class', 'park', 'cemetery', 'grass'], paint: { 'fill-color': '#0b1a12', 'fill-opacity': 0.7 } },
+    { id: 'landuse-other', type: 'fill', source: 'openmaptiles', 'source-layer': 'landuse', filter: ['!in', 'class', 'park', 'cemetery', 'grass'], paint: { 'fill-color': '#0d111d', 'fill-opacity': 0.5 } },
+    { id: 'landcover', type: 'fill', source: 'openmaptiles', 'source-layer': 'landcover', paint: { 'fill-color': '#0b1a12', 'fill-opacity': 0.3 } },
     {
       id: 'road-casing',
       type: 'line',
@@ -85,7 +50,6 @@ const DARK_STYLE = {
         'line-opacity': 0.6
       }
     },
-    // Roads — fill
     {
       id: 'road',
       type: 'line',
@@ -108,7 +72,6 @@ const DARK_STYLE = {
         'line-opacity': 0.85
       }
     },
-    // Highway glow lines
     {
       id: 'road-motorway-glow',
       type: 'line',
@@ -124,7 +87,6 @@ const DARK_STYLE = {
         'line-blur': 3
       }
     },
-    // Building footprints (2D flat, dark)
     {
       id: 'building-2d',
       type: 'fill',
@@ -138,7 +100,6 @@ const DARK_STYLE = {
         'fill-outline-color': '#162545'
       }
     },
-    // 3D Buildings — the main feature
     {
       id: '3d-buildings',
       type: 'fill-extrusion',
@@ -157,16 +118,11 @@ const DARK_STYLE = {
           200, '#22d3ee',
           350, '#67e8f9'
         ],
-        'fill-extrusion-height': [
-          'coalesce', ['get', 'render_height'], 10
-        ],
-        'fill-extrusion-base': [
-          'coalesce', ['get', 'render_min_height'], 0
-        ],
+        'fill-extrusion-height': ['coalesce', ['get', 'render_height'], 10],
+        'fill-extrusion-base': ['coalesce', ['get', 'render_min_height'], 0],
         'fill-extrusion-opacity': 0.88
       }
     },
-    // Building edges glow
     {
       id: '3d-buildings-edges',
       type: 'fill-extrusion',
@@ -175,82 +131,41 @@ const DARK_STYLE = {
       minzoom: 15,
       paint: {
         'fill-extrusion-color': '#0ea5e9',
-        'fill-extrusion-height': [
-          'coalesce', ['get', 'render_height'], 10
-        ],
-        'fill-extrusion-base': [
-          '-', ['coalesce', ['get', 'render_height'], 10], 1
-        ],
+        'fill-extrusion-height': ['coalesce', ['get', 'render_height'], 10],
+        'fill-extrusion-base': ['-', ['coalesce', ['get', 'render_height'], 10], 1],
         'fill-extrusion-opacity': 0.25
       }
     },
-    // Road labels
     {
       id: 'road-label',
       type: 'symbol',
       source: 'openmaptiles',
       'source-layer': 'transportation_name',
       minzoom: 14,
-      layout: {
-        'text-field': '{name}',
-        'text-font': ['Noto Sans Regular'],
-        'text-size': 10,
-        'symbol-placement': 'line',
-        'text-max-angle': 30
-      },
-      paint: {
-        'text-color': '#3b5998',
-        'text-halo-color': '#080c16',
-        'text-halo-width': 1.5,
-        'text-opacity': 0.7
-      }
+      layout: { 'text-field': '{name}', 'text-font': ['Noto Sans Regular'], 'text-size': 10, 'symbol-placement': 'line', 'text-max-angle': 30 },
+      paint: { 'text-color': '#3b5998', 'text-halo-color': '#080c16', 'text-halo-width': 1.5, 'text-opacity': 0.7 }
     },
-    // Place labels (neighborhoods, cities)
     {
       id: 'place-label',
       type: 'symbol',
       source: 'openmaptiles',
       'source-layer': 'place',
       minzoom: 10,
-      layout: {
-        'text-field': '{name}',
-        'text-font': ['Noto Sans Bold'],
-        'text-size': ['interpolate', ['linear'], ['zoom'], 10, 11, 16, 16],
-        'text-transform': 'uppercase',
-        'text-letter-spacing': 0.1,
-        'text-max-width': 8
-      },
-      paint: {
-        'text-color': '#3888c8',
-        'text-halo-color': '#080c16',
-        'text-halo-width': 2,
-        'text-opacity': 0.8
-      }
+      layout: { 'text-field': '{name}', 'text-font': ['Noto Sans Bold'], 'text-size': ['interpolate', ['linear'], ['zoom'], 10, 11, 16, 16], 'text-transform': 'uppercase', 'text-letter-spacing': 0.1, 'text-max-width': 8 },
+      paint: { 'text-color': '#3888c8', 'text-halo-color': '#080c16', 'text-halo-width': 2, 'text-opacity': 0.8 }
     },
-    // POI labels
     {
       id: 'poi-label',
       type: 'symbol',
       source: 'openmaptiles',
       'source-layer': 'poi',
       minzoom: 15,
-      layout: {
-        'text-field': '{name}',
-        'text-font': ['Noto Sans Regular'],
-        'text-size': 9,
-        'text-max-width': 7
-      },
-      paint: {
-        'text-color': '#4a6e9e',
-        'text-halo-color': '#080c16',
-        'text-halo-width': 1,
-        'text-opacity': 0.6
-      }
+      layout: { 'text-field': '{name}', 'text-font': ['Noto Sans Regular'], 'text-size': 9, 'text-max-width': 7 },
+      paint: { 'text-color': '#4a6e9e', 'text-halo-color': '#080c16', 'text-halo-width': 1, 'text-opacity': 0.6 }
     }
   ]
 };
 
-// Downtown LA coordinates
 const LA_CENTER = [-118.2570, 34.0460];
 
 const MapView = forwardRef(({
@@ -264,9 +179,9 @@ const MapView = forwardRef(({
   const containerRef = useRef(null);
   const mapRef = useRef(null);
   const markersRef = useRef([]);
+  const searchMarkerRef = useRef(null);
   const heliAnimRef = useRef(null);
 
-  // Expose fly-to methods to parent
   useImperativeHandle(ref, () => ({
     flyToLocation: (latitude, longitude, zoom = 17, pitch = 55, bearing = 30) => {
       if (!mapRef.current) return;
@@ -289,10 +204,57 @@ const MapView = forwardRef(({
         duration: 2500,
         essential: true
       });
+    },
+    showSearchLocation: (loc) => {
+      if (!mapRef.current) return;
+
+      // Remove existing search target marker
+      if (searchMarkerRef.current) {
+        searchMarkerRef.current.remove();
+        searchMarkerRef.current = null;
+      }
+
+      // Fly to searched location
+      mapRef.current.flyTo({
+        center: [loc.longitude, loc.latitude],
+        zoom: 17.5,
+        pitch: 60,
+        bearing: 35,
+        duration: 2200,
+        essential: true
+      });
+
+      // Create tactical search target marker
+      const el = document.createElement('div');
+      el.className = 'search-target-marker';
+      el.innerHTML = `
+        <div style="position:relative; width:44px; height:44px;">
+          <div class="pulse-ring" style="position:absolute; inset:0; border-radius:50%; border:2px solid #00f3ff;"></div>
+          <div style="position:absolute; inset:6px; background:rgba(0,243,255,0.25); border:2px solid #00f3ff; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow: 0 0 15px #00f3ff;">
+            <div style="width:10px; height:10px; background:#00f3ff; border-radius:50%;"></div>
+          </div>
+        </div>
+      `;
+
+      const popup = new maplibregl.Popup({ offset: 25, closeButton: true })
+        .setHTML(`
+          <div style="min-width:200px">
+            <div style="color:#00f3ff; font-weight:700; font-size:12px; margin-bottom:2px;">📍 ${loc.name}</div>
+            <div style="color:#94a3b8; font-size:10px; word-break:break-word;">${loc.address}</div>
+            <div style="color:#64748b; font-size:9px; margin-top:4px;">GPS: ${loc.latitude.toFixed(5)}, ${loc.longitude.toFixed(5)}</div>
+          </div>
+        `);
+
+      const marker = new maplibregl.Marker({ element: el, anchor: 'center' })
+        .setLngLat([loc.longitude, loc.latitude])
+        .setPopup(popup)
+        .addTo(mapRef.current);
+
+      marker.togglePopup();
+      searchMarkerRef.current = marker;
     }
   }));
 
-  // Initialize map
   useEffect(() => {
     if (!containerRef.current || mapRef.current) return;
 
@@ -316,12 +278,12 @@ const MapView = forwardRef(({
     return () => {
       if (heliAnimRef.current) cancelAnimationFrame(heliAnimRef.current);
       markersRef.current.forEach(m => m.remove());
+      if (searchMarkerRef.current) searchMarkerRef.current.remove();
       map.remove();
       mapRef.current = null;
     };
   }, []);
 
-  // Update markers & layers when data or visibility changes
   useEffect(() => {
     const map = mapRef.current;
     if (!map || !map.isStyleLoaded()) {
@@ -332,7 +294,6 @@ const MapView = forwardRef(({
     updateMarkers();
 
     function updateMarkers() {
-      // Clear existing markers
       markersRef.current.forEach(m => m.remove());
       markersRef.current = [];
       if (heliAnimRef.current) {
@@ -340,7 +301,6 @@ const MapView = forwardRef(({
         heliAnimRef.current = null;
       }
 
-      // Toggle 3D buildings visibility
       if (map.getLayer('3d-buildings')) {
         map.setLayoutProperty('3d-buildings', 'visibility', layers.buildings ? 'visible' : 'none');
       }
@@ -348,7 +308,6 @@ const MapView = forwardRef(({
         map.setLayoutProperty('3d-buildings-edges', 'visibility', layers.buildings ? 'visible' : 'none');
       }
 
-      // Incident markers
       if (layers.incidents && incidents) {
         incidents.forEach(inc => {
           const color = inc.severity === 'critical' ? '#ef4444' :
@@ -384,7 +343,6 @@ const MapView = forwardRef(({
         });
       }
 
-      // Camera markers
       if (layers.cameras && cameras) {
         cameras.forEach(cam => {
           const el = document.createElement('div');
@@ -406,7 +364,6 @@ const MapView = forwardRef(({
           markersRef.current.push(marker);
         });
 
-        // Camera vision cone GeoJSON
         if (layers.cameraCones) {
           const coneFeatures = cameras.map(cam => {
             const conePoints = generateConeFan(cam.longitude, cam.latitude, cam.heading, cam.fov, cam.range);
@@ -451,11 +408,9 @@ const MapView = forwardRef(({
         }
       }
 
-      // Unit markers (including animated helicopter & ground units)
       if (layers.units && units) {
         units.forEach(unit => {
           if (unit.id === 'AIR-1') {
-            // Animated helicopter marker
             const el = document.createElement('div');
             el.style.cursor = 'pointer';
             el.innerHTML = `
@@ -482,7 +437,6 @@ const MapView = forwardRef(({
 
             markersRef.current.push(heliMarker);
 
-            // Animate in circle
             const centerLng = -118.2570;
             const centerLat = 34.0460;
             const radius = 0.006;
@@ -496,7 +450,6 @@ const MapView = forwardRef(({
             };
             animateHeli();
           } else {
-            // Ground unit marker (patrol car, fire engine)
             const isEngine = unit.id.startsWith('ENG');
             const color = isEngine ? '#ef4444' : '#84cc16';
             const iconSymbol = isEngine ? '🚒' : '🚔';
@@ -538,7 +491,6 @@ const MapView = forwardRef(({
     <div className="absolute inset-0 z-0">
       <div ref={containerRef} className="w-full h-full" />
 
-      {/* HUD Crosshair overlay */}
       <div className="absolute inset-0 pointer-events-none flex items-center justify-center opacity-[0.08]">
         <div className="w-52 h-52 border border-cyan-400/40 rounded-full flex items-center justify-center">
           <div className="w-36 h-36 border border-cyan-400/20 rounded-full"></div>
@@ -552,7 +504,6 @@ const MapView = forwardRef(({
 
 export default MapView;
 
-// Generate a fan-shaped cone polygon for camera FOV visualization
 function generateConeFan(lng, lat, headingDeg, fovDeg, rangeMtrs) {
   const points = [];
   const halfFov = fovDeg / 2;

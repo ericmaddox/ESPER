@@ -45,6 +45,12 @@ export default function App() {
     }
   };
 
+  const handleSelectSearchLocation = (loc) => {
+    if (mapRef.current) {
+      mapRef.current.showSearchLocation(loc);
+    }
+  };
+
   const toggleFullscreen = () => {
     if (!document.fullscreenElement) {
       document.documentElement.requestFullscreen().catch(err => console.error(err));
@@ -61,6 +67,7 @@ export default function App() {
         activeCamerasCount={cameras.filter(c => c.status === 'LIVE').length}
         activeUnitsCount={units.length}
         toggleFullscreen={toggleFullscreen}
+        onSelectLocation={handleSelectSearchLocation}
       />
 
       {/* 3D MapLibre Map Viewport */}

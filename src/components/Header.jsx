@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Shield, Eye, AlertTriangle, Maximize2, Activity } from 'lucide-react';
+import AddressSearch from './AddressSearch';
 
-export default function Header({ activeIncidentsCount, activeCamerasCount, activeUnitsCount, toggleFullscreen }) {
+export default function Header({ activeIncidentsCount, activeCamerasCount, activeUnitsCount, toggleFullscreen, onSelectLocation }) {
   const [time, setTime] = useState('');
   const [date, setDate] = useState('');
 
@@ -30,19 +31,24 @@ export default function Header({ activeIncidentsCount, activeCamerasCount, activ
               ESP<span className="text-cyan-400">ER</span>
               <span className="text-xs font-normal px-2 py-0.5 ml-2 rounded bg-cyan-500/10 border border-cyan-500/30 text-cyan-300">LOS ANGELES</span>
             </h1>
-            <span className="flex items-center space-x-1 text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/30 text-emerald-400">
+            <span className="flex items-center space-x-1 text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 hidden lg:inline-flex">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
               <span>3D DIGITAL TWIN</span>
             </span>
           </div>
-          <p className="text-[11px] text-slate-400 font-mono tracking-tight hidden sm:block">
+          <p className="text-[11px] text-slate-400 font-mono tracking-tight hidden xl:block">
             REAL-TIME 3D SITUATIONAL AWARENESS // OPEN-SOURCE
           </p>
         </div>
       </div>
 
+      {/* Address Search Bar */}
+      <div className="mx-2 flex-1 max-w-md flex justify-center">
+        <AddressSearch onSelectLocation={onSelectLocation} />
+      </div>
+
       {/* Telemetry Metrics */}
-      <div className="hidden md:flex items-center space-x-6 text-xs font-mono">
+      <div className="hidden lg:flex items-center space-x-4 text-xs font-mono">
         <div className="flex items-center space-x-2 px-3 py-1.5 rounded bg-slate-900/60 border border-slate-800">
           <AlertTriangle className="w-4 h-4 text-red-400 animate-pulse" />
           <div>
@@ -58,19 +64,11 @@ export default function Header({ activeIncidentsCount, activeCamerasCount, activ
             <span className="text-cyan-400 font-bold text-sm leading-tight">{activeCamerasCount} ONLINE</span>
           </div>
         </div>
-
-        <div className="flex items-center space-x-2 px-3 py-1.5 rounded bg-slate-900/60 border border-slate-800">
-          <Activity className="w-4 h-4 text-amber-400" />
-          <div>
-            <span className="text-slate-400 text-[10px] uppercase block leading-none">AIR & GROUND UNITS</span>
-            <span className="text-amber-400 font-bold text-sm leading-tight">{activeUnitsCount} TRACKED</span>
-          </div>
-        </div>
       </div>
 
       {/* Time & Quick Actions */}
-      <div className="flex items-center space-x-4">
-        <div className="text-right font-mono">
+      <div className="flex items-center space-x-3">
+        <div className="text-right font-mono hidden sm:block">
           <div className="text-sm font-bold text-cyan-300 tracking-wider leading-none">{time} <span className="text-[10px] text-slate-400">PST</span></div>
           <div className="text-[10px] text-slate-400 leading-tight uppercase">{date}</div>
         </div>
