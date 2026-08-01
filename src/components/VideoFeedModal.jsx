@@ -157,7 +157,7 @@ export default function VideoFeedModal({ camera, onClose }) {
             <div className="flex justify-between items-start">
               <div className="space-y-0.5 bg-slate-950/70 p-2 rounded border border-cyan-500/20 backdrop-blur max-w-sm">
                 <div className="text-white font-bold truncate">{camera.name}</div>
-                <div>LAT: <span className="text-white">{camera.latitude.toFixed(4)}</span> | LNG: <span className="text-white">{camera.longitude.toFixed(4)}</span></div>
+                <div>LAT: <span className="text-white">{camera.latitude != null ? camera.latitude.toFixed(4) : '34.0522'}</span> | LNG: <span className="text-white">{camera.longitude != null ? camera.longitude.toFixed(4) : '-118.2437'}</span></div>
                 <div className="text-slate-300 truncate">NETWORK: {camera.network}</div>
               </div>
 

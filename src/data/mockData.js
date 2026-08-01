@@ -2641,7 +2641,8 @@ export const MOCK_CITIZEN_STREAMS = [
     timeAgo: 'Live (3m ago)',
     status: 'LIVE STREAM',
     network: 'Citizen Mobile Broadcaster Network',
-    videoUrl: 'https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8'
+    videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
+    posterUrl: 'https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'CITIZEN-LA-102',
@@ -2654,7 +2655,8 @@ export const MOCK_CITIZEN_STREAMS = [
     timeAgo: 'Live (8m ago)',
     status: 'LIVE STREAM',
     network: 'Citizen Mobile Broadcaster Network',
-    videoUrl: 'https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8'
+    videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4',
+    posterUrl: 'https://images.unsplash.com/photo-1517649763962-0c623266010b?auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'CITIZEN-LA-103',
@@ -2667,6 +2669,7 @@ export const MOCK_CITIZEN_STREAMS = [
     timeAgo: 'Live (1m ago)',
     status: 'LIVE STREAM',
     network: 'Citizen Mobile Broadcaster Network',
-    videoUrl: 'https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8'
+    videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+    posterUrl: 'https://images.unsplash.com/photo-1508873696983-2df515122519?auto=format&fit=crop&w=800&q=80'
   }
 ];
