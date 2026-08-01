@@ -254,11 +254,11 @@ export default function CommandSidebar({
           {activeTab === 'drones' && (
             <div className="space-y-3 font-mono">
               
-              {/* SECTION: Dedrone Detected Rogue UAS */}
+              {/* SECTION: Dedrone Detected Unauthorized UAS */}
               <div>
                 <div className="text-[10px] font-bold text-red-400 uppercase tracking-wider mb-1.5 flex items-center space-x-1">
                   <ShieldAlert className="w-3.5 h-3.5 animate-pulse" />
-                  <span>DEDRONE DETECTED ROGUE UAS ({rogueDrones.length})</span>
+                  <span>DEDRONE DETECTED UNAUTHORIZED UAS ({rogueDrones.length})</span>
                 </div>
 
                 {rogueDrones.map(rogue => (
@@ -300,7 +300,7 @@ export default function CommandSidebar({
                       className="w-full mt-1 py-1 rounded bg-red-500/20 hover:bg-red-500/40 border border-red-500/40 text-red-300 text-[10px] font-bold flex items-center justify-center space-x-1 transition-all"
                     >
                       <Crosshair className="w-3 h-3 text-red-400" />
-                      <span>TRACK ROGUE DRONE IN 3D</span>
+                      <span>TRACK UNAUTHORIZED UAS IN 3D</span>
                     </button>
                   </div>
                 ))}

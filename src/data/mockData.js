@@ -2598,10 +2598,10 @@ export const MOCK_DEDRONE_SENSORS = [
   }
 ];
 
-// Dedrone Detected Unauthorized / Rogue UAS Threats (DedroneTracker.AI Live Schema)
+// Dedrone Detected Non-Cooperative / Unauthorized UAS Detections (DedroneTracker.AI Schema)
 export const MOCK_ROGUE_DRONES = [
   {
-    id: 'ROGUE-UAS-01',
+    id: 'UNAUTHORIZED-UAS-01',
     dedroneTrackId: 'TRK-90412-DEDRONE',
     classification: 'DJI Mavic 3 Pro (Unregistered)',
     serialNumber: '1582F4ZAA2208123X',
