@@ -125,6 +125,8 @@ export default function App() {
         <>
           <MapView
             ref={mapRef}
+            key={activeRegion.id}
+            activeRegion={activeRegion}
             incidents={incidents}
             cameras={cameras}
             units={units}

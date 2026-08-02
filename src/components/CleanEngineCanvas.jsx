@@ -170,6 +170,10 @@ const CleanEngineCanvas = forwardRef(({ activeRegion, onSelectSearchLocation }, 
       <EngineViewport
         ref={engineRef}
         stylePreset={activeStyle}
+        initialCenter={activeRegion ? activeRegion.center : [-118.2437, 34.0522]}
+        initialZoom={activeRegion?.zoom || 15.5}
+        initialPitch={activeRegion?.pitch || 60}
+        initialBearing={activeRegion?.bearing || 35}
         enable3DBuildings={show3DBuildings}
         enableTerrain={showTerrain}
         onCameraMove={setCameraMetrics}

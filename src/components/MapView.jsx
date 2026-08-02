@@ -169,6 +169,7 @@ const DARK_STYLE = {
 const LA_CENTER = [-118.2570, 34.0460];
 
 const MapView = forwardRef(({
+  activeRegion,
   incidents,
   cameras,
   units,
@@ -263,10 +264,10 @@ const MapView = forwardRef(({
     const map = new maplibregl.Map({
       container: containerRef.current,
       style: DARK_STYLE,
-      center: LA_CENTER,
-      zoom: 15.5,
-      pitch: 60,
-      bearing: 35,
+      center: activeRegion ? activeRegion.center : LA_CENTER,
+      zoom: activeRegion ? activeRegion.zoom : 15.5,
+      pitch: activeRegion ? activeRegion.pitch : 60,
+      bearing: activeRegion ? activeRegion.bearing : 35,
       antialias: true,
       maxPitch: 85
     });
