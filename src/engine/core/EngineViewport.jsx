@@ -7,6 +7,7 @@ import maplibregl from 'maplibre-gl';
 import { MAP_STYLES } from './StyleManager';
 import { LayerManager } from './LayerManager';
 import { MarkerManager } from './MarkerManager';
+import { getSolarPosition } from '../math/solarMath';
 
 const DEFAULT_CENTER = [-118.2437, 34.0522]; // DTLA Center
 
@@ -21,6 +22,7 @@ const EngineViewport = forwardRef(({
   onMapLoad,
   onCameraMove,
   onMapClick,
+  onSolarUpdate,
   className = 'w-full h-full'
 }, ref) => {
   const containerRef = useRef(null);
@@ -112,12 +114,34 @@ const EngineViewport = forwardRef(({
     layerManagerRef.current = new LayerManager(map);
     markerManagerRef.current = new MarkerManager(map);
 
+    const updateSolarLighting = () => {
+      if (!mapRef.current) return;
+      const center = mapRef.current.getCenter();
+      const solar = getSolarPosition(new Date(), center.lat, center.lng);
+      
+      try {
+        mapRef.current.setLight({
+          anchor: 'viewport',
+          color: solar.lightColor,
+          intensity: solar.intensity,
+          position: [1.5, solar.azimuth, Math.max(10, 90 - solar.altitude)]
+        });
+      } catch (e) {
+        // Light property ignored on basic styles
+      }
+
+      if (onSolarUpdate) onSolarUpdate(solar);
+    };
+
     map.on('load', () => {
       if (enable3DBuildings && layerManagerRef.current) {
         layerManagerRef.current.setup3DBuildings(true);
       }
+      updateSolarLighting();
       if (onMapLoad) onMapLoad(map, layerManagerRef.current, markerManagerRef.current);
     });
+
+    const solarInterval = setInterval(updateSolarLighting, 60000);
 
     map.on('move', () => {
       if (onCameraMove) {
@@ -143,6 +167,7 @@ const EngineViewport = forwardRef(({
     });
 
     return () => {
+      clearInterval(solarInterval);
       if (markerManagerRef.current) markerManagerRef.current.clearAll();
       map.remove();
       mapRef.current = null;

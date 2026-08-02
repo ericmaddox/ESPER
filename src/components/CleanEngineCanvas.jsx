@@ -1,15 +1,18 @@
 import React, { useState, useRef, useImperativeHandle, forwardRef } from 'react';
 import EngineViewport from '../engine/core/EngineViewport';
 import EngineToolbar from './EngineToolbar';
+import DragDropOverlay from './DragDropOverlay';
 import { MAP_STYLES, reverseGeocode } from '../engine';
 import { LA_PRESETS } from '../data/mockData';
-import { Compass, MapPin, Eye, MousePointer } from 'lucide-react';
+import { Compass, MapPin, Sun, Moon, UploadCloud, Layers, X } from 'lucide-react';
 
 const CleanEngineCanvas = forwardRef(({ activeRegion, onSelectSearchLocation }, ref) => {
   const engineRef = useRef(null);
   const [activeStyle, setActiveStyle] = useState(MAP_STYLES.DARK_TACTICAL);
   const [show3DBuildings, setShow3DBuildings] = useState(true);
   const [showTerrain, setShowTerrain] = useState(true);
+  const [solarMetrics, setSolarMetrics] = useState(null);
+  const [importedFile, setImportedFile] = useState(null);
 
   const regionPresets = activeRegion?.presets || LA_PRESETS;
 
@@ -164,8 +167,75 @@ const CleanEngineCanvas = forwardRef(({ activeRegion, onSelectSearchLocation }, 
     }
   };
 
+  const handleFileDrop = ({ fileName, type, data }) => {
+    const layerMgr = engineRef.current?.getLayerManager();
+    const map = engineRef.current?.getMap();
+
+    if (!layerMgr || !map || !data) return;
+
+    const sourceId = 'user-drop-source';
+    const layerId = 'user-drop-layer';
+    const outlineLayerId = 'user-drop-outline';
+
+    // Set GeoJSON source
+    layerMgr.setGeoJSONSource(sourceId, data);
+
+    // Add Circle / Fill / Line layers
+    layerMgr.addLayer({
+      id: layerId,
+      type: 'circle',
+      source: sourceId,
+      paint: {
+        'circle-radius': 7,
+        'circle-color': activeStyle.accentColor,
+        'circle-opacity': 0.85,
+        'circle-stroke-width': 2,
+        'circle-stroke-color': '#080c16'
+      }
+    });
+
+    layerMgr.addLayer({
+      id: outlineLayerId,
+      type: 'line',
+      source: sourceId,
+      paint: {
+        'line-color': activeStyle.accentColor,
+        'line-width': 2
+      }
+    });
+
+    // Compute bounding box
+    const bounds = computeGeoJSONBounds(data);
+    if (bounds) {
+      map.fitBounds(bounds, { padding: 100, maxZoom: 16, duration: 2000 });
+    }
+
+    const featureCount = data.features ? data.features.length : 1;
+    setImportedFile({
+      fileName,
+      type,
+      featureCount,
+      sourceId,
+      layerId,
+      outlineLayerId
+    });
+  };
+
+  const handleClearImportedFile = () => {
+    const layerMgr = engineRef.current?.getLayerManager();
+    if (layerMgr && importedFile) {
+      layerMgr.removeLayer(importedFile.layerId);
+      layerMgr.removeLayer(importedFile.outlineLayerId);
+      layerMgr.removeSource(importedFile.sourceId);
+    }
+    setImportedFile(null);
+  };
+
   return (
     <div className="relative w-full h-full bg-slate-950 overflow-hidden">
+      {/* Drag & Drop Visual Dropzone Overlay */}
+      <DragDropOverlay onFileDrop={handleFileDrop} />
+
       {/* 3D WebGL Engine Viewport */}
       <EngineViewport
         ref={engineRef}
@@ -178,6 +248,7 @@ const CleanEngineCanvas = forwardRef(({ activeRegion, onSelectSearchLocation }, 
         enableTerrain={showTerrain}
         onCameraMove={setCameraMetrics}
         onMapClick={handleMapClick}
+        onSolarUpdate={setSolarMetrics}
       />
 
       {/* Engine Controls Toolbar */}
@@ -196,11 +267,25 @@ const CleanEngineCanvas = forwardRef(({ activeRegion, onSelectSearchLocation }, 
 
       {/* Bottom Telemetry & Coordinate HUD */}
       <div className="absolute bottom-4 left-4 right-4 z-40 pointer-events-none flex items-end justify-between font-mono text-xs">
-        {/* Left Coordinates HUD */}
-        <div className="glass-panel rounded-xl border border-cyan-500/30 p-3 shadow-2xl space-y-1 backdrop-blur-md pointer-events-auto">
-          <div className="flex items-center space-x-2 text-cyan-400 font-bold text-[11px] mb-1">
-            <Compass className="w-4 h-4 animate-spin-slow" />
-            <span>3D GEOSPATIAL ENGINE TELEMETRY</span>
+        {/* Left Coordinates & Astronomical Solar HUD */}
+        <div className="glass-panel rounded-xl border border-cyan-500/30 p-3 shadow-2xl space-y-1.5 backdrop-blur-md pointer-events-auto">
+          <div className="flex items-center justify-between text-cyan-400 font-bold text-[11px]">
+            <span className="flex items-center space-x-1.5">
+              <Compass className="w-4 h-4 animate-spin-slow" />
+              <span>3D GEOSPATIAL ENGINE TELEMETRY</span>
+            </span>
+
+            {/* Real-time Astronomical Solar Indicator */}
+            {solarMetrics && (
+              <span className={`flex items-center space-x-1 px-1.5 py-0.5 rounded text-[9px] font-bold border ${
+                solarMetrics.isNight 
+                  ? 'bg-indigo-950/80 text-indigo-300 border-indigo-500/40'
+                  : 'bg-amber-950/80 text-amber-300 border-amber-500/40'
+              }`}>
+                {solarMetrics.isNight ? <Moon className="w-3 h-3 text-indigo-400" /> : <Sun className="w-3 h-3 text-amber-400 animate-pulse" />}
+                <span>{solarMetrics.isNight ? 'NIGHT' : 'REAL-TIME SUN'} ({solarMetrics.altitude > 0 ? `+${solarMetrics.altitude}°` : `${solarMetrics.altitude}°`})</span>
+              </span>
+            )}
           </div>
 
           <div className="grid grid-cols-2 gap-x-4 gap-y-0.5 text-[10px] text-slate-300">
@@ -209,41 +294,103 @@ const CleanEngineCanvas = forwardRef(({ activeRegion, onSelectSearchLocation }, 
             <div>ZOOM: <span className="text-emerald-400 font-bold">{cameraMetrics.zoom.toFixed(1)}x</span></div>
             <div>PITCH: <span className="text-amber-400 font-bold">{cameraMetrics.pitch.toFixed(0)}°</span></div>
             <div>BEARING: <span className="text-cyan-300 font-bold">{cameraMetrics.bearing.toFixed(0)}°</span></div>
-            <div>PROJECTION: <span className="text-slate-400">EPSG:3857</span></div>
+            <div>SOLAR AZIMUTH: <span className="text-amber-300 font-bold">{solarMetrics ? `${solarMetrics.azimuth}°` : '--'}</span></div>
           </div>
         </div>
 
-        {/* Right Active Inspection Banner */}
-        {clickedLocation && (
-          <div className="glass-panel rounded-xl border border-cyan-500/40 p-3 shadow-2xl max-w-sm backdrop-blur-md pointer-events-auto animate-fade-in space-y-1.5">
-            <div className="flex items-center justify-between text-[11px] font-bold text-cyan-300">
-              <span className="flex items-center space-x-1">
-                <MapPin className="w-3.5 h-3.5 text-cyan-400" />
-                <span>INSPECTED TARGET LOCATION</span>
-              </span>
-              <button
-                onClick={handleClearInspection}
-                className="text-slate-400 hover:text-white p-0.5 rounded hover:bg-slate-800 transition-colors"
-                title="Clear Pin & Card"
-              >
-                ✕
-              </button>
+        {/* Right Active Inspection Banner or Imported File Banner */}
+        <div className="space-y-2 flex flex-col items-end">
+          {/* Imported File HUD Card */}
+          {importedFile && (
+            <div className="glass-panel rounded-xl border border-emerald-500/40 p-3 shadow-2xl max-w-sm backdrop-blur-md pointer-events-auto animate-fade-in space-y-1">
+              <div className="flex items-center justify-between text-[11px] font-bold text-emerald-300">
+                <span className="flex items-center space-x-1.5">
+                  <UploadCloud className="w-4 h-4 text-emerald-400" />
+                  <span>IMPORTED SPATIAL LAYER</span>
+                </span>
+                <button
+                  onClick={handleClearImportedFile}
+                  className="text-slate-400 hover:text-white p-0.5"
+                  title="Remove Layer"
+                >
+                  <X className="w-3.5 h-3.5" />
+                </button>
+              </div>
+              <p className="text-[10px] text-slate-100 font-bold truncate">{importedFile.fileName}</p>
+              <div className="flex items-center justify-between text-[9px] font-mono border-t border-slate-800 pt-1 text-slate-300">
+                <span>FORMAT: <strong className="text-emerald-400">{importedFile.type}</strong></span>
+                <span>FEATURES: <strong className="text-cyan-300">{importedFile.featureCount}</strong></span>
+                <button
+                  onClick={handleClearImportedFile}
+                  className="px-1.5 py-0.5 rounded bg-red-500/20 hover:bg-red-500/40 text-red-300 border border-red-500/40 font-bold"
+                >
+                  REMOVE
+                </button>
+              </div>
             </div>
-            <p className="text-[10px] text-slate-200 truncate">{clickedLocation.address}</p>
-            <div className="mt-1 flex items-center justify-between text-[9px] font-mono border-t border-slate-800 pt-1.5">
-              <span className="text-slate-400">{clickedLocation.lng.toFixed(5)}, {clickedLocation.lat.toFixed(5)}</span>
-              <button
-                onClick={handleClearInspection}
-                className="px-2 py-0.5 rounded bg-cyan-500/20 hover:bg-cyan-500/40 text-cyan-300 border border-cyan-500/40 font-bold transition-all"
-              >
-                CLEAR PIN
-              </button>
+          )}
+
+          {/* Inspected Target Location Card */}
+          {clickedLocation && (
+            <div className="glass-panel rounded-xl border border-cyan-500/40 p-3 shadow-2xl max-w-sm backdrop-blur-md pointer-events-auto animate-fade-in space-y-1.5">
+              <div className="flex items-center justify-between text-[11px] font-bold text-cyan-300">
+                <span className="flex items-center space-x-1">
+                  <MapPin className="w-3.5 h-3.5 text-cyan-400" />
+                  <span>INSPECTED TARGET LOCATION</span>
+                </span>
+                <button
+                  onClick={handleClearInspection}
+                  className="text-slate-400 hover:text-white p-0.5 rounded hover:bg-slate-800 transition-colors"
+                  title="Clear Pin & Card"
+                >
+                  ✕
+                </button>
+              </div>
+              <p className="text-[10px] text-slate-200 truncate">{clickedLocation.address}</p>
+              <div className="mt-1 flex items-center justify-between text-[9px] font-mono border-t border-slate-800 pt-1.5">
+                <span className="text-slate-400">{clickedLocation.lng.toFixed(5)}, {clickedLocation.lat.toFixed(5)}</span>
+                <button
+                  onClick={handleClearInspection}
+                  className="px-2 py-0.5 rounded bg-cyan-500/20 hover:bg-cyan-500/40 text-cyan-300 border border-cyan-500/40 font-bold transition-all"
+                >
+                  CLEAR PIN
+                </button>
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </div>
   );
 });
 
 export default CleanEngineCanvas;
+
+// Utility to calculate bounding box for any GeoJSON FeatureCollection
+function computeGeoJSONBounds(geojson) {
+  if (!geojson) return null;
+
+  let minLng = Infinity, minLat = Infinity, maxLng = -Infinity, maxLat = -Infinity;
+
+  const extractCoords = (coords) => {
+    if (typeof coords[0] === 'number') {
+      const [lng, lat] = coords;
+      if (lng < minLng) minLng = lng;
+      if (lng > maxLng) maxLng = lng;
+      if (lat < minLat) minLat = lat;
+      if (lat > maxLat) maxLat = lat;
+    } else {
+      coords.forEach(extractCoords);
+    }
+  };
+
+  const features = geojson.features || (geojson.geometry ? [geojson] : []);
+  features.forEach(f => {
+    if (f.geometry && f.geometry.coordinates) {
+      extractCoords(f.geometry.coordinates);
+    }
+  });
+
+  if (minLng === Infinity || minLat === Infinity) return null;
+  return [[minLng, minLat], [maxLng, maxLat]];
+}
