@@ -119,12 +119,16 @@ const EngineViewport = forwardRef(({
       const center = mapRef.current.getCenter();
       const solar = getSolarPosition(new Date(), center.lat, center.lng);
       
+      // Clamp polar angle so light source is always above horizon (10° to 82°)
+      const clampedAltitude = Math.max(8, solar.altitude);
+      const polarAngle = Math.min(82, Math.max(10, 90 - clampedAltitude));
+
       try {
         mapRef.current.setLight({
           anchor: 'viewport',
           color: solar.lightColor,
           intensity: solar.intensity,
-          position: [1.5, solar.azimuth, Math.max(10, 90 - solar.altitude)]
+          position: [1.5, solar.azimuth, polarAngle]
         });
       } catch (e) {
         // Light property ignored on basic styles
