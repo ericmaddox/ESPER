@@ -102,6 +102,14 @@ export default function CleanEngineCanvas({ onSelectSearchLocation }) {
     }
   };
 
+  const handleClearInspection = () => {
+    setClickedLocation(null);
+    const markerMgr = engineRef.current?.getMarkerManager();
+    if (markerMgr) {
+      markerMgr.removeMarker('inspect-target');
+    }
+  };
+
   return (
     <div className="relative w-full h-full bg-slate-950 overflow-hidden">
       {/* 3D WebGL Engine Viewport */}
@@ -149,23 +157,29 @@ export default function CleanEngineCanvas({ onSelectSearchLocation }) {
 
         {/* Right Active Inspection Banner */}
         {clickedLocation && (
-          <div className="glass-panel rounded-xl border border-cyan-500/40 p-3 shadow-2xl max-w-sm backdrop-blur-md pointer-events-auto animate-fade-in">
-            <div className="flex items-center justify-between text-[11px] font-bold text-cyan-300 mb-1">
+          <div className="glass-panel rounded-xl border border-cyan-500/40 p-3 shadow-2xl max-w-sm backdrop-blur-md pointer-events-auto animate-fade-in space-y-1.5">
+            <div className="flex items-center justify-between text-[11px] font-bold text-cyan-300">
               <span className="flex items-center space-x-1">
                 <MapPin className="w-3.5 h-3.5 text-cyan-400" />
                 <span>INSPECTED TARGET LOCATION</span>
               </span>
               <button
-                onClick={() => setClickedLocation(null)}
-                className="text-slate-400 hover:text-white"
+                onClick={handleClearInspection}
+                className="text-slate-400 hover:text-white p-0.5 rounded hover:bg-slate-800 transition-colors"
+                title="Clear Pin & Card"
               >
                 ✕
               </button>
             </div>
             <p className="text-[10px] text-slate-200 truncate">{clickedLocation.address}</p>
-            <div className="mt-1 flex items-center justify-between text-[9px] text-slate-400 border-t border-slate-800 pt-1">
-              <span>{clickedLocation.lng.toFixed(5)}, {clickedLocation.lat.toFixed(5)}</span>
-              <span className="text-emerald-400 font-bold">WGS84</span>
+            <div className="mt-1 flex items-center justify-between text-[9px] font-mono border-t border-slate-800 pt-1.5">
+              <span className="text-slate-400">{clickedLocation.lng.toFixed(5)}, {clickedLocation.lat.toFixed(5)}</span>
+              <button
+                onClick={handleClearInspection}
+                className="px-2 py-0.5 rounded bg-cyan-500/20 hover:bg-cyan-500/40 text-cyan-300 border border-cyan-500/40 font-bold transition-all"
+              >
+                CLEAR PIN
+              </button>
             </div>
           </div>
         )}
