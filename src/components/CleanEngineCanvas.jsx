@@ -140,6 +140,7 @@ const CleanEngineCanvas = forwardRef(({ activeRegion, onSelectSearchLocation }, 
     const layerMgr = engineRef.current?.getLayerManager();
     if (layerMgr) {
       layerMgr.setLayerVisibility('3d-buildings', nextState);
+      layerMgr.setLayerVisibility('3d-buildings-tall', nextState);
       layerMgr.setLayerVisibility('3d-buildings-edges', nextState);
     }
   };
