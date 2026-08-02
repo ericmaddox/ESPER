@@ -61,9 +61,7 @@ const EngineViewport = forwardRef(({
       const map = mapRef.current;
       if (!map) return;
 
-      map.setStyle(styleConfig.style);
-
-      map.once('style.load', () => {
+      const applyTheme = () => {
         if (layerManagerRef.current && enable3DBuildings) {
           const buildingColor = styleConfig.buildingColor || '#152238';
           const edgeColor = styleConfig.buildingEdgeColor || '#00f3ff';
@@ -72,7 +70,10 @@ const EngineViewport = forwardRef(({
         if (enableTerrain) {
           map.setTerrain({ source: 'terrain', exaggeration: 1.3 });
         }
-      });
+      };
+
+      map.once('style.load', applyTheme);
+      map.setStyle(styleConfig.style);
     }
   }));
 

@@ -102,6 +102,8 @@ export class LayerManager {
             'fill-extrusion-opacity': 0.85
           }
         });
+      } else {
+        this.map.setPaintProperty('3d-buildings', 'fill-extrusion-color', color);
       }
 
       if (!this.map.getLayer('3d-buildings-edges')) {
@@ -117,6 +119,8 @@ export class LayerManager {
             'line-opacity': 0.4
           }
         });
+      } else {
+        this.map.setPaintProperty('3d-buildings-edges', 'line-color', edgeColor);
       }
 
       this.setLayerVisibility('3d-buildings', enabled);
