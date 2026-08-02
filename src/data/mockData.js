@@ -32,22 +32,6 @@ export const CITY_REGIONS = [
       { id: 'atl-buckhead', name: 'Buckhead Financial Hub', latitude: 33.8482, longitude: -84.3734, height: 600, heading: 120, pitch: -35 },
       { id: 'atl-airport', name: 'Hartsfield-Jackson (ATL)', latitude: 33.6407, longitude: -84.4277, height: 800, heading: 270, pitch: -25 }
     ]
-  },
-  {
-    id: 'bremen',
-    name: 'Bremen & Haralson County',
-    state: 'GA',
-    badge: 'BREMEN, GA',
-    center: [-85.1474, 33.7212],
-    zoom: 15.8,
-    pitch: 55,
-    bearing: 40,
-    presets: [
-      { id: 'bremen-dt', name: 'Downtown Tallapoosa St', latitude: 33.7212, longitude: -85.1474, height: 300, heading: 45, pitch: -30 },
-      { id: 'bremen-us27', name: 'US-27 Gateway Corridor', latitude: 33.7128, longitude: -85.1382, height: 400, heading: 180, pitch: -35 },
-      { id: 'bremen-sports', name: 'Bremen High Complex', latitude: 33.7275, longitude: -85.1528, height: 350, heading: 90, pitch: -30 },
-      { id: 'haralson-ops', name: 'Haralson Emergency Ops', latitude: 33.7380, longitude: -85.1420, height: 450, heading: 15, pitch: -25 }
-    ]
   }
 ];
 
