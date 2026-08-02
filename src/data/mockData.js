@@ -17,6 +17,87 @@ export const CITY_REGIONS = [
     ]
   },
   {
+    id: 'nyc',
+    name: 'New York City Metro',
+    state: 'NY',
+    badge: 'NEW YORK, NY',
+    center: [-73.9855, 40.7484],
+    zoom: 15.5,
+    pitch: 60,
+    bearing: 25,
+    presets: [
+      { id: 'nyc-midtown', name: 'Empire State / Midtown', latitude: 40.7484, longitude: -73.9857, height: 750, heading: 30, pitch: -35 },
+      { id: 'nyc-fidi', name: 'Financial District / WTC', latitude: 40.7128, longitude: -74.0060, height: 600, heading: 45, pitch: -30 },
+      { id: 'nyc-centralpark', name: 'Central Park South', latitude: 40.7651, longitude: -73.9763, height: 500, heading: 180, pitch: -30 },
+      { id: 'nyc-brooklyn', name: 'Brooklyn Bridge Park', latitude: 40.7023, longitude: -73.9967, height: 400, heading: 330, pitch: -25 },
+      { id: 'nyc-hudson', name: 'Hudson Yards Corridor', latitude: 40.7538, longitude: -74.0022, height: 650, heading: 90, pitch: -35 }
+    ]
+  },
+  {
+    id: 'chicago',
+    name: 'Chicago Metro Area',
+    state: 'IL',
+    badge: 'CHICAGO, IL',
+    center: [-87.6298, 41.8781],
+    zoom: 15.5,
+    pitch: 60,
+    bearing: 40,
+    presets: [
+      { id: 'chi-loop', name: 'Willis Tower / The Loop', latitude: 41.8789, longitude: -87.6359, height: 700, heading: 45, pitch: -35 },
+      { id: 'chi-magmile', name: 'Magnificent Mile', latitude: 41.8950, longitude: -87.6242, height: 550, heading: 180, pitch: -30 },
+      { id: 'chi-millennium', name: 'Millennium Park / Bean', latitude: 41.8827, longitude: -87.6233, height: 400, heading: 270, pitch: -25 },
+      { id: 'chi-navy-pier', name: 'Navy Pier Waterfront', latitude: 41.8917, longitude: -87.6043, height: 450, heading: 220, pitch: -30 }
+    ]
+  },
+  {
+    id: 'dc',
+    name: 'Washington, D.C. Metro',
+    state: 'DC',
+    badge: 'WASHINGTON, DC',
+    center: [-77.0369, 38.8951],
+    zoom: 15.2,
+    pitch: 58,
+    bearing: 10,
+    presets: [
+      { id: 'dc-mall', name: 'National Mall & Capitol', latitude: 38.8899, longitude: -77.0091, height: 500, heading: 270, pitch: -30 },
+      { id: 'dc-whitehouse', name: 'White House Precinct', latitude: 38.8977, longitude: -77.0365, height: 350, heading: 180, pitch: -25 },
+      { id: 'dc-rosslyn', name: 'Rosslyn Skyline (VA)', latitude: 38.8966, longitude: -77.0722, height: 600, heading: 110, pitch: -35 },
+      { id: 'dc-wharf', name: 'The Wharf Southwest', latitude: 38.8789, longitude: -77.0219, height: 400, heading: 45, pitch: -30 }
+    ]
+  },
+  {
+    id: 'miami',
+    name: 'Miami & South Florida',
+    state: 'FL',
+    badge: 'MIAMI, FL',
+    center: [-80.1918, 25.7617],
+    zoom: 15.5,
+    pitch: 60,
+    bearing: 30,
+    presets: [
+      { id: 'mia-brickell', name: 'Brickell Financial Hub', latitude: 25.7617, longitude: -80.1918, height: 600, heading: 45, pitch: -35 },
+      { id: 'mia-sobe', name: 'South Beach Ocean Drive', latitude: 25.7826, longitude: -80.1303, height: 400, heading: 270, pitch: -25 },
+      { id: 'mia-wynwood', name: 'Wynwood Arts District', latitude: 25.8042, longitude: -80.1989, height: 350, heading: 180, pitch: -30 },
+      { id: 'mia-port', name: 'PortMiami Cruise Basin', latitude: 25.7781, longitude: -80.1642, height: 500, heading: 90, pitch: -30 }
+    ]
+  },
+  {
+    id: 'sf',
+    name: 'San Francisco Bay Area',
+    state: 'CA',
+    badge: 'SAN FRANCISCO, CA',
+    center: [-122.4194, 37.7749],
+    zoom: 15.5,
+    pitch: 60,
+    bearing: 45,
+    presets: [
+      { id: 'sf-fidi', name: 'Salesforce & Financial', latitude: 37.7897, longitude: -122.3972, height: 650, heading: 45, pitch: -35 },
+      { id: 'sf-ggb', name: 'Golden Gate Vista', latitude: 37.8077, longitude: -122.4748, height: 750, heading: 330, pitch: -30 },
+      { id: 'sf-embarcadero', name: 'Ferry Building Harbor', latitude: 37.7955, longitude: -122.3937, height: 400, heading: 220, pitch: -25 },
+      { id: 'sf-twinpeaks', name: 'Twin Peaks Summit', latitude: 37.7544, longitude: -122.4477, height: 900, heading: 60, pitch: -35 }
+    ]
+  },
+  {
     id: 'atlanta',
     name: 'Atlanta Metro Area',
     state: 'GA',
@@ -31,6 +112,36 @@ export const CITY_REGIONS = [
       { id: 'atl-mercedes', name: 'Mercedes-Benz Stadium', latitude: 33.7554, longitude: -84.4008, height: 350, heading: 0, pitch: -30 },
       { id: 'atl-buckhead', name: 'Buckhead Financial Hub', latitude: 33.8482, longitude: -84.3734, height: 600, heading: 120, pitch: -35 },
       { id: 'atl-airport', name: 'Hartsfield-Jackson (ATL)', latitude: 33.6407, longitude: -84.4277, height: 800, heading: 270, pitch: -25 }
+    ]
+  },
+  {
+    id: 'dallas',
+    name: 'Dallas–Fort Worth',
+    state: 'TX',
+    badge: 'DALLAS, TX',
+    center: [-96.7970, 32.7767],
+    zoom: 15.5,
+    pitch: 60,
+    bearing: 20,
+    presets: [
+      { id: 'dal-downtown', name: 'Reunion Tower & Plaza', latitude: 32.7756, longitude: -96.8089, height: 550, heading: 45, pitch: -35 },
+      { id: 'dal-arts', name: 'Dallas Arts District', latitude: 32.7885, longitude: -96.7977, height: 450, heading: 180, pitch: -30 },
+      { id: 'dal-uptown', name: 'Uptown Victory Park', latitude: 32.7892, longitude: -96.8103, height: 500, heading: 90, pitch: -30 }
+    ]
+  },
+  {
+    id: 'seattle',
+    name: 'Seattle Metro Area',
+    state: 'WA',
+    badge: 'SEATTLE, WA',
+    center: [-122.3321, 47.6062],
+    zoom: 15.5,
+    pitch: 60,
+    bearing: 35,
+    presets: [
+      { id: 'sea-needle', name: 'Space Needle & Center', latitude: 47.6205, longitude: -122.3493, height: 550, heading: 135, pitch: -35 },
+      { id: 'sea-downtown', name: 'Amazon Spheres / Denny', latitude: 47.6157, longitude: -122.3397, height: 500, heading: 45, pitch: -30 },
+      { id: 'sea-waterfront', name: 'Elliott Bay Waterfront', latitude: 47.6050, longitude: -122.3400, height: 400, heading: 60, pitch: -25 }
     ]
   }
 ];
