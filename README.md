@@ -18,9 +18,9 @@
 
 ## Overview
 
-**ESPER** is a high-performance 3D geospatial mapping platform and digital twin engine built with zero proprietary API key dependencies. ESPER streams vector tiles, 3D building extrusions, high-resolution DEM terrain, real-time solar positioning, and live Caltrans HLS video feeds directly in the browser. 
+**ESPER** is a high-performance 3D geospatial mapping platform and digital twin engine built with zero proprietary API key dependencies. ESPER streams vector tiles, height-graduated 3D building extrusions, high-resolution DEM terrain, real-time solar positioning, street & POI business labels, and live Caltrans HLS video feeds directly in the browser. 
 
-The application architecture features a decoupled **3D Geospatial Engine (`src/engine/`)** that provides a pristine, zero-noise WebGL canvas for GIS analysis, multi-city exploration (Los Angeles, Atlanta GA), drag-and-drop spatial data ingestion, and custom tactical applications.
+The application architecture features a decoupled **3D Geospatial Engine (`src/engine/`)** that provides a pristine, zero-noise WebGL canvas for GIS analysis, multi-city exploration (9 U.S. Metro Regions), drag-and-drop spatial data ingestion (GeoJSON, KML, CSV), and custom tactical applications.
 
 ---
 
@@ -33,14 +33,16 @@ The application architecture features a decoupled **3D Geospatial Engine (`src/e
 ## Key Features
 
 - **🌐 Modular 3D Geospatial Engine Core (`src/engine/`)**: Clean, decoupled WebGL engine providing declarative layer management (`LayerManager`), marker lifecycle tracking (`MarkerManager`), map style switching (`StyleManager`), and spatial mathematics (`geoMath`).
-- **🏙️ Multi-Region Spatial Support**: Instant HUD city switching and smooth 3D camera fly-to transitions between **Greater Los Angeles** and **Atlanta Metro Area, GA**.
-- **☀️ Real-Time Astronomical Solar Lighting**: Calculates solar azimuth, altitude, and WebGL directional building lighting based on `new Date()` and real clock time — automatically updating every 60 seconds with zero manual sliders.
-- **📂 Drag-and-Drop Spatial Data Ingestion**: Drag any `.geojson`, `.json`, or `.kml` file directly onto the 3D map canvas. The engine parses features, plots dynamic vector layers, and automatically fits 3D camera bounds (`map.fitBounds`).
+- **🏙️ 9 Major U.S. Metro 3D Regions**: Instant HUD city switching with searchable, scrollable region selection and camera fly-to transitions across **Los Angeles**, **New York City**, **Chicago**, **Washington D.C.**, **Miami**, **San Francisco**, **Atlanta**, **Dallas-Fort Worth**, and **Seattle**.
+- **☀️ Real-Time Astronomical Solar Lighting**: Calculates exact solar azimuth, altitude, and WebGL directional building lighting based on real clock time (`new Date()`) and map coordinates — updating live every 60 seconds.
+- **🏷️ Street Names & POI Business Labels**: Vector line symbol rendering for street names, points of interest (landmarks, businesses), and place names with theme-matched color palettes and dedicated HUD toggle.
+- **🏢 Height-Graduated 3D Building Extrusions**: Multi-tier height-based color ramps, vertical ambient occlusion gradients (`fill-extrusion-vertical-gradient`), and glowing skyscraper highlight layers (>50m).
+- **📂 Drag-and-Drop Spatial Data Ingestion**: Drag any `.geojson`, `.kml`, or `.csv` file directly onto the 3D canvas. The engine parses spatial features, plots vector layers via `LayerManager`, and fits camera bounds automatically (`map.fitBounds`).
 - **📐 3D Tilt & Pitch Controls**: Direct mouse/keyboard 3D tilt (Right-Click Drag or `Ctrl + Drag`) plus quick-angle HUD buttons (`0° 2D`, `45°`, `60° 3D`, `75°`).
-- **📍 Spatial Click Inspector**: Click anywhere on the 3D map or building rooftops to inspect WGS84 GPS coordinates, elevation, and reverse-geocoded addresses, with 1-click pin clearing.
-- **🔍 Universal Global Address Search**: High-resolution address & landmark search powered by OpenStreetMap Nominatim with active region fallback biasing.
+- **📍 Spatial Click Inspector**: Click anywhere on the 3D map or building rooftops to inspect WGS84 GPS coordinates, elevation, and reverse-geocoded addresses with 1-click target pins.
+- **🔍 Universal Global Address Search**: Worldwide geocoding powered by OpenStreetMap Nominatim with automatic regional fallback biasing.
 - **⛰️ Elevation DEM Terrain**: Real 3D terrain elevation powered by AWS Terrarium DEM raster tiles (`1.3x` exaggeration).
-- **📹 150+ Live Caltrans HLS Feeds**: Direct HTTP Live Streaming (`.m3u8`) from District 7 DOT traffic cameras with `hls.js` video playback and PTZ controls.
+- **📹 Live Caltrans HLS Feeds**: Direct HTTP Live Streaming (`.m3u8`) from District DOT traffic cameras with `hls.js` video playback and PTZ controls.
 - **🎛️ Dual Workspace Modes**: Seamlessly toggle between **`CLEAN ENGINE CANVAS`** (Pristine 3D GIS Platform) and **`DEMO SCENARIO`** (Public Safety Command Center).
 
 ---
@@ -53,6 +55,7 @@ The application architecture features a decoupled **3D Geospatial Engine (`src/e
 - **Tile Architecture**: OpenFreeMap Vector Tiles + AWS Terrarium DEM
 - **Video Decryption**: HLS.js (`.m3u8` HTTP Live Streaming)
 - **Geocoding API**: OpenStreetMap Nominatim
+- **Spatial Parsers**: `togeojson` (KML parsing), custom CSV geoparser
 - **Icons**: Lucide React
 
 ---
@@ -115,7 +118,7 @@ ESPER/
 │   ├── engine/                  # 🌐 Modular 3D Geospatial Engine Core
 │   │   ├── core/
 │   │   │   ├── EngineViewport.jsx # WebGL MapLibre 3D viewport orchestrator
-│   │   │   ├── LayerManager.js   # Declarative GeoJSON & 3D extrusion layer manager
+│   │   │   ├── LayerManager.js   # Declarative GeoJSON, 3D extrusions & labels manager
 │   │   │   ├── MarkerManager.js  # Safe DOM marker & popup lifecycle manager
 │   │   │   └── StyleManager.js   # Map style themes (Dark Tactical, NVG, High Contrast)
 │   │   ├── math/
@@ -128,19 +131,19 @@ ESPER/
 │   │   └── index.js              # Core engine barrel exports
 │   ├── components/
 │   │   ├── CleanEngineCanvas.jsx # Pristine, zero-noise 3D geospatial canvas UI
-│   │   ├── DragDropOverlay.jsx   # Drag-and-drop spatial file dropzone overlay
-│   │   ├── EngineToolbar.jsx     # Engine controls (Terrain, 3D extrusions, themes, tilt)
+│   │   ├── DragDropOverlay.jsx   # Drag-and-drop spatial file dropzone overlay (GeoJSON, KML, CSV)
+│   │   ├── EngineToolbar.jsx     # Engine controls (Terrain, 3D extrusions, labels, themes, tilt)
 │   │   ├── Header.jsx           # Top HUD navbar with workspace mode & region switcher
-│   │   ├── RegionSelector.jsx   # Multi-city region dropdown selector (LA, Atlanta)
+│   │   ├── RegionSelector.jsx   # Searchable, scrollable multi-city region selector
 │   │   ├── AddressSearch.jsx    # Universal global address geocoding search bar
 │   │   ├── MapView.jsx          # Demo scenario 3D map viewport
 │   │   ├── CommandSidebar.jsx   # Tactical dispatch panel & search
 │   │   ├── LayerToolbar.jsx     # Collapsible tactical map layer toggles & presets
 │   │   └── VideoFeedModal.jsx   # HLS .m3u8 video player & PTZ controls
 │   ├── data/
-│   │   └── mockData.js          # Multi-city presets (LA, Atlanta) & camera feeds
+│   │   └── mockData.js          # 9 U.S. metro regions, 40+ camera presets & mock telemetry
 │   ├── App.jsx                  # Main application orchestrator & workspace mode state
-│   ├── index.css                # Global styles, glassmorphism & HUD overlays
+│   ├── index.css                # Global styles, glassmorphism, scrollbars & HUD overlays
 │   └── main.jsx                 # Application entrypoint
 ├── index.html                   # HTML shell & font definitions
 ├── vite.config.js               # Vite build configuration
