@@ -1,6 +1,6 @@
-# ESPER ── Los Angeles 3D Digital Twin Command Center
+# ESPER ── 3D Geospatial Engine & Tactical Command Center
 
-> **Blade Runner-inspired 3D situational awareness & tactical GIS command center for Los Angeles, powered by MapLibre GL JS, OpenFreeMap, and live Caltrans DOT stream telemetry.**
+> **Blade Runner-inspired 3D geospatial mapping platform & tactical GIS command center powered by MapLibre GL JS, OpenFreeMap, AWS Terrarium DEM 3D elevation, real-time astronomical solar lighting, and multi-region telemetry.**
 
 ---
 
@@ -10,7 +10,11 @@
 
 ## Overview
 
-**ESPER** is a real-time, interactive 3D digital twin public safety platform designed for high-density urban situational awareness. Built with zero proprietary API key dependencies, ESPER streams vector tiles, 3D building extrusions, high-resolution DEM terrain, and live Caltrans HLS video feeds directly in the browser.
+**ESPER** is a high-performance 3D geospatial mapping platform and digital twin engine built with zero proprietary API key dependencies. ESPER streams vector tiles, 3D building extrusions, high-resolution DEM terrain, real-time solar positioning, and live Caltrans HLS video feeds directly in the browser. 
+
+The application architecture features a decoupled **3D Geospatial Engine (`src/engine/`)** that provides a pristine, zero-noise WebGL canvas for GIS analysis, multi-city exploration (Los Angeles, Atlanta GA, Bremen GA), drag-and-drop spatial data ingestion, and custom tactical applications.
+
+---
 
 ### Live Tactical Video Telemetry & PTZ Controls
 
@@ -20,20 +24,22 @@
 
 ## Key Features
 
-- **3D Urban Viewport**: Rendered using MapLibre GL JS with custom dark tactical styling and OpenFreeMap open-source vector tiles.
-- **Elevation DEM Terrain**: Real 3D terrain elevation for the Los Angeles basin, Hollywood Hills, Griffith Park, and Santa Monica Mountains using AWS Terrarium DEM tiles.
-- **150+ Live Caltrans HLS Feeds**: Direct HTTP Live Streaming (`.m3u8`) integration from Caltrans District 7 (Los Angeles & Ventura County) traffic cameras with cross-browser `hls.js` decryption.
-- **Tactical Video Player**: Interactive PTZ controls (Pan, Tilt, Zoom) with Heads-Up Display (HUD) telemetry overlays and automatic live-snapshot fallback.
-- **Real-Time Address & Landmark Geocoding**: Instant search bar powered by OpenStreetMap Nominatim with smooth 3D camera fly-to and target marker placement.
-- **Interactive 3D Vision Cones**: GeoJSON-powered field-of-view (FOV) frustums projected onto the 3D map for every CCTV node.
-- **Live Dispatch & Unit Tracking**: Real-time position tracking and telemetry for airborne LAPD Air Support (`AIR-1`) and ground units (`UNIT-12`, `ENG-11`).
-- **Tactical Command Interface**: Glassmorphism sidebars, incident prioritization badges, preset location fly-overs, collapsible layers menu, and full-screen tactical modes.
+- **🌐 Modular 3D Geospatial Engine Core (`src/engine/`)**: Clean, decoupled WebGL engine providing declarative layer management (`LayerManager`), marker lifecycle tracking (`MarkerManager`), map style switching (`StyleManager`), and spatial mathematics (`geoMath`).
+- **🏙️ Multi-Region Spatial Support**: Instant HUD city switching and smooth 3D camera fly-to transitions between **Greater Los Angeles**, **Atlanta Metro Area, GA**, and **Bremen & Haralson County, GA**.
+- **☀️ Real-Time Astronomical Solar Lighting**: Calculates solar azimuth, altitude, and WebGL directional building lighting based on `new Date()` and real clock time — automatically updating every 60 seconds with zero manual sliders.
+- **📂 Drag-and-Drop Spatial Data Ingestion**: Drag any `.geojson`, `.json`, or `.kml` file directly onto the 3D map canvas. The engine parses features, plots dynamic vector layers, and automatically fits 3D camera bounds (`map.fitBounds`).
+- **📐 3D Tilt & Pitch Controls**: Direct mouse/keyboard 3D tilt (Right-Click Drag or `Ctrl + Drag`) plus quick-angle HUD buttons (`0° 2D`, `45°`, `60° 3D`, `75°`).
+- **📍 Spatial Click Inspector**: Click anywhere on the 3D map or building rooftops to inspect WGS84 GPS coordinates, elevation, and reverse-geocoded addresses, with 1-click pin clearing.
+- **🔍 Universal Global Address Search**: High-resolution address & landmark search powered by OpenStreetMap Nominatim with active region fallback biasing.
+- **⛰️ Elevation DEM Terrain**: Real 3D terrain elevation powered by AWS Terrarium DEM raster tiles (`1.3x` exaggeration).
+- **📹 150+ Live Caltrans HLS Feeds**: Direct HTTP Live Streaming (`.m3u8`) from District 7 DOT traffic cameras with `hls.js` video playback and PTZ controls.
+- **🎛️ Dual Workspace Modes**: Seamlessly toggle between **`CLEAN ENGINE CANVAS`** (Pristine 3D GIS Platform) and **`DEMO SCENARIO`** (Public Safety Command Center).
 
 ---
 
 ## Tech Stack
 
-- **Frontend Core**: React 18 + Vite
+- **Frontend Core**: React 18 + Vite 6
 - **Styling**: Tailwind CSS v4 + Glassmorphism HUD Design System
 - **3D Map Engine**: MapLibre GL JS 5.1
 - **Tile Architecture**: OpenFreeMap Vector Tiles + AWS Terrarium DEM
@@ -104,7 +110,8 @@ ESPER/
 │   │   │   ├── MarkerManager.js  # Safe DOM marker & popup lifecycle manager
 │   │   │   └── StyleManager.js   # Map style themes (Dark Tactical, NVG, High Contrast)
 │   │   ├── math/
-│   │   │   └── geoMath.js        # Spatial math (geodesic circles, FOV cones, distance)
+│   │   │   ├── geoMath.js        # Spatial math (geodesic circles, FOV cones, distance)
+│   │   │   └── solarMath.js      # Astronomical solar position algorithm (azimuth/altitude)
 │   │   ├── services/
 │   │   │   └── geocodingService.js # OpenStreetMap Nominatim spatial search API
 │   │   ├── hooks/
@@ -112,15 +119,17 @@ ESPER/
 │   │   └── index.js              # Core engine barrel exports
 │   ├── components/
 │   │   ├── CleanEngineCanvas.jsx # Pristine, zero-noise 3D geospatial canvas UI
-│   │   ├── EngineToolbar.jsx     # Engine controls (Terrain, 3D extrusions, themes)
-│   │   ├── Header.jsx           # Top HUD navbar with workspace mode switcher
-│   │   ├── AddressSearch.jsx    # Real-time address geocoding search bar
+│   │   ├── DragDropOverlay.jsx   # Drag-and-drop spatial file dropzone overlay
+│   │   ├── EngineToolbar.jsx     # Engine controls (Terrain, 3D extrusions, themes, tilt)
+│   │   ├── Header.jsx           # Top HUD navbar with workspace mode & region switcher
+│   │   ├── RegionSelector.jsx   # Multi-city region dropdown selector (LA, Atlanta, Bremen)
+│   │   ├── AddressSearch.jsx    # Universal global address geocoding search bar
 │   │   ├── MapView.jsx          # Demo scenario 3D map viewport
 │   │   ├── CommandSidebar.jsx   # Tactical dispatch panel & search
 │   │   ├── LayerToolbar.jsx     # Collapsible tactical map layer toggles & presets
 │   │   └── VideoFeedModal.jsx   # HLS .m3u8 video player & PTZ controls
 │   ├── data/
-│   │   └── mockData.js          # Scraped Caltrans D7 camera & incident feeds
+│   │   └── mockData.js          # Multi-city presets (LA, Atlanta, Bremen) & camera feeds
 │   ├── App.jsx                  # Main application orchestrator & workspace mode state
 │   ├── index.css                # Global styles, glassmorphism & HUD overlays
 │   └── main.jsx                 # Application entrypoint
