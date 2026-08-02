@@ -1,11 +1,11 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useImperativeHandle, forwardRef } from 'react';
 import EngineViewport from '../engine/core/EngineViewport';
 import EngineToolbar from './EngineToolbar';
 import { MAP_STYLES, reverseGeocode } from '../engine';
 import { LA_PRESETS } from '../data/mockData';
 import { Compass, MapPin, Eye, MousePointer } from 'lucide-react';
 
-export default function CleanEngineCanvas({ activeRegion, onSelectSearchLocation }) {
+const CleanEngineCanvas = forwardRef(({ activeRegion, onSelectSearchLocation }, ref) => {
   const engineRef = useRef(null);
   const [activeStyle, setActiveStyle] = useState(MAP_STYLES.DARK_TACTICAL);
   const [show3DBuildings, setShow3DBuildings] = useState(true);
@@ -23,10 +23,63 @@ export default function CleanEngineCanvas({ activeRegion, onSelectSearchLocation
   });
 
   const [clickedLocation, setClickedLocation] = useState(null);
-  const [isInspecting, setIsInspecting] = useState(false);
+
+  useImperativeHandle(ref, () => ({
+    flyToLocation: (latitude, longitude, zoom = 17, pitch = 55, bearing = 30) => {
+      if (engineRef.current) {
+        engineRef.current.flyToLocation(latitude, longitude, zoom, pitch, bearing);
+      }
+    },
+    setCameraView: (preset) => {
+      if (engineRef.current) {
+        engineRef.current.setCameraView(preset);
+      }
+    },
+    showSearchLocation: (loc) => {
+      const lat = loc.latitude;
+      const lng = loc.longitude;
+      if (engineRef.current) {
+        engineRef.current.flyToLocation(lat, lng, 17.5, 60, 35);
+      }
+      setClickedLocation({
+        lng,
+        lat,
+        address: loc.address || loc.name,
+        building: null,
+        city: activeRegion?.name || ''
+      });
+
+      const markerMgr = engineRef.current?.getMarkerManager();
+      if (markerMgr) {
+        markerMgr.removeMarker('inspect-target');
+        const el = document.createElement('div');
+        el.innerHTML = `
+          <div style="position:relative; width:36px; height:36px;">
+            <div class="pulse-ring" style="position:absolute; inset:0; border-radius:50%; border:2px solid ${activeStyle.accentColor};"></div>
+            <div style="position:absolute; inset:4px; background:rgba(8,12,22,0.9); border:2px solid ${activeStyle.accentColor}; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 0 12px ${activeStyle.accentColor};">
+              <div style="width:8px; height:8px; background:${activeStyle.accentColor}; border-radius:50%;"></div>
+            </div>
+          </div>
+        `;
+        const popupHtml = `
+          <div style="min-width:210px; font-family:'JetBrains Mono',monospace; font-size:11px;">
+            <div style="color:${activeStyle.accentColor}; font-weight:700; font-size:12px; margin-bottom:2px;">📍 SEARCHED LOCATION</div>
+            <div style="color:#e2e8f0; font-size:11px; margin-bottom:4px;">${loc.address || loc.name}</div>
+            <div style="color:#94a3b8; font-size:10px;">LAT: ${lat.toFixed(5)}</div>
+            <div style="color:#94a3b8; font-size:10px;">LNG: ${lng.toFixed(5)}</div>
+          </div>
+        `;
+        markerMgr.addMarker('inspect-target', {
+          longitude: lng,
+          latitude: lat,
+          element: el,
+          popupContent: popupHtml
+        });
+      }
+    }
+  }));
 
   const handleMapClick = async ({ lng, lat }) => {
-    setIsInspecting(true);
     const markerMgr = engineRef.current?.getMarkerManager();
     if (!markerMgr) return;
 
@@ -44,7 +97,6 @@ export default function CleanEngineCanvas({ activeRegion, onSelectSearchLocation
     `;
 
     const geocodeResult = await reverseGeocode(lat, lng);
-    setIsInspecting(false);
 
     setClickedLocation({
       lng,
@@ -188,4 +240,6 @@ export default function CleanEngineCanvas({ activeRegion, onSelectSearchLocation
       </div>
     </div>
   );
-}
+});
+
+export default CleanEngineCanvas;

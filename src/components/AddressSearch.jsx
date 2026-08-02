@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Search, MapPin, X, Loader2 } from 'lucide-react';
 
-export default function AddressSearch({ onSelectLocation }) {
+export default function AddressSearch({ activeRegion, onSelectLocation }) {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -19,9 +19,9 @@ export default function AddressSearch({ onSelectLocation }) {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Debounced address search fetch using Nominatim API
+  // Debounced address search fetch using Nominatim API (Universal Global Search)
   useEffect(() => {
-    if (!query.trim() || query.length < 3) {
+    if (!query.trim() || query.length < 2) {
       setResults([]);
       setIsLoading(false);
       return;
@@ -30,21 +30,30 @@ export default function AddressSearch({ onSelectLocation }) {
     setIsLoading(true);
     const timer = setTimeout(async () => {
       try {
-        // Bias search query to California / Los Angeles area if not specified
-        const searchTerms = query.toLowerCase().includes('la') || query.toLowerCase().includes('angeles') || query.toLowerCase().includes('ca') 
-          ? query 
-          : `${query}, Los Angeles, CA`;
+        // Universal search for exact query string
+        let searchUrl = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&limit=6&addressdetails=1`;
 
-        const response = await fetch(
-          `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(searchTerms)}&limit=6&addressdetails=1`,
-          {
-            headers: {
-              'User-Agent': 'ESPER-3D-DigitalTwin/2.0'
+        let response = await fetch(searchUrl, {
+          headers: {
+            'User-Agent': 'ESPER-3D-DigitalTwin/2.0'
+          }
+        });
+
+        if (response.ok) {
+          let data = await response.json();
+          
+          // If no global match found and query has no comma, try biasing with active region context
+          if (data.length === 0 && activeRegion && !query.includes(',')) {
+            const biasedQuery = `${query}, ${activeRegion.name}`;
+            const fallbackUrl = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(biasedQuery)}&limit=6&addressdetails=1`;
+            const fallbackRes = await fetch(fallbackUrl, {
+              headers: { 'User-Agent': 'ESPER-3D-DigitalTwin/2.0' }
+            });
+            if (fallbackRes.ok) {
+              data = await fallbackRes.json();
             }
           }
-        );
-        if (response.ok) {
-          const data = await response.json();
+
           setResults(data);
           setIsOpen(true);
         }
@@ -53,10 +62,10 @@ export default function AddressSearch({ onSelectLocation }) {
       } finally {
         setIsLoading(false);
       }
-    }, 350);
+    }, 300);
 
     return () => clearTimeout(timer);
-  }, [query]);
+  }, [query, activeRegion]);
 
   const handleSelect = (item) => {
     const lat = parseFloat(item.lat);

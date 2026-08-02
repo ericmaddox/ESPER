@@ -80,7 +80,7 @@ export default function Header({
 
       {/* Address Search Bar */}
       <div className="mx-2 flex-1 max-w-md flex justify-center">
-        <AddressSearch onSelectLocation={onSelectLocation} />
+        <AddressSearch activeRegion={activeRegion} onSelectLocation={onSelectLocation} />
       </div>
 
       {/* Telemetry Metrics (Visible in Demo mode) */}

@@ -115,6 +115,7 @@ export default function App() {
       {workspaceMode === 'clean' ? (
         /* Pristine 3D Geospatial Engine Workspace (Zero Demo Noise) */
         <CleanEngineCanvas 
+          ref={mapRef}
           key={activeRegion.id}
           activeRegion={activeRegion} 
           onSelectSearchLocation={handleSelectSearchLocation} 
