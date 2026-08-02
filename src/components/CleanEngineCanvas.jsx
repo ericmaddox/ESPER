@@ -11,6 +11,7 @@ const CleanEngineCanvas = forwardRef(({ activeRegion, onSelectSearchLocation }, 
   const [activeStyle, setActiveStyle] = useState(MAP_STYLES.DARK_TACTICAL);
   const [show3DBuildings, setShow3DBuildings] = useState(true);
   const [showTerrain, setShowTerrain] = useState(true);
+  const [showLabels, setShowLabels] = useState(true);
   const [solarMetrics, setSolarMetrics] = useState(null);
   const [importedFile, setImportedFile] = useState(null);
 
@@ -154,6 +155,15 @@ const CleanEngineCanvas = forwardRef(({ activeRegion, onSelectSearchLocation }, 
     }
   };
 
+  const handleToggleLabels = () => {
+    const nextState = !showLabels;
+    setShowLabels(nextState);
+    const layerMgr = engineRef.current?.getLayerManager();
+    if (layerMgr) {
+      layerMgr.setLabelsVisibility(nextState);
+    }
+  };
+
   const handleSelectPreset = (preset) => {
     if (engineRef.current) {
       engineRef.current.setCameraView(preset);
@@ -260,6 +270,8 @@ const CleanEngineCanvas = forwardRef(({ activeRegion, onSelectSearchLocation }, 
         onToggle3DBuildings={handleToggle3DBuildings}
         showTerrain={showTerrain}
         onToggleTerrain={handleToggleTerrain}
+        showLabels={showLabels}
+        onToggleLabels={handleToggleLabels}
         currentPitch={cameraMetrics.pitch}
         onSetPitch={(pitch) => engineRef.current?.setPitch(pitch)}
         presets={regionPresets}

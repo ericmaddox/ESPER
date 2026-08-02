@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Layers, Mountain, Building2, Palette, Navigation, Crosshair, ChevronRight, ChevronLeft, Compass } from 'lucide-react';
+import { Layers, Mountain, Building2, Palette, Navigation, Crosshair, ChevronRight, ChevronLeft, Compass, Type } from 'lucide-react';
 import { MAP_STYLES } from '../engine';
 
 export default function EngineToolbar({
@@ -9,6 +9,8 @@ export default function EngineToolbar({
   onToggle3DBuildings,
   showTerrain,
   onToggleTerrain,
+  showLabels = true,
+  onToggleLabels,
   currentPitch = 60,
   onSetPitch,
   presets = [],
@@ -91,6 +93,21 @@ export default function EngineToolbar({
                   <span>AWS Terrarium DEM 3D</span>
                 </div>
                 <span className="text-[10px]">{showTerrain ? 'ON' : 'OFF'}</span>
+              </button>
+
+              <button
+                onClick={onToggleLabels}
+                className={`w-full px-2.5 py-1.5 rounded flex items-center justify-between transition-all ${
+                  showLabels
+                    ? 'bg-violet-500/20 text-violet-300 border border-violet-500/40 font-bold'
+                    : 'bg-slate-900/40 text-slate-500 hover:text-slate-300 border border-transparent'
+                }`}
+              >
+                <div className="flex items-center space-x-2">
+                  <Type className="w-3.5 h-3.5 text-violet-400" />
+                  <span>Street & POI Labels</span>
+                </div>
+                <span className="text-[10px]">{showLabels ? 'ON' : 'OFF'}</span>
               </button>
             </div>
           </div>

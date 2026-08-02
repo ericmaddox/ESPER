@@ -180,6 +180,16 @@ export class LayerManager {
   }
 
   /**
+   * Toggles visibility of all label layers (street names, POI, place names)
+   */
+  setLabelsVisibility(enabled = true) {
+    const labelLayers = ['road-label', 'poi-label', 'place-label'];
+    for (const layerId of labelLayers) {
+      this.setLayerVisibility(layerId, enabled);
+    }
+  }
+
+  /**
    * Utility: Lighten a hex color by a percentage (0-100)
    */
   _lightenHex(hex, percent) {
