@@ -13,6 +13,8 @@ export const MAP_STYLES = {
     waterColor: '#0a1628',
     parkColor: '#0b1a12',
     accentColor: '#00f3ff',
+    buildingColor: '#152238',
+    buildingEdgeColor: '#00f3ff',
     style: {
       version: 8,
       name: 'ESPER Dark Tactical',
@@ -64,6 +66,8 @@ export const MAP_STYLES = {
     waterColor: '#052912',
     parkColor: '#083a1b',
     accentColor: '#22c55e',
+    buildingColor: '#092b15',
+    buildingEdgeColor: '#22c55e',
     style: {
       version: 8,
       name: 'ESPER Night Vision',
@@ -111,6 +115,8 @@ export const MAP_STYLES = {
     waterColor: '#0284c7',
     parkColor: '#064e3b',
     accentColor: '#f59e0b',
+    buildingColor: '#1e293b',
+    buildingEdgeColor: '#f59e0b',
     style: {
       version: 8,
       name: 'ESPER High Contrast',
@@ -143,7 +149,7 @@ export const MAP_STYLES = {
         { id: 'background', type: 'background', paint: { 'background-color': '#020617' } },
         { id: 'water', type: 'fill', source: 'openmaptiles', 'source-layer': 'water', paint: { 'fill-color': '#0284c7', 'fill-opacity': 0.85 } },
         { id: 'landuse-park', type: 'fill', source: 'openmaptiles', 'source-layer': 'landuse', filter: ['in', 'class', 'park', 'cemetery', 'grass'], paint: { 'fill-color': '#064e3b', 'fill-opacity': 0.6 } },
-        { id: 'road', type: 'line', source: 'openmaptiles', 'source-layer': 'transportation', filter: ['==', '$type', 'LineString'], minzoom: 8, paint: { 'line-color': '#334155', 'line-width': ['interpolate', ['linear'], ['zoom'], 10, 1, 15, 4, 18, 10] } }
+        { id: 'road', type: 'line', source: 'openmaptiles', 'source-layer': 'transportation', filter: ['==', '$type', 'LineString'], minzoom: 8, paint: { 'line-color': '#38bdf8', 'line-width': ['interpolate', ['linear'], ['zoom'], 10, 1.5, 15, 5, 18, 12] } }
       ]
     }
   }

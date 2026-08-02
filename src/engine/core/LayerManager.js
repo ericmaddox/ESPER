@@ -85,7 +85,7 @@ export class LayerManager {
   /**
    * Configures 3D Building Extrusions and Wireframe Edge layers
    */
-  setup3DBuildings(enabled = true, color = '#152238') {
+  setup3DBuildings(enabled = true, color = '#152238', edgeColor = '#00f3ff') {
     if (!this.map) return;
     try {
       if (!this.map.getLayer('3d-buildings')) {
@@ -112,9 +112,9 @@ export class LayerManager {
           type: 'line',
           minzoom: 14,
           paint: {
-            'line-color': '#00f3ff',
+            'line-color': edgeColor,
             'line-width': 1,
-            'line-opacity': 0.35
+            'line-opacity': 0.4
           }
         });
       }

@@ -58,8 +58,21 @@ const EngineViewport = forwardRef(({
     },
 
     setStyle: (styleConfig) => {
-      if (!mapRef.current) return;
-      mapRef.current.setStyle(styleConfig.style);
+      const map = mapRef.current;
+      if (!map) return;
+
+      map.setStyle(styleConfig.style);
+
+      map.once('style.load', () => {
+        if (layerManagerRef.current && enable3DBuildings) {
+          const buildingColor = styleConfig.buildingColor || '#152238';
+          const edgeColor = styleConfig.buildingEdgeColor || '#00f3ff';
+          layerManagerRef.current.setup3DBuildings(true, buildingColor, edgeColor);
+        }
+        if (enableTerrain) {
+          map.setTerrain({ source: 'terrain', exaggeration: 1.3 });
+        }
+      });
     }
   }));
 
