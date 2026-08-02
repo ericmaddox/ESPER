@@ -31,7 +31,7 @@ export default function EngineToolbar({
       </button>
 
       {isOpen && (
-        <div className="mt-2 w-64 glass-panel rounded-xl border border-cyan-500/30 p-3 shadow-2xl space-y-3 animate-fade-in font-mono text-xs">
+        <div className="mt-2 w-64 glass-panel rounded-xl border border-cyan-500/30 p-3 shadow-2xl space-y-3 animate-fade-in font-mono text-xs max-h-[calc(100vh-8rem)] overflow-y-auto custom-scrollbar">
           
           {/* Map Themes */}
           <div>
