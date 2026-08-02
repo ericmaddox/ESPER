@@ -1,12 +1,57 @@
-// Audited Live Caltrans District 7 (LA) Traffic Cameras - 100% Verified HTTP 200 Online Streams
-
-export const LA_PRESETS = [
-  { id: 'dtla', name: 'Downtown LA (HQ)', latitude: 34.0460, longitude: -118.2570, height: 650, heading: 45, pitch: -35 },
-  { id: 'crypto', name: 'Crypto.com Arena', latitude: 34.0430, longitude: -118.2673, height: 350, heading: 15, pitch: -30 },
-  { id: 'hollywood', name: 'Hollywood Blvd', latitude: 34.1016, longitude: -118.3268, height: 400, heading: 180, pitch: -35 },
-  { id: 'santamonica', name: 'Santa Monica Pier', latitude: 34.0099, longitude: -118.4965, height: 500, heading: 270, pitch: -25 },
-  { id: 'griffith', name: 'Griffith Observatory', latitude: 34.1184, longitude: -118.3004, height: 800, heading: 160, pitch: -35 }
+export const CITY_REGIONS = [
+  {
+    id: 'la',
+    name: 'Greater Los Angeles',
+    state: 'CA',
+    badge: 'LOS ANGELES, CA',
+    center: [-118.2437, 34.0522],
+    zoom: 15.5,
+    pitch: 60,
+    bearing: 35,
+    presets: [
+      { id: 'dtla', name: 'Downtown LA (HQ)', latitude: 34.0460, longitude: -118.2570, height: 650, heading: 45, pitch: -35 },
+      { id: 'crypto', name: 'Crypto.com Arena', latitude: 34.0430, longitude: -118.2673, height: 350, heading: 15, pitch: -30 },
+      { id: 'hollywood', name: 'Hollywood Blvd', latitude: 34.1016, longitude: -118.3268, height: 400, heading: 180, pitch: -35 },
+      { id: 'santamonica', name: 'Santa Monica Pier', latitude: 34.0099, longitude: -118.4965, height: 500, heading: 270, pitch: -25 },
+      { id: 'griffith', name: 'Griffith Observatory', latitude: 34.1184, longitude: -118.3004, height: 800, heading: 160, pitch: -35 }
+    ]
+  },
+  {
+    id: 'atlanta',
+    name: 'Atlanta Metro Area',
+    state: 'GA',
+    badge: 'ATLANTA, GA',
+    center: [-84.3880, 33.7490],
+    zoom: 15.5,
+    pitch: 60,
+    bearing: 15,
+    presets: [
+      { id: 'atl-downtown', name: 'Centennial Olympic Park', latitude: 33.7603, longitude: -84.3931, height: 450, heading: 30, pitch: -35 },
+      { id: 'atl-midtown', name: 'Midtown & Piedmont Park', latitude: 33.7845, longitude: -84.3831, height: 500, heading: 45, pitch: -30 },
+      { id: 'atl-mercedes', name: 'Mercedes-Benz Stadium', latitude: 33.7554, longitude: -84.4008, height: 350, heading: 0, pitch: -30 },
+      { id: 'atl-buckhead', name: 'Buckhead Financial Hub', latitude: 33.8482, longitude: -84.3734, height: 600, heading: 120, pitch: -35 },
+      { id: 'atl-airport', name: 'Hartsfield-Jackson (ATL)', latitude: 33.6407, longitude: -84.4277, height: 800, heading: 270, pitch: -25 }
+    ]
+  },
+  {
+    id: 'bremen',
+    name: 'Bremen & Haralson County',
+    state: 'GA',
+    badge: 'BREMEN, GA',
+    center: [-85.1474, 33.7212],
+    zoom: 15.8,
+    pitch: 55,
+    bearing: 40,
+    presets: [
+      { id: 'bremen-dt', name: 'Downtown Tallapoosa St', latitude: 33.7212, longitude: -85.1474, height: 300, heading: 45, pitch: -30 },
+      { id: 'bremen-us27', name: 'US-27 Gateway Corridor', latitude: 33.7128, longitude: -85.1382, height: 400, heading: 180, pitch: -35 },
+      { id: 'bremen-sports', name: 'Bremen High Complex', latitude: 33.7275, longitude: -85.1528, height: 350, heading: 90, pitch: -30 },
+      { id: 'haralson-ops', name: 'Haralson Emergency Ops', latitude: 33.7380, longitude: -85.1420, height: 450, heading: 15, pitch: -25 }
+    ]
+  }
 ];
+
+export const LA_PRESETS = CITY_REGIONS[0].presets;
 
 export const MOCK_INCIDENTS = [
   {

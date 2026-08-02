@@ -14,11 +14,15 @@ import {
   MOCK_CUAS_SENSORS,
   MOCK_ROGUE_DRONES,
   MOCK_CITIZEN_STREAMS,
+  CITY_REGIONS,
   LA_PRESETS
 } from './data/mockData';
 
 export default function App() {
   const mapRef = useRef(null);
+
+  // Active Spatial Region (Los Angeles, Atlanta GA, Bremen GA)
+  const [activeRegion, setActiveRegion] = useState(CITY_REGIONS[0]);
 
   // Workspace Mode: 'clean' (Pristine 3D Engine Canvas) or 'demo' (Public Safety PoC)
   const [workspaceMode, setWorkspaceMode] = useState('clean');
@@ -33,6 +37,13 @@ export default function App() {
 
   const [selectedCamera, setSelectedCamera] = useState(null);
   const [selectedIncident, setSelectedIncident] = useState(null);
+
+  const handleSelectRegion = (region) => {
+    setActiveRegion(region);
+    if (mapRef.current) {
+      mapRef.current.flyToLocation(region.center[1], region.center[0], region.zoom, region.pitch, region.bearing);
+    }
+  };
 
   // Map layer toggle states for Demo mode
   const [layers, setLayers] = useState({
@@ -92,6 +103,8 @@ export default function App() {
       <Header
         mode={workspaceMode}
         onToggleMode={setWorkspaceMode}
+        activeRegion={activeRegion}
+        onSelectRegion={handleSelectRegion}
         activeIncidentsCount={incidents.length}
         activeCamerasCount={cameras.filter(c => c.status === 'LIVE').length}
         activeUnitsCount={units.length + skydioDrones.length}
@@ -101,7 +114,11 @@ export default function App() {
 
       {workspaceMode === 'clean' ? (
         /* Pristine 3D Geospatial Engine Workspace (Zero Demo Noise) */
-        <CleanEngineCanvas onSelectSearchLocation={handleSelectSearchLocation} />
+        <CleanEngineCanvas 
+          key={activeRegion.id}
+          activeRegion={activeRegion} 
+          onSelectSearchLocation={handleSelectSearchLocation} 
+        />
       ) : (
         /* Public Safety Demo Scenario Workspace */
         <>

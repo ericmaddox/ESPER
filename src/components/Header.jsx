@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Shield, Eye, AlertTriangle, Maximize2, Activity } from 'lucide-react';
 import AddressSearch from './AddressSearch';
+import RegionSelector from './RegionSelector';
 
 export default function Header({ 
   mode = 'clean', 
   onToggleMode, 
+  activeRegion,
+  onSelectRegion,
   activeIncidentsCount, 
   activeCamerasCount, 
   activeUnitsCount, 
@@ -36,8 +39,12 @@ export default function Header({
           <div className="flex items-center space-x-2">
             <h1 className="text-base font-bold tracking-wider text-slate-100 uppercase">
               ESP<span className="text-cyan-400">ER</span>
-              <span className="text-xs font-normal px-2 py-0.5 ml-2 rounded bg-cyan-500/10 border border-cyan-500/30 text-cyan-300">3D ENGINE</span>
             </h1>
+
+            {/* Region Selector */}
+            {onSelectRegion && (
+              <RegionSelector activeRegion={activeRegion} onSelectRegion={onSelectRegion} />
+            )}
             
             {/* Workspace Mode Switcher */}
             {onToggleMode && (

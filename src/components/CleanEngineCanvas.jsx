@@ -5,19 +5,21 @@ import { MAP_STYLES, reverseGeocode } from '../engine';
 import { LA_PRESETS } from '../data/mockData';
 import { Compass, MapPin, Eye, MousePointer } from 'lucide-react';
 
-export default function CleanEngineCanvas({ onSelectSearchLocation }) {
+export default function CleanEngineCanvas({ activeRegion, onSelectSearchLocation }) {
   const engineRef = useRef(null);
   const [activeStyle, setActiveStyle] = useState(MAP_STYLES.DARK_TACTICAL);
   const [show3DBuildings, setShow3DBuildings] = useState(true);
   const [showTerrain, setShowTerrain] = useState(true);
 
+  const regionPresets = activeRegion?.presets || LA_PRESETS;
+
   // Live spatial cursor state
   const [cameraMetrics, setCameraMetrics] = useState({
-    lng: -118.2437,
-    lat: 34.0522,
-    zoom: 15.5,
-    pitch: 60,
-    bearing: 35
+    lng: activeRegion?.center ? activeRegion.center[0] : -118.2437,
+    lat: activeRegion?.center ? activeRegion.center[1] : 34.0522,
+    zoom: activeRegion?.zoom || 15.5,
+    pitch: activeRegion?.pitch || 60,
+    bearing: activeRegion?.bearing || 35
   });
 
   const [clickedLocation, setClickedLocation] = useState(null);
@@ -132,7 +134,7 @@ export default function CleanEngineCanvas({ onSelectSearchLocation }) {
         onToggleTerrain={handleToggleTerrain}
         currentPitch={cameraMetrics.pitch}
         onSetPitch={(pitch) => engineRef.current?.setPitch(pitch)}
-        presets={LA_PRESETS}
+        presets={regionPresets}
         onSelectPreset={handleSelectPreset}
       />
 
