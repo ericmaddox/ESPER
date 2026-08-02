@@ -57,6 +57,14 @@ const EngineViewport = forwardRef(({
       });
     },
 
+    setPitch: (pitchAngle) => {
+      if (!mapRef.current) return;
+      mapRef.current.easeTo({
+        pitch: pitchAngle,
+        duration: 1000
+      });
+    },
+
     setStyle: (styleConfig) => {
       const map = mapRef.current;
       if (!map) return;

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Layers, Mountain, Building2, Palette, Navigation, Crosshair, ChevronRight, ChevronLeft } from 'lucide-react';
+import { Layers, Mountain, Building2, Palette, Navigation, Crosshair, ChevronRight, ChevronLeft, Compass } from 'lucide-react';
 import { MAP_STYLES } from '../engine';
 
 export default function EngineToolbar({
@@ -9,6 +9,8 @@ export default function EngineToolbar({
   onToggle3DBuildings,
   showTerrain,
   onToggleTerrain,
+  currentPitch = 60,
+  onSetPitch,
   presets = [],
   onSelectPreset
 }) {
@@ -91,6 +93,39 @@ export default function EngineToolbar({
                 <span className="text-[10px]">{showTerrain ? 'ON' : 'OFF'}</span>
               </button>
             </div>
+          </div>
+
+          {/* 3D Pitch / Tilt Controls */}
+          <div>
+            <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1.5 flex items-center space-x-1">
+              <Compass className="w-3.5 h-3.5 text-cyan-400" />
+              <span>3D TILT / PITCH ANGLE</span>
+            </div>
+
+            <div className="grid grid-cols-4 gap-1">
+              {[
+                { label: '0° 2D', pitch: 0 },
+                { label: '45°', pitch: 45 },
+                { label: '60° 3D', pitch: 60 },
+                { label: '75°', pitch: 75 }
+              ].map((item) => (
+                <button
+                  key={item.pitch}
+                  onClick={() => onSetPitch && onSetPitch(item.pitch)}
+                  className={`py-1 rounded text-center font-bold transition-all text-[10px] ${
+                    Math.round(currentPitch) === item.pitch
+                      ? 'bg-cyan-500/25 text-cyan-300 border border-cyan-400/50'
+                      : 'bg-slate-900/60 text-slate-400 hover:text-slate-200 border border-slate-800'
+                  }`}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
+            
+            <p className="text-[9px] text-slate-500 mt-1">
+              💡 Tip: Right-click + Drag or Ctrl + Drag to tilt manually.
+            </p>
           </div>
 
           {/* 3D Camera Presets */}

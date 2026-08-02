@@ -122,6 +122,8 @@ export default function CleanEngineCanvas({ onSelectSearchLocation }) {
         onToggle3DBuildings={handleToggle3DBuildings}
         showTerrain={showTerrain}
         onToggleTerrain={handleToggleTerrain}
+        currentPitch={cameraMetrics.pitch}
+        onSetPitch={(pitch) => engineRef.current?.setPitch(pitch)}
         presets={LA_PRESETS}
         onSelectPreset={handleSelectPreset}
       />
