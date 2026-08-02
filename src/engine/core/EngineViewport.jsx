@@ -119,16 +119,13 @@ const EngineViewport = forwardRef(({
       const center = mapRef.current.getCenter();
       const solar = getSolarPosition(new Date(), center.lat, center.lng);
       
-      // Clamp polar angle so light source is always above horizon (10° to 82°)
-      const clampedAltitude = Math.max(8, solar.altitude);
-      const polarAngle = Math.min(82, Math.max(10, 90 - clampedAltitude));
-
       try {
+        // Keep light neutral & crisp so vector land layers maintain pristine dark tactical navy hex colors
         mapRef.current.setLight({
-          anchor: 'viewport',
-          color: solar.lightColor,
-          intensity: solar.intensity,
-          position: [1.5, solar.azimuth, polarAngle]
+          anchor: 'map',
+          color: '#ffffff',
+          intensity: 0.15,
+          position: [1.15, solar.azimuth || 210, 30]
         });
       } catch (e) {
         // Light property ignored on basic styles
