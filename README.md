@@ -97,16 +97,31 @@ ESPER/
 │   ├── hero-map.png             # Main 3D viewport screenshot
 │   └── camera-stream-modal.png  # Live HLS CCTV stream modal screenshot
 ├── src/
+│   ├── engine/                  # 🌐 Modular 3D Geospatial Engine Core
+│   │   ├── core/
+│   │   │   ├── EngineViewport.jsx # WebGL MapLibre 3D viewport orchestrator
+│   │   │   ├── LayerManager.js   # Declarative GeoJSON & 3D extrusion layer manager
+│   │   │   ├── MarkerManager.js  # Safe DOM marker & popup lifecycle manager
+│   │   │   └── StyleManager.js   # Map style themes (Dark Tactical, NVG, High Contrast)
+│   │   ├── math/
+│   │   │   └── geoMath.js        # Spatial math (geodesic circles, FOV cones, distance)
+│   │   ├── services/
+│   │   │   └── geocodingService.js # OpenStreetMap Nominatim spatial search API
+│   │   ├── hooks/
+│   │   │   └── useEngine.js      # React hook interface for engine controls
+│   │   └── index.js              # Core engine barrel exports
 │   ├── components/
-│   │   ├── Header.jsx           # Top HUD navbar with metrics & clock
+│   │   ├── CleanEngineCanvas.jsx # Pristine, zero-noise 3D geospatial canvas UI
+│   │   ├── EngineToolbar.jsx     # Engine controls (Terrain, 3D extrusions, themes)
+│   │   ├── Header.jsx           # Top HUD navbar with workspace mode switcher
 │   │   ├── AddressSearch.jsx    # Real-time address geocoding search bar
-│   │   ├── MapView.jsx          # MapLibre GL JS 3D viewport & markers
+│   │   ├── MapView.jsx          # Demo scenario 3D map viewport
 │   │   ├── CommandSidebar.jsx   # Tactical dispatch panel & search
 │   │   ├── LayerToolbar.jsx     # Collapsible tactical map layer toggles & presets
 │   │   └── VideoFeedModal.jsx   # HLS .m3u8 video player & PTZ controls
 │   ├── data/
 │   │   └── mockData.js          # Scraped Caltrans D7 camera & incident feeds
-│   ├── App.jsx                  # Main state orchestrator
+│   ├── App.jsx                  # Main application orchestrator & workspace mode state
 │   ├── index.css                # Global styles, glassmorphism & HUD overlays
 │   └── main.jsx                 # Application entrypoint
 ├── index.html                   # HTML shell & font definitions

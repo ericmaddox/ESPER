@@ -4,6 +4,7 @@ import MapView from './components/MapView';
 import CommandSidebar from './components/CommandSidebar';
 import LayerToolbar from './components/LayerToolbar';
 import VideoFeedModal from './components/VideoFeedModal';
+import CleanEngineCanvas from './components/CleanEngineCanvas';
 
 import {
   MOCK_INCIDENTS,
@@ -19,6 +20,9 @@ import {
 export default function App() {
   const mapRef = useRef(null);
 
+  // Workspace Mode: 'clean' (Pristine 3D Engine Canvas) or 'demo' (Public Safety PoC)
+  const [workspaceMode, setWorkspaceMode] = useState('clean');
+
   const [incidents] = useState(MOCK_INCIDENTS);
   const [cameras] = useState(MOCK_CAMERAS);
   const [units] = useState(MOCK_UNITS);
@@ -30,7 +34,7 @@ export default function App() {
   const [selectedCamera, setSelectedCamera] = useState(null);
   const [selectedIncident, setSelectedIncident] = useState(null);
 
-  // Map layer toggle states
+  // Map layer toggle states for Demo mode
   const [layers, setLayers] = useState({
     buildings: true,
     cameras: true,
@@ -86,6 +90,8 @@ export default function App() {
     <div className="relative w-screen h-screen overflow-hidden bg-slate-950">
       {/* Top HUD Header */}
       <Header
+        mode={workspaceMode}
+        onToggleMode={setWorkspaceMode}
         activeIncidentsCount={incidents.length}
         activeCamerasCount={cameras.filter(c => c.status === 'LIVE').length}
         activeUnitsCount={units.length + skydioDrones.length}
@@ -93,53 +99,57 @@ export default function App() {
         onSelectLocation={handleSelectSearchLocation}
       />
 
-      {/* 3D MapLibre Map Viewport */}
-      <MapView
-        ref={mapRef}
-        incidents={incidents}
-        cameras={cameras}
-        units={units}
-        skydioDrones={skydioDrones}
-        cuasSensors={cuasSensors}
-        rogueDrones={rogueDrones}
-        citizenStreams={citizenStreams}
-        layers={layers}
-        onSelectCamera={setSelectedCamera}
-        onSelectIncident={setSelectedIncident}
-      />
+      {workspaceMode === 'clean' ? (
+        /* Pristine 3D Geospatial Engine Workspace (Zero Demo Noise) */
+        <CleanEngineCanvas onSelectSearchLocation={handleSelectSearchLocation} />
+      ) : (
+        /* Public Safety Demo Scenario Workspace */
+        <>
+          <MapView
+            ref={mapRef}
+            incidents={incidents}
+            cameras={cameras}
+            units={units}
+            skydioDrones={skydioDrones}
+            cuasSensors={cuasSensors}
+            rogueDrones={rogueDrones}
+            citizenStreams={citizenStreams}
+            layers={layers}
+            onSelectCamera={setSelectedCamera}
+            onSelectIncident={setSelectedIncident}
+          />
 
-      {/* Left Tactical Command Sidebar */}
-      <CommandSidebar
-        incidents={incidents}
-        cameras={cameras}
-        units={units}
-        skydioDrones={skydioDrones}
-        cuasSensors={cuasSensors}
-        rogueDrones={rogueDrones}
-        citizenStreams={citizenStreams}
-        laPresets={LA_PRESETS}
-        onFlyToPreset={handleFlyToPreset}
-        onSelectCamera={setSelectedCamera}
-        onFlyToIncident={handleFlyToIncident}
-        onFlyToLocation={handleFlyToLocation}
-        selectedIncident={selectedIncident}
-        selectedCamera={selectedCamera}
-      />
+          <CommandSidebar
+            incidents={incidents}
+            cameras={cameras}
+            units={units}
+            skydioDrones={skydioDrones}
+            cuasSensors={cuasSensors}
+            rogueDrones={rogueDrones}
+            citizenStreams={citizenStreams}
+            laPresets={LA_PRESETS}
+            onFlyToPreset={handleFlyToPreset}
+            onSelectCamera={setSelectedCamera}
+            onFlyToIncident={handleFlyToIncident}
+            onFlyToLocation={handleFlyToLocation}
+            selectedIncident={selectedIncident}
+            selectedCamera={selectedCamera}
+          />
 
-      {/* Right Layer & Camera Toolbar */}
-      <LayerToolbar
-        layers={layers}
-        onToggleLayer={handleToggleLayer}
-        onFlyToPreset={handleFlyToPreset}
-        laPresets={LA_PRESETS}
-      />
+          <LayerToolbar
+            layers={layers}
+            onToggleLayer={handleToggleLayer}
+            onFlyToPreset={handleFlyToPreset}
+            laPresets={LA_PRESETS}
+          />
 
-      {/* Tactical CCTV Video Feed Modal */}
-      {selectedCamera && (
-        <VideoFeedModal
-          camera={selectedCamera}
-          onClose={() => setSelectedCamera(null)}
-        />
+          {selectedCamera && (
+            <VideoFeedModal
+              camera={selectedCamera}
+              onClose={() => setSelectedCamera(null)}
+            />
+          )}
+        </>
       )}
     </div>
   );

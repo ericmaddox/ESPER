@@ -2,7 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { Shield, Eye, AlertTriangle, Maximize2, Activity } from 'lucide-react';
 import AddressSearch from './AddressSearch';
 
-export default function Header({ activeIncidentsCount, activeCamerasCount, activeUnitsCount, toggleFullscreen, onSelectLocation }) {
+export default function Header({ 
+  mode = 'clean', 
+  onToggleMode, 
+  activeIncidentsCount, 
+  activeCamerasCount, 
+  activeUnitsCount, 
+  toggleFullscreen, 
+  onSelectLocation 
+}) {
   const [time, setTime] = useState('');
   const [date, setDate] = useState('');
 
@@ -28,15 +36,37 @@ export default function Header({ activeIncidentsCount, activeCamerasCount, activ
           <div className="flex items-center space-x-2">
             <h1 className="text-base font-bold tracking-wider text-slate-100 uppercase">
               ESP<span className="text-cyan-400">ER</span>
-              <span className="text-xs font-normal px-2 py-0.5 ml-2 rounded bg-cyan-500/10 border border-cyan-500/30 text-cyan-300">LOS ANGELES</span>
+              <span className="text-xs font-normal px-2 py-0.5 ml-2 rounded bg-cyan-500/10 border border-cyan-500/30 text-cyan-300">3D ENGINE</span>
             </h1>
-            <span className="flex items-center space-x-1 text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 hidden lg:inline-flex">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-              <span>REAL TIME OPERATIONS</span>
-            </span>
+            
+            {/* Workspace Mode Switcher */}
+            {onToggleMode && (
+              <div className="flex items-center bg-slate-950 p-0.5 rounded border border-cyan-500/30 text-[10px] font-mono">
+                <button
+                  onClick={() => onToggleMode('clean')}
+                  className={`px-2 py-0.5 rounded transition-all font-bold ${
+                    mode === 'clean'
+                      ? 'bg-cyan-500/30 text-cyan-200 border border-cyan-400/50 shadow'
+                      : 'text-slate-400 hover:text-slate-200'
+                  }`}
+                >
+                  CLEAN ENGINE
+                </button>
+                <button
+                  onClick={() => onToggleMode('demo')}
+                  className={`px-2 py-0.5 rounded transition-all font-bold ${
+                    mode === 'demo'
+                      ? 'bg-purple-500/30 text-purple-200 border border-purple-400/50 shadow'
+                      : 'text-slate-400 hover:text-slate-200'
+                  }`}
+                >
+                  DEMO SCENARIO
+                </button>
+              </div>
+            )}
           </div>
           <p className="text-[11px] text-slate-400 font-mono tracking-tight hidden xl:block">
-            REAL-TIME 3D SITUATIONAL AWARENESS // OPEN-SOURCE
+            {mode === 'clean' ? 'PRISTINE 3D GEOSPATIAL ENGINE CANVAS' : 'REAL-TIME 3D SITUATIONAL AWARENESS DEMO'}
           </p>
         </div>
       </div>
@@ -46,24 +76,26 @@ export default function Header({ activeIncidentsCount, activeCamerasCount, activ
         <AddressSearch onSelectLocation={onSelectLocation} />
       </div>
 
-      {/* Telemetry Metrics */}
-      <div className="hidden lg:flex items-center space-x-4 text-xs font-mono">
-        <div className="flex items-center space-x-2 px-3 py-1.5 rounded bg-slate-900/60 border border-slate-800">
-          <AlertTriangle className="w-4 h-4 text-red-400 animate-pulse" />
-          <div>
-            <span className="text-slate-400 text-[10px] uppercase block leading-none">ACTIVE INCIDENTS</span>
-            <span className="text-red-400 font-bold text-sm leading-tight">{activeIncidentsCount}</span>
+      {/* Telemetry Metrics (Visible in Demo mode) */}
+      {mode === 'demo' && (
+        <div className="hidden lg:flex items-center space-x-4 text-xs font-mono">
+          <div className="flex items-center space-x-2 px-3 py-1.5 rounded bg-slate-900/60 border border-slate-800">
+            <AlertTriangle className="w-4 h-4 text-red-400 animate-pulse" />
+            <div>
+              <span className="text-slate-400 text-[10px] uppercase block leading-none">ACTIVE INCIDENTS</span>
+              <span className="text-red-400 font-bold text-sm leading-tight">{activeIncidentsCount}</span>
+            </div>
           </div>
-        </div>
 
-        <div className="flex items-center space-x-2 px-3 py-1.5 rounded bg-slate-900/60 border border-slate-800">
-          <Eye className="w-4 h-4 text-cyan-400" />
-          <div>
-            <span className="text-slate-400 text-[10px] uppercase block leading-none">CCTV NODES</span>
-            <span className="text-cyan-400 font-bold text-sm leading-tight">{activeCamerasCount} ONLINE</span>
+          <div className="flex items-center space-x-2 px-3 py-1.5 rounded bg-slate-900/60 border border-slate-800">
+            <Eye className="w-4 h-4 text-cyan-400" />
+            <div>
+              <span className="text-slate-400 text-[10px] uppercase block leading-none">CCTV NODES</span>
+              <span className="text-cyan-400 font-bold text-sm leading-tight">{activeCamerasCount} ONLINE</span>
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
       {/* Time & Quick Actions */}
       <div className="flex items-center space-x-3">
