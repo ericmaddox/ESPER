@@ -86,8 +86,9 @@ export class LayerManager {
    * Configures 3D Building Extrusions with height-based color graduation,
    * vertical gradient ambient occlusion, and tall building highlight layer
    */
-  setup3DBuildings(enabled = true, color = '#152238', edgeColor = '#00f3ff') {
+  setup3DBuildings(enabled = true, color = '#152238', edgeColor = '#00f3ff', isSatellite = false) {
     if (!this.map) return;
+    const opacity = isSatellite ? 0.55 : 0.88;
     try {
       // ── Primary 3D Building Extrusions (height-graduated color ramp) ──
       if (!this.map.getLayer('3d-buildings')) {
@@ -112,7 +113,7 @@ export class LayerManager {
               15, ['coalesce', ['get', 'render_height'], 10]
             ],
             'fill-extrusion-base': ['coalesce', ['get', 'render_min_height'], 0],
-            'fill-extrusion-opacity': 0.88,
+            'fill-extrusion-opacity': opacity,
             'fill-extrusion-vertical-gradient': true
           }
         });
@@ -125,6 +126,7 @@ export class LayerManager {
           120, this._lightenHex(color, 45),
           250, edgeColor
         ]);
+        this.map.setPaintProperty('3d-buildings', 'fill-extrusion-opacity', opacity);
         this.map.setPaintProperty('3d-buildings', 'fill-extrusion-vertical-gradient', true);
       }
 

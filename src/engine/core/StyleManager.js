@@ -379,5 +379,154 @@ export const MAP_STYLES = {
         }
       ]
     }
+  },
+
+  SATELLITE_3D: {
+    id: 'satellite-3d',
+    name: 'Satellite 3D (Esri)',
+    backgroundColor: '#000000',
+    skyColor: '#1e3a8a',
+    horizonColor: '#38bdf8',
+    fogColor: '#0a0f1d',
+    waterColor: '#0c4a6e',
+    parkColor: '#14532d',
+    accentColor: '#10b981',
+    buildingColor: '#0f172a',
+    buildingEdgeColor: '#38bdf8',
+    labelColor: '#ffffff',
+    labelHaloColor: '#000000',
+    isSatellite: true,
+    style: {
+      version: 8,
+      name: 'ESPER Esri Satellite 3D',
+      sources: {
+        'esri-satellite': {
+          type: 'raster',
+          tiles: [
+            'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'
+          ],
+          tileSize: 256,
+          maxzoom: 19,
+          attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+        },
+        openmaptiles: {
+          type: 'vector',
+          url: 'https://tiles.openfreemap.org/planet'
+        },
+        terrain: {
+          type: 'raster-dem',
+          tiles: ['https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png'],
+          tileSize: 256,
+          encoding: 'terrarium',
+          maxzoom: 15
+        }
+      },
+      glyphs: 'https://tiles.openfreemap.org/fonts/{fontstack}/{range}.pbf',
+      sprite: 'https://tiles.openfreemap.org/sprites/liberty',
+      terrain: {
+        source: 'terrain',
+        exaggeration: 1.3
+      },
+      sky: {
+        'sky-color': '#1e3a8a',
+        'horizon-color': '#38bdf8',
+        'fog-color': '#0a0f1d',
+        'sky-horizon-blend': 0.5
+      },
+      layers: [
+        { id: 'background', type: 'background', paint: { 'background-color': '#000000' } },
+        {
+          id: 'esri-satellite-layer',
+          type: 'raster',
+          source: 'esri-satellite',
+          paint: {
+            'raster-opacity': 1.0,
+            'raster-fade-duration': 300
+          }
+        },
+        {
+          id: 'road-overlay',
+          type: 'line',
+          source: 'openmaptiles',
+          'source-layer': 'transportation',
+          filter: ['==', '$type', 'LineString'],
+          minzoom: 10,
+          paint: {
+            'line-color': '#ffffff',
+            'line-width': ['interpolate', ['linear'], ['zoom'], 10, 0.8, 15, 2.5, 18, 6],
+            'line-opacity': 0.4
+          }
+        },
+        // ── Street / Road Name Labels ──
+        {
+          id: 'road-label',
+          type: 'symbol',
+          source: 'openmaptiles',
+          'source-layer': 'transportation_name',
+          minzoom: 13,
+          layout: {
+            'text-field': ['get', 'name'],
+            'text-font': ['Open Sans Bold'],
+            'text-size': ['interpolate', ['linear'], ['zoom'], 13, 9, 16, 12, 18, 14],
+            'symbol-placement': 'line',
+            'text-rotation-alignment': 'map',
+            'text-pitch-alignment': 'viewport',
+            'text-max-angle': 30,
+            'text-padding': 4
+          },
+          paint: {
+            'text-color': '#ffffff',
+            'text-halo-color': '#000000',
+            'text-halo-width': 2.0,
+            'text-opacity': ['interpolate', ['linear'], ['zoom'], 13, 0.7, 16, 1.0]
+          }
+        },
+        // ── POI / Business / Landmark Labels ──
+        {
+          id: 'poi-label',
+          type: 'symbol',
+          source: 'openmaptiles',
+          'source-layer': 'poi',
+          minzoom: 15,
+          layout: {
+            'text-field': ['get', 'name'],
+            'text-font': ['Open Sans Bold'],
+            'text-size': ['interpolate', ['linear'], ['zoom'], 15, 9, 18, 12],
+            'text-anchor': 'top',
+            'text-offset': [0, 0.8],
+            'text-max-width': 9,
+            'text-optional': true,
+            'text-allow-overlap': false
+          },
+          paint: {
+            'text-color': '#38bdf8',
+            'text-halo-color': '#000000',
+            'text-halo-width': 2.0,
+            'text-opacity': 0.95
+          }
+        },
+        // ── City / Place Name Labels ──
+        {
+          id: 'place-label',
+          type: 'symbol',
+          source: 'openmaptiles',
+          'source-layer': 'place',
+          minzoom: 5,
+          layout: {
+            'text-field': ['get', 'name'],
+            'text-font': ['Open Sans Bold'],
+            'text-size': ['interpolate', ['linear'], ['zoom'], 5, 11, 8, 15, 12, 20, 15, 24],
+            'text-anchor': 'center',
+            'text-max-width': 8
+          },
+          paint: {
+            'text-color': '#ffffff',
+            'text-halo-color': '#000000',
+            'text-halo-width': 2.5,
+            'text-opacity': ['interpolate', ['linear'], ['zoom'], 5, 0.8, 10, 1]
+          }
+        }
+      ]
+    }
   }
 };

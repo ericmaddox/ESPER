@@ -136,7 +136,12 @@ const EngineViewport = forwardRef(({
 
     map.on('load', () => {
       if (enable3DBuildings && layerManagerRef.current) {
-        layerManagerRef.current.setup3DBuildings(true);
+        layerManagerRef.current.setup3DBuildings(
+          true,
+          stylePreset.buildingColor,
+          stylePreset.buildingEdgeColor,
+          stylePreset.isSatellite
+        );
       }
       updateSolarLighting();
       if (onMapLoad) onMapLoad(map, layerManagerRef.current, markerManagerRef.current);

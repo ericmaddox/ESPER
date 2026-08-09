@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Layers, Mountain, Building2, Palette, Navigation, Crosshair, ChevronRight, ChevronLeft, Compass, Type } from 'lucide-react';
+import { Layers, Mountain, Building2, Palette, Navigation, Crosshair, ChevronRight, ChevronLeft, Compass, Type, Globe } from 'lucide-react';
 import { MAP_STYLES } from '../engine';
 
 export default function EngineToolbar({
@@ -46,11 +46,16 @@ export default function EngineToolbar({
                   onClick={() => onSelectStyle(style)}
                   className={`w-full px-2.5 py-1.5 rounded text-left flex items-center justify-between transition-all ${
                     activeStyle.id === style.id
-                      ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 font-bold'
+                      ? style.isSatellite
+                        ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-bold'
+                        : 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 font-bold'
                       : 'bg-slate-900/40 text-slate-400 hover:text-slate-200 border border-transparent'
                   }`}
                 >
-                  <span>{style.name}</span>
+                  <div className="flex items-center space-x-1.5">
+                    {style.isSatellite && <Globe className="w-3 h-3 text-emerald-400" />}
+                    <span>{style.name}</span>
+                  </div>
                   <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: style.accentColor }}></span>
                 </button>
               ))}
