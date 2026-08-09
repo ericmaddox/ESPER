@@ -120,9 +120,32 @@ const MapView = forwardRef(({
   // Handlers for Engine Controls Toolbar
   const handleSelectStyle = (style) => {
     setActiveStyle(style);
-    if (mapRef.current) {
-      mapRef.current.setStyle(style.style);
-    }
+    const map = mapRef.current;
+    if (!map) return;
+
+    const applyTheme = () => {
+      if (!map.isStyleLoaded()) {
+        map.once('styledata', applyTheme);
+        return;
+      }
+      if (layerManagerRef.current) {
+        layerManagerRef.current.setup3DBuildings(
+          show3DBuildings,
+          style.buildingColor,
+          style.buildingEdgeColor,
+          style.isSatellite
+        );
+        layerManagerRef.current.setLabelsVisibility(showLabels);
+      }
+      if (showTerrain && map.getSource('terrain')) {
+        try {
+          map.setTerrain({ source: 'terrain', exaggeration: 1.3 });
+        } catch (e) {}
+      }
+    };
+
+    map.once('styledata', applyTheme);
+    map.setStyle(style.style);
   };
 
   const handleToggle3DBuildings = () => {
@@ -311,28 +334,7 @@ const MapView = forwardRef(({
     };
   }, []);
 
-  // Re-apply 3D buildings and labels when style changes
-  useEffect(() => {
-    const map = mapRef.current;
-    if (!map) return;
 
-    const onStyleData = () => {
-      if (layerManagerRef.current) {
-        layerManagerRef.current.setup3DBuildings(
-          show3DBuildings,
-          activeStyle.buildingColor,
-          activeStyle.buildingEdgeColor,
-          activeStyle.isSatellite
-        );
-        layerManagerRef.current.setLabelsVisibility(showLabels);
-      }
-    };
-
-    map.on('styledata', onStyleData);
-    return () => {
-      map.off('styledata', onStyleData);
-    };
-  }, [activeStyle, show3DBuildings, showLabels]);
 
   useEffect(() => {
     const map = mapRef.current;

@@ -72,17 +72,24 @@ const EngineViewport = forwardRef(({
       if (!map) return;
 
       const applyTheme = () => {
-        if (layerManagerRef.current && enable3DBuildings) {
+        if (!map.isStyleLoaded()) {
+          map.once('styledata', applyTheme);
+          return;
+        }
+        if (layerManagerRef.current) {
           const buildingColor = styleConfig.buildingColor || '#152238';
           const edgeColor = styleConfig.buildingEdgeColor || '#00f3ff';
-          layerManagerRef.current.setup3DBuildings(true, buildingColor, edgeColor);
+          const isSatellite = !!styleConfig.isSatellite;
+          layerManagerRef.current.setup3DBuildings(enable3DBuildings, buildingColor, edgeColor, isSatellite);
         }
-        if (enableTerrain) {
-          map.setTerrain({ source: 'terrain', exaggeration: 1.3 });
+        if (enableTerrain && map.getSource('terrain')) {
+          try {
+            map.setTerrain({ source: 'terrain', exaggeration: 1.3 });
+          } catch (e) {}
         }
       };
 
-      map.once('style.load', applyTheme);
+      map.once('styledata', applyTheme);
       map.setStyle(styleConfig.style);
     }
   }));
