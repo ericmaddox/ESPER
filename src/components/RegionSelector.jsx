@@ -27,7 +27,8 @@ export default function RegionSelector({ activeRegion = CITY_REGIONS[0], onSelec
   const filtered = CITY_REGIONS.filter((r) =>
     r.name.toLowerCase().includes(search.toLowerCase()) ||
     r.badge.toLowerCase().includes(search.toLowerCase()) ||
-    r.state?.toLowerCase().includes(search.toLowerCase())
+    r.state?.toLowerCase().includes(search.toLowerCase()) ||
+    r.country?.toLowerCase().includes(search.toLowerCase())
   );
 
   return (

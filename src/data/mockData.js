@@ -133,6 +133,7 @@ export const CITY_REGIONS = [
     id: 'seattle',
     name: 'Seattle Metro Area',
     state: 'WA',
+    country: 'USA',
     badge: 'SEATTLE, WA',
     center: [-122.3321, 47.6062],
     zoom: 15.5,
@@ -142,6 +143,138 @@ export const CITY_REGIONS = [
       { id: 'sea-needle', name: 'Space Needle & Center', latitude: 47.6205, longitude: -122.3493, height: 550, heading: 135, pitch: -35 },
       { id: 'sea-downtown', name: 'Amazon Spheres / Denny', latitude: 47.6157, longitude: -122.3397, height: 500, heading: 45, pitch: -30 },
       { id: 'sea-waterfront', name: 'Elliott Bay Waterfront', latitude: 47.6050, longitude: -122.3400, height: 400, heading: 60, pitch: -25 }
+    ]
+  },
+
+  // ── Global International Regions ──
+  {
+    id: 'tokyo',
+    name: 'Tokyo Metropolis',
+    state: 'Kanto',
+    country: 'Japan',
+    badge: 'TOKYO, JPN',
+    center: [139.6917, 35.6895],
+    zoom: 15.5,
+    pitch: 60,
+    bearing: 30,
+    presets: [
+      { id: 'tyo-shinjuku', name: 'Shinjuku Skyscraper Hub', latitude: 35.6895, longitude: 139.6917, height: 750, heading: 45, pitch: -35 },
+      { id: 'tyo-shibuya', name: 'Shibuya Crossing & Tower', latitude: 35.6595, longitude: 139.7004, height: 500, heading: 180, pitch: -30 },
+      { id: 'tyo-tower', name: 'Tokyo Tower & Roppongi', latitude: 35.6586, longitude: 139.7454, height: 600, heading: 330, pitch: -35 },
+      { id: 'tyo-ginza', name: 'Ginza Commercial Hub', latitude: 35.6718, longitude: 139.7650, height: 450, heading: 90, pitch: -30 }
+    ]
+  },
+  {
+    id: 'london',
+    name: 'Greater London',
+    state: 'England',
+    country: 'United Kingdom',
+    badge: 'LONDON, GBR',
+    center: [-0.1276, 51.5074],
+    zoom: 15.5,
+    pitch: 60,
+    bearing: 20,
+    presets: [
+      { id: 'ldn-shard', name: 'The Shard & Southwark', latitude: 51.5045, longitude: -0.0865, height: 700, heading: 45, pitch: -35 },
+      { id: 'ldn-city', name: 'City of London (Financial)', latitude: 51.5128, longitude: -0.0918, height: 600, heading: 180, pitch: -30 },
+      { id: 'ldn-westminster', name: 'Big Ben & Westminster', latitude: 51.5007, longitude: -0.1246, height: 450, heading: 270, pitch: -25 },
+      { id: 'ldn-canary', name: 'Canary Wharf Docklands', latitude: 51.5050, longitude: -0.0200, height: 650, heading: 120, pitch: -35 }
+    ]
+  },
+  {
+    id: 'paris',
+    name: 'Paris Metropolis',
+    state: 'Île-de-France',
+    country: 'France',
+    badge: 'PARIS, FRA',
+    center: [2.3522, 48.8566],
+    zoom: 15.5,
+    pitch: 60,
+    bearing: 40,
+    presets: [
+      { id: 'par-eiffel', name: 'Eiffel Tower & Champ de Mars', latitude: 48.8584, longitude: 2.2945, height: 650, heading: 45, pitch: -35 },
+      { id: 'par-defense', name: 'La Défense Financial Hub', latitude: 48.8924, longitude: 2.2361, height: 700, heading: 135, pitch: -35 },
+      { id: 'par-louvre', name: 'Louvre & Seine Corridor', latitude: 48.8606, longitude: 2.3376, height: 450, heading: 220, pitch: -25 }
+    ]
+  },
+  {
+    id: 'dubai',
+    name: 'Dubai Emirate',
+    state: 'Dubai',
+    country: 'United Arab Emirates',
+    badge: 'DUBAI, UAE',
+    center: [55.2708, 25.2048],
+    zoom: 15.5,
+    pitch: 60,
+    bearing: 15,
+    presets: [
+      { id: 'dxb-burj', name: 'Burj Khalifa & Downtown', latitude: 25.1972, longitude: 55.2744, height: 950, heading: 45, pitch: -40 },
+      { id: 'dxb-marina', name: 'Dubai Marina Skylines', latitude: 25.0805, longitude: 55.1403, height: 700, heading: 180, pitch: -35 },
+      { id: 'dxb-palm', name: 'Palm Jumeirah Gateway', latitude: 25.1124, longitude: 55.1390, height: 800, heading: 330, pitch: -30 }
+    ]
+  },
+  {
+    id: 'singapore',
+    name: 'Singapore City-State',
+    state: 'Central',
+    country: 'Singapore',
+    badge: 'SINGAPORE, SGP',
+    center: [103.8198, 1.3521],
+    zoom: 15.5,
+    pitch: 60,
+    bearing: 25,
+    presets: [
+      { id: 'sgp-mbs', name: 'Marina Bay Sands & Bay', latitude: 1.2838, longitude: 103.8591, height: 600, heading: 45, pitch: -35 },
+      { id: 'sgp-fidi', name: 'Raffles Place Financial', latitude: 1.2841, longitude: 103.8515, height: 650, heading: 180, pitch: -30 },
+      { id: 'sgp-gardens', name: 'Gardens by the Bay', latitude: 1.2815, longitude: 103.8636, height: 450, heading: 270, pitch: -25 }
+    ]
+  },
+  {
+    id: 'sydney',
+    name: 'Greater Sydney',
+    state: 'NSW',
+    country: 'Australia',
+    badge: 'SYDNEY, AUS',
+    center: [151.2093, -33.8688],
+    zoom: 15.5,
+    pitch: 60,
+    bearing: 35,
+    presets: [
+      { id: 'syd-opera', name: 'Opera House & Harbour', latitude: -33.8568, longitude: 151.2153, height: 550, heading: 135, pitch: -30 },
+      { id: 'syd-barangaroo', name: 'Barangaroo Financial', latitude: -33.8643, longitude: 151.2014, height: 650, heading: 45, pitch: -35 },
+      { id: 'syd-cbd', name: 'Sydney CBD Skyline', latitude: -33.8708, longitude: 151.2073, height: 600, heading: 220, pitch: -30 }
+    ]
+  },
+  {
+    id: 'berlin',
+    name: 'Berlin Metropolis',
+    state: 'Berlin',
+    country: 'Germany',
+    badge: 'BERLIN, DEU',
+    center: [13.4050, 52.5200],
+    zoom: 15.5,
+    pitch: 60,
+    bearing: 10,
+    presets: [
+      { id: 'ber-alex', name: 'Alexanderplatz & Fernsehturm', latitude: 52.5219, longitude: 13.4132, height: 600, heading: 45, pitch: -35 },
+      { id: 'ber-brandenburg', name: 'Brandenburg Gate & Reichstag', latitude: 52.5163, longitude: 13.3777, height: 400, heading: 270, pitch: -25 },
+      { id: 'ber-potsdamer', name: 'Potsdamer Platz Hub', latitude: 52.5096, longitude: 13.3759, height: 500, heading: 180, pitch: -30 }
+    ]
+  },
+  {
+    id: 'toronto',
+    name: 'Greater Toronto Area',
+    state: 'ON',
+    country: 'Canada',
+    badge: 'TORONTO, CAN',
+    center: [-79.3832, 43.6532],
+    zoom: 15.5,
+    pitch: 60,
+    bearing: 25,
+    presets: [
+      { id: 'yto-cntower', name: 'CN Tower & Financial Core', latitude: 43.6426, longitude: -79.3871, height: 750, heading: 45, pitch: -35 },
+      { id: 'yto-harbour', name: 'Harbourfront & Lakefront', latitude: 43.6393, longitude: -79.3807, height: 500, heading: 330, pitch: -30 },
+      { id: 'yto-yorkville', name: 'Yorkville High-Rise Hub', latitude: 43.6702, longitude: -79.3912, height: 600, heading: 180, pitch: -35 }
     ]
   }
 ];
