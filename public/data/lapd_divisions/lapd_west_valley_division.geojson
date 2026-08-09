@@ -1,0 +1,177 @@
+{
+  "type": "FeatureCollection",
+  "name": "West Valley Division (LAPD DIV-10) - FususONE 3D Layer",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+    }
+  },
+  "metadata": {
+    "divisionId": "DIV-10",
+    "divisionName": "West Valley Division",
+    "bureau": "Valley Bureau",
+    "code": "WEST_VALLEY",
+    "station": {
+      "name": "West Valley Community Police Station",
+      "address": "19020 Vanowen St, Reseda, CA 91335",
+      "phone": "(818) 374-7682",
+      "lat": 34.1935,
+      "lng": -118.5482
+    },
+    "center": [
+      -118.54,
+      34.19
+    ],
+    "fususOneCompatible": true,
+    "optimization": "FususONE RTCC Compliant (Height Filtered + Low Polygon Vertex Bloat)"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BOUNDARY",
+        "id": "WEST_VALLEY_BOUNDARY",
+        "name": "West Valley Division Boundary",
+        "bureau": "Valley Bureau",
+        "division": "West Valley Division",
+        "strokeColor": "#00f3ff",
+        "strokeWidth": 3,
+        "fillColor": "#00f3ff",
+        "fillOpacity": 0.08
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.58,
+              34.15
+            ],
+            [
+              -118.58,
+              34.225
+            ],
+            [
+              -118.485,
+              34.225
+            ],
+            [
+              -118.485,
+              34.15
+            ],
+            [
+              -118.58,
+              34.15
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "STATION",
+        "id": "WEST_VALLEY_STATION",
+        "name": "West Valley Community Police Station",
+        "address": "19020 Vanowen St, Reseda, CA 91335",
+        "phone": "(818) 374-7682",
+        "division": "West Valley Division",
+        "bureau": "Valley Bureau",
+        "icon": "police-station",
+        "markerColor": "#3b82f6"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.5482,
+          34.1935
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "WEST_VALLEY_LM_1",
+        "name": "Reseda Town Center Tower",
+        "height": 32,
+        "min_height": 0,
+        "render_height": 32,
+        "render_min_height": 0,
+        "division": "West Valley Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.538,
+              34.1926
+            ],
+            [
+              -118.53500000000001,
+              34.1926
+            ],
+            [
+              -118.53500000000001,
+              34.1956
+            ],
+            [
+              -118.538,
+              34.1956
+            ],
+            [
+              -118.538,
+              34.1926
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "WEST_VALLEY_LM_2",
+        "name": "Encino Executive Plaza",
+        "height": 60,
+        "min_height": 0,
+        "render_height": 60,
+        "render_min_height": 0,
+        "division": "West Valley Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.50399999999999,
+              34.157
+            ],
+            [
+              -118.501,
+              34.157
+            ],
+            [
+              -118.501,
+              34.16
+            ],
+            [
+              -118.50399999999999,
+              34.16
+            ],
+            [
+              -118.50399999999999,
+              34.157
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

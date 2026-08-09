@@ -1,0 +1,303 @@
+{
+  "type": "FeatureCollection",
+  "name": "Central Division (LAPD DIV-01) - FususONE 3D Layer",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+    }
+  },
+  "metadata": {
+    "divisionId": "DIV-01",
+    "divisionName": "Central Division",
+    "bureau": "Central Bureau",
+    "code": "CENTRAL",
+    "station": {
+      "name": "Central Community Police Station",
+      "address": "251 E 6th St, Los Angeles, CA 90014",
+      "phone": "(213) 486-6606",
+      "lat": 34.0441,
+      "lng": -118.2474
+    },
+    "center": [
+      -118.25,
+      34.045
+    ],
+    "fususOneCompatible": true,
+    "optimization": "FususONE RTCC Compliant (Height Filtered + Low Polygon Vertex Bloat)"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BOUNDARY",
+        "id": "CENTRAL_BOUNDARY",
+        "name": "Central Division Boundary",
+        "bureau": "Central Bureau",
+        "division": "Central Division",
+        "strokeColor": "#00f3ff",
+        "strokeWidth": 3,
+        "fillColor": "#00f3ff",
+        "fillOpacity": 0.08
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.265,
+              34.03
+            ],
+            [
+              -118.265,
+              34.06
+            ],
+            [
+              -118.235,
+              34.06
+            ],
+            [
+              -118.235,
+              34.03
+            ],
+            [
+              -118.265,
+              34.03
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "STATION",
+        "id": "CENTRAL_STATION",
+        "name": "Central Community Police Station",
+        "address": "251 E 6th St, Los Angeles, CA 90014",
+        "phone": "(213) 486-6606",
+        "division": "Central Division",
+        "bureau": "Central Bureau",
+        "icon": "police-station",
+        "markerColor": "#3b82f6"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.2474,
+          34.0441
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "CENTRAL_LM_1",
+        "name": "Los Angeles City Hall",
+        "height": 138,
+        "min_height": 0,
+        "render_height": 138,
+        "render_min_height": 0,
+        "division": "Central Division",
+        "bureau": "Central Bureau",
+        "extrusionColor": "#00f3ff"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.24419999999999,
+              34.0522
+            ],
+            [
+              -118.2412,
+              34.0522
+            ],
+            [
+              -118.2412,
+              34.0552
+            ],
+            [
+              -118.24419999999999,
+              34.0552
+            ],
+            [
+              -118.24419999999999,
+              34.0522
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "CENTRAL_LM_2",
+        "name": "US Bank Tower",
+        "height": 310,
+        "min_height": 0,
+        "render_height": 310,
+        "render_min_height": 0,
+        "division": "Central Division",
+        "bureau": "Central Bureau",
+        "extrusionColor": "#00f3ff"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.2559,
+              34.0495
+            ],
+            [
+              -118.25290000000001,
+              34.0495
+            ],
+            [
+              -118.25290000000001,
+              34.0525
+            ],
+            [
+              -118.2559,
+              34.0525
+            ],
+            [
+              -118.2559,
+              34.0495
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "CENTRAL_LM_3",
+        "name": "Crypto.com Arena (STAPLES Center)",
+        "height": 45,
+        "min_height": 0,
+        "render_height": 45,
+        "render_min_height": 0,
+        "division": "Central Division",
+        "bureau": "Central Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.2688,
+              34.0415
+            ],
+            [
+              -118.26580000000001,
+              34.0415
+            ],
+            [
+              -118.26580000000001,
+              34.0445
+            ],
+            [
+              -118.2688,
+              34.0445
+            ],
+            [
+              -118.2688,
+              34.0415
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "CENTRAL_LM_4",
+        "name": "Wilshire Grand Center",
+        "height": 335,
+        "min_height": 0,
+        "render_height": 335,
+        "render_min_height": 0,
+        "division": "Central Division",
+        "bureau": "Central Bureau",
+        "extrusionColor": "#00f3ff"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.26119999999999,
+              34.0485
+            ],
+            [
+              -118.2582,
+              34.0485
+            ],
+            [
+              -118.2582,
+              34.0515
+            ],
+            [
+              -118.26119999999999,
+              34.0515
+            ],
+            [
+              -118.26119999999999,
+              34.0485
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "CENTRAL_LM_5",
+        "name": "Walt Disney Concert Hall",
+        "height": 42,
+        "min_height": 0,
+        "render_height": 42,
+        "render_min_height": 0,
+        "division": "Central Division",
+        "bureau": "Central Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.25129999999999,
+              34.0538
+            ],
+            [
+              -118.2483,
+              34.0538
+            ],
+            [
+              -118.2483,
+              34.0568
+            ],
+            [
+              -118.25129999999999,
+              34.0568
+            ],
+            [
+              -118.25129999999999,
+              34.0538
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

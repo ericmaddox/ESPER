@@ -1,0 +1,177 @@
+{
+  "type": "FeatureCollection",
+  "name": "Olympic Division (LAPD DIV-20) - FususONE 3D Layer",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+    }
+  },
+  "metadata": {
+    "divisionId": "DIV-20",
+    "divisionName": "Olympic Division",
+    "bureau": "West Bureau",
+    "code": "OLYMPIC",
+    "station": {
+      "name": "Olympic Community Police Station",
+      "address": "1130 S Vermont Ave, Los Angeles, CA 90006",
+      "phone": "(213) 382-9102",
+      "lat": 34.0512,
+      "lng": -118.2915
+    },
+    "center": [
+      -118.295,
+      34.055
+    ],
+    "fususOneCompatible": true,
+    "optimization": "FususONE RTCC Compliant (Height Filtered + Low Polygon Vertex Bloat)"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BOUNDARY",
+        "id": "OLYMPIC_BOUNDARY",
+        "name": "Olympic Division Boundary",
+        "bureau": "West Bureau",
+        "division": "Olympic Division",
+        "strokeColor": "#00f3ff",
+        "strokeWidth": 3,
+        "fillColor": "#00f3ff",
+        "fillOpacity": 0.08
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.32,
+              34.035
+            ],
+            [
+              -118.32,
+              34.07
+            ],
+            [
+              -118.275,
+              34.07
+            ],
+            [
+              -118.275,
+              34.035
+            ],
+            [
+              -118.32,
+              34.035
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "STATION",
+        "id": "OLYMPIC_STATION",
+        "name": "Olympic Community Police Station",
+        "address": "1130 S Vermont Ave, Los Angeles, CA 90006",
+        "phone": "(213) 382-9102",
+        "division": "Olympic Division",
+        "bureau": "West Bureau",
+        "icon": "police-station",
+        "markerColor": "#3b82f6"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.2915,
+          34.0512
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "OLYMPIC_LM_1",
+        "name": "Koreatown Plaza Center",
+        "height": 42,
+        "min_height": 0,
+        "render_height": 42,
+        "render_min_height": 0,
+        "division": "Olympic Division",
+        "bureau": "West Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.3107,
+              34.0577
+            ],
+            [
+              -118.30770000000001,
+              34.0577
+            ],
+            [
+              -118.30770000000001,
+              34.0607
+            ],
+            [
+              -118.3107,
+              34.0607
+            ],
+            [
+              -118.3107,
+              34.0577
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "OLYMPIC_LM_2",
+        "name": "Wilshire/Vermont Station Complex",
+        "height": 65,
+        "min_height": 0,
+        "render_height": 65,
+        "render_min_height": 0,
+        "division": "Olympic Division",
+        "bureau": "West Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.29299999999999,
+              34.0603
+            ],
+            [
+              -118.29,
+              34.0603
+            ],
+            [
+              -118.29,
+              34.0633
+            ],
+            [
+              -118.29299999999999,
+              34.0633
+            ],
+            [
+              -118.29299999999999,
+              34.0603
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

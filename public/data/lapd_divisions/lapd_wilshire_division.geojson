@@ -1,0 +1,177 @@
+{
+  "type": "FeatureCollection",
+  "name": "Wilshire Division (LAPD DIV-07) - FususONE 3D Layer",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+    }
+  },
+  "metadata": {
+    "divisionId": "DIV-07",
+    "divisionName": "Wilshire Division",
+    "bureau": "West Bureau",
+    "code": "WILSHIRE",
+    "station": {
+      "name": "Wilshire Community Police Station",
+      "address": "4861 W Venice Blvd, Los Angeles, CA 90019",
+      "phone": "(213) 473-0476",
+      "lat": 34.0435,
+      "lng": -118.3402
+    },
+    "center": [
+      -118.345,
+      34.06
+    ],
+    "fususOneCompatible": true,
+    "optimization": "FususONE RTCC Compliant (Height Filtered + Low Polygon Vertex Bloat)"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BOUNDARY",
+        "id": "WILSHIRE_BOUNDARY",
+        "name": "Wilshire Division Boundary",
+        "bureau": "West Bureau",
+        "division": "Wilshire Division",
+        "strokeColor": "#00f3ff",
+        "strokeWidth": 3,
+        "fillColor": "#00f3ff",
+        "fillOpacity": 0.08
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.38,
+              34.035
+            ],
+            [
+              -118.38,
+              34.08
+            ],
+            [
+              -118.3,
+              34.08
+            ],
+            [
+              -118.3,
+              34.035
+            ],
+            [
+              -118.38,
+              34.035
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "STATION",
+        "id": "WILSHIRE_STATION",
+        "name": "Wilshire Community Police Station",
+        "address": "4861 W Venice Blvd, Los Angeles, CA 90019",
+        "phone": "(213) 473-0476",
+        "division": "Wilshire Division",
+        "bureau": "West Bureau",
+        "icon": "police-station",
+        "markerColor": "#3b82f6"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.3402,
+          34.0435
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "WILSHIRE_LM_1",
+        "name": "LACMA / Academy Museum",
+        "height": 42,
+        "min_height": 0,
+        "render_height": 42,
+        "render_min_height": 0,
+        "division": "Wilshire Division",
+        "bureau": "West Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.3607,
+              34.0624
+            ],
+            [
+              -118.35770000000001,
+              34.0624
+            ],
+            [
+              -118.35770000000001,
+              34.0654
+            ],
+            [
+              -118.3607,
+              34.0654
+            ],
+            [
+              -118.3607,
+              34.0624
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "WILSHIRE_LM_2",
+        "name": "Wilshire Courage Tower",
+        "height": 95,
+        "min_height": 0,
+        "render_height": 95,
+        "render_min_height": 0,
+        "division": "Wilshire Division",
+        "bureau": "West Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.3467,
+              34.0603
+            ],
+            [
+              -118.34370000000001,
+              34.0603
+            ],
+            [
+              -118.34370000000001,
+              34.0633
+            ],
+            [
+              -118.3467,
+              34.0633
+            ],
+            [
+              -118.3467,
+              34.0603
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

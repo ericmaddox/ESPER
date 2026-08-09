@@ -1,0 +1,177 @@
+{
+  "type": "FeatureCollection",
+  "name": "Northeast Division (LAPD DIV-11) - FususONE 3D Layer",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+    }
+  },
+  "metadata": {
+    "divisionId": "DIV-11",
+    "divisionName": "Northeast Division",
+    "bureau": "Central Bureau",
+    "code": "NORTHEAST",
+    "station": {
+      "name": "Northeast Community Police Station",
+      "address": "3353 San Fernando Rd, Los Angeles, CA 90065",
+      "phone": "(323) 561-3211",
+      "lat": 34.1141,
+      "lng": -118.2415
+    },
+    "center": [
+      -118.24,
+      34.11
+    ],
+    "fususOneCompatible": true,
+    "optimization": "FususONE RTCC Compliant (Height Filtered + Low Polygon Vertex Bloat)"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BOUNDARY",
+        "id": "NORTHEAST_BOUNDARY",
+        "name": "Northeast Division Boundary",
+        "bureau": "Central Bureau",
+        "division": "Northeast Division",
+        "strokeColor": "#00f3ff",
+        "strokeWidth": 3,
+        "fillColor": "#00f3ff",
+        "fillOpacity": 0.08
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.28,
+              34.08
+            ],
+            [
+              -118.28,
+              34.14
+            ],
+            [
+              -118.19,
+              34.14
+            ],
+            [
+              -118.19,
+              34.08
+            ],
+            [
+              -118.28,
+              34.08
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "STATION",
+        "id": "NORTHEAST_STATION",
+        "name": "Northeast Community Police Station",
+        "address": "3353 San Fernando Rd, Los Angeles, CA 90065",
+        "phone": "(323) 561-3211",
+        "division": "Northeast Division",
+        "bureau": "Central Bureau",
+        "icon": "police-station",
+        "markerColor": "#3b82f6"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.2415,
+          34.1141
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "NORTHEAST_LM_1",
+        "name": "Highland Park Station Tower",
+        "height": 22,
+        "min_height": 0,
+        "render_height": 22,
+        "render_min_height": 0,
+        "division": "Northeast Division",
+        "bureau": "Central Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.1947,
+              34.1097
+            ],
+            [
+              -118.19170000000001,
+              34.1097
+            ],
+            [
+              -118.19170000000001,
+              34.1127
+            ],
+            [
+              -118.1947,
+              34.1127
+            ],
+            [
+              -118.1947,
+              34.1097
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "NORTHEAST_LM_2",
+        "name": "Silver Lake Reservoir Gatehouse",
+        "height": 16,
+        "min_height": 0,
+        "render_height": 16,
+        "render_min_height": 0,
+        "division": "Northeast Division",
+        "bureau": "Central Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.26799999999999,
+              34.087
+            ],
+            [
+              -118.265,
+              34.087
+            ],
+            [
+              -118.265,
+              34.09
+            ],
+            [
+              -118.26799999999999,
+              34.09
+            ],
+            [
+              -118.26799999999999,
+              34.087
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

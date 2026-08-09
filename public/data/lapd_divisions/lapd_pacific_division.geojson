@@ -1,0 +1,177 @@
+{
+  "type": "FeatureCollection",
+  "name": "Pacific Division (LAPD DIV-14) - FususONE 3D Layer",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+    }
+  },
+  "metadata": {
+    "divisionId": "DIV-14",
+    "divisionName": "Pacific Division",
+    "bureau": "West Bureau",
+    "code": "PACIFIC",
+    "station": {
+      "name": "Pacific Community Police Station",
+      "address": "12312 Culver Blvd, Los Angeles, CA 90066",
+      "phone": "(310) 482-6334",
+      "lat": 33.9922,
+      "lng": -118.4235
+    },
+    "center": [
+      -118.44,
+      33.985
+    ],
+    "fususOneCompatible": true,
+    "optimization": "FususONE RTCC Compliant (Height Filtered + Low Polygon Vertex Bloat)"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BOUNDARY",
+        "id": "PACIFIC_BOUNDARY",
+        "name": "Pacific Division Boundary",
+        "bureau": "West Bureau",
+        "division": "Pacific Division",
+        "strokeColor": "#00f3ff",
+        "strokeWidth": 3,
+        "fillColor": "#00f3ff",
+        "fillOpacity": 0.08
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.48,
+              33.935
+            ],
+            [
+              -118.48,
+              34.03
+            ],
+            [
+              -118.38,
+              34.03
+            ],
+            [
+              -118.38,
+              33.935
+            ],
+            [
+              -118.48,
+              33.935
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "STATION",
+        "id": "PACIFIC_STATION",
+        "name": "Pacific Community Police Station",
+        "address": "12312 Culver Blvd, Los Angeles, CA 90066",
+        "phone": "(310) 482-6334",
+        "division": "Pacific Division",
+        "bureau": "West Bureau",
+        "icon": "police-station",
+        "markerColor": "#3b82f6"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.4235,
+          33.9922
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "PACIFIC_LM_1",
+        "name": "LAX Theme Building Control Tower",
+        "height": 65,
+        "min_height": 0,
+        "render_height": 65,
+        "render_min_height": 0,
+        "division": "Pacific Division",
+        "bureau": "West Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.4096,
+              33.9416
+            ],
+            [
+              -118.40660000000001,
+              33.9416
+            ],
+            [
+              -118.40660000000001,
+              33.9446
+            ],
+            [
+              -118.4096,
+              33.9446
+            ],
+            [
+              -118.4096,
+              33.9416
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "PACIFIC_LM_2",
+        "name": "Venice Beach Pavilion",
+        "height": 18,
+        "min_height": 0,
+        "render_height": 18,
+        "render_min_height": 0,
+        "division": "Pacific Division",
+        "bureau": "West Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.47399999999999,
+              33.9835
+            ],
+            [
+              -118.471,
+              33.9835
+            ],
+            [
+              -118.471,
+              33.9865
+            ],
+            [
+              -118.47399999999999,
+              33.9865
+            ],
+            [
+              -118.47399999999999,
+              33.9835
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

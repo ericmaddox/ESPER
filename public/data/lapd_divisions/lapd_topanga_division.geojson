@@ -1,0 +1,177 @@
+{
+  "type": "FeatureCollection",
+  "name": "Topanga Division (LAPD DIV-21) - FususONE 3D Layer",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+    }
+  },
+  "metadata": {
+    "divisionId": "DIV-21",
+    "divisionName": "Topanga Division",
+    "bureau": "Valley Bureau",
+    "code": "TOPANGA",
+    "station": {
+      "name": "Topanga Community Police Station",
+      "address": "21501 Schoenborn St, Canoga Park, CA 91304",
+      "phone": "(818) 756-4800",
+      "lat": 34.2245,
+      "lng": -118.6015
+    },
+    "center": [
+      -118.6,
+      34.2
+    ],
+    "fususOneCompatible": true,
+    "optimization": "FususONE RTCC Compliant (Height Filtered + Low Polygon Vertex Bloat)"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BOUNDARY",
+        "id": "TOPANGA_BOUNDARY",
+        "name": "Topanga Division Boundary",
+        "bureau": "Valley Bureau",
+        "division": "Topanga Division",
+        "strokeColor": "#00f3ff",
+        "strokeWidth": 3,
+        "fillColor": "#00f3ff",
+        "fillOpacity": 0.08
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.65,
+              34.15
+            ],
+            [
+              -118.65,
+              34.24
+            ],
+            [
+              -118.57,
+              34.24
+            ],
+            [
+              -118.57,
+              34.15
+            ],
+            [
+              -118.65,
+              34.15
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "STATION",
+        "id": "TOPANGA_STATION",
+        "name": "Topanga Community Police Station",
+        "address": "21501 Schoenborn St, Canoga Park, CA 91304",
+        "phone": "(818) 756-4800",
+        "division": "Topanga Division",
+        "bureau": "Valley Bureau",
+        "icon": "police-station",
+        "markerColor": "#3b82f6"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.6015,
+          34.2245
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "TOPANGA_LM_1",
+        "name": "Warner Center Towers Complex",
+        "height": 110,
+        "min_height": 0,
+        "render_height": 110,
+        "render_min_height": 0,
+        "division": "Topanga Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#00f3ff"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.60499999999999,
+              34.1797
+            ],
+            [
+              -118.602,
+              34.1797
+            ],
+            [
+              -118.602,
+              34.1827
+            ],
+            [
+              -118.60499999999999,
+              34.1827
+            ],
+            [
+              -118.60499999999999,
+              34.1797
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "TOPANGA_LM_2",
+        "name": "Westfield Topanga Mall Plaza",
+        "height": 38,
+        "min_height": 0,
+        "render_height": 38,
+        "render_min_height": 0,
+        "division": "Topanga Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.607,
+              34.19
+            ],
+            [
+              -118.60400000000001,
+              34.19
+            ],
+            [
+              -118.60400000000001,
+              34.193
+            ],
+            [
+              -118.607,
+              34.193
+            ],
+            [
+              -118.607,
+              34.19
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,219 @@
+{
+  "type": "FeatureCollection",
+  "name": "West Los Angeles Division (LAPD DIV-08) - FususONE 3D Layer",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+    }
+  },
+  "metadata": {
+    "divisionId": "DIV-08",
+    "divisionName": "West Los Angeles Division",
+    "bureau": "West Bureau",
+    "code": "WEST_LA",
+    "station": {
+      "name": "West LA Community Police Station",
+      "address": "1663 S Butler Ave, Los Angeles, CA 90025",
+      "phone": "(310) 444-0701",
+      "lat": 34.0452,
+      "lng": -118.4485
+    },
+    "center": [
+      -118.445,
+      34.06
+    ],
+    "fususOneCompatible": true,
+    "optimization": "FususONE RTCC Compliant (Height Filtered + Low Polygon Vertex Bloat)"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BOUNDARY",
+        "id": "WEST_LA_BOUNDARY",
+        "name": "West Los Angeles Division Boundary",
+        "bureau": "West Bureau",
+        "division": "West Los Angeles Division",
+        "strokeColor": "#00f3ff",
+        "strokeWidth": 3,
+        "fillColor": "#00f3ff",
+        "fillOpacity": 0.08
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.52,
+              34.03
+            ],
+            [
+              -118.52,
+              34.11
+            ],
+            [
+              -118.39,
+              34.11
+            ],
+            [
+              -118.39,
+              34.03
+            ],
+            [
+              -118.52,
+              34.03
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "STATION",
+        "id": "WEST_LA_STATION",
+        "name": "West LA Community Police Station",
+        "address": "1663 S Butler Ave, Los Angeles, CA 90025",
+        "phone": "(310) 444-0701",
+        "division": "West Los Angeles Division",
+        "bureau": "West Bureau",
+        "icon": "police-station",
+        "markerColor": "#3b82f6"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.4485,
+          34.0452
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "WEST_LA_LM_1",
+        "name": "Century Plaza Towers",
+        "height": 174,
+        "min_height": 0,
+        "render_height": 174,
+        "render_min_height": 0,
+        "division": "West Los Angeles Division",
+        "bureau": "West Bureau",
+        "extrusionColor": "#00f3ff"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.416,
+              34.057
+            ],
+            [
+              -118.41300000000001,
+              34.057
+            ],
+            [
+              -118.41300000000001,
+              34.06
+            ],
+            [
+              -118.416,
+              34.06
+            ],
+            [
+              -118.416,
+              34.057
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "WEST_LA_LM_2",
+        "name": "UCLA Royce Hall",
+        "height": 45,
+        "min_height": 0,
+        "render_height": 45,
+        "render_min_height": 0,
+        "division": "West Los Angeles Division",
+        "bureau": "West Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.44369999999999,
+              34.0713
+            ],
+            [
+              -118.4407,
+              34.0713
+            ],
+            [
+              -118.4407,
+              34.0743
+            ],
+            [
+              -118.44369999999999,
+              34.0743
+            ],
+            [
+              -118.44369999999999,
+              34.0713
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "WEST_LA_LM_3",
+        "name": "Fox Plaza (Nakatomi Plaza)",
+        "height": 150,
+        "min_height": 0,
+        "render_height": 150,
+        "render_min_height": 0,
+        "division": "West Los Angeles Division",
+        "bureau": "West Bureau",
+        "extrusionColor": "#00f3ff"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.4147,
+              34.0537
+            ],
+            [
+              -118.41170000000001,
+              34.0537
+            ],
+            [
+              -118.41170000000001,
+              34.0567
+            ],
+            [
+              -118.4147,
+              34.0567
+            ],
+            [
+              -118.4147,
+              34.0537
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

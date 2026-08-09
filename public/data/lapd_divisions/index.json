@@ -1,0 +1,34 @@
+{
+  "title": "LAPD 21 Division GeoJSON Layer Catalog",
+  "description": "FususONE RTCC Compliant 3D GIS & Boundary GeoJSON Layers for all 21 LAPD Community Police Divisions",
+  "totalDivisions": 21,
+  "bureaus": {
+    "Central Bureau": ["Central", "Rampart", "Hollenbeck", "Northeast", "Newton"],
+    "South Bureau": ["Southwest", "77th Street", "Southeast", "Harbor"],
+    "West Bureau": ["Hollywood", "Wilshire", "West LA", "Pacific", "Olympic"],
+    "Valley Bureau": ["Van Nuys", "West Valley", "North Hollywood", "Foothill", "Devonshire", "Mission", "Topanga"]
+  },
+  "divisions": [
+    { "id": "DIV-01", "name": "Central Division", "bureau": "Central Bureau", "file": "lapd_central_division.geojson", "station": "251 E 6th St, Los Angeles, CA 90014" },
+    { "id": "DIV-02", "name": "Rampart Division", "bureau": "Central Bureau", "file": "lapd_rampart_division.geojson", "station": "1401 W 6th St, Los Angeles, CA 90017" },
+    { "id": "DIV-03", "name": "Southwest Division", "bureau": "South Bureau", "file": "lapd_southwest_division.geojson", "station": "1546 W Martin Luther King Jr Blvd, Los Angeles, CA 90062" },
+    { "id": "DIV-04", "name": "Hollenbeck Division", "bureau": "Central Bureau", "file": "lapd_hollenbeck_division.geojson", "station": "2111 E 1st St, Los Angeles, CA 90033" },
+    { "id": "DIV-05", "name": "Harbor Division", "bureau": "South Bureau", "file": "lapd_harbor_division.geojson", "station": "2175 John S. Gibson Blvd, San Pedro, CA 90731" },
+    { "id": "DIV-06", "name": "Hollywood Division", "bureau": "West Bureau", "file": "lapd_hollywood_division.geojson", "station": "1358 N Wilcox Ave, Los Angeles, CA 90028" },
+    { "id": "DIV-07", "name": "Wilshire Division", "bureau": "West Bureau", "file": "lapd_wilshire_division.geojson", "station": "4861 W Venice Blvd, Los Angeles, CA 90019" },
+    { "id": "DIV-08", "name": "West Los Angeles Division", "bureau": "West Bureau", "file": "lapd_west_la_division.geojson", "station": "1663 S Butler Ave, Los Angeles, CA 90025" },
+    { "id": "DIV-09", "name": "Van Nuys Division", "bureau": "Valley Bureau", "file": "lapd_van_nuys_division.geojson", "station": "6240 Sylmar Ave, Van Nuys, CA 91401" },
+    { "id": "DIV-10", "name": "West Valley Division", "bureau": "Valley Bureau", "file": "lapd_west_valley_division.geojson", "station": "19020 Vanowen St, Reseda, CA 91335" },
+    { "id": "DIV-11", "name": "Northeast Division", "bureau": "Central Bureau", "file": "lapd_northeast_division.geojson", "station": "3353 San Fernando Rd, Los Angeles, CA 90065" },
+    { "id": "DIV-12", "name": "77th Street Division", "bureau": "South Bureau", "file": "lapd_77th_street_division.geojson", "station": "7600 S Broadway, Los Angeles, CA 90003" },
+    { "id": "DIV-13", "name": "Newton Division", "bureau": "Central Bureau", "file": "lapd_newton_division.geojson", "station": "3400 S Central Ave, Los Angeles, CA 90011" },
+    { "id": "DIV-14", "name": "Pacific Division", "bureau": "West Bureau", "file": "lapd_pacific_division.geojson", "station": "12312 Culver Blvd, Los Angeles, CA 90066" },
+    { "id": "DIV-15", "name": "North Hollywood Division", "bureau": "Valley Bureau", "file": "lapd_north_hollywood_division.geojson", "station": "11640 Burbank Blvd, North Hollywood, CA 91601" },
+    { "id": "DIV-16", "name": "Foothill Division", "bureau": "Valley Bureau", "file": "lapd_foothill_division.geojson", "station": "12760 Osborne St, Pacoima, CA 91331" },
+    { "id": "DIV-17", "name": "Devonshire Division", "bureau": "Valley Bureau", "file": "lapd_devonshire_division.geojson", "station": "10250 Reseda Blvd, Northridge, CA 91324" },
+    { "id": "DIV-18", "name": "Southeast Division", "bureau": "South Bureau", "file": "lapd_southeast_division.geojson", "station": "145 W 108th St, Los Angeles, CA 90061" },
+    { "id": "DIV-19", "name": "Mission Division", "bureau": "Valley Bureau", "file": "lapd_mission_division.geojson", "station": "11121 Sepulveda Blvd, Mission Hills, CA 91345" },
+    { "id": "DIV-20", "name": "Olympic Division", "bureau": "West Bureau", "file": "lapd_olympic_division.geojson", "station": "1130 S Vermont Ave, Los Angeles, CA 90006" },
+    { "id": "DIV-21", "name": "Topanga Division", "bureau": "Valley Bureau", "file": "lapd_topanga_division.geojson", "station": "21501 Schoenborn St, Canoga Park, CA 91304" }
+  ]
+}

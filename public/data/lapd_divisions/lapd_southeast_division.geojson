@@ -1,0 +1,177 @@
+{
+  "type": "FeatureCollection",
+  "name": "Southeast Division (LAPD DIV-18) - FususONE 3D Layer",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+    }
+  },
+  "metadata": {
+    "divisionId": "DIV-18",
+    "divisionName": "Southeast Division",
+    "bureau": "South Bureau",
+    "code": "SOUTHEAST",
+    "station": {
+      "name": "Southeast Community Police Station",
+      "address": "145 W 108th St, Los Angeles, CA 90061",
+      "phone": "(213) 972-7828",
+      "lat": 33.9385,
+      "lng": -118.2742
+    },
+    "center": [
+      -118.265,
+      33.935
+    ],
+    "fususOneCompatible": true,
+    "optimization": "FususONE RTCC Compliant (Height Filtered + Low Polygon Vertex Bloat)"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BOUNDARY",
+        "id": "SOUTHEAST_BOUNDARY",
+        "name": "Southeast Division Boundary",
+        "bureau": "South Bureau",
+        "division": "Southeast Division",
+        "strokeColor": "#00f3ff",
+        "strokeWidth": 3,
+        "fillColor": "#00f3ff",
+        "fillOpacity": 0.08
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.295,
+              33.915
+            ],
+            [
+              -118.295,
+              33.96
+            ],
+            [
+              -118.23,
+              33.96
+            ],
+            [
+              -118.23,
+              33.915
+            ],
+            [
+              -118.295,
+              33.915
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "STATION",
+        "id": "SOUTHEAST_STATION",
+        "name": "Southeast Community Police Station",
+        "address": "145 W 108th St, Los Angeles, CA 90061",
+        "phone": "(213) 972-7828",
+        "division": "Southeast Division",
+        "bureau": "South Bureau",
+        "icon": "police-station",
+        "markerColor": "#3b82f6"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.2742,
+          33.9385
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "SOUTHEAST_LM_1",
+        "name": "Watts Towers Arts Center",
+        "height": 30,
+        "min_height": 0,
+        "render_height": 30,
+        "render_min_height": 0,
+        "division": "Southeast Division",
+        "bureau": "South Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.24329999999999,
+              33.9373
+            ],
+            [
+              -118.2403,
+              33.9373
+            ],
+            [
+              -118.2403,
+              33.9403
+            ],
+            [
+              -118.24329999999999,
+              33.9403
+            ],
+            [
+              -118.24329999999999,
+              33.9373
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "SOUTHEAST_LM_2",
+        "name": "Imperial Courts Community Center",
+        "height": 16,
+        "min_height": 0,
+        "render_height": 16,
+        "render_min_height": 0,
+        "division": "Southeast Division",
+        "bureau": "South Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.237,
+              33.9297
+            ],
+            [
+              -118.23400000000001,
+              33.9297
+            ],
+            [
+              -118.23400000000001,
+              33.9327
+            ],
+            [
+              -118.237,
+              33.9327
+            ],
+            [
+              -118.237,
+              33.9297
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

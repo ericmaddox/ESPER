@@ -1,0 +1,177 @@
+{
+  "type": "FeatureCollection",
+  "name": "Foothill Division (LAPD DIV-16) - FususONE 3D Layer",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+    }
+  },
+  "metadata": {
+    "divisionId": "DIV-16",
+    "divisionName": "Foothill Division",
+    "bureau": "Valley Bureau",
+    "code": "FOOTHILL",
+    "station": {
+      "name": "Foothill Community Police Station",
+      "address": "12760 Osborne St, Pacoima, CA 91331",
+      "phone": "(818) 756-8861",
+      "lat": 34.2582,
+      "lng": -118.4105
+    },
+    "center": [
+      -118.38,
+      34.26
+    ],
+    "fususOneCompatible": true,
+    "optimization": "FususONE RTCC Compliant (Height Filtered + Low Polygon Vertex Bloat)"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BOUNDARY",
+        "id": "FOOTHILL_BOUNDARY",
+        "name": "Foothill Division Boundary",
+        "bureau": "Valley Bureau",
+        "division": "Foothill Division",
+        "strokeColor": "#00f3ff",
+        "strokeWidth": 3,
+        "fillColor": "#00f3ff",
+        "fillOpacity": 0.08
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.44,
+              34.21
+            ],
+            [
+              -118.44,
+              34.3
+            ],
+            [
+              -118.27,
+              34.3
+            ],
+            [
+              -118.27,
+              34.21
+            ],
+            [
+              -118.44,
+              34.21
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "STATION",
+        "id": "FOOTHILL_STATION",
+        "name": "Foothill Community Police Station",
+        "address": "12760 Osborne St, Pacoima, CA 91331",
+        "phone": "(818) 756-8861",
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "icon": "police-station",
+        "markerColor": "#3b82f6"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.4105,
+          34.2582
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_LM_1",
+        "name": "Pacoima City Hall Plaza",
+        "height": 28,
+        "min_height": 0,
+        "render_height": 28,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.425,
+              34.2597
+            ],
+            [
+              -118.42200000000001,
+              34.2597
+            ],
+            [
+              -118.42200000000001,
+              34.2627
+            ],
+            [
+              -118.425,
+              34.2627
+            ],
+            [
+              -118.425,
+              34.2597
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_LM_2",
+        "name": "Sun Valley Commerce Center",
+        "height": 25,
+        "min_height": 0,
+        "render_height": 25,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.37599999999999,
+              34.227
+            ],
+            [
+              -118.373,
+              34.227
+            ],
+            [
+              -118.373,
+              34.23
+            ],
+            [
+              -118.37599999999999,
+              34.23
+            ],
+            [
+              -118.37599999999999,
+              34.227
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

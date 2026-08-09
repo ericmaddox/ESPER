@@ -1,0 +1,177 @@
+{
+  "type": "FeatureCollection",
+  "name": "North Hollywood Division (LAPD DIV-15) - FususONE 3D Layer",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+    }
+  },
+  "metadata": {
+    "divisionId": "DIV-15",
+    "divisionName": "North Hollywood Division",
+    "bureau": "Valley Bureau",
+    "code": "NORTH_HOLLYWOOD",
+    "station": {
+      "name": "North Hollywood Community Police Station",
+      "address": "11640 Burbank Blvd, North Hollywood, CA 91601",
+      "phone": "(818) 754-8300",
+      "lat": 34.1722,
+      "lng": -118.3845
+    },
+    "center": [
+      -118.385,
+      34.17
+    ],
+    "fususOneCompatible": true,
+    "optimization": "FususONE RTCC Compliant (Height Filtered + Low Polygon Vertex Bloat)"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BOUNDARY",
+        "id": "NORTH_HOLLYWOOD_BOUNDARY",
+        "name": "North Hollywood Division Boundary",
+        "bureau": "Valley Bureau",
+        "division": "North Hollywood Division",
+        "strokeColor": "#00f3ff",
+        "strokeWidth": 3,
+        "fillColor": "#00f3ff",
+        "fillOpacity": 0.08
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.415,
+              34.135
+            ],
+            [
+              -118.415,
+              34.205
+            ],
+            [
+              -118.345,
+              34.205
+            ],
+            [
+              -118.345,
+              34.135
+            ],
+            [
+              -118.415,
+              34.135
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "STATION",
+        "id": "NORTH_HOLLYWOOD_STATION",
+        "name": "North Hollywood Community Police Station",
+        "address": "11640 Burbank Blvd, North Hollywood, CA 91601",
+        "phone": "(818) 754-8300",
+        "division": "North Hollywood Division",
+        "bureau": "Valley Bureau",
+        "icon": "police-station",
+        "markerColor": "#3b82f6"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.3845,
+          34.1722
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "NORTH_HOLLYWOOD_LM_1",
+        "name": "Universal Studios Tower",
+        "height": 125,
+        "min_height": 0,
+        "render_height": 125,
+        "render_min_height": 0,
+        "division": "North Hollywood Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#00f3ff"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.35489999999999,
+              34.1366
+            ],
+            [
+              -118.3519,
+              34.1366
+            ],
+            [
+              -118.3519,
+              34.1396
+            ],
+            [
+              -118.35489999999999,
+              34.1396
+            ],
+            [
+              -118.35489999999999,
+              34.1366
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "NORTH_HOLLYWOOD_LM_2",
+        "name": "NoHo West Tower",
+        "height": 48,
+        "min_height": 0,
+        "render_height": 48,
+        "render_min_height": 0,
+        "division": "North Hollywood Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.398,
+              34.187
+            ],
+            [
+              -118.39500000000001,
+              34.187
+            ],
+            [
+              -118.39500000000001,
+              34.19
+            ],
+            [
+              -118.398,
+              34.19
+            ],
+            [
+              -118.398,
+              34.187
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}
