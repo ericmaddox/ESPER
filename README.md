@@ -10,6 +10,12 @@
 
 ---
 
+### High-Resolution Esri 3D Satellite Imagery Viewport
+
+![ESPER High-Resolution Esri 3D Satellite Imagery Viewport](./docs/satellite-view.png)
+
+---
+
 ### Public Safety Tactical Command Center
 
 ![ESPER 3D Digital Twin Command Center Viewport](./docs/hero-map.png)
