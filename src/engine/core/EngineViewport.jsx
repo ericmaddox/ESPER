@@ -78,9 +78,9 @@ const EngineViewport = forwardRef(({
           const isSatellite = !!styleConfig.isSatellite;
           layerManagerRef.current.setup3DBuildings(enable3DBuildings, buildingColor, edgeColor, isSatellite);
         }
-        if (enableTerrain && map.getSource('terrain')) {
+        if (map.getSource('terrain')) {
           try {
-            map.setTerrain({ source: 'terrain', exaggeration: 1.3 });
+            map.setTerrain({ source: 'terrain', exaggeration: enableTerrain ? 1.3 : 0 });
           } catch (e) {}
         }
       };

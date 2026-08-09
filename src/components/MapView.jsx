@@ -133,9 +133,9 @@ const MapView = forwardRef(({
         );
         layerManagerRef.current.setLabelsVisibility(showLabels);
       }
-      if (showTerrain && map.getSource('terrain')) {
+      if (map.getSource('terrain')) {
         try {
-          map.setTerrain({ source: 'terrain', exaggeration: 1.3 });
+          map.setTerrain({ source: 'terrain', exaggeration: showTerrain ? 1.3 : 0 });
         } catch (e) {}
       }
     };
@@ -157,8 +157,29 @@ const MapView = forwardRef(({
   const handleToggleTerrain = () => {
     const nextState = !showTerrain;
     setShowTerrain(nextState);
-    if (mapRef.current) {
-      mapRef.current.setTerrain(nextState ? { source: 'terrain', exaggeration: 1.3 } : null);
+    const map = mapRef.current;
+    if (!map) return;
+
+    if (!map.getSource('terrain')) {
+      try {
+        map.addSource('terrain', {
+          type: 'raster-dem',
+          tiles: ['https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png'],
+          tileSize: 256,
+          encoding: 'terrarium',
+          maxzoom: 15
+        });
+      } catch (e) {}
+    }
+
+    try {
+      if (nextState) {
+        map.setTerrain({ source: 'terrain', exaggeration: 1.3 });
+      } else {
+        map.setTerrain({ source: 'terrain', exaggeration: 0 });
+      }
+    } catch (e) {
+      console.warn('Error setting terrain:', e);
     }
   };
 

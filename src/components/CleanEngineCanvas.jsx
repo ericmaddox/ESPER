@@ -150,8 +150,28 @@ const CleanEngineCanvas = forwardRef(({ activeRegion, onSelectSearchLocation }, 
     const nextState = !showTerrain;
     setShowTerrain(nextState);
     const map = engineRef.current?.getMap();
-    if (map) {
-      map.setTerrain(nextState ? { source: 'terrain', exaggeration: 1.3 } : null);
+    if (!map) return;
+
+    if (!map.getSource('terrain')) {
+      try {
+        map.addSource('terrain', {
+          type: 'raster-dem',
+          tiles: ['https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png'],
+          tileSize: 256,
+          encoding: 'terrarium',
+          maxzoom: 15
+        });
+      } catch (e) {}
+    }
+
+    try {
+      if (nextState) {
+        map.setTerrain({ source: 'terrain', exaggeration: 1.3 });
+      } else {
+        map.setTerrain({ source: 'terrain', exaggeration: 0 });
+      }
+    } catch (e) {
+      console.warn('Error setting terrain:', e);
     }
   };
 
