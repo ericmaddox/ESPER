@@ -72,10 +72,6 @@ const EngineViewport = forwardRef(({
       if (!map) return;
 
       const applyTheme = () => {
-        if (!map.isStyleLoaded()) {
-          map.once('styledata', applyTheme);
-          return;
-        }
         if (layerManagerRef.current) {
           const buildingColor = styleConfig.buildingColor || '#152238';
           const edgeColor = styleConfig.buildingEdgeColor || '#00f3ff';
@@ -89,7 +85,7 @@ const EngineViewport = forwardRef(({
         }
       };
 
-      map.once('styledata', applyTheme);
+      map.once('style.load', applyTheme);
       map.setStyle(styleConfig.style);
     }
   }));

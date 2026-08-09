@@ -124,10 +124,6 @@ const MapView = forwardRef(({
     if (!map) return;
 
     const applyTheme = () => {
-      if (!map.isStyleLoaded()) {
-        map.once('styledata', applyTheme);
-        return;
-      }
       if (layerManagerRef.current) {
         layerManagerRef.current.setup3DBuildings(
           show3DBuildings,
@@ -144,7 +140,7 @@ const MapView = forwardRef(({
       }
     };
 
-    map.once('styledata', applyTheme);
+    map.once('style.load', applyTheme);
     map.setStyle(style.style);
   };
 

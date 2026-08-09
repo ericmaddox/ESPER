@@ -90,92 +90,86 @@ export class LayerManager {
     if (!this.map) return;
     const opacity = isSatellite ? 0.55 : 0.88;
     try {
+      // Safely remove existing building layers first for clean recreation
+      this.removeLayer('3d-buildings-edges');
+      this.removeLayer('3d-buildings-tall');
+      this.removeLayer('3d-buildings');
+
+      if (!enabled) return;
+
+      // Position buildings below text labels if road-label exists
+      const beforeId = this.map.getLayer('road-label') ? 'road-label' : undefined;
+
       // ── Primary 3D Building Extrusions (height-graduated color ramp) ──
-      if (!this.map.getLayer('3d-buildings')) {
-        this.map.addLayer({
-          id: '3d-buildings',
-          source: 'openmaptiles',
-          'source-layer': 'building',
-          type: 'fill-extrusion',
-          minzoom: 13,
-          paint: {
-            'fill-extrusion-color': [
-              'interpolate', ['linear'], ['coalesce', ['get', 'render_height'], 10],
-              0,   color,                // Ground-level: base theme color
-              20,  color,                // Low-rise: same base
-              60,  this._lightenHex(color, 25),  // Mid-rise: slightly brighter
-              120, this._lightenHex(color, 45),  // High-rise: noticeably brighter
-              250, edgeColor             // Skyscraper: accent color glow
-            ],
-            'fill-extrusion-height': [
-              'interpolate', ['linear'], ['zoom'],
-              13, 0,
-              15, ['coalesce', ['get', 'render_height'], 10]
-            ],
-            'fill-extrusion-base': ['coalesce', ['get', 'render_min_height'], 0],
-            'fill-extrusion-opacity': opacity,
-            'fill-extrusion-vertical-gradient': true
-          }
-        });
-      } else {
-        this.map.setPaintProperty('3d-buildings', 'fill-extrusion-color', [
-          'interpolate', ['linear'], ['coalesce', ['get', 'render_height'], 10],
-          0,   color,
-          20,  color,
-          60,  this._lightenHex(color, 25),
-          120, this._lightenHex(color, 45),
-          250, edgeColor
-        ]);
-        this.map.setPaintProperty('3d-buildings', 'fill-extrusion-opacity', opacity);
-        this.map.setPaintProperty('3d-buildings', 'fill-extrusion-vertical-gradient', true);
-      }
+      this.map.addLayer({
+        id: '3d-buildings',
+        source: 'openmaptiles',
+        'source-layer': 'building',
+        type: 'fill-extrusion',
+        minzoom: 12,
+        paint: {
+          'fill-extrusion-color': [
+            'interpolate', ['linear'], ['coalesce', ['get', 'render_height'], ['get', 'height'], 10],
+            0,   color,                // Ground-level: base theme color
+            20,  color,                // Low-rise: same base
+            60,  this._lightenHex(color, 25),  // Mid-rise: slightly brighter
+            120, this._lightenHex(color, 45),  // High-rise: noticeably brighter
+            250, edgeColor             // Skyscraper: accent color glow
+          ],
+          'fill-extrusion-height': [
+            'interpolate', ['linear'], ['zoom'],
+            12, 0,
+            14.5, ['coalesce', ['get', 'render_height'], ['get', 'height'], 10]
+          ],
+          'fill-extrusion-base': [
+            'interpolate', ['linear'], ['zoom'],
+            12, 0,
+            14.5, ['coalesce', ['get', 'render_min_height'], ['get', 'min_height'], 0]
+          ],
+          'fill-extrusion-opacity': opacity,
+          'fill-extrusion-vertical-gradient': true
+        }
+      }, beforeId);
 
       // ── Tall Building Highlight Layer (skyscrapers > 50m get accent edge glow) ──
-      if (!this.map.getLayer('3d-buildings-tall')) {
-        this.map.addLayer({
-          id: '3d-buildings-tall',
-          source: 'openmaptiles',
-          'source-layer': 'building',
-          type: 'fill-extrusion',
-          minzoom: 13,
-          filter: ['>', ['coalesce', ['get', 'render_height'], 0], 50],
-          paint: {
-            'fill-extrusion-color': edgeColor,
-            'fill-extrusion-height': [
-              'interpolate', ['linear'], ['zoom'],
-              13, 0,
-              15, ['coalesce', ['get', 'render_height'], 10]
-            ],
-            'fill-extrusion-base': ['coalesce', ['get', 'render_min_height'], 0],
-            'fill-extrusion-opacity': 0.12,
-            'fill-extrusion-vertical-gradient': true
-          }
-        });
-      } else {
-        this.map.setPaintProperty('3d-buildings-tall', 'fill-extrusion-color', edgeColor);
-      }
+      this.map.addLayer({
+        id: '3d-buildings-tall',
+        source: 'openmaptiles',
+        'source-layer': 'building',
+        type: 'fill-extrusion',
+        minzoom: 12,
+        filter: ['>', ['coalesce', ['get', 'render_height'], ['get', 'height'], 0], 50],
+        paint: {
+          'fill-extrusion-color': edgeColor,
+          'fill-extrusion-height': [
+            'interpolate', ['linear'], ['zoom'],
+            12, 0,
+            14.5, ['coalesce', ['get', 'render_height'], ['get', 'height'], 10]
+          ],
+          'fill-extrusion-base': [
+            'interpolate', ['linear'], ['zoom'],
+            12, 0,
+            14.5, ['coalesce', ['get', 'render_min_height'], ['get', 'min_height'], 0]
+          ],
+          'fill-extrusion-opacity': 0.15,
+          'fill-extrusion-vertical-gradient': true
+        }
+      }, beforeId);
 
       // ── 2D Building Footprint Edge Outlines ──
-      if (!this.map.getLayer('3d-buildings-edges')) {
-        this.map.addLayer({
-          id: '3d-buildings-edges',
-          source: 'openmaptiles',
-          'source-layer': 'building',
-          type: 'line',
-          minzoom: 15,
-          paint: {
-            'line-color': edgeColor,
-            'line-width': 0.6,
-            'line-opacity': 0.3
-          }
-        });
-      } else {
-        this.map.setPaintProperty('3d-buildings-edges', 'line-color', edgeColor);
-      }
+      this.map.addLayer({
+        id: '3d-buildings-edges',
+        source: 'openmaptiles',
+        'source-layer': 'building',
+        type: 'line',
+        minzoom: 14,
+        paint: {
+          'line-color': edgeColor,
+          'line-width': 0.6,
+          'line-opacity': 0.35
+        }
+      }, beforeId);
 
-      this.setLayerVisibility('3d-buildings', enabled);
-      this.setLayerVisibility('3d-buildings-tall', enabled);
-      this.setLayerVisibility('3d-buildings-edges', enabled);
     } catch (err) {
       console.warn('LayerManager: Error setting up 3D buildings:', err);
     }
