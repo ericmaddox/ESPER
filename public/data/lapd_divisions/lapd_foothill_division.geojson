@@ -1,6 +1,6 @@
 {
   "type": "FeatureCollection",
-  "name": "Foothill Division (LAPD DIV-16) - FususONE 3D Layer",
+  "name": "Foothill Division (LAPD DIV-16) - Full 3D Building & Boundary GeoJSON",
   "crs": {
     "type": "name",
     "properties": {
@@ -23,8 +23,9 @@
       -118.38,
       34.26
     ],
+    "totalBuildings": 183,
     "fususOneCompatible": true,
-    "optimization": "FususONE RTCC Compliant (Height Filtered + Low Polygon Vertex Bloat)"
+    "optimization": "100% Comprehensive 3D Building Extrusions + Division Perimeter"
   },
   "features": [
     {
@@ -32,7 +33,7 @@
       "properties": {
         "layerType": "BOUNDARY",
         "id": "FOOTHILL_BOUNDARY",
-        "name": "Foothill Division Boundary",
+        "name": "Foothill Division Official Perimeter",
         "bureau": "Valley Bureau",
         "division": "Foothill Division",
         "strokeColor": "#00f3ff",
@@ -49,16 +50,16 @@
               34.21
             ],
             [
-              -118.44,
-              34.3
-            ],
-            [
-              -118.27,
-              34.3
-            ],
-            [
               -118.27,
               34.21
+            ],
+            [
+              -118.27,
+              34.3
+            ],
+            [
+              -118.44,
+              34.3
             ],
             [
               -118.44,
@@ -101,31 +102,31 @@
         "render_min_height": 0,
         "division": "Foothill Division",
         "bureau": "Valley Bureau",
-        "extrusionColor": "#1e293b"
+        "extrusionColor": "#00f3ff"
       },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
           [
             [
-              -118.425,
-              34.2597
+              -118.42530000000001,
+              34.2594
             ],
             [
-              -118.42200000000001,
-              34.2597
+              -118.4217,
+              34.2594
             ],
             [
-              -118.42200000000001,
-              34.2627
+              -118.4217,
+              34.263000000000005
             ],
             [
-              -118.425,
-              34.2627
+              -118.42530000000001,
+              34.263000000000005
             ],
             [
-              -118.425,
-              34.2597
+              -118.42530000000001,
+              34.2594
             ]
           ]
         ]
@@ -143,6 +144,48 @@
         "render_min_height": 0,
         "division": "Foothill Division",
         "bureau": "Valley Bureau",
+        "extrusionColor": "#00f3ff"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.3763,
+              34.226699999999994
+            ],
+            [
+              -118.3727,
+              34.226699999999994
+            ],
+            [
+              -118.3727,
+              34.2303
+            ],
+            [
+              -118.3763,
+              34.2303
+            ],
+            [
+              -118.3763,
+              34.226699999999994
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_1",
+        "name": "Structure #1",
+        "height": 17,
+        "min_height": 0,
+        "render_height": 17,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
         "extrusionColor": "#1e293b"
       },
       "geometry": {
@@ -150,24 +193,7668 @@
         "coordinates": [
           [
             [
-              -118.37599999999999,
-              34.227
+              -118.43751666304435,
+              34.211143975449275
             ],
             [
-              -118.373,
-              34.227
+              -118.4327270223816,
+              34.211143975449275
             ],
             [
-              -118.373,
-              34.23
+              -118.4327270223816,
+              34.21352685205902
             ],
             [
-              -118.37599999999999,
-              34.23
+              -118.43751666304435,
+              34.21352685205902
             ],
             [
-              -118.37599999999999,
-              34.227
+              -118.43751666304435,
+              34.211143975449275
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_2",
+        "name": "Structure #2",
+        "height": 9,
+        "min_height": 0,
+        "render_height": 9,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.42636176798368,
+              34.2106880083911
+            ],
+            [
+              -118.42156071288849,
+              34.2106880083911
+            ],
+            [
+              -118.42156071288849,
+              34.21379052978227
+            ],
+            [
+              -118.42636176798368,
+              34.21379052978227
+            ],
+            [
+              -118.42636176798368,
+              34.2106880083911
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_3",
+        "name": "Structure #3",
+        "height": 15,
+        "min_height": 0,
+        "render_height": 15,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.41594712383423,
+              34.211302863014474
+            ],
+            [
+              -118.409696117772,
+              34.211302863014474
+            ],
+            [
+              -118.409696117772,
+              34.21318473956112
+            ],
+            [
+              -118.41594712383423,
+              34.21318473956112
+            ],
+            [
+              -118.41594712383423,
+              34.211302863014474
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_4",
+        "name": "Structure #4",
+        "height": 12,
+        "min_height": 0,
+        "render_height": 12,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.40337497229676,
+              34.211360771335684
+            ],
+            [
+              -118.39958333955092,
+              34.211360771335684
+            ],
+            [
+              -118.39958333955092,
+              34.2142782628902
+            ],
+            [
+              -118.40337497229676,
+              34.2142782628902
+            ],
+            [
+              -118.40337497229676,
+              34.211360771335684
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_5",
+        "name": "Structure #5",
+        "height": 10,
+        "min_height": 0,
+        "render_height": 10,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.39192496441996,
+              34.21066590391191
+            ],
+            [
+              -118.38604675921383,
+              34.21066590391191
+            ],
+            [
+              -118.38604675921383,
+              34.21302009856273
+            ],
+            [
+              -118.39192496441996,
+              34.21302009856273
+            ],
+            [
+              -118.39192496441996,
+              34.21066590391191
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_6",
+        "name": "Structure #6",
+        "height": 19,
+        "min_height": 0,
+        "render_height": 19,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.38199166026638,
+              34.21166378123082
+            ],
+            [
+              -118.37724839400693,
+              34.21166378123082
+            ],
+            [
+              -118.37724839400693,
+              34.213679205256405
+            ],
+            [
+              -118.38199166026638,
+              34.213679205256405
+            ],
+            [
+              -118.38199166026638,
+              34.21166378123082
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_8",
+        "name": "Structure #8",
+        "height": 22,
+        "min_height": 0,
+        "render_height": 22,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.35974202801545,
+              34.21018890591864
+            ],
+            [
+              -118.35264207930278,
+              34.21018890591864
+            ],
+            [
+              -118.35264207930278,
+              34.213710772522305
+            ],
+            [
+              -118.35974202801545,
+              34.213710772522305
+            ],
+            [
+              -118.35974202801545,
+              34.21018890591864
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_9",
+        "name": "Structure #9",
+        "height": 17,
+        "min_height": 0,
+        "render_height": 17,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.34895272288983,
+              34.211177907637484
+            ],
+            [
+              -118.34185681388098,
+              34.211177907637484
+            ],
+            [
+              -118.34185681388098,
+              34.21513528692845
+            ],
+            [
+              -118.34895272288983,
+              34.21513528692845
+            ],
+            [
+              -118.34895272288983,
+              34.211177907637484
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_11",
+        "name": "Structure #11",
+        "height": 16,
+        "min_height": 0,
+        "render_height": 16,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.32355145245599,
+              34.21200843505493
+            ],
+            [
+              -118.31706842646317,
+              34.21200843505493
+            ],
+            [
+              -118.31706842646317,
+              34.2149983718106
+            ],
+            [
+              -118.32355145245599,
+              34.2149983718106
+            ],
+            [
+              -118.32355145245599,
+              34.21200843505493
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_12",
+        "name": "Structure #12",
+        "height": 14,
+        "min_height": 0,
+        "render_height": 14,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.31128670863005,
+              34.211399067508836
+            ],
+            [
+              -118.30526253975937,
+              34.211399067508836
+            ],
+            [
+              -118.30526253975937,
+              34.2144242178384
+            ],
+            [
+              -118.31128670863005,
+              34.2144242178384
+            ],
+            [
+              -118.31128670863005,
+              34.211399067508836
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_13",
+        "name": "Structure #13",
+        "height": 15,
+        "min_height": 0,
+        "render_height": 15,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.30118113805626,
+              34.211384487682075
+            ],
+            [
+              -118.29508602035521,
+              34.211384487682075
+            ],
+            [
+              -118.29508602035521,
+              34.214074411126994
+            ],
+            [
+              -118.30118113805626,
+              34.214074411126994
+            ],
+            [
+              -118.30118113805626,
+              34.211384487682075
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_14",
+        "name": "Structure #14",
+        "height": 20,
+        "min_height": 0,
+        "render_height": 20,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.28987718037389,
+              34.21132135503127
+            ],
+            [
+              -118.28445748276634,
+              34.21132135503127
+            ],
+            [
+              -118.28445748276634,
+              34.21419388549602
+            ],
+            [
+              -118.28987718037389,
+              34.21419388549602
+            ],
+            [
+              -118.28987718037389,
+              34.21132135503127
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_15",
+        "name": "Structure #15",
+        "height": 13,
+        "min_height": 0,
+        "render_height": 13,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.2786710476407,
+              34.21063207659087
+            ],
+            [
+              -118.2728834307043,
+              34.21063207659087
+            ],
+            [
+              -118.2728834307043,
+              34.21434680092101
+            ],
+            [
+              -118.2786710476407,
+              34.21434680092101
+            ],
+            [
+              -118.2786710476407,
+              34.21063207659087
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_16",
+        "name": "Structure #16",
+        "height": 18,
+        "min_height": 0,
+        "render_height": 18,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.43872648272063,
+              34.2169929698225
+            ],
+            [
+              -118.43124200110731,
+              34.2169929698225
+            ],
+            [
+              -118.43124200110731,
+              34.219528078921115
+            ],
+            [
+              -118.43872648272063,
+              34.219528078921115
+            ],
+            [
+              -118.43872648272063,
+              34.2169929698225
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_17",
+        "name": "Structure #17",
+        "height": 24,
+        "min_height": 0,
+        "render_height": 24,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.42591046080207,
+              34.21728675478178
+            ],
+            [
+              -118.42080268543302,
+              34.21728675478178
+            ],
+            [
+              -118.42080268543302,
+              34.220581804146434
+            ],
+            [
+              -118.42591046080207,
+              34.220581804146434
+            ],
+            [
+              -118.42591046080207,
+              34.21728675478178
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_18",
+        "name": "Structure #18",
+        "height": 12,
+        "min_height": 0,
+        "render_height": 12,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.41398520518041,
+              34.21586589881071
+            ],
+            [
+              -118.40734629090494,
+              34.21586589881071
+            ],
+            [
+              -118.40734629090494,
+              34.22011527574707
+            ],
+            [
+              -118.41398520518041,
+              34.22011527574707
+            ],
+            [
+              -118.41398520518041,
+              34.21586589881071
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_19",
+        "name": "Structure #19",
+        "height": 13,
+        "min_height": 0,
+        "render_height": 13,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.40551463350731,
+              34.2173894288843
+            ],
+            [
+              -118.3969529259022,
+              34.2173894288843
+            ],
+            [
+              -118.3969529259022,
+              34.219807650099156
+            ],
+            [
+              -118.40551463350731,
+              34.219807650099156
+            ],
+            [
+              -118.40551463350731,
+              34.2173894288843
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_20",
+        "name": "Structure #20",
+        "height": 15,
+        "min_height": 0,
+        "render_height": 15,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.39111166921089,
+              34.218071635628824
+            ],
+            [
+              -118.3862394012817,
+              34.218071635628824
+            ],
+            [
+              -118.3862394012817,
+              34.22065236746935
+            ],
+            [
+              -118.39111166921089,
+              34.22065236746935
+            ],
+            [
+              -118.39111166921089,
+              34.218071635628824
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_21",
+        "name": "Structure #21",
+        "height": 13,
+        "min_height": 0,
+        "render_height": 13,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.37840381562191,
+              34.21646857315411
+            ],
+            [
+              -118.37320411887657,
+              34.21646857315411
+            ],
+            [
+              -118.37320411887657,
+              34.219325580789665
+            ],
+            [
+              -118.37840381562191,
+              34.219325580789665
+            ],
+            [
+              -118.37840381562191,
+              34.21646857315411
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_22",
+        "name": "Structure #22",
+        "height": 30,
+        "min_height": 0,
+        "render_height": 30,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.37030035631172,
+              34.21672627078269
+            ],
+            [
+              -118.36454401500156,
+              34.21672627078269
+            ],
+            [
+              -118.36454401500156,
+              34.219327900162156
+            ],
+            [
+              -118.37030035631172,
+              34.219327900162156
+            ],
+            [
+              -118.37030035631172,
+              34.21672627078269
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_23",
+        "name": "Structure #23",
+        "height": 12,
+        "min_height": 0,
+        "render_height": 12,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.35844780997859,
+              34.21604032583312
+            ],
+            [
+              -118.35320600856217,
+              34.21604032583312
+            ],
+            [
+              -118.35320600856217,
+              34.22045588638376
+            ],
+            [
+              -118.35844780997859,
+              34.22045588638376
+            ],
+            [
+              -118.35844780997859,
+              34.21604032583312
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_24",
+        "name": "Structure #24",
+        "height": 22,
+        "min_height": 0,
+        "render_height": 22,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.34849652869177,
+              34.216842073109206
+            ],
+            [
+              -118.33959999187864,
+              34.216842073109206
+            ],
+            [
+              -118.33959999187864,
+              34.21924553389793
+            ],
+            [
+              -118.34849652869177,
+              34.21924553389793
+            ],
+            [
+              -118.34849652869177,
+              34.216842073109206
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_25",
+        "name": "Structure #25",
+        "height": 12,
+        "min_height": 0,
+        "render_height": 12,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.33554782306886,
+              34.217519918239994
+            ],
+            [
+              -118.3307052946649,
+              34.217519918239994
+            ],
+            [
+              -118.3307052946649,
+              34.22146997864103
+            ],
+            [
+              -118.33554782306886,
+              34.22146997864103
+            ],
+            [
+              -118.33554782306886,
+              34.217519918239994
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_26",
+        "name": "Structure #26",
+        "height": 19,
+        "min_height": 0,
+        "render_height": 19,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.32284875732385,
+              34.216689624092865
+            ],
+            [
+              -118.31489011710845,
+              34.216689624092865
+            ],
+            [
+              -118.31489011710845,
+              34.21908091316911
+            ],
+            [
+              -118.32284875732385,
+              34.21908091316911
+            ],
+            [
+              -118.32284875732385,
+              34.216689624092865
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_27",
+        "name": "Structure #27",
+        "height": 30,
+        "min_height": 0,
+        "render_height": 30,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.31318831293882,
+              34.217407258453356
+            ],
+            [
+              -118.3083703082815,
+              34.217407258453356
+            ],
+            [
+              -118.3083703082815,
+              34.220837838188295
+            ],
+            [
+              -118.31318831293882,
+              34.220837838188295
+            ],
+            [
+              -118.31318831293882,
+              34.217407258453356
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_28",
+        "name": "Structure #28",
+        "height": 8,
+        "min_height": 0,
+        "render_height": 8,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.30040907926434,
+              34.21567754198818
+            ],
+            [
+              -118.29349709639098,
+              34.21567754198818
+            ],
+            [
+              -118.29349709639098,
+              34.22007352053381
+            ],
+            [
+              -118.30040907926434,
+              34.22007352053381
+            ],
+            [
+              -118.30040907926434,
+              34.21567754198818
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_29",
+        "name": "Structure #29",
+        "height": 19,
+        "min_height": 0,
+        "render_height": 19,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.29256080429049,
+              34.217825007472605
+            ],
+            [
+              -118.28370372159115,
+              34.217825007472605
+            ],
+            [
+              -118.28370372159115,
+              34.21958892010331
+            ],
+            [
+              -118.29256080429049,
+              34.21958892010331
+            ],
+            [
+              -118.29256080429049,
+              34.217825007472605
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_30",
+        "name": "Structure #30",
+        "height": 17,
+        "min_height": 0,
+        "render_height": 17,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.27690072568483,
+              34.21777396640063
+            ],
+            [
+              -118.27334676838443,
+              34.21777396640063
+            ],
+            [
+              -118.27334676838443,
+              34.22118459927239
+            ],
+            [
+              -118.27690072568483,
+              34.22118459927239
+            ],
+            [
+              -118.27690072568483,
+              34.21777396640063
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_31",
+        "name": "Structure #31",
+        "height": 9,
+        "min_height": 0,
+        "render_height": 9,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.43567023065948,
+              34.221420820229774
+            ],
+            [
+              -118.42879843702154,
+              34.221420820229774
+            ],
+            [
+              -118.42879843702154,
+              34.224576439979366
+            ],
+            [
+              -118.43567023065948,
+              34.224576439979366
+            ],
+            [
+              -118.43567023065948,
+              34.221420820229774
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_32",
+        "name": "Structure #32",
+        "height": 30,
+        "min_height": 0,
+        "render_height": 30,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.42832249553705,
+              34.22338364735197
+            ],
+            [
+              -118.42196450611566,
+              34.22338364735197
+            ],
+            [
+              -118.42196450611566,
+              34.225248365242855
+            ],
+            [
+              -118.42832249553705,
+              34.225248365242855
+            ],
+            [
+              -118.42832249553705,
+              34.22338364735197
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_34",
+        "name": "Structure #34",
+        "height": 11,
+        "min_height": 0,
+        "render_height": 11,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.4035675706381,
+              34.221288914488724
+            ],
+            [
+              -118.39689964628766,
+              34.221288914488724
+            ],
+            [
+              -118.39689964628766,
+              34.22486963413668
+            ],
+            [
+              -118.4035675706381,
+              34.22486963413668
+            ],
+            [
+              -118.4035675706381,
+              34.221288914488724
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_35",
+        "name": "Structure #35",
+        "height": 20,
+        "min_height": 0,
+        "render_height": 20,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.39458826117827,
+              34.223109617555224
+            ],
+            [
+              -118.38737377418387,
+              34.223109617555224
+            ],
+            [
+              -118.38737377418387,
+              34.22536049884073
+            ],
+            [
+              -118.39458826117827,
+              34.22536049884073
+            ],
+            [
+              -118.39458826117827,
+              34.223109617555224
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_37",
+        "name": "Structure #37",
+        "height": 15,
+        "min_height": 0,
+        "render_height": 15,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.36915759684615,
+              34.22181952257548
+            ],
+            [
+              -118.36193922396279,
+              34.22181952257548
+            ],
+            [
+              -118.36193922396279,
+              34.22495688748133
+            ],
+            [
+              -118.36915759684615,
+              34.22495688748133
+            ],
+            [
+              -118.36915759684615,
+              34.22181952257548
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_38",
+        "name": "Structure #38",
+        "height": 23,
+        "min_height": 0,
+        "render_height": 23,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.35951918414422,
+              34.2230610290131
+            ],
+            [
+              -118.35319797485242,
+              34.2230610290131
+            ],
+            [
+              -118.35319797485242,
+              34.22584620827663
+            ],
+            [
+              -118.35951918414422,
+              34.22584620827663
+            ],
+            [
+              -118.35951918414422,
+              34.2230610290131
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_39",
+        "name": "Structure #39",
+        "height": 23,
+        "min_height": 0,
+        "render_height": 23,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.34568444524767,
+              34.222042232258374
+            ],
+            [
+              -118.3400728248056,
+              34.222042232258374
+            ],
+            [
+              -118.3400728248056,
+              34.226152551590985
+            ],
+            [
+              -118.34568444524767,
+              34.226152551590985
+            ],
+            [
+              -118.34568444524767,
+              34.222042232258374
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_40",
+        "name": "Structure #40",
+        "height": 17,
+        "min_height": 0,
+        "render_height": 17,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.33640379870904,
+              34.2217726792618
+            ],
+            [
+              -118.32812226642407,
+              34.2217726792618
+            ],
+            [
+              -118.32812226642407,
+              34.22585860755985
+            ],
+            [
+              -118.33640379870904,
+              34.22585860755985
+            ],
+            [
+              -118.33640379870904,
+              34.2217726792618
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_41",
+        "name": "Structure #41",
+        "height": 25,
+        "min_height": 0,
+        "render_height": 25,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.3256135647466,
+              34.22325429382959
+            ],
+            [
+              -118.31738117587942,
+              34.22325429382959
+            ],
+            [
+              -118.31738117587942,
+              34.2264972171026
+            ],
+            [
+              -118.3256135647466,
+              34.2264972171026
+            ],
+            [
+              -118.3256135647466,
+              34.22325429382959
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_42",
+        "name": "Structure #42",
+        "height": 11,
+        "min_height": 0,
+        "render_height": 11,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.31129505243223,
+              34.222622339804346
+            ],
+            [
+              -118.30476116257847,
+              34.222622339804346
+            ],
+            [
+              -118.30476116257847,
+              34.22709014547253
+            ],
+            [
+              -118.31129505243223,
+              34.22709014547253
+            ],
+            [
+              -118.31129505243223,
+              34.222622339804346
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_43",
+        "name": "Structure #43",
+        "height": 30,
+        "min_height": 0,
+        "render_height": 30,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.30123498943124,
+              34.223063373426356
+            ],
+            [
+              -118.29223318838126,
+              34.223063373426356
+            ],
+            [
+              -118.29223318838126,
+              34.22530030381046
+            ],
+            [
+              -118.30123498943124,
+              34.22530030381046
+            ],
+            [
+              -118.30123498943124,
+              34.223063373426356
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_44",
+        "name": "Structure #44",
+        "height": 30,
+        "min_height": 0,
+        "render_height": 30,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.28901305502245,
+              34.223734871922304
+            ],
+            [
+              -118.28450605454483,
+              34.223734871922304
+            ],
+            [
+              -118.28450605454483,
+              34.2265886171468
+            ],
+            [
+              -118.28901305502245,
+              34.2265886171468
+            ],
+            [
+              -118.28901305502245,
+              34.223734871922304
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_45",
+        "name": "Structure #45",
+        "height": 19,
+        "min_height": 0,
+        "render_height": 19,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.27632677657135,
+              34.221475572512766
+            ],
+            [
+              -118.27057700841533,
+              34.221475572512766
+            ],
+            [
+              -118.27057700841533,
+              34.2252785161018
+            ],
+            [
+              -118.27632677657135,
+              34.2252785161018
+            ],
+            [
+              -118.27632677657135,
+              34.221475572512766
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_46",
+        "name": "Structure #46",
+        "height": 30,
+        "min_height": 0,
+        "render_height": 30,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.43954551315946,
+              34.227790728593675
+            ],
+            [
+              -118.43188328607636,
+              34.227790728593675
+            ],
+            [
+              -118.43188328607636,
+              34.23120026376553
+            ],
+            [
+              -118.43954551315946,
+              34.23120026376553
+            ],
+            [
+              -118.43954551315946,
+              34.227790728593675
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_48",
+        "name": "Structure #48",
+        "height": 25,
+        "min_height": 0,
+        "render_height": 25,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.41238636858029,
+              34.228769473483496
+            ],
+            [
+              -118.40866073475343,
+              34.228769473483496
+            ],
+            [
+              -118.40866073475343,
+              34.23111078279146
+            ],
+            [
+              -118.41238636858029,
+              34.23111078279146
+            ],
+            [
+              -118.41238636858029,
+              34.228769473483496
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_49",
+        "name": "Structure #49",
+        "height": 11,
+        "min_height": 0,
+        "render_height": 11,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.40218298675917,
+              34.226481291948026
+            ],
+            [
+              -118.39746568207941,
+              34.226481291948026
+            ],
+            [
+              -118.39746568207941,
+              34.230902299620375
+            ],
+            [
+              -118.40218298675917,
+              34.230902299620375
+            ],
+            [
+              -118.40218298675917,
+              34.226481291948026
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_50",
+        "name": "Structure #50",
+        "height": 8,
+        "min_height": 0,
+        "render_height": 8,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.3954599154825,
+              34.22797301106221
+            ],
+            [
+              -118.38655240372783,
+              34.22797301106221
+            ],
+            [
+              -118.38655240372783,
+              34.23019808383054
+            ],
+            [
+              -118.3954599154825,
+              34.23019808383054
+            ],
+            [
+              -118.3954599154825,
+              34.22797301106221
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_52",
+        "name": "Structure #52",
+        "height": 24,
+        "min_height": 0,
+        "render_height": 24,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.36594001760176,
+              34.22731924827244
+            ],
+            [
+              -118.36244796359077,
+              34.22731924827244
+            ],
+            [
+              -118.36244796359077,
+              34.230665868156876
+            ],
+            [
+              -118.36594001760176,
+              34.230665868156876
+            ],
+            [
+              -118.36594001760176,
+              34.22731924827244
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_53",
+        "name": "Structure #53",
+        "height": 30,
+        "min_height": 0,
+        "render_height": 30,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.3597715886659,
+              34.226446689308354
+            ],
+            [
+              -118.35302876934318,
+              34.226446689308354
+            ],
+            [
+              -118.35302876934318,
+              34.23075141240624
+            ],
+            [
+              -118.3597715886659,
+              34.23075141240624
+            ],
+            [
+              -118.3597715886659,
+              34.226446689308354
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_56",
+        "name": "Structure #56",
+        "height": 21,
+        "min_height": 0,
+        "render_height": 21,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.3207749041951,
+              34.22875180135102
+            ],
+            [
+              -118.31732127734415,
+              34.22875180135102
+            ],
+            [
+              -118.31732127734415,
+              34.23155507389213
+            ],
+            [
+              -118.3207749041951,
+              34.23155507389213
+            ],
+            [
+              -118.3207749041951,
+              34.22875180135102
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_57",
+        "name": "Structure #57",
+        "height": 30,
+        "min_height": 0,
+        "render_height": 30,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.31155192616684,
+              34.22665349907044
+            ],
+            [
+              -118.30590385112104,
+              34.22665349907044
+            ],
+            [
+              -118.30590385112104,
+              34.230514086958266
+            ],
+            [
+              -118.31155192616684,
+              34.230514086958266
+            ],
+            [
+              -118.31155192616684,
+              34.22665349907044
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_58",
+        "name": "Structure #58",
+        "height": 8,
+        "min_height": 0,
+        "render_height": 8,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.30444628335438,
+              34.22790238461448
+            ],
+            [
+              -118.29666791368409,
+              34.22790238461448
+            ],
+            [
+              -118.29666791368409,
+              34.23100785145131
+            ],
+            [
+              -118.30444628335438,
+              34.23100785145131
+            ],
+            [
+              -118.30444628335438,
+              34.22790238461448
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_60",
+        "name": "Structure #60",
+        "height": 17,
+        "min_height": 0,
+        "render_height": 17,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.27616941663784,
+              34.22818926144733
+            ],
+            [
+              -118.27269185855634,
+              34.22818926144733
+            ],
+            [
+              -118.27269185855634,
+              34.23120448549158
+            ],
+            [
+              -118.27616941663784,
+              34.23120448549158
+            ],
+            [
+              -118.27616941663784,
+              34.22818926144733
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_61",
+        "name": "Structure #61",
+        "height": 19,
+        "min_height": 0,
+        "render_height": 19,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.43735200656538,
+              34.2326169686046
+            ],
+            [
+              -118.43127688849104,
+              34.2326169686046
+            ],
+            [
+              -118.43127688849104,
+              34.235819621636594
+            ],
+            [
+              -118.43735200656538,
+              34.235819621636594
+            ],
+            [
+              -118.43735200656538,
+              34.2326169686046
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_62",
+        "name": "Structure #62",
+        "height": 8,
+        "min_height": 0,
+        "render_height": 8,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.42843099658924,
+              34.23349287949266
+            ],
+            [
+              -118.42197824381367,
+              34.23349287949266
+            ],
+            [
+              -118.42197824381367,
+              34.23700647897813
+            ],
+            [
+              -118.42843099658924,
+              34.23700647897813
+            ],
+            [
+              -118.42843099658924,
+              34.23349287949266
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_64",
+        "name": "Structure #64",
+        "height": 23,
+        "min_height": 0,
+        "render_height": 23,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.40187891526759,
+              34.23373248430525
+            ],
+            [
+              -118.3984366802915,
+              34.23373248430525
+            ],
+            [
+              -118.3984366802915,
+              34.2375642748715
+            ],
+            [
+              -118.40187891526759,
+              34.2375642748715
+            ],
+            [
+              -118.40187891526759,
+              34.23373248430525
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_65",
+        "name": "Structure #65",
+        "height": 17,
+        "min_height": 0,
+        "render_height": 17,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.39218343902941,
+              34.23212042817661
+            ],
+            [
+              -118.38446309062927,
+              34.23212042817661
+            ],
+            [
+              -118.38446309062927,
+              34.23628811136323
+            ],
+            [
+              -118.39218343902941,
+              34.23628811136323
+            ],
+            [
+              -118.39218343902941,
+              34.23212042817661
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_66",
+        "name": "Structure #66",
+        "height": 18,
+        "min_height": 0,
+        "render_height": 18,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.38409810026639,
+              34.23431050610025
+            ],
+            [
+              -118.37570099043853,
+              34.23431050610025
+            ],
+            [
+              -118.37570099043853,
+              34.23749535880575
+            ],
+            [
+              -118.38409810026639,
+              34.23749535880575
+            ],
+            [
+              -118.38409810026639,
+              34.23431050610025
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_68",
+        "name": "Structure #68",
+        "height": 14,
+        "min_height": 0,
+        "render_height": 14,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.35661070915968,
+              34.233286990787086
+            ],
+            [
+              -118.34992724844908,
+              34.233286990787086
+            ],
+            [
+              -118.34992724844908,
+              34.23748377354172
+            ],
+            [
+              -118.35661070915968,
+              34.23748377354172
+            ],
+            [
+              -118.35661070915968,
+              34.233286990787086
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_69",
+        "name": "Structure #69",
+        "height": 30,
+        "min_height": 0,
+        "render_height": 30,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.34774769263639,
+              34.234158785280265
+            ],
+            [
+              -118.33929195256779,
+              34.234158785280265
+            ],
+            [
+              -118.33929195256779,
+              34.236823668813436
+            ],
+            [
+              -118.34774769263639,
+              34.236823668813436
+            ],
+            [
+              -118.34774769263639,
+              34.234158785280265
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_70",
+        "name": "Structure #70",
+        "height": 25,
+        "min_height": 0,
+        "render_height": 25,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.3346578548427,
+              34.23518054125946
+            ],
+            [
+              -118.32928860802033,
+              34.23518054125946
+            ],
+            [
+              -118.32928860802033,
+              34.23720931114796
+            ],
+            [
+              -118.3346578548427,
+              34.23720931114796
+            ],
+            [
+              -118.3346578548427,
+              34.23518054125946
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_71",
+        "name": "Structure #71",
+        "height": 15,
+        "min_height": 0,
+        "render_height": 15,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.32126587242539,
+              34.232729489177146
+            ],
+            [
+              -118.31717827679819,
+              34.232729489177146
+            ],
+            [
+              -118.31717827679819,
+              34.23720932447591
+            ],
+            [
+              -118.32126587242539,
+              34.23720932447591
+            ],
+            [
+              -118.32126587242539,
+              34.232729489177146
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_72",
+        "name": "Structure #72",
+        "height": 30,
+        "min_height": 0,
+        "render_height": 30,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.31487095513937,
+              34.2330268812503
+            ],
+            [
+              -118.30584491661149,
+              34.2330268812503
+            ],
+            [
+              -118.30584491661149,
+              34.2358941505713
+            ],
+            [
+              -118.31487095513937,
+              34.2358941505713
+            ],
+            [
+              -118.31487095513937,
+              34.2330268812503
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_73",
+        "name": "Structure #73",
+        "height": 21,
+        "min_height": 0,
+        "render_height": 21,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.30293843185125,
+              34.23528184564973
+            ],
+            [
+              -118.29716141514523,
+              34.23528184564973
+            ],
+            [
+              -118.29716141514523,
+              34.2375608908283
+            ],
+            [
+              -118.30293843185125,
+              34.2375608908283
+            ],
+            [
+              -118.30293843185125,
+              34.23528184564973
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_75",
+        "name": "Structure #75",
+        "height": 30,
+        "min_height": 0,
+        "render_height": 30,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.27981279681178,
+              34.232641729143104
+            ],
+            [
+              -118.27225064312528,
+              34.232641729143104
+            ],
+            [
+              -118.27225064312528,
+              34.236679743142595
+            ],
+            [
+              -118.27981279681178,
+              34.236679743142595
+            ],
+            [
+              -118.27981279681178,
+              34.232641729143104
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_76",
+        "name": "Structure #76",
+        "height": 22,
+        "min_height": 0,
+        "render_height": 22,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.43971444202278,
+              34.24040797551427
+            ],
+            [
+              -118.43157859159417,
+              34.24040797551427
+            ],
+            [
+              -118.43157859159417,
+              34.242522264177964
+            ],
+            [
+              -118.43971444202278,
+              34.242522264177964
+            ],
+            [
+              -118.43971444202278,
+              34.24040797551427
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_77",
+        "name": "Structure #77",
+        "height": 13,
+        "min_height": 0,
+        "render_height": 13,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.42406689377866,
+              34.239745927486425
+            ],
+            [
+              -118.41980699365625,
+              34.239745927486425
+            ],
+            [
+              -118.41980699365625,
+              34.24363989491276
+            ],
+            [
+              -118.42406689377866,
+              34.24363989491276
+            ],
+            [
+              -118.42406689377866,
+              34.239745927486425
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_78",
+        "name": "Structure #78",
+        "height": 20,
+        "min_height": 0,
+        "render_height": 20,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.41406746461995,
+              34.23886682562746
+            ],
+            [
+              -118.40622184136096,
+              34.23886682562746
+            ],
+            [
+              -118.40622184136096,
+              34.241441036234455
+            ],
+            [
+              -118.41406746461995,
+              34.241441036234455
+            ],
+            [
+              -118.41406746461995,
+              34.23886682562746
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_79",
+        "name": "Structure #79",
+        "height": 8,
+        "min_height": 0,
+        "render_height": 8,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.40450535873578,
+              34.23972266488125
+            ],
+            [
+              -118.39931880106835,
+              34.23972266488125
+            ],
+            [
+              -118.39931880106835,
+              34.24343268300088
+            ],
+            [
+              -118.40450535873578,
+              34.24343268300088
+            ],
+            [
+              -118.40450535873578,
+              34.23972266488125
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_81",
+        "name": "Structure #81",
+        "height": 10,
+        "min_height": 0,
+        "render_height": 10,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.3803122567148,
+              34.23961619990583
+            ],
+            [
+              -118.37669591768397,
+              34.23961619990583
+            ],
+            [
+              -118.37669591768397,
+              34.243244829085576
+            ],
+            [
+              -118.3803122567148,
+              34.243244829085576
+            ],
+            [
+              -118.3803122567148,
+              34.23961619990583
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_82",
+        "name": "Structure #82",
+        "height": 12,
+        "min_height": 0,
+        "render_height": 12,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.36899550833787,
+              34.2388908829228
+            ],
+            [
+              -118.36168449250907,
+              34.2388908829228
+            ],
+            [
+              -118.36168449250907,
+              34.240905915719324
+            ],
+            [
+              -118.36899550833787,
+              34.240905915719324
+            ],
+            [
+              -118.36899550833787,
+              34.2388908829228
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_83",
+        "name": "Structure #83",
+        "height": 18,
+        "min_height": 0,
+        "render_height": 18,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.3591235544074,
+              34.24019161736843
+            ],
+            [
+              -118.35506363647661,
+              34.24019161736843
+            ],
+            [
+              -118.35506363647661,
+              34.24253918931915
+            ],
+            [
+              -118.3591235544074,
+              34.24253918931915
+            ],
+            [
+              -118.3591235544074,
+              34.24019161736843
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_85",
+        "name": "Structure #85",
+        "height": 15,
+        "min_height": 0,
+        "render_height": 15,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.3374305210679,
+              34.23942013413473
+            ],
+            [
+              -118.33071361024285,
+              34.23942013413473
+            ],
+            [
+              -118.33071361024285,
+              34.241260980986425
+            ],
+            [
+              -118.3374305210679,
+              34.241260980986425
+            ],
+            [
+              -118.3374305210679,
+              34.23942013413473
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_87",
+        "name": "Structure #87",
+        "height": 23,
+        "min_height": 0,
+        "render_height": 23,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.31217714227306,
+              34.23860022053223
+            ],
+            [
+              -118.30638246707353,
+              34.23860022053223
+            ],
+            [
+              -118.30638246707353,
+              34.241270134430486
+            ],
+            [
+              -118.31217714227306,
+              34.241270134430486
+            ],
+            [
+              -118.31217714227306,
+              34.23860022053223
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_88",
+        "name": "Structure #88",
+        "height": 8,
+        "min_height": 0,
+        "render_height": 8,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.30304251863136,
+              34.23874230677732
+            ],
+            [
+              -118.29766313655487,
+              34.23874230677732
+            ],
+            [
+              -118.29766313655487,
+              34.24278434705759
+            ],
+            [
+              -118.30304251863136,
+              34.24278434705759
+            ],
+            [
+              -118.30304251863136,
+              34.23874230677732
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_90",
+        "name": "Structure #90",
+        "height": 25,
+        "min_height": 0,
+        "render_height": 25,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.27816930242095,
+              34.240520304788305
+            ],
+            [
+              -118.27453035292332,
+              34.240520304788305
+            ],
+            [
+              -118.27453035292332,
+              34.24287195966011
+            ],
+            [
+              -118.27816930242095,
+              34.24287195966011
+            ],
+            [
+              -118.27816930242095,
+              34.240520304788305
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_91",
+        "name": "Structure #91",
+        "height": 20,
+        "min_height": 0,
+        "render_height": 20,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.4351739044265,
+              34.24331314310766
+            ],
+            [
+              -118.43043575535148,
+              34.24331314310766
+            ],
+            [
+              -118.43043575535148,
+              34.24775161090516
+            ],
+            [
+              -118.4351739044265,
+              34.24775161090516
+            ],
+            [
+              -118.4351739044265,
+              34.24331314310766
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_92",
+        "name": "Structure #92",
+        "height": 16,
+        "min_height": 0,
+        "render_height": 16,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.4295468524053,
+              34.24416663354098
+            ],
+            [
+              -118.42060416173182,
+              34.24416663354098
+            ],
+            [
+              -118.42060416173182,
+              34.24777101425389
+            ],
+            [
+              -118.4295468524053,
+              34.24777101425389
+            ],
+            [
+              -118.4295468524053,
+              34.24416663354098
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_94",
+        "name": "Structure #94",
+        "height": 13,
+        "min_height": 0,
+        "render_height": 13,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.40122909311447,
+              34.245836596363105
+            ],
+            [
+              -118.39510260180796,
+              34.245836596363105
+            ],
+            [
+              -118.39510260180796,
+              34.24810541277755
+            ],
+            [
+              -118.40122909311447,
+              34.24810541277755
+            ],
+            [
+              -118.40122909311447,
+              34.245836596363105
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_95",
+        "name": "Structure #95",
+        "height": 30,
+        "min_height": 0,
+        "render_height": 30,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.39046256140173,
+              34.245254964819914
+            ],
+            [
+              -118.38589131647782,
+              34.245254964819914
+            ],
+            [
+              -118.38589131647782,
+              34.247785190041135
+            ],
+            [
+              -118.39046256140173,
+              34.247785190041135
+            ],
+            [
+              -118.39046256140173,
+              34.245254964819914
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_96",
+        "name": "Structure #96",
+        "height": 11,
+        "min_height": 0,
+        "render_height": 11,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.38030110791838,
+              34.24446871356021
+            ],
+            [
+              -118.37520317265786,
+              34.24446871356021
+            ],
+            [
+              -118.37520317265786,
+              34.247336392702906
+            ],
+            [
+              -118.38030110791838,
+              34.247336392702906
+            ],
+            [
+              -118.38030110791838,
+              34.24446871356021
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_97",
+        "name": "Structure #97",
+        "height": 14,
+        "min_height": 0,
+        "render_height": 14,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.37055192527129,
+              34.24501689267554
+            ],
+            [
+              -118.36477408285043,
+              34.24501689267554
+            ],
+            [
+              -118.36477408285043,
+              34.24720646767841
+            ],
+            [
+              -118.37055192527129,
+              34.24720646767841
+            ],
+            [
+              -118.37055192527129,
+              34.24501689267554
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_98",
+        "name": "Structure #98",
+        "height": 8,
+        "min_height": 0,
+        "render_height": 8,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.35811411253522,
+              34.24503955255873
+            ],
+            [
+              -118.35370252438128,
+              34.24503955255873
+            ],
+            [
+              -118.35370252438128,
+              34.24772373406959
+            ],
+            [
+              -118.35811411253522,
+              34.24772373406959
+            ],
+            [
+              -118.35811411253522,
+              34.24503955255873
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_99",
+        "name": "Structure #99",
+        "height": 11,
+        "min_height": 0,
+        "render_height": 11,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.34673512373352,
+              34.24494576564918
+            ],
+            [
+              -118.34132699505979,
+              34.24494576564918
+            ],
+            [
+              -118.34132699505979,
+              34.24673255435542
+            ],
+            [
+              -118.34673512373352,
+              34.24673255435542
+            ],
+            [
+              -118.34673512373352,
+              34.24494576564918
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_100",
+        "name": "Structure #100",
+        "height": 13,
+        "min_height": 0,
+        "render_height": 13,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.335590753655,
+              34.24512326236494
+            ],
+            [
+              -118.33199070529872,
+              34.24512326236494
+            ],
+            [
+              -118.33199070529872,
+              34.247346428052424
+            ],
+            [
+              -118.335590753655,
+              34.247346428052424
+            ],
+            [
+              -118.335590753655,
+              34.24512326236494
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_102",
+        "name": "Structure #102",
+        "height": 14,
+        "min_height": 0,
+        "render_height": 14,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.31440822313574,
+              34.24403002401941
+            ],
+            [
+              -118.30913836616087,
+              34.24403002401941
+            ],
+            [
+              -118.30913836616087,
+              34.24770204108056
+            ],
+            [
+              -118.31440822313574,
+              34.24770204108056
+            ],
+            [
+              -118.31440822313574,
+              34.24403002401941
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_105",
+        "name": "Structure #105",
+        "height": 15,
+        "min_height": 0,
+        "render_height": 15,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.27881214528908,
+              34.24429463076186
+            ],
+            [
+              -118.27065702637746,
+              34.24429463076186
+            ],
+            [
+              -118.27065702637746,
+              34.248264636320755
+            ],
+            [
+              -118.27881214528908,
+              34.248264636320755
+            ],
+            [
+              -118.27881214528908,
+              34.24429463076186
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_106",
+        "name": "Structure #106",
+        "height": 12,
+        "min_height": 0,
+        "render_height": 12,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.4389026698724,
+              34.25148659605301
+            ],
+            [
+              -118.43090384385742,
+              34.25148659605301
+            ],
+            [
+              -118.43090384385742,
+              34.25441452778857
+            ],
+            [
+              -118.4389026698724,
+              34.25441452778857
+            ],
+            [
+              -118.4389026698724,
+              34.25148659605301
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_107",
+        "name": "Structure #107",
+        "height": 16,
+        "min_height": 0,
+        "render_height": 16,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.42441219165615,
+              34.25167172336013
+            ],
+            [
+              -118.41851295141858,
+              34.25167172336013
+            ],
+            [
+              -118.41851295141858,
+              34.25410528553411
+            ],
+            [
+              -118.42441219165615,
+              34.25410528553411
+            ],
+            [
+              -118.42441219165615,
+              34.25167172336013
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_108",
+        "name": "Structure #108",
+        "height": 10,
+        "min_height": 0,
+        "render_height": 10,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.41270586108179,
+              34.25055951869184
+            ],
+            [
+              -118.4078026839609,
+              34.25055951869184
+            ],
+            [
+              -118.4078026839609,
+              34.25355017208505
+            ],
+            [
+              -118.41270586108179,
+              34.25355017208505
+            ],
+            [
+              -118.41270586108179,
+              34.25055951869184
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_109",
+        "name": "Structure #109",
+        "height": 16,
+        "min_height": 0,
+        "render_height": 16,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.40361341419126,
+              34.25065466788553
+            ],
+            [
+              -118.39758780142864,
+              34.25065466788553
+            ],
+            [
+              -118.39758780142864,
+              34.25266403159283
+            ],
+            [
+              -118.40361341419126,
+              34.25266403159283
+            ],
+            [
+              -118.40361341419126,
+              34.25065466788553
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_110",
+        "name": "Structure #110",
+        "height": 14,
+        "min_height": 0,
+        "render_height": 14,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.39208837285285,
+              34.25059579182236
+            ],
+            [
+              -118.38803987708705,
+              34.25059579182236
+            ],
+            [
+              -118.38803987708705,
+              34.25361425360677
+            ],
+            [
+              -118.39208837285285,
+              34.25361425360677
+            ],
+            [
+              -118.39208837285285,
+              34.25059579182236
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_111",
+        "name": "Structure #111",
+        "height": 25,
+        "min_height": 0,
+        "render_height": 25,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.38087366388382,
+              34.24994733251786
+            ],
+            [
+              -118.37479202236264,
+              34.24994733251786
+            ],
+            [
+              -118.37479202236264,
+              34.2526926494138
+            ],
+            [
+              -118.38087366388382,
+              34.2526926494138
+            ],
+            [
+              -118.38087366388382,
+              34.24994733251786
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_112",
+        "name": "Structure #112",
+        "height": 25,
+        "min_height": 0,
+        "render_height": 25,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.370846855964,
+              34.24987915845367
+            ],
+            [
+              -118.36531555081069,
+              34.24987915845367
+            ],
+            [
+              -118.36531555081069,
+              34.25437538040139
+            ],
+            [
+              -118.370846855964,
+              34.25437538040139
+            ],
+            [
+              -118.370846855964,
+              34.24987915845367
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_114",
+        "name": "Structure #114",
+        "height": 18,
+        "min_height": 0,
+        "render_height": 18,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.3486714084865,
+              34.25195154453857
+            ],
+            [
+              -118.33978516993488,
+              34.25195154453857
+            ],
+            [
+              -118.33978516993488,
+              34.25466741057778
+            ],
+            [
+              -118.3486714084865,
+              34.25466741057778
+            ],
+            [
+              -118.3486714084865,
+              34.25195154453857
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_115",
+        "name": "Structure #115",
+        "height": 24,
+        "min_height": 0,
+        "render_height": 24,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.33280873989264,
+              34.25153792594914
+            ],
+            [
+              -118.32733677276181,
+              34.25153792594914
+            ],
+            [
+              -118.32733677276181,
+              34.25494379290066
+            ],
+            [
+              -118.33280873989264,
+              34.25494379290066
+            ],
+            [
+              -118.33280873989264,
+              34.25153792594914
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_116",
+        "name": "Structure #116",
+        "height": 30,
+        "min_height": 0,
+        "render_height": 30,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.322308771421,
+              34.24973535252167
+            ],
+            [
+              -118.31544658022978,
+              34.24973535252167
+            ],
+            [
+              -118.31544658022978,
+              34.25403503314105
+            ],
+            [
+              -118.322308771421,
+              34.25403503314105
+            ],
+            [
+              -118.322308771421,
+              34.24973535252167
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_117",
+        "name": "Structure #117",
+        "height": 30,
+        "min_height": 0,
+        "render_height": 30,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.31460728973411,
+              34.25096439202542
+            ],
+            [
+              -118.30594422952319,
+              34.25096439202542
+            ],
+            [
+              -118.30594422952319,
+              34.25390999509702
+            ],
+            [
+              -118.31460728973411,
+              34.25390999509702
+            ],
+            [
+              -118.31460728973411,
+              34.25096439202542
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_118",
+        "name": "Structure #118",
+        "height": 8,
+        "min_height": 0,
+        "render_height": 8,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.30079766940062,
+              34.250983430686844
+            ],
+            [
+              -118.29486282469341,
+              34.250983430686844
+            ],
+            [
+              -118.29486282469341,
+              34.255321058304176
+            ],
+            [
+              -118.30079766940062,
+              34.255321058304176
+            ],
+            [
+              -118.30079766940062,
+              34.250983430686844
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_119",
+        "name": "Structure #119",
+        "height": 22,
+        "min_height": 0,
+        "render_height": 22,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.2894259766902,
+              34.25118684453321
+            ],
+            [
+              -118.28068646030566,
+              34.25118684453321
+            ],
+            [
+              -118.28068646030566,
+              34.25295112038134
+            ],
+            [
+              -118.2894259766902,
+              34.25295112038134
+            ],
+            [
+              -118.2894259766902,
+              34.25118684453321
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_120",
+        "name": "Structure #120",
+        "height": 30,
+        "min_height": 0,
+        "render_height": 30,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.27768280212568,
+              34.25124099389704
+            ],
+            [
+              -118.27412811300944,
+              34.25124099389704
+            ],
+            [
+              -118.27412811300944,
+              34.25512421029069
+            ],
+            [
+              -118.27768280212568,
+              34.25512421029069
+            ],
+            [
+              -118.27768280212568,
+              34.25124099389704
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_121",
+        "name": "Structure #121",
+        "height": 9,
+        "min_height": 0,
+        "render_height": 9,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.43624036785188,
+              34.255149899328416
+            ],
+            [
+              -118.42841640593282,
+              34.255149899328416
+            ],
+            [
+              -118.42841640593282,
+              34.25834794202861
+            ],
+            [
+              -118.43624036785188,
+              34.25834794202861
+            ],
+            [
+              -118.43624036785188,
+              34.255149899328416
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_122",
+        "name": "Structure #122",
+        "height": 30,
+        "min_height": 0,
+        "render_height": 30,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.42836464727904,
+              34.25747877740453
+            ],
+            [
+              -118.4219211834683,
+              34.25747877740453
+            ],
+            [
+              -118.4219211834683,
+              34.2594093688253
+            ],
+            [
+              -118.42836464727904,
+              34.2594093688253
+            ],
+            [
+              -118.42836464727904,
+              34.25747877740453
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_124",
+        "name": "Structure #124",
+        "height": 22,
+        "min_height": 0,
+        "render_height": 22,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.40207612084798,
+              34.25567535601534
+            ],
+            [
+              -118.39825433705481,
+              34.25567535601534
+            ],
+            [
+              -118.39825433705481,
+              34.258088590257906
+            ],
+            [
+              -118.40207612084798,
+              34.258088590257906
+            ],
+            [
+              -118.40207612084798,
+              34.25567535601534
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_125",
+        "name": "Structure #125",
+        "height": 19,
+        "min_height": 0,
+        "render_height": 19,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.39330594936169,
+              34.25489802997263
+            ],
+            [
+              -118.38844372925814,
+              34.25489802997263
+            ],
+            [
+              -118.38844372925814,
+              34.25881191598078
+            ],
+            [
+              -118.39330594936169,
+              34.25881191598078
+            ],
+            [
+              -118.39330594936169,
+              34.25489802997263
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_128",
+        "name": "Structure #128",
+        "height": 8,
+        "min_height": 0,
+        "render_height": 8,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.3563109969322,
+              34.256957471134726
+            ],
+            [
+              -118.35104512758079,
+              34.256957471134726
+            ],
+            [
+              -118.35104512758079,
+              34.25941518978746
+            ],
+            [
+              -118.3563109969322,
+              34.25941518978746
+            ],
+            [
+              -118.3563109969322,
+              34.256957471134726
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_129",
+        "name": "Structure #129",
+        "height": 18,
+        "min_height": 0,
+        "render_height": 18,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.3453893914915,
+              34.25654397896821
+            ],
+            [
+              -118.34043754353934,
+              34.25654397896821
+            ],
+            [
+              -118.34043754353934,
+              34.25831274081085
+            ],
+            [
+              -118.3453893914915,
+              34.25831274081085
+            ],
+            [
+              -118.3453893914915,
+              34.25654397896821
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_130",
+        "name": "Structure #130",
+        "height": 21,
+        "min_height": 0,
+        "render_height": 21,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.33488916830107,
+              34.25565430880008
+            ],
+            [
+              -118.33132544073665,
+              34.25565430880008
+            ],
+            [
+              -118.33132544073665,
+              34.258953041044286
+            ],
+            [
+              -118.33488916830107,
+              34.258953041044286
+            ],
+            [
+              -118.33488916830107,
+              34.25565430880008
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_131",
+        "name": "Structure #131",
+        "height": 17,
+        "min_height": 0,
+        "render_height": 17,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.3253483556028,
+              34.25489098358886
+            ],
+            [
+              -118.31870202100707,
+              34.25489098358886
+            ],
+            [
+              -118.31870202100707,
+              34.25861403535935
+            ],
+            [
+              -118.3253483556028,
+              34.25861403535935
+            ],
+            [
+              -118.3253483556028,
+              34.25489098358886
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_132",
+        "name": "Structure #132",
+        "height": 11,
+        "min_height": 0,
+        "render_height": 11,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.31555298121356,
+              34.25637353331284
+            ],
+            [
+              -118.30805172135004,
+              34.25637353331284
+            ],
+            [
+              -118.30805172135004,
+              34.259579438277896
+            ],
+            [
+              -118.31555298121356,
+              34.259579438277896
+            ],
+            [
+              -118.31555298121356,
+              34.25637353331284
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_134",
+        "name": "Structure #134",
+        "height": 22,
+        "min_height": 0,
+        "render_height": 22,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.28817484053346,
+              34.256485535745284
+            ],
+            [
+              -118.28379647701826,
+              34.256485535745284
+            ],
+            [
+              -118.28379647701826,
+              34.25931891219881
+            ],
+            [
+              -118.28817484053346,
+              34.25931891219881
+            ],
+            [
+              -118.28817484053346,
+              34.256485535745284
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_135",
+        "name": "Structure #135",
+        "height": 21,
+        "min_height": 0,
+        "render_height": 21,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.27834025390578,
+              34.255091676969556
+            ],
+            [
+              -118.27263152505128,
+              34.255091676969556
+            ],
+            [
+              -118.27263152505128,
+              34.2590602587631
+            ],
+            [
+              -118.27834025390578,
+              34.2590602587631
+            ],
+            [
+              -118.27834025390578,
+              34.255091676969556
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_136",
+        "name": "Structure #136",
+        "height": 21,
+        "min_height": 0,
+        "render_height": 21,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.43981528788356,
+              34.261358536326625
+            ],
+            [
+              -118.43181933049212,
+              34.261358536326625
+            ],
+            [
+              -118.43181933049212,
+              34.265099865999005
+            ],
+            [
+              -118.43981528788356,
+              34.265099865999005
+            ],
+            [
+              -118.43981528788356,
+              34.261358536326625
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_138",
+        "name": "Structure #138",
+        "height": 17,
+        "min_height": 0,
+        "render_height": 17,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.41401367051598,
+              34.26286461533305
+            ],
+            [
+              -118.4064994643244,
+              34.26286461533305
+            ],
+            [
+              -118.4064994643244,
+              34.26504651214275
+            ],
+            [
+              -118.41401367051598,
+              34.26504651214275
+            ],
+            [
+              -118.41401367051598,
+              34.26286461533305
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_139",
+        "name": "Structure #139",
+        "height": 11,
+        "min_height": 0,
+        "render_height": 11,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.40148758984748,
+              34.262321370013154
+            ],
+            [
+              -118.39709147183089,
+              34.262321370013154
+            ],
+            [
+              -118.39709147183089,
+              34.26557079372721
+            ],
+            [
+              -118.40148758984748,
+              34.26557079372721
+            ],
+            [
+              -118.40148758984748,
+              34.262321370013154
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_140",
+        "name": "Structure #140",
+        "height": 17,
+        "min_height": 0,
+        "render_height": 17,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.39124879523274,
+              34.26160372299269
+            ],
+            [
+              -118.38470180819405,
+              34.26160372299269
+            ],
+            [
+              -118.38470180819405,
+              34.26381231190284
+            ],
+            [
+              -118.39124879523274,
+              34.26381231190284
+            ],
+            [
+              -118.39124879523274,
+              34.26160372299269
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_141",
+        "name": "Structure #141",
+        "height": 15,
+        "min_height": 0,
+        "render_height": 15,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.38136138774807,
+              34.26195029115372
+            ],
+            [
+              -118.37691149009204,
+              34.26195029115372
+            ],
+            [
+              -118.37691149009204,
+              34.26517378678877
+            ],
+            [
+              -118.38136138774807,
+              34.26517378678877
+            ],
+            [
+              -118.38136138774807,
+              34.26195029115372
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_143",
+        "name": "Structure #143",
+        "height": 23,
+        "min_height": 0,
+        "render_height": 23,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.35936448919189,
+              34.26200519780186
+            ],
+            [
+              -118.35348900789181,
+              34.26200519780186
+            ],
+            [
+              -118.35348900789181,
+              34.26507739521421
+            ],
+            [
+              -118.35936448919189,
+              34.26507739521421
+            ],
+            [
+              -118.35936448919189,
+              34.26200519780186
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_145",
+        "name": "Structure #145",
+        "height": 9,
+        "min_height": 0,
+        "render_height": 9,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.33673859928491,
+              34.262473382629956
+            ],
+            [
+              -118.32850063063493,
+              34.262473382629956
+            ],
+            [
+              -118.32850063063493,
+              34.264367133229804
+            ],
+            [
+              -118.33673859928491,
+              34.264367133229804
+            ],
+            [
+              -118.33673859928491,
+              34.262473382629956
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_146",
+        "name": "Structure #146",
+        "height": 22,
+        "min_height": 0,
+        "render_height": 22,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.32294251796037,
+              34.26328099176439
+            ],
+            [
+              -118.31912696119625,
+              34.26328099176439
+            ],
+            [
+              -118.31912696119625,
+              34.26518592451647
+            ],
+            [
+              -118.32294251796037,
+              34.26518592451647
+            ],
+            [
+              -118.32294251796037,
+              34.26328099176439
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_147",
+        "name": "Structure #147",
+        "height": 14,
+        "min_height": 0,
+        "render_height": 14,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.30998200177841,
+              34.26048986338313
+            ],
+            [
+              -118.30614391504828,
+              34.26048986338313
+            ],
+            [
+              -118.30614391504828,
+              34.26446513757662
+            ],
+            [
+              -118.30998200177841,
+              34.26446513757662
+            ],
+            [
+              -118.30998200177841,
+              34.26048986338313
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_148",
+        "name": "Structure #148",
+        "height": 30,
+        "min_height": 0,
+        "render_height": 30,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.3042722752577,
+              34.26113274157048
+            ],
+            [
+              -118.2962628339197,
+              34.26113274157048
+            ],
+            [
+              -118.2962628339197,
+              34.26384015083285
+            ],
+            [
+              -118.3042722752577,
+              34.26384015083285
+            ],
+            [
+              -118.3042722752577,
+              34.26113274157048
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_151",
+        "name": "Structure #151",
+        "height": 16,
+        "min_height": 0,
+        "render_height": 16,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.4374146908362,
+              34.267755281444025
+            ],
+            [
+              -118.43249742389726,
+              34.267755281444025
+            ],
+            [
+              -118.43249742389726,
+              34.2696321466952
+            ],
+            [
+              -118.4374146908362,
+              34.2696321466952
+            ],
+            [
+              -118.4374146908362,
+              34.267755281444025
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_152",
+        "name": "Structure #152",
+        "height": 10,
+        "min_height": 0,
+        "render_height": 10,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.42563380331278,
+              34.26702734004673
+            ],
+            [
+              -118.4218522673993,
+              34.26702734004673
+            ],
+            [
+              -118.4218522673993,
+              34.27005254840477
+            ],
+            [
+              -118.42563380331278,
+              34.27005254840477
+            ],
+            [
+              -118.42563380331278,
+              34.26702734004673
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_153",
+        "name": "Structure #153",
+        "height": 10,
+        "min_height": 0,
+        "render_height": 10,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.41576713709102,
+              34.26704943316344
+            ],
+            [
+              -118.40967190247335,
+              34.26704943316344
+            ],
+            [
+              -118.40967190247335,
+              34.26912855123843
+            ],
+            [
+              -118.41576713709102,
+              34.26912855123843
+            ],
+            [
+              -118.41576713709102,
+              34.26704943316344
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_154",
+        "name": "Structure #154",
+        "height": 13,
+        "min_height": 0,
+        "render_height": 13,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.40438929021883,
+              34.267995193416006
+            ],
+            [
+              -118.40020025231959,
+              34.267995193416006
+            ],
+            [
+              -118.40020025231959,
+              34.27002013995685
+            ],
+            [
+              -118.40438929021883,
+              34.27002013995685
+            ],
+            [
+              -118.40438929021883,
+              34.267995193416006
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_156",
+        "name": "Structure #156",
+        "height": 20,
+        "min_height": 0,
+        "render_height": 20,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.38186515719102,
+              34.26660200649434
+            ],
+            [
+              -118.37673904883687,
+              34.26660200649434
+            ],
+            [
+              -118.37673904883687,
+              34.269812907971016
+            ],
+            [
+              -118.38186515719102,
+              34.269812907971016
+            ],
+            [
+              -118.38186515719102,
+              34.26660200649434
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_159",
+        "name": "Structure #159",
+        "height": 16,
+        "min_height": 0,
+        "render_height": 16,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.34528434284717,
+              34.26791848547506
+            ],
+            [
+              -118.34167132883691,
+              34.26791848547506
+            ],
+            [
+              -118.34167132883691,
+              34.27104752617189
+            ],
+            [
+              -118.34528434284717,
+              34.27104752617189
+            ],
+            [
+              -118.34528434284717,
+              34.26791848547506
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_160",
+        "name": "Structure #160",
+        "height": 20,
+        "min_height": 0,
+        "render_height": 20,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.33463831074656,
+              34.26650626578992
+            ],
+            [
+              -118.3283338731944,
+              34.26650626578992
+            ],
+            [
+              -118.3283338731944,
+              34.26953789239467
+            ],
+            [
+              -118.33463831074656,
+              34.26953789239467
+            ],
+            [
+              -118.33463831074656,
+              34.26650626578992
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_161",
+        "name": "Structure #161",
+        "height": 11,
+        "min_height": 0,
+        "render_height": 11,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.32615033855659,
+              34.26728263981597
+            ],
+            [
+              -118.32004217236035,
+              34.26728263981597
+            ],
+            [
+              -118.32004217236035,
+              34.27089882529898
+            ],
+            [
+              -118.32615033855659,
+              34.27089882529898
+            ],
+            [
+              -118.32615033855659,
+              34.26728263981597
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_163",
+        "name": "Structure #163",
+        "height": 25,
+        "min_height": 0,
+        "render_height": 25,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.30067846953797,
+              34.26849333835268
+            ],
+            [
+              -118.29618846454802,
+              34.26849333835268
+            ],
+            [
+              -118.29618846454802,
+              34.270467558420144
+            ],
+            [
+              -118.30067846953797,
+              34.270467558420144
+            ],
+            [
+              -118.30067846953797,
+              34.26849333835268
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_164",
+        "name": "Structure #164",
+        "height": 23,
+        "min_height": 0,
+        "render_height": 23,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.28814675531905,
+              34.26612144301457
+            ],
+            [
+              -118.28416906747941,
+              34.26612144301457
+            ],
+            [
+              -118.28416906747941,
+              34.27061914918332
+            ],
+            [
+              -118.28814675531905,
+              34.27061914918332
+            ],
+            [
+              -118.28814675531905,
+              34.26612144301457
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_165",
+        "name": "Structure #165",
+        "height": 25,
+        "min_height": 0,
+        "render_height": 25,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.28159235185211,
+              34.26608225397653
+            ],
+            [
+              -118.27253030683065,
+              34.26608225397653
+            ],
+            [
+              -118.27253030683065,
+              34.27025149813141
+            ],
+            [
+              -118.28159235185211,
+              34.27025149813141
+            ],
+            [
+              -118.28159235185211,
+              34.26608225397653
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_168",
+        "name": "Structure #168",
+        "height": 30,
+        "min_height": 0,
+        "render_height": 30,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.4122593514183,
+              34.274547948407466
+            ],
+            [
+              -118.40760690742462,
+              34.274547948407466
+            ],
+            [
+              -118.40760690742462,
+              34.2770284354314
+            ],
+            [
+              -118.4122593514183,
+              34.2770284354314
+            ],
+            [
+              -118.4122593514183,
+              34.274547948407466
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_169",
+        "name": "Structure #169",
+        "height": 30,
+        "min_height": 0,
+        "render_height": 30,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.40061450394941,
+              34.272077813856534
+            ],
+            [
+              -118.39561678194562,
+              34.272077813856534
+            ],
+            [
+              -118.39561678194562,
+              34.27604177402079
+            ],
+            [
+              -118.40061450394941,
+              34.27604177402079
+            ],
+            [
+              -118.40061450394941,
+              34.272077813856534
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_170",
+        "name": "Structure #170",
+        "height": 30,
+        "min_height": 0,
+        "render_height": 30,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.39425803430387,
+              34.273241184732015
+            ],
+            [
+              -118.38627138863959,
+              34.273241184732015
+            ],
+            [
+              -118.38627138863959,
+              34.27515259450628
+            ],
+            [
+              -118.39425803430387,
+              34.27515259450628
+            ],
+            [
+              -118.39425803430387,
+              34.273241184732015
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_171",
+        "name": "Structure #171",
+        "height": 24,
+        "min_height": 0,
+        "render_height": 24,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.3805807240955,
+              34.274259996336994
+            ],
+            [
+              -118.3767295873651,
+              34.274259996336994
+            ],
+            [
+              -118.3767295873651,
+              34.276507339925814
+            ],
+            [
+              -118.3805807240955,
+              34.276507339925814
+            ],
+            [
+              -118.3805807240955,
+              34.274259996336994
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_172",
+        "name": "Structure #172",
+        "height": 15,
+        "min_height": 0,
+        "render_height": 15,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.36719467404694,
+              34.27158122017178
+            ],
+            [
+              -118.3626666928902,
+              34.27158122017178
+            ],
+            [
+              -118.3626666928902,
+              34.27590203546704
+            ],
+            [
+              -118.36719467404694,
+              34.27590203546704
+            ],
+            [
+              -118.36719467404694,
+              34.27158122017178
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_173",
+        "name": "Structure #173",
+        "height": 14,
+        "min_height": 0,
+        "render_height": 14,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.36125857861684,
+              34.272545505840164
+            ],
+            [
+              -118.35255293594788,
+              34.272545505840164
+            ],
+            [
+              -118.35255293594788,
+              34.27547524390196
+            ],
+            [
+              -118.36125857861684,
+              34.27547524390196
+            ],
+            [
+              -118.36125857861684,
+              34.272545505840164
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_176",
+        "name": "Structure #176",
+        "height": 30,
+        "min_height": 0,
+        "render_height": 30,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.32379598063936,
+              34.27280874318537
+            ],
+            [
+              -118.31873274525329,
+              34.27280874318537
+            ],
+            [
+              -118.31873274525329,
+              34.27604528810286
+            ],
+            [
+              -118.32379598063936,
+              34.27604528810286
+            ],
+            [
+              -118.32379598063936,
+              34.27280874318537
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_177",
+        "name": "Structure #177",
+        "height": 10,
+        "min_height": 0,
+        "render_height": 10,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.31345201373021,
+              34.27309925221891
+            ],
+            [
+              -118.30693097508164,
+              34.27309925221891
+            ],
+            [
+              -118.30693097508164,
+              34.27534655235239
+            ],
+            [
+              -118.31345201373021,
+              34.27534655235239
+            ],
+            [
+              -118.31345201373021,
+              34.27309925221891
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_178",
+        "name": "Structure #178",
+        "height": 17,
+        "min_height": 0,
+        "render_height": 17,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.30153335849225,
+              34.27373576062541
+            ],
+            [
+              -118.29700546489,
+              34.27373576062541
+            ],
+            [
+              -118.29700546489,
+              34.275867711242576
+            ],
+            [
+              -118.30153335849225,
+              34.275867711242576
+            ],
+            [
+              -118.30153335849225,
+              34.27373576062541
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_179",
+        "name": "Structure #179",
+        "height": 13,
+        "min_height": 0,
+        "render_height": 13,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.28891757859176,
+              34.27241381214722
+            ],
+            [
+              -118.28462209290385,
+              34.27241381214722
+            ],
+            [
+              -118.28462209290385,
+              34.27560686806633
+            ],
+            [
+              -118.28891757859176,
+              34.27560686806633
+            ],
+            [
+              -118.28891757859176,
+              34.27241381214722
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_180",
+        "name": "Structure #180",
+        "height": 20,
+        "min_height": 0,
+        "render_height": 20,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.2802477266367,
+              34.272618684689796
+            ],
+            [
+              -118.27381431026635,
+              34.272618684689796
+            ],
+            [
+              -118.27381431026635,
+              34.27521743629767
+            ],
+            [
+              -118.2802477266367,
+              34.27521743629767
+            ],
+            [
+              -118.2802477266367,
+              34.272618684689796
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_183",
+        "name": "Structure #183",
+        "height": 24,
+        "min_height": 0,
+        "render_height": 24,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.41448160306992,
+              34.27867251234341
+            ],
+            [
+              -118.41044745841343,
+              34.27867251234341
+            ],
+            [
+              -118.41044745841343,
+              34.28271114433712
+            ],
+            [
+              -118.41448160306992,
+              34.28271114433712
+            ],
+            [
+              -118.41448160306992,
+              34.27867251234341
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_184",
+        "name": "Structure #184",
+        "height": 8,
+        "min_height": 0,
+        "render_height": 8,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.40363760475992,
+              34.277287449033
+            ],
+            [
+              -118.39550050918743,
+              34.277287449033
+            ],
+            [
+              -118.39550050918743,
+              34.28159113642951
+            ],
+            [
+              -118.40363760475992,
+              34.28159113642951
+            ],
+            [
+              -118.40363760475992,
+              34.277287449033
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_185",
+        "name": "Structure #185",
+        "height": 24,
+        "min_height": 0,
+        "render_height": 24,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.3950949175039,
+              34.28018575760388
+            ],
+            [
+              -118.38642378437906,
+              34.28018575760388
+            ],
+            [
+              -118.38642378437906,
+              34.28195105358605
+            ],
+            [
+              -118.3950949175039,
+              34.28195105358605
+            ],
+            [
+              -118.3950949175039,
+              34.28018575760388
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_187",
+        "name": "Structure #187",
+        "height": 14,
+        "min_height": 0,
+        "render_height": 14,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.36864716114967,
+              34.27793800255813
+            ],
+            [
+              -118.36011902585061,
+              34.27793800255813
+            ],
+            [
+              -118.36011902585061,
+              34.28056147101333
+            ],
+            [
+              -118.36864716114967,
+              34.28056147101333
+            ],
+            [
+              -118.36864716114967,
+              34.27793800255813
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_188",
+        "name": "Structure #188",
+        "height": 30,
+        "min_height": 0,
+        "render_height": 30,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.35978417262363,
+              34.2798391735954
+            ],
+            [
+              -118.35449836951388,
+              34.2798391735954
+            ],
+            [
+              -118.35449836951388,
+              34.28260816914209
+            ],
+            [
+              -118.35978417262363,
+              34.28260816914209
+            ],
+            [
+              -118.35978417262363,
+              34.2798391735954
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_190",
+        "name": "Structure #190",
+        "height": 30,
+        "min_height": 0,
+        "render_height": 30,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.33492806796862,
+              34.278265979403905
+            ],
+            [
+              -118.33125464705579,
+              34.278265979403905
+            ],
+            [
+              -118.33125464705579,
+              34.2818394134708
+            ],
+            [
+              -118.33492806796862,
+              34.2818394134708
+            ],
+            [
+              -118.33492806796862,
+              34.278265979403905
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_191",
+        "name": "Structure #191",
+        "height": 8,
+        "min_height": 0,
+        "render_height": 8,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.32512336001584,
+              34.27797274764423
+            ],
+            [
+              -118.31792355211807,
+              34.27797274764423
+            ],
+            [
+              -118.31792355211807,
+              34.28061938072773
+            ],
+            [
+              -118.32512336001584,
+              34.28061938072773
+            ],
+            [
+              -118.32512336001584,
+              34.27797274764423
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_192",
+        "name": "Structure #192",
+        "height": 9,
+        "min_height": 0,
+        "render_height": 9,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.31438083437608,
+              34.279849717722264
+            ],
+            [
+              -118.30904835883005,
+              34.279849717722264
+            ],
+            [
+              -118.30904835883005,
+              34.28154277678477
+            ],
+            [
+              -118.31438083437608,
+              34.28154277678477
+            ],
+            [
+              -118.31438083437608,
+              34.279849717722264
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_194",
+        "name": "Structure #194",
+        "height": 16,
+        "min_height": 0,
+        "render_height": 16,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.28958666596934,
+              34.278190814707614
+            ],
+            [
+              -118.28585470649035,
+              34.278190814707614
+            ],
+            [
+              -118.28585470649035,
+              34.28019307979238
+            ],
+            [
+              -118.28958666596934,
+              34.28019307979238
+            ],
+            [
+              -118.28958666596934,
+              34.278190814707614
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_195",
+        "name": "Structure #195",
+        "height": 23,
+        "min_height": 0,
+        "render_height": 23,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.27994146962614,
+              34.27784486740703
+            ],
+            [
+              -118.27590727627016,
+              34.27784486740703
+            ],
+            [
+              -118.27590727627016,
+              34.28079374747332
+            ],
+            [
+              -118.27994146962614,
+              34.28079374747332
+            ],
+            [
+              -118.27994146962614,
+              34.27784486740703
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_199",
+        "name": "Structure #199",
+        "height": 16,
+        "min_height": 0,
+        "render_height": 16,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.40168527551106,
+              34.285740798375365
+            ],
+            [
+              -118.39576794182588,
+              34.285740798375365
+            ],
+            [
+              -118.39576794182588,
+              34.2882986882639
+            ],
+            [
+              -118.40168527551106,
+              34.2882986882639
+            ],
+            [
+              -118.40168527551106,
+              34.285740798375365
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_200",
+        "name": "Structure #200",
+        "height": 30,
+        "min_height": 0,
+        "render_height": 30,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.3893963173474,
+              34.28427967761938
+            ],
+            [
+              -118.38424264290532,
+              34.28427967761938
+            ],
+            [
+              -118.38424264290532,
+              34.28734438148355
+            ],
+            [
+              -118.3893963173474,
+              34.28734438148355
+            ],
+            [
+              -118.3893963173474,
+              34.28427967761938
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_201",
+        "name": "Structure #201",
+        "height": 30,
+        "min_height": 0,
+        "render_height": 30,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.38100687175947,
+              34.28392662947242
+            ],
+            [
+              -118.37483206101092,
+              34.28392662947242
+            ],
+            [
+              -118.37483206101092,
+              34.28709099434923
+            ],
+            [
+              -118.38100687175947,
+              34.28709099434923
+            ],
+            [
+              -118.38100687175947,
+              34.28392662947242
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_202",
+        "name": "Structure #202",
+        "height": 21,
+        "min_height": 0,
+        "render_height": 21,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.37038486506296,
+              34.28480076600724
+            ],
+            [
+              -118.3640092558297,
+              34.28480076600724
+            ],
+            [
+              -118.3640092558297,
+              34.28702776017542
+            ],
+            [
+              -118.37038486506296,
+              34.28702776017542
+            ],
+            [
+              -118.37038486506296,
+              34.28480076600724
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_203",
+        "name": "Structure #203",
+        "height": 8,
+        "min_height": 0,
+        "render_height": 8,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.35729030848913,
+              34.2841163869264
+            ],
+            [
+              -118.35280332764654,
+              34.2841163869264
+            ],
+            [
+              -118.35280332764654,
+              34.287871596876485
+            ],
+            [
+              -118.35729030848913,
+              34.287871596876485
+            ],
+            [
+              -118.35729030848913,
+              34.2841163869264
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_204",
+        "name": "Structure #204",
+        "height": 23,
+        "min_height": 0,
+        "render_height": 23,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.3473358722668,
+              34.28432592425217
+            ],
+            [
+              -118.33976981962664,
+              34.28432592425217
+            ],
+            [
+              -118.33976981962664,
+              34.28616226641692
+            ],
+            [
+              -118.3473358722668,
+              34.28616226641692
+            ],
+            [
+              -118.3473358722668,
+              34.28432592425217
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_205",
+        "name": "Structure #205",
+        "height": 15,
+        "min_height": 0,
+        "render_height": 15,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.33558036002523,
+              34.284395413492085
+            ],
+            [
+              -118.33188047062663,
+              34.284395413492085
+            ],
+            [
+              -118.33188047062663,
+              34.28853792242804
+            ],
+            [
+              -118.33558036002523,
+              34.28853792242804
+            ],
+            [
+              -118.33558036002523,
+              34.284395413492085
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_207",
+        "name": "Structure #207",
+        "height": 23,
+        "min_height": 0,
+        "render_height": 23,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.31464503145662,
+              34.285840052827915
+            ],
+            [
+              -118.30874181217226,
+              34.285840052827915
+            ],
+            [
+              -118.30874181217226,
+              34.287712961469616
+            ],
+            [
+              -118.31464503145662,
+              34.287712961469616
+            ],
+            [
+              -118.31464503145662,
+              34.285840052827915
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_209",
+        "name": "Structure #209",
+        "height": 30,
+        "min_height": 0,
+        "render_height": 30,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.2913921508655,
+              34.282896457643915
+            ],
+            [
+              -118.28313603161283,
+              34.282896457643915
+            ],
+            [
+              -118.28313603161283,
+              34.28702519618281
+            ],
+            [
+              -118.2913921508655,
+              34.28702519618281
+            ],
+            [
+              -118.2913921508655,
+              34.282896457643915
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_210",
+        "name": "Structure #210",
+        "height": 10,
+        "min_height": 0,
+        "render_height": 10,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.28179380385818,
+              34.28586152815257
+            ],
+            [
+              -118.27347516028352,
+              34.28586152815257
+            ],
+            [
+              -118.27347516028352,
+              34.28761980184219
+            ],
+            [
+              -118.28179380385818,
+              34.28761980184219
+            ],
+            [
+              -118.28179380385818,
+              34.28586152815257
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_212",
+        "name": "Structure #212",
+        "height": 30,
+        "min_height": 0,
+        "render_height": 30,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.42335214237359,
+              34.28956764643373
+            ],
+            [
+              -118.4193113612403,
+              34.28956764643373
+            ],
+            [
+              -118.4193113612403,
+              34.29142059146967
+            ],
+            [
+              -118.42335214237359,
+              34.29142059146967
+            ],
+            [
+              -118.42335214237359,
+              34.28956764643373
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_213",
+        "name": "Structure #213",
+        "height": 30,
+        "min_height": 0,
+        "render_height": 30,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.41568592718536,
+              34.28881573065792
+            ],
+            [
+              -118.41195258607593,
+              34.28881573065792
+            ],
+            [
+              -118.41195258607593,
+              34.29256812494791
+            ],
+            [
+              -118.41568592718536,
+              34.29256812494791
+            ],
+            [
+              -118.41568592718536,
+              34.28881573065792
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_217",
+        "name": "Structure #217",
+        "height": 22,
+        "min_height": 0,
+        "render_height": 22,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.37016747625002,
+              34.29125117025354
+            ],
+            [
+              -118.36342602003931,
+              34.29125117025354
+            ],
+            [
+              -118.36342602003931,
+              34.293663366380876
+            ],
+            [
+              -118.37016747625002,
+              34.293663366380876
+            ],
+            [
+              -118.37016747625002,
+              34.29125117025354
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_218",
+        "name": "Structure #218",
+        "height": 8,
+        "min_height": 0,
+        "render_height": 8,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.35562727178547,
+              34.289793348462965
+            ],
+            [
+              -118.35076714329185,
+              34.289793348462965
+            ],
+            [
+              -118.35076714329185,
+              34.293735160880814
+            ],
+            [
+              -118.35562727178547,
+              34.293735160880814
+            ],
+            [
+              -118.35562727178547,
+              34.289793348462965
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_219",
+        "name": "Structure #219",
+        "height": 30,
+        "min_height": 0,
+        "render_height": 30,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.34723117939313,
+              34.29012530788409
+            ],
+            [
+              -118.33928915733642,
+              34.29012530788409
+            ],
+            [
+              -118.33928915733642,
+              34.291909205919644
+            ],
+            [
+              -118.34723117939313,
+              34.291909205919644
+            ],
+            [
+              -118.34723117939313,
+              34.29012530788409
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_220",
+        "name": "Structure #220",
+        "height": 11,
+        "min_height": 0,
+        "render_height": 11,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.33522900930019,
+              34.29013343077911
+            ],
+            [
+              -118.33163478511004,
+              34.29013343077911
+            ],
+            [
+              -118.33163478511004,
+              34.294348469089456
+            ],
+            [
+              -118.33522900930019,
+              34.294348469089456
+            ],
+            [
+              -118.33522900930019,
+              34.29013343077911
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_221",
+        "name": "Structure #221",
+        "height": 17,
+        "min_height": 0,
+        "render_height": 17,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.32387930983764,
+              34.28942225606366
+            ],
+            [
+              -118.31538678820495,
+              34.28942225606366
+            ],
+            [
+              -118.31538678820495,
+              34.29160698079322
+            ],
+            [
+              -118.32387930983764,
+              34.29160698079322
+            ],
+            [
+              -118.32387930983764,
+              34.28942225606366
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_222",
+        "name": "Structure #222",
+        "height": 10,
+        "min_height": 0,
+        "render_height": 10,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.31397886185691,
+              34.29088585331112
+            ],
+            [
+              -118.3095770461055,
+              34.29088585331112
+            ],
+            [
+              -118.3095770461055,
+              34.29403320798543
+            ],
+            [
+              -118.31397886185691,
+              34.29403320798543
+            ],
+            [
+              -118.31397886185691,
+              34.29088585331112
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_224",
+        "name": "Structure #224",
+        "height": 30,
+        "min_height": 0,
+        "render_height": 30,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.2905308384709,
+              34.290187752972614
+            ],
+            [
+              -118.28639958966015,
+              34.290187752972614
+            ],
+            [
+              -118.28639958966015,
+              34.293023014506275
+            ],
+            [
+              -118.2905308384709,
+              34.293023014506275
+            ],
+            [
+              -118.2905308384709,
+              34.290187752972614
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_226",
+        "name": "Structure #226",
+        "height": 11,
+        "min_height": 0,
+        "render_height": 11,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.43848434429707,
+              34.29609548476894
+            ],
+            [
+              -118.43354565760573,
+              34.29609548476894
+            ],
+            [
+              -118.43354565760573,
+              34.29786593368492
+            ],
+            [
+              -118.43848434429707,
+              34.29786593368492
+            ],
+            [
+              -118.43848434429707,
+              34.29609548476894
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_228",
+        "name": "Structure #228",
+        "height": 19,
+        "min_height": 0,
+        "render_height": 19,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.41495299000673,
+              34.294304824979015
+            ],
+            [
+              -118.4104517779538,
+              34.294304824979015
+            ],
+            [
+              -118.4104517779538,
+              34.29795289328653
+            ],
+            [
+              -118.41495299000673,
+              34.29795289328653
+            ],
+            [
+              -118.41495299000673,
+              34.294304824979015
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_229",
+        "name": "Structure #229",
+        "height": 20,
+        "min_height": 0,
+        "render_height": 20,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.4061413896719,
+              34.29478922473023
+            ],
+            [
+              -118.39879120760047,
+              34.29478922473023
+            ],
+            [
+              -118.39879120760047,
+              34.29821026719414
+            ],
+            [
+              -118.4061413896719,
+              34.29821026719414
+            ],
+            [
+              -118.4061413896719,
+              34.29478922473023
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_232",
+        "name": "Structure #232",
+        "height": 13,
+        "min_height": 0,
+        "render_height": 13,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.36894905135311,
+              34.295714207842266
+            ],
+            [
+              -118.36266252138545,
+              34.295714207842266
+            ],
+            [
+              -118.36266252138545,
+              34.299600155159595
+            ],
+            [
+              -118.36894905135311,
+              34.299600155159595
+            ],
+            [
+              -118.36894905135311,
+              34.295714207842266
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_233",
+        "name": "Structure #233",
+        "height": 17,
+        "min_height": 0,
+        "render_height": 17,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.35796841086594,
+              34.295941870102645
+            ],
+            [
+              -118.35013894664141,
+              34.295941870102645
+            ],
+            [
+              -118.35013894664141,
+              34.29847537428345
+            ],
+            [
+              -118.35796841086594,
+              34.29847537428345
+            ],
+            [
+              -118.35796841086594,
+              34.295941870102645
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_234",
+        "name": "Structure #234",
+        "height": 25,
+        "min_height": 0,
+        "render_height": 25,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.34617638023764,
+              34.29622342559896
+            ],
+            [
+              -118.34107183848076,
+              34.29622342559896
+            ],
+            [
+              -118.34107183848076,
+              34.29941909010876
+            ],
+            [
+              -118.34617638023764,
+              34.29941909010876
+            ],
+            [
+              -118.34617638023764,
+              34.29622342559896
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_235",
+        "name": "Structure #235",
+        "height": 20,
+        "min_height": 0,
+        "render_height": 20,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.33427576471912,
+              34.29453713391577
+            ],
+            [
+              -118.32783709252159,
+              34.29453713391577
+            ],
+            [
+              -118.32783709252159,
+              34.29894147277352
+            ],
+            [
+              -118.33427576471912,
+              34.29894147277352
+            ],
+            [
+              -118.33427576471912,
+              34.29453713391577
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_236",
+        "name": "Structure #236",
+        "height": 24,
+        "min_height": 0,
+        "render_height": 24,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.32633999685119,
+              34.29541853093178
+            ],
+            [
+              -118.31746606967111,
+              34.29541853093178
+            ],
+            [
+              -118.31746606967111,
+              34.2991195322839
+            ],
+            [
+              -118.32633999685119,
+              34.2991195322839
+            ],
+            [
+              -118.32633999685119,
+              34.29541853093178
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_237",
+        "name": "Structure #237",
+        "height": 25,
+        "min_height": 0,
+        "render_height": 25,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.31323081175225,
+              34.296090717185294
+            ],
+            [
+              -118.30577397939834,
+              34.296090717185294
+            ],
+            [
+              -118.30577397939834,
+              34.30038122498712
+            ],
+            [
+              -118.31323081175225,
+              34.30038122498712
+            ],
+            [
+              -118.31323081175225,
+              34.296090717185294
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_238",
+        "name": "Structure #238",
+        "height": 15,
+        "min_height": 0,
+        "render_height": 15,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.30054314759704,
+              34.29548380863847
+            ],
+            [
+              -118.29189856891483,
+              34.29548380863847
+            ],
+            [
+              -118.29189856891483,
+              34.299862793524916
+            ],
+            [
+              -118.30054314759704,
+              34.299862793524916
+            ],
+            [
+              -118.30054314759704,
+              34.29548380863847
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_239",
+        "name": "Structure #239",
+        "height": 30,
+        "min_height": 0,
+        "render_height": 30,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.29043262259506,
+              34.29667628174242
+            ],
+            [
+              -118.28160977897201,
+              34.29667628174242
+            ],
+            [
+              -118.28160977897201,
+              34.2996135307405
+            ],
+            [
+              -118.29043262259506,
+              34.2996135307405
+            ],
+            [
+              -118.29043262259506,
+              34.29667628174242
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "FOOTHILL_BLD_240",
+        "name": "Structure #240",
+        "height": 19,
+        "min_height": 0,
+        "render_height": 19,
+        "render_min_height": 0,
+        "division": "Foothill Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.27669667678562,
+              34.29645117485715
+            ],
+            [
+              -118.2707786639895,
+              34.29645117485715
+            ],
+            [
+              -118.2707786639895,
+              34.29998020096115
+            ],
+            [
+              -118.27669667678562,
+              34.29998020096115
+            ],
+            [
+              -118.27669667678562,
+              34.29645117485715
             ]
           ]
         ]

@@ -1,6 +1,6 @@
 {
   "type": "FeatureCollection",
-  "name": "Mission Division (LAPD DIV-19) - FususONE 3D Layer",
+  "name": "Mission Division (LAPD DIV-19) - Full 3D Building & Boundary GeoJSON",
   "crs": {
     "type": "name",
     "properties": {
@@ -23,8 +23,9 @@
       -118.46,
       34.27
     ],
+    "totalBuildings": 183,
     "fususOneCompatible": true,
-    "optimization": "FususONE RTCC Compliant (Height Filtered + Low Polygon Vertex Bloat)"
+    "optimization": "100% Comprehensive 3D Building Extrusions + Division Perimeter"
   },
   "features": [
     {
@@ -32,7 +33,7 @@
       "properties": {
         "layerType": "BOUNDARY",
         "id": "MISSION_BOUNDARY",
-        "name": "Mission Division Boundary",
+        "name": "Mission Division Official Perimeter",
         "bureau": "Valley Bureau",
         "division": "Mission Division",
         "strokeColor": "#00f3ff",
@@ -49,16 +50,16 @@
               34.23
             ],
             [
-              -118.49,
-              34.315
-            ],
-            [
-              -118.42,
-              34.315
-            ],
-            [
               -118.42,
               34.23
+            ],
+            [
+              -118.42,
+              34.315
+            ],
+            [
+              -118.49,
+              34.315
             ],
             [
               -118.49,
@@ -101,31 +102,31 @@
         "render_min_height": 0,
         "division": "Mission Division",
         "bureau": "Valley Bureau",
-        "extrusionColor": "#1e293b"
+        "extrusionColor": "#00f3ff"
       },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
           [
             [
-              -118.463,
-              34.272
+              -118.4633,
+              34.271699999999996
             ],
             [
-              -118.46000000000001,
-              34.272
+              -118.4597,
+              34.271699999999996
             ],
             [
-              -118.46000000000001,
-              34.275
+              -118.4597,
+              34.2753
             ],
             [
-              -118.463,
-              34.275
+              -118.4633,
+              34.2753
             ],
             [
-              -118.463,
-              34.272
+              -118.4633,
+              34.271699999999996
             ]
           ]
         ]
@@ -143,6 +144,48 @@
         "render_min_height": 0,
         "division": "Mission Division",
         "bureau": "Valley Bureau",
+        "extrusionColor": "#00f3ff"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.4503,
+              34.225699999999996
+            ],
+            [
+              -118.44669999999999,
+              34.225699999999996
+            ],
+            [
+              -118.44669999999999,
+              34.2293
+            ],
+            [
+              -118.4503,
+              34.2293
+            ],
+            [
+              -118.4503,
+              34.225699999999996
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_1",
+        "name": "Structure #1",
+        "height": 33,
+        "min_height": 0,
+        "render_height": 33,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
         "extrusionColor": "#1e293b"
       },
       "geometry": {
@@ -150,24 +193,7668 @@
         "coordinates": [
           [
             [
-              -118.44999999999999,
-              34.226
+              -118.48878643474418,
+              34.23042182200406
             ],
             [
-              -118.447,
-              34.226
+              -118.48564722764675,
+              34.23042182200406
             ],
             [
-              -118.447,
-              34.229
+              -118.48564722764675,
+              34.234340509085655
             ],
             [
-              -118.44999999999999,
-              34.229
+              -118.48878643474418,
+              34.234340509085655
             ],
             [
-              -118.44999999999999,
-              34.226
+              -118.48878643474418,
+              34.23042182200406
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_2",
+        "name": "Structure #2",
+        "height": 20,
+        "min_height": 0,
+        "render_height": 20,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.48496279165134,
+              34.23164056197432
+            ],
+            [
+              -118.48152049397966,
+              34.23164056197432
+            ],
+            [
+              -118.48152049397966,
+              34.234714779524566
+            ],
+            [
+              -118.48496279165134,
+              34.234714779524566
+            ],
+            [
+              -118.48496279165134,
+              34.23164056197432
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_3",
+        "name": "Structure #3",
+        "height": 16,
+        "min_height": 0,
+        "render_height": 16,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.4792255455598,
+              34.2317587039819
+            ],
+            [
+              -118.47652505641763,
+              34.2317587039819
+            ],
+            [
+              -118.47652505641763,
+              34.235148695348634
+            ],
+            [
+              -118.4792255455598,
+              34.235148695348634
+            ],
+            [
+              -118.4792255455598,
+              34.2317587039819
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_4",
+        "name": "Structure #4",
+        "height": 11,
+        "min_height": 0,
+        "render_height": 11,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.47445509924727,
+              34.23134905963174
+            ],
+            [
+              -118.47147722447805,
+              34.23134905963174
+            ],
+            [
+              -118.47147722447805,
+              34.23420718844865
+            ],
+            [
+              -118.47445509924727,
+              34.23420718844865
+            ],
+            [
+              -118.47445509924727,
+              34.23134905963174
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_5",
+        "name": "Structure #5",
+        "height": 30,
+        "min_height": 0,
+        "render_height": 30,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.47014827702937,
+              34.231956041361826
+            ],
+            [
+              -118.46763760700979,
+              34.231956041361826
+            ],
+            [
+              -118.46763760700979,
+              34.234105444824934
+            ],
+            [
+              -118.47014827702937,
+              34.234105444824934
+            ],
+            [
+              -118.47014827702937,
+              34.231956041361826
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_6",
+        "name": "Structure #6",
+        "height": 11,
+        "min_height": 0,
+        "render_height": 11,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.46494841856843,
+              34.231300002851434
+            ],
+            [
+              -118.46306031513417,
+              34.231300002851434
+            ],
+            [
+              -118.46306031513417,
+              34.23391050325562
+            ],
+            [
+              -118.46494841856843,
+              34.23391050325562
+            ],
+            [
+              -118.46494841856843,
+              34.231300002851434
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_7",
+        "name": "Structure #7",
+        "height": 18,
+        "min_height": 0,
+        "render_height": 18,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.46085803671089,
+              34.23101368879471
+            ],
+            [
+              -118.45856489125781,
+              34.23101368879471
+            ],
+            [
+              -118.45856489125781,
+              34.23306285674625
+            ],
+            [
+              -118.46085803671089,
+              34.23306285674625
+            ],
+            [
+              -118.46085803671089,
+              34.23101368879471
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_8",
+        "name": "Structure #8",
+        "height": 12,
+        "min_height": 0,
+        "render_height": 12,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.45644287729405,
+              34.23083651279018
+            ],
+            [
+              -118.4546428238778,
+              34.23083651279018
+            ],
+            [
+              -118.4546428238778,
+              34.23397778785652
+            ],
+            [
+              -118.45644287729405,
+              34.23397778785652
+            ],
+            [
+              -118.45644287729405,
+              34.23083651279018
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_9",
+        "name": "Structure #9",
+        "height": 11,
+        "min_height": 0,
+        "render_height": 11,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.45193184758823,
+              34.23084459169929
+            ],
+            [
+              -118.44917245302015,
+              34.23084459169929
+            ],
+            [
+              -118.44917245302015,
+              34.233071577023175
+            ],
+            [
+              -118.45193184758823,
+              34.233071577023175
+            ],
+            [
+              -118.45193184758823,
+              34.23084459169929
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_10",
+        "name": "Structure #10",
+        "height": 13,
+        "min_height": 0,
+        "render_height": 13,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.44725808415434,
+              34.23177049014829
+            ],
+            [
+              -118.44530183037965,
+              34.23177049014829
+            ],
+            [
+              -118.44530183037965,
+              34.23389304995786
+            ],
+            [
+              -118.44725808415434,
+              34.23389304995786
+            ],
+            [
+              -118.44725808415434,
+              34.23177049014829
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_12",
+        "name": "Structure #12",
+        "height": 17,
+        "min_height": 0,
+        "render_height": 17,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.43790383852237,
+              34.23117727265619
+            ],
+            [
+              -118.43573948877142,
+              34.23117727265619
+            ],
+            [
+              -118.43573948877142,
+              34.23285632303912
+            ],
+            [
+              -118.43790383852237,
+              34.23285632303912
+            ],
+            [
+              -118.43790383852237,
+              34.23117727265619
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_13",
+        "name": "Structure #13",
+        "height": 23,
+        "min_height": 0,
+        "render_height": 23,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.43296584676476,
+              34.230811467377706
+            ],
+            [
+              -118.4314909162323,
+              34.230811467377706
+            ],
+            [
+              -118.4314909162323,
+              34.23376824109725
+            ],
+            [
+              -118.43296584676476,
+              34.23376824109725
+            ],
+            [
+              -118.43296584676476,
+              34.230811467377706
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_15",
+        "name": "Structure #15",
+        "height": 13,
+        "min_height": 0,
+        "render_height": 13,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.42492387197531,
+              34.23062263413689
+            ],
+            [
+              -118.4214895725061,
+              34.23062263413689
+            ],
+            [
+              -118.4214895725061,
+              34.23474570381437
+            ],
+            [
+              -118.42492387197531,
+              34.23474570381437
+            ],
+            [
+              -118.42492387197531,
+              34.23062263413689
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_17",
+        "name": "Structure #17",
+        "height": 17,
+        "min_height": 0,
+        "render_height": 17,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.48335074158254,
+              34.23774470543761
+            ],
+            [
+              -118.48126104593337,
+              34.23774470543761
+            ],
+            [
+              -118.48126104593337,
+              34.24011470604635
+            ],
+            [
+              -118.48335074158254,
+              34.24011470604635
+            ],
+            [
+              -118.48335074158254,
+              34.23774470543761
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_18",
+        "name": "Structure #18",
+        "height": 30,
+        "min_height": 0,
+        "render_height": 30,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.47853014110576,
+              34.23606401234458
+            ],
+            [
+              -118.4764482582181,
+              34.23606401234458
+            ],
+            [
+              -118.4764482582181,
+              34.239004719016414
+            ],
+            [
+              -118.47853014110576,
+              34.239004719016414
+            ],
+            [
+              -118.47853014110576,
+              34.23606401234458
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_19",
+        "name": "Structure #19",
+        "height": 32,
+        "min_height": 0,
+        "render_height": 32,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.47533984797965,
+              34.23630685208702
+            ],
+            [
+              -118.47275663898165,
+              34.23630685208702
+            ],
+            [
+              -118.47275663898165,
+              34.23874764888695
+            ],
+            [
+              -118.47533984797965,
+              34.23874764888695
+            ],
+            [
+              -118.47533984797965,
+              34.23630685208702
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_20",
+        "name": "Structure #20",
+        "height": 16,
+        "min_height": 0,
+        "render_height": 16,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.47045986326474,
+              34.237012053075325
+            ],
+            [
+              -118.46831579078166,
+              34.237012053075325
+            ],
+            [
+              -118.46831579078166,
+              34.238955577599604
+            ],
+            [
+              -118.47045986326474,
+              34.238955577599604
+            ],
+            [
+              -118.47045986326474,
+              34.237012053075325
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_21",
+        "name": "Structure #21",
+        "height": 22,
+        "min_height": 0,
+        "render_height": 22,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.465173725926,
+              34.236149416486775
+            ],
+            [
+              -118.46346647301054,
+              34.236149416486775
+            ],
+            [
+              -118.46346647301054,
+              34.2390183583931
+            ],
+            [
+              -118.465173725926,
+              34.2390183583931
+            ],
+            [
+              -118.465173725926,
+              34.236149416486775
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_22",
+        "name": "Structure #22",
+        "height": 20,
+        "min_height": 0,
+        "render_height": 20,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.4612648263018,
+              34.23528669061198
+            ],
+            [
+              -118.45874465772528,
+              34.23528669061198
+            ],
+            [
+              -118.45874465772528,
+              34.239085448626874
+            ],
+            [
+              -118.4612648263018,
+              34.239085448626874
+            ],
+            [
+              -118.4612648263018,
+              34.23528669061198
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_23",
+        "name": "Structure #23",
+        "height": 10,
+        "min_height": 0,
+        "render_height": 10,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.45735600510947,
+              34.23620047378077
+            ],
+            [
+              -118.45401905689248,
+              34.23620047378077
+            ],
+            [
+              -118.45401905689248,
+              34.23965233326933
+            ],
+            [
+              -118.45735600510947,
+              34.23965233326933
+            ],
+            [
+              -118.45735600510947,
+              34.23620047378077
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_25",
+        "name": "Structure #25",
+        "height": 15,
+        "min_height": 0,
+        "render_height": 15,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.44594394356868,
+              34.23716565036733
+            ],
+            [
+              -118.4441569392841,
+              34.23716565036733
+            ],
+            [
+              -118.4441569392841,
+              34.23961982481438
+            ],
+            [
+              -118.44594394356868,
+              34.23961982481438
+            ],
+            [
+              -118.44594394356868,
+              34.23716565036733
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_26",
+        "name": "Structure #26",
+        "height": 25,
+        "min_height": 0,
+        "render_height": 25,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.44170546791261,
+              34.235886492302654
+            ],
+            [
+              -118.43954964408462,
+              34.235886492302654
+            ],
+            [
+              -118.43954964408462,
+              34.238630908358516
+            ],
+            [
+              -118.44170546791261,
+              34.238630908358516
+            ],
+            [
+              -118.44170546791261,
+              34.235886492302654
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_27",
+        "name": "Structure #27",
+        "height": 16,
+        "min_height": 0,
+        "render_height": 16,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.4381624538204,
+              34.23551329988217
+            ],
+            [
+              -118.43575167265762,
+              34.23551329988217
+            ],
+            [
+              -118.43575167265762,
+              34.239675879233104
+            ],
+            [
+              -118.4381624538204,
+              34.239675879233104
+            ],
+            [
+              -118.4381624538204,
+              34.23551329988217
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_29",
+        "name": "Structure #29",
+        "height": 21,
+        "min_height": 0,
+        "render_height": 21,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.42836164661752,
+              34.237827871353645
+            ],
+            [
+              -118.42588777018868,
+              34.237827871353645
+            ],
+            [
+              -118.42588777018868,
+              34.24009475560784
+            ],
+            [
+              -118.42836164661752,
+              34.24009475560784
+            ],
+            [
+              -118.42836164661752,
+              34.237827871353645
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_30",
+        "name": "Structure #30",
+        "height": 21,
+        "min_height": 0,
+        "render_height": 21,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.422457085556,
+              34.23612288160986
+            ],
+            [
+              -118.4204657833092,
+              34.23612288160986
+            ],
+            [
+              -118.4204657833092,
+              34.23964560759981
+            ],
+            [
+              -118.422457085556,
+              34.23964560759981
+            ],
+            [
+              -118.422457085556,
+              34.23612288160986
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_31",
+        "name": "Structure #31",
+        "height": 33,
+        "min_height": 0,
+        "render_height": 33,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.48928813537016,
+              34.24095957562875
+            ],
+            [
+              -118.4861936623437,
+              34.24095957562875
+            ],
+            [
+              -118.4861936623437,
+              34.244554939177945
+            ],
+            [
+              -118.48928813537016,
+              34.244554939177945
+            ],
+            [
+              -118.48928813537016,
+              34.24095957562875
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_32",
+        "name": "Structure #32",
+        "height": 19,
+        "min_height": 0,
+        "render_height": 19,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.48503943160455,
+              34.24233976029983
+            ],
+            [
+              -118.4818811514672,
+              34.24233976029983
+            ],
+            [
+              -118.4818811514672,
+              34.24518410128408
+            ],
+            [
+              -118.48503943160455,
+              34.24518410128408
+            ],
+            [
+              -118.48503943160455,
+              34.24233976029983
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_33",
+        "name": "Structure #33",
+        "height": 15,
+        "min_height": 0,
+        "render_height": 15,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.47916036742289,
+              34.242141543071064
+            ],
+            [
+              -118.47666180906809,
+              34.242141543071064
+            ],
+            [
+              -118.47666180906809,
+              34.24549853860764
+            ],
+            [
+              -118.47916036742289,
+              34.24549853860764
+            ],
+            [
+              -118.47916036742289,
+              34.242141543071064
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_34",
+        "name": "Structure #34",
+        "height": 8,
+        "min_height": 0,
+        "render_height": 8,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.47466782098856,
+              34.24189172934265
+            ],
+            [
+              -118.47171893079171,
+              34.24189172934265
+            ],
+            [
+              -118.47171893079171,
+              34.24454671623216
+            ],
+            [
+              -118.47466782098856,
+              34.24454671623216
+            ],
+            [
+              -118.47466782098856,
+              34.24189172934265
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_35",
+        "name": "Structure #35",
+        "height": 23,
+        "min_height": 0,
+        "render_height": 23,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.47022059853822,
+              34.242759280477
+            ],
+            [
+              -118.46788837476078,
+              34.242759280477
+            ],
+            [
+              -118.46788837476078,
+              34.244499412381515
+            ],
+            [
+              -118.47022059853822,
+              34.244499412381515
+            ],
+            [
+              -118.47022059853822,
+              34.242759280477
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_36",
+        "name": "Structure #36",
+        "height": 25,
+        "min_height": 0,
+        "render_height": 25,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.46479184773784,
+              34.24113243180284
+            ],
+            [
+              -118.46326326128056,
+              34.24113243180284
+            ],
+            [
+              -118.46326326128056,
+              34.245003047220365
+            ],
+            [
+              -118.46479184773784,
+              34.245003047220365
+            ],
+            [
+              -118.46479184773784,
+              34.24113243180284
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_37",
+        "name": "Structure #37",
+        "height": 22,
+        "min_height": 0,
+        "render_height": 22,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.46155425598496,
+              34.24026062417602
+            ],
+            [
+              -118.45815418597113,
+              34.24026062417602
+            ],
+            [
+              -118.45815418597113,
+              34.24441108687118
+            ],
+            [
+              -118.46155425598496,
+              34.24441108687118
+            ],
+            [
+              -118.46155425598496,
+              34.24026062417602
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_38",
+        "name": "Structure #38",
+        "height": 16,
+        "min_height": 0,
+        "render_height": 16,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.45765341248853,
+              34.242194063313555
+            ],
+            [
+              -118.45400751584648,
+              34.242194063313555
+            ],
+            [
+              -118.45400751584648,
+              34.24588642135448
+            ],
+            [
+              -118.45765341248853,
+              34.24588642135448
+            ],
+            [
+              -118.45765341248853,
+              34.242194063313555
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_40",
+        "name": "Structure #40",
+        "height": 31,
+        "min_height": 0,
+        "render_height": 31,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.44603099041876,
+              34.242478186072724
+            ],
+            [
+              -118.443575574954,
+              34.242478186072724
+            ],
+            [
+              -118.443575574954,
+              34.24531708679276
+            ],
+            [
+              -118.44603099041876,
+              34.24531708679276
+            ],
+            [
+              -118.44603099041876,
+              34.242478186072724
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_41",
+        "name": "Structure #41",
+        "height": 31,
+        "min_height": 0,
+        "render_height": 31,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.44170543654789,
+              34.24126416776098
+            ],
+            [
+              -118.43921165709185,
+              34.24126416776098
+            ],
+            [
+              -118.43921165709185,
+              34.24509569612126
+            ],
+            [
+              -118.44170543654789,
+              34.24509569612126
+            ],
+            [
+              -118.44170543654789,
+              34.24126416776098
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_42",
+        "name": "Structure #42",
+        "height": 14,
+        "min_height": 0,
+        "render_height": 14,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.4381052016531,
+              34.242118484389216
+            ],
+            [
+              -118.43473946693662,
+              34.242118484389216
+            ],
+            [
+              -118.43473946693662,
+              34.244311256762835
+            ],
+            [
+              -118.4381052016531,
+              34.244311256762835
+            ],
+            [
+              -118.4381052016531,
+              34.242118484389216
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_43",
+        "name": "Structure #43",
+        "height": 8,
+        "min_height": 0,
+        "render_height": 8,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.43268807645809,
+              34.24271499506912
+            ],
+            [
+              -118.43076187641226,
+              34.24271499506912
+            ],
+            [
+              -118.43076187641226,
+              34.245302950307334
+            ],
+            [
+              -118.43268807645809,
+              34.245302950307334
+            ],
+            [
+              -118.43268807645809,
+              34.24271499506912
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_44",
+        "name": "Structure #44",
+        "height": 17,
+        "min_height": 0,
+        "render_height": 17,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.42749741609614,
+              34.24184035884203
+            ],
+            [
+              -118.42522407502415,
+              34.24184035884203
+            ],
+            [
+              -118.42522407502415,
+              34.24355557695575
+            ],
+            [
+              -118.42749741609614,
+              34.24355557695575
+            ],
+            [
+              -118.42749741609614,
+              34.24184035884203
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_45",
+        "name": "Structure #45",
+        "height": 17,
+        "min_height": 0,
+        "render_height": 17,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.42359905733093,
+              34.241541986087526
+            ],
+            [
+              -118.42209235592907,
+              34.241541986087526
+            ],
+            [
+              -118.42209235592907,
+              34.24448624229362
+            ],
+            [
+              -118.42359905733093,
+              34.24448624229362
+            ],
+            [
+              -118.42359905733093,
+              34.241541986087526
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_46",
+        "name": "Structure #46",
+        "height": 13,
+        "min_height": 0,
+        "render_height": 13,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.48919449065252,
+              34.24616028755355
+            ],
+            [
+              -118.48660816363227,
+              34.24616028755355
+            ],
+            [
+              -118.48660816363227,
+              34.2490965614284
+            ],
+            [
+              -118.48919449065252,
+              34.2490965614284
+            ],
+            [
+              -118.48919449065252,
+              34.24616028755355
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_47",
+        "name": "Structure #47",
+        "height": 23,
+        "min_height": 0,
+        "render_height": 23,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.48513762975688,
+              34.24739049113543
+            ],
+            [
+              -118.48255831466682,
+              34.24739049113543
+            ],
+            [
+              -118.48255831466682,
+              34.24983281879431
+            ],
+            [
+              -118.48513762975688,
+              34.24983281879431
+            ],
+            [
+              -118.48513762975688,
+              34.24739049113543
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_49",
+        "name": "Structure #49",
+        "height": 25,
+        "min_height": 0,
+        "render_height": 25,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.47538080800331,
+              34.24692107816705
+            ],
+            [
+              -118.47193228785258,
+              34.24692107816705
+            ],
+            [
+              -118.47193228785258,
+              34.24949914608716
+            ],
+            [
+              -118.47538080800331,
+              34.24949914608716
+            ],
+            [
+              -118.47538080800331,
+              34.24692107816705
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_50",
+        "name": "Structure #50",
+        "height": 9,
+        "min_height": 0,
+        "render_height": 9,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.47046932741404,
+              34.247336695909134
+            ],
+            [
+              -118.46820467167245,
+              34.247336695909134
+            ],
+            [
+              -118.46820467167245,
+              34.25145703722256
+            ],
+            [
+              -118.47046932741404,
+              34.25145703722256
+            ],
+            [
+              -118.47046932741404,
+              34.247336695909134
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_51",
+        "name": "Structure #51",
+        "height": 17,
+        "min_height": 0,
+        "render_height": 17,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.46543756908373,
+              34.24741196105773
+            ],
+            [
+              -118.46181813200842,
+              34.24741196105773
+            ],
+            [
+              -118.46181813200842,
+              34.24922544761446
+            ],
+            [
+              -118.46543756908373,
+              34.24922544761446
+            ],
+            [
+              -118.46543756908373,
+              34.24741196105773
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_52",
+        "name": "Structure #52",
+        "height": 30,
+        "min_height": 0,
+        "render_height": 30,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.46070478714928,
+              34.24804787117166
+            ],
+            [
+              -118.45911176366415,
+              34.24804787117166
+            ],
+            [
+              -118.45911176366415,
+              34.251057174929805
+            ],
+            [
+              -118.46070478714928,
+              34.251057174929805
+            ],
+            [
+              -118.46070478714928,
+              34.24804787117166
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_53",
+        "name": "Structure #53",
+        "height": 10,
+        "min_height": 0,
+        "render_height": 10,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.45547951708842,
+              34.246767794292765
+            ],
+            [
+              -118.45283605025774,
+              34.246767794292765
+            ],
+            [
+              -118.45283605025774,
+              34.24864628419799
+            ],
+            [
+              -118.45547951708842,
+              34.24864628419799
+            ],
+            [
+              -118.45547951708842,
+              34.246767794292765
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_54",
+        "name": "Structure #54",
+        "height": 31,
+        "min_height": 0,
+        "render_height": 31,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.45193731011146,
+              34.24769124833248
+            ],
+            [
+              -118.45028718564568,
+              34.24769124833248
+            ],
+            [
+              -118.45028718564568,
+              34.24963613768055
+            ],
+            [
+              -118.45193731011146,
+              34.24963613768055
+            ],
+            [
+              -118.45193731011146,
+              34.24769124833248
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_56",
+        "name": "Structure #56",
+        "height": 8,
+        "min_height": 0,
+        "render_height": 8,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.44325736937378,
+              34.24674158091455
+            ],
+            [
+              -118.44020909814765,
+              34.24674158091455
+            ],
+            [
+              -118.44020909814765,
+              34.24888274204235
+            ],
+            [
+              -118.44325736937378,
+              34.24888274204235
+            ],
+            [
+              -118.44325736937378,
+              34.24674158091455
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_59",
+        "name": "Structure #59",
+        "height": 17,
+        "min_height": 0,
+        "render_height": 17,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.42837687750495,
+              34.24659116556521
+            ],
+            [
+              -118.42672040818837,
+              34.24659116556521
+            ],
+            [
+              -118.42672040818837,
+              34.24870632778093
+            ],
+            [
+              -118.42837687750495,
+              34.24870632778093
+            ],
+            [
+              -118.42837687750495,
+              34.24659116556521
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_60",
+        "name": "Structure #60",
+        "height": 9,
+        "min_height": 0,
+        "render_height": 9,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.42409246632702,
+              34.246293684434896
+            ],
+            [
+              -118.42223444147872,
+              34.246293684434896
+            ],
+            [
+              -118.42223444147872,
+              34.249235956106
+            ],
+            [
+              -118.42409246632702,
+              34.249235956106
+            ],
+            [
+              -118.42409246632702,
+              34.246293684434896
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_64",
+        "name": "Structure #64",
+        "height": 9,
+        "min_height": 0,
+        "render_height": 9,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.47581010140594,
+              34.25259119302924
+            ],
+            [
+              -118.47315377634963,
+              34.25259119302924
+            ],
+            [
+              -118.47315377634963,
+              34.25467935194579
+            ],
+            [
+              -118.47581010140594,
+              34.25467935194579
+            ],
+            [
+              -118.47581010140594,
+              34.25259119302924
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_66",
+        "name": "Structure #66",
+        "height": 17,
+        "min_height": 0,
+        "render_height": 17,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.46503152704655,
+              34.25161707166503
+            ],
+            [
+              -118.46349168619669,
+              34.25161707166503
+            ],
+            [
+              -118.46349168619669,
+              34.254861482601434
+            ],
+            [
+              -118.46503152704655,
+              34.254861482601434
+            ],
+            [
+              -118.46503152704655,
+              34.25161707166503
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_67",
+        "name": "Structure #67",
+        "height": 15,
+        "min_height": 0,
+        "render_height": 15,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.46167755273345,
+              34.251508559284765
+            ],
+            [
+              -118.45882756038148,
+              34.251508559284765
+            ],
+            [
+              -118.45882756038148,
+              34.254433650834635
+            ],
+            [
+              -118.46167755273345,
+              34.254433650834635
+            ],
+            [
+              -118.46167755273345,
+              34.251508559284765
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_70",
+        "name": "Structure #70",
+        "height": 21,
+        "min_height": 0,
+        "render_height": 21,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.44683079567419,
+              34.25218558724241
+            ],
+            [
+              -118.44449801682983,
+              34.25218558724241
+            ],
+            [
+              -118.44449801682983,
+              34.25534987776324
+            ],
+            [
+              -118.44683079567419,
+              34.25534987776324
+            ],
+            [
+              -118.44683079567419,
+              34.25218558724241
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_71",
+        "name": "Structure #71",
+        "height": 14,
+        "min_height": 0,
+        "render_height": 14,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.44251148414784,
+              34.251870541364646
+            ],
+            [
+              -118.43973187208249,
+              34.251870541364646
+            ],
+            [
+              -118.43973187208249,
+              34.25551594867331
+            ],
+            [
+              -118.44251148414784,
+              34.25551594867331
+            ],
+            [
+              -118.44251148414784,
+              34.251870541364646
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_72",
+        "name": "Structure #72",
+        "height": 22,
+        "min_height": 0,
+        "render_height": 22,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.43812156366398,
+              34.25280338227337
+            ],
+            [
+              -118.43491932351834,
+              34.25280338227337
+            ],
+            [
+              -118.43491932351834,
+              34.255396982559944
+            ],
+            [
+              -118.43812156366398,
+              34.255396982559944
+            ],
+            [
+              -118.43812156366398,
+              34.25280338227337
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_73",
+        "name": "Structure #73",
+        "height": 19,
+        "min_height": 0,
+        "render_height": 19,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.4326354602775,
+              34.2526011162148
+            ],
+            [
+              -118.43035716041793,
+              34.2526011162148
+            ],
+            [
+              -118.43035716041793,
+              34.25636903547906
+            ],
+            [
+              -118.4326354602775,
+              34.25636903547906
+            ],
+            [
+              -118.4326354602775,
+              34.2526011162148
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_74",
+        "name": "Structure #74",
+        "height": 11,
+        "min_height": 0,
+        "render_height": 11,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.42814647046231,
+              34.25199031307392
+            ],
+            [
+              -118.42483661197133,
+              34.25199031307392
+            ],
+            [
+              -118.42483661197133,
+              34.25529694738458
+            ],
+            [
+              -118.42814647046231,
+              34.25529694738458
+            ],
+            [
+              -118.42814647046231,
+              34.25199031307392
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_75",
+        "name": "Structure #75",
+        "height": 25,
+        "min_height": 0,
+        "render_height": 25,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.42401635243704,
+              34.253538944969804
+            ],
+            [
+              -118.42111170112099,
+              34.253538944969804
+            ],
+            [
+              -118.42111170112099,
+              34.25562722585302
+            ],
+            [
+              -118.42401635243704,
+              34.25562722585302
+            ],
+            [
+              -118.42401635243704,
+              34.253538944969804
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_76",
+        "name": "Structure #76",
+        "height": 18,
+        "min_height": 0,
+        "render_height": 18,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.48798931892847,
+              34.25740891534979
+            ],
+            [
+              -118.48615490748597,
+              34.25740891534979
+            ],
+            [
+              -118.48615490748597,
+              34.26164419954727
+            ],
+            [
+              -118.48798931892847,
+              34.26164419954727
+            ],
+            [
+              -118.48798931892847,
+              34.25740891534979
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_77",
+        "name": "Structure #77",
+        "height": 10,
+        "min_height": 0,
+        "render_height": 10,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.48458981553586,
+              34.2570142507774
+            ],
+            [
+              -118.48086940902513,
+              34.2570142507774
+            ],
+            [
+              -118.48086940902513,
+              34.260089498635736
+            ],
+            [
+              -118.48458981553586,
+              34.260089498635736
+            ],
+            [
+              -118.48458981553586,
+              34.2570142507774
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_78",
+        "name": "Structure #78",
+        "height": 10,
+        "min_height": 0,
+        "render_height": 10,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.4802698346112,
+              34.25928117244399
+            ],
+            [
+              -118.47756844041409,
+              34.25928117244399
+            ],
+            [
+              -118.47756844041409,
+              34.26125778227197
+            ],
+            [
+              -118.4802698346112,
+              34.26125778227197
+            ],
+            [
+              -118.4802698346112,
+              34.25928117244399
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_80",
+        "name": "Structure #80",
+        "height": 34,
+        "min_height": 0,
+        "render_height": 34,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.46976980789358,
+              34.25736005841245
+            ],
+            [
+              -118.46801462805769,
+              34.25736005841245
+            ],
+            [
+              -118.46801462805769,
+              34.259565017312305
+            ],
+            [
+              -118.46976980789358,
+              34.259565017312305
+            ],
+            [
+              -118.46976980789358,
+              34.25736005841245
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_81",
+        "name": "Structure #81",
+        "height": 22,
+        "min_height": 0,
+        "render_height": 22,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.46596606633574,
+              34.256914891199
+            ],
+            [
+              -118.46402916126291,
+              34.256914891199
+            ],
+            [
+              -118.46402916126291,
+              34.260044543502104
+            ],
+            [
+              -118.46596606633574,
+              34.260044543502104
+            ],
+            [
+              -118.46596606633574,
+              34.256914891199
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_84",
+        "name": "Structure #84",
+        "height": 17,
+        "min_height": 0,
+        "render_height": 17,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.45107252791344,
+              34.257813962243524
+            ],
+            [
+              -118.44930210979074,
+              34.257813962243524
+            ],
+            [
+              -118.44930210979074,
+              34.2619641636037
+            ],
+            [
+              -118.45107252791344,
+              34.2619641636037
+            ],
+            [
+              -118.45107252791344,
+              34.257813962243524
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_85",
+        "name": "Structure #85",
+        "height": 19,
+        "min_height": 0,
+        "render_height": 19,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.44690067630371,
+              34.256988193102146
+            ],
+            [
+              -118.44325500922655,
+              34.256988193102146
+            ],
+            [
+              -118.44325500922655,
+              34.25999899704992
+            ],
+            [
+              -118.44690067630371,
+              34.25999899704992
+            ],
+            [
+              -118.44690067630371,
+              34.256988193102146
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_86",
+        "name": "Structure #86",
+        "height": 12,
+        "min_height": 0,
+        "render_height": 12,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.44295939115732,
+              34.25856150851876
+            ],
+            [
+              -118.44031460651301,
+              34.25856150851876
+            ],
+            [
+              -118.44031460651301,
+              34.26184131365752
+            ],
+            [
+              -118.44295939115732,
+              34.26184131365752
+            ],
+            [
+              -118.44295939115732,
+              34.25856150851876
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_88",
+        "name": "Structure #88",
+        "height": 30,
+        "min_height": 0,
+        "render_height": 30,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.43256518335329,
+              34.25847708437583
+            ],
+            [
+              -118.43064316121581,
+              34.25847708437583
+            ],
+            [
+              -118.43064316121581,
+              34.26053310384618
+            ],
+            [
+              -118.43256518335329,
+              34.26053310384618
+            ],
+            [
+              -118.43256518335329,
+              34.25847708437583
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_89",
+        "name": "Structure #89",
+        "height": 8,
+        "min_height": 0,
+        "render_height": 8,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.42765150235222,
+              34.25747463366797
+            ],
+            [
+              -118.42584543034688,
+              34.25747463366797
+            ],
+            [
+              -118.42584543034688,
+              34.25978869236815
+            ],
+            [
+              -118.42765150235222,
+              34.25978869236815
+            ],
+            [
+              -118.42765150235222,
+              34.25747463366797
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_90",
+        "name": "Structure #90",
+        "height": 17,
+        "min_height": 0,
+        "render_height": 17,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.42386541983677,
+              34.25771936848317
+            ],
+            [
+              -118.42183267807661,
+              34.25771936848317
+            ],
+            [
+              -118.42183267807661,
+              34.25933276266938
+            ],
+            [
+              -118.42386541983677,
+              34.25933276266938
+            ],
+            [
+              -118.42386541983677,
+              34.25771936848317
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_91",
+        "name": "Structure #91",
+        "height": 10,
+        "min_height": 0,
+        "render_height": 10,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.48898377043047,
+              34.26256777432976
+            ],
+            [
+              -118.487566514361,
+              34.26256777432976
+            ],
+            [
+              -118.487566514361,
+              34.26552221959053
+            ],
+            [
+              -118.48898377043047,
+              34.26552221959053
+            ],
+            [
+              -118.48898377043047,
+              34.26256777432976
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_93",
+        "name": "Structure #93",
+        "height": 18,
+        "min_height": 0,
+        "render_height": 18,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.4801379178855,
+              34.26295088500979
+            ],
+            [
+              -118.47836780573671,
+              34.26295088500979
+            ],
+            [
+              -118.47836780573671,
+              34.26616372740744
+            ],
+            [
+              -118.4801379178855,
+              34.26616372740744
+            ],
+            [
+              -118.4801379178855,
+              34.26295088500979
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_95",
+        "name": "Structure #95",
+        "height": 21,
+        "min_height": 0,
+        "render_height": 21,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.4709946498969,
+              34.26390812895588
+            ],
+            [
+              -118.4682798373317,
+              34.26390812895588
+            ],
+            [
+              -118.4682798373317,
+              34.26561991888034
+            ],
+            [
+              -118.4709946498969,
+              34.26561991888034
+            ],
+            [
+              -118.4709946498969,
+              34.26390812895588
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_97",
+        "name": "Structure #97",
+        "height": 10,
+        "min_height": 0,
+        "render_height": 10,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.46110641868158,
+              34.26228879214534
+            ],
+            [
+              -118.45798988121412,
+              34.26228879214534
+            ],
+            [
+              -118.45798988121412,
+              34.26483757173378
+            ],
+            [
+              -118.46110641868158,
+              34.26483757173378
+            ],
+            [
+              -118.46110641868158,
+              34.26228879214534
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_98",
+        "name": "Structure #98",
+        "height": 17,
+        "min_height": 0,
+        "render_height": 17,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.45696984533114,
+              34.26404027258155
+            ],
+            [
+              -118.45473091737895,
+              34.26404027258155
+            ],
+            [
+              -118.45473091737895,
+              34.2660237778056
+            ],
+            [
+              -118.45696984533114,
+              34.2660237778056
+            ],
+            [
+              -118.45696984533114,
+              34.26404027258155
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_100",
+        "name": "Structure #100",
+        "height": 13,
+        "min_height": 0,
+        "render_height": 13,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.44726802494637,
+              34.262244260785316
+            ],
+            [
+              -118.44458969033013,
+              34.262244260785316
+            ],
+            [
+              -118.44458969033013,
+              34.26531684757315
+            ],
+            [
+              -118.44726802494637,
+              34.26531684757315
+            ],
+            [
+              -118.44726802494637,
+              34.262244260785316
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_101",
+        "name": "Structure #101",
+        "height": 10,
+        "min_height": 0,
+        "render_height": 10,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.44300896307486,
+              34.26340345014056
+            ],
+            [
+              -118.44030990644553,
+              34.26340345014056
+            ],
+            [
+              -118.44030990644553,
+              34.26586244505329
+            ],
+            [
+              -118.44300896307486,
+              34.26586244505329
+            ],
+            [
+              -118.44300896307486,
+              34.26340345014056
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_103",
+        "name": "Structure #103",
+        "height": 12,
+        "min_height": 0,
+        "render_height": 12,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.4324001835049,
+              34.26242507934871
+            ],
+            [
+              -118.4307213258882,
+              34.26242507934871
+            ],
+            [
+              -118.4307213258882,
+              34.26589681251166
+            ],
+            [
+              -118.4324001835049,
+              34.26589681251166
+            ],
+            [
+              -118.4324001835049,
+              34.26242507934871
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_104",
+        "name": "Structure #104",
+        "height": 23,
+        "min_height": 0,
+        "render_height": 23,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.42885012637603,
+              34.26261190571591
+            ],
+            [
+              -118.42580044704857,
+              34.26261190571591
+            ],
+            [
+              -118.42580044704857,
+              34.26483351351451
+            ],
+            [
+              -118.42885012637603,
+              34.26483351351451
+            ],
+            [
+              -118.42885012637603,
+              34.26261190571591
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_105",
+        "name": "Structure #105",
+        "height": 17,
+        "min_height": 0,
+        "render_height": 17,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.4240193455672,
+              34.26300012739869
+            ],
+            [
+              -118.42206781557941,
+              34.26300012739869
+            ],
+            [
+              -118.42206781557941,
+              34.26694214566202
+            ],
+            [
+              -118.4240193455672,
+              34.26694214566202
+            ],
+            [
+              -118.4240193455672,
+              34.26300012739869
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_107",
+        "name": "Structure #107",
+        "height": 13,
+        "min_height": 0,
+        "render_height": 13,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.48481425968484,
+              34.26860555897799
+            ],
+            [
+              -118.48216995900137,
+              34.26860555897799
+            ],
+            [
+              -118.48216995900137,
+              34.27271417024334
+            ],
+            [
+              -118.48481425968484,
+              34.27271417024334
+            ],
+            [
+              -118.48481425968484,
+              34.26860555897799
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_108",
+        "name": "Structure #108",
+        "height": 21,
+        "min_height": 0,
+        "render_height": 21,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.47942099917226,
+              34.26870530130419
+            ],
+            [
+              -118.47581186613918,
+              34.26870530130419
+            ],
+            [
+              -118.47581186613918,
+              34.27112360351213
+            ],
+            [
+              -118.47942099917226,
+              34.27112360351213
+            ],
+            [
+              -118.47942099917226,
+              34.26870530130419
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_109",
+        "name": "Structure #109",
+        "height": 30,
+        "min_height": 0,
+        "render_height": 30,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.4746667157171,
+              34.26897591381725
+            ],
+            [
+              -118.47254240318934,
+              34.26897591381725
+            ],
+            [
+              -118.47254240318934,
+              34.2726103642073
+            ],
+            [
+              -118.4746667157171,
+              34.2726103642073
+            ],
+            [
+              -118.4746667157171,
+              34.26897591381725
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_110",
+        "name": "Structure #110",
+        "height": 11,
+        "min_height": 0,
+        "render_height": 11,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.46976233452915,
+              34.26789718061428
+            ],
+            [
+              -118.46656971928456,
+              34.26789718061428
+            ],
+            [
+              -118.46656971928456,
+              34.27098460291844
+            ],
+            [
+              -118.46976233452915,
+              34.27098460291844
+            ],
+            [
+              -118.46976233452915,
+              34.26789718061428
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_111",
+        "name": "Structure #111",
+        "height": 34,
+        "min_height": 0,
+        "render_height": 34,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.4660432609506,
+              34.26938468814518
+            ],
+            [
+              -118.4633311723383,
+              34.26938468814518
+            ],
+            [
+              -118.4633311723383,
+              34.271442932478905
+            ],
+            [
+              -118.4660432609506,
+              34.271442932478905
+            ],
+            [
+              -118.4660432609506,
+              34.26938468814518
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_112",
+        "name": "Structure #112",
+        "height": 25,
+        "min_height": 0,
+        "render_height": 25,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.46006992100187,
+              34.268948200012204
+            ],
+            [
+              -118.45826189460676,
+              34.268948200012204
+            ],
+            [
+              -118.45826189460676,
+              34.27100417567445
+            ],
+            [
+              -118.46006992100187,
+              34.27100417567445
+            ],
+            [
+              -118.46006992100187,
+              34.268948200012204
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_113",
+        "name": "Structure #113",
+        "height": 23,
+        "min_height": 0,
+        "render_height": 23,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.45578667920496,
+              34.26709349822112
+            ],
+            [
+              -118.45398064568205,
+              34.26709349822112
+            ],
+            [
+              -118.45398064568205,
+              34.27121219271283
+            ],
+            [
+              -118.45578667920496,
+              34.27121219271283
+            ],
+            [
+              -118.45578667920496,
+              34.26709349822112
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_114",
+        "name": "Structure #114",
+        "height": 16,
+        "min_height": 0,
+        "render_height": 16,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.4527492407783,
+              34.26719477384626
+            ],
+            [
+              -118.44913125032284,
+              34.26719477384626
+            ],
+            [
+              -118.44913125032284,
+              34.27110728721333
+            ],
+            [
+              -118.4527492407783,
+              34.27110728721333
+            ],
+            [
+              -118.4527492407783,
+              34.26719477384626
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_117",
+        "name": "Structure #117",
+        "height": 31,
+        "min_height": 0,
+        "render_height": 31,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.43659685445428,
+              34.26856616268505
+            ],
+            [
+              -118.43467747969962,
+              34.26856616268505
+            ],
+            [
+              -118.43467747969962,
+              34.271028315954794
+            ],
+            [
+              -118.43659685445428,
+              34.271028315954794
+            ],
+            [
+              -118.43659685445428,
+              34.26856616268505
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_118",
+        "name": "Structure #118",
+        "height": 32,
+        "min_height": 0,
+        "render_height": 32,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.43278893944529,
+              34.26801850534474
+            ],
+            [
+              -118.43062610676913,
+              34.26801850534474
+            ],
+            [
+              -118.43062610676913,
+              34.27048999867269
+            ],
+            [
+              -118.43278893944529,
+              34.27048999867269
+            ],
+            [
+              -118.43278893944529,
+              34.26801850534474
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_119",
+        "name": "Structure #119",
+        "height": 16,
+        "min_height": 0,
+        "render_height": 16,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.42860335216774,
+              34.268330552770905
+            ],
+            [
+              -118.42643231489144,
+              34.268330552770905
+            ],
+            [
+              -118.42643231489144,
+              34.2706213924607
+            ],
+            [
+              -118.42860335216774,
+              34.2706213924607
+            ],
+            [
+              -118.42860335216774,
+              34.268330552770905
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_120",
+        "name": "Structure #120",
+        "height": 25,
+        "min_height": 0,
+        "render_height": 25,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.42366257325222,
+              34.26809333307545
+            ],
+            [
+              -118.42165022779923,
+              34.26809333307545
+            ],
+            [
+              -118.42165022779923,
+              34.27087355624925
+            ],
+            [
+              -118.42366257325222,
+              34.27087355624925
+            ],
+            [
+              -118.42366257325222,
+              34.26809333307545
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_121",
+        "name": "Structure #121",
+        "height": 20,
+        "min_height": 0,
+        "render_height": 20,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.48920428780822,
+              34.272562733049924
+            ],
+            [
+              -118.48676205254968,
+              34.272562733049924
+            ],
+            [
+              -118.48676205254968,
+              34.276740110453744
+            ],
+            [
+              -118.48920428780822,
+              34.276740110453744
+            ],
+            [
+              -118.48920428780822,
+              34.272562733049924
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_122",
+        "name": "Structure #122",
+        "height": 17,
+        "min_height": 0,
+        "render_height": 17,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.48527822665417,
+              34.27333711698241
+            ],
+            [
+              -118.48160868728769,
+              34.27333711698241
+            ],
+            [
+              -118.48160868728769,
+              34.27674874009565
+            ],
+            [
+              -118.48527822665417,
+              34.27674874009565
+            ],
+            [
+              -118.48527822665417,
+              34.27333711698241
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_123",
+        "name": "Structure #123",
+        "height": 23,
+        "min_height": 0,
+        "render_height": 23,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.47993131684682,
+              34.27468975562136
+            ],
+            [
+              -118.47693444007284,
+              34.27468975562136
+            ],
+            [
+              -118.47693444007284,
+              34.27763154822474
+            ],
+            [
+              -118.47993131684682,
+              34.27763154822474
+            ],
+            [
+              -118.47993131684682,
+              34.27468975562136
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_124",
+        "name": "Structure #124",
+        "height": 25,
+        "min_height": 0,
+        "render_height": 25,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.47407644996397,
+              34.27362948585367
+            ],
+            [
+              -118.47149228704964,
+              34.27362948585367
+            ],
+            [
+              -118.47149228704964,
+              34.2774666111275
+            ],
+            [
+              -118.47407644996397,
+              34.2774666111275
+            ],
+            [
+              -118.47407644996397,
+              34.27362948585367
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_125",
+        "name": "Structure #125",
+        "height": 34,
+        "min_height": 0,
+        "render_height": 34,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.47034115752462,
+              34.273107031880066
+            ],
+            [
+              -118.46697050630368,
+              34.273107031880066
+            ],
+            [
+              -118.46697050630368,
+              34.27723733628533
+            ],
+            [
+              -118.47034115752462,
+              34.27723733628533
+            ],
+            [
+              -118.47034115752462,
+              34.273107031880066
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_126",
+        "name": "Structure #126",
+        "height": 22,
+        "min_height": 0,
+        "render_height": 22,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.46613343081907,
+              34.274638626683945
+            ],
+            [
+              -118.46250524185132,
+              34.274638626683945
+            ],
+            [
+              -118.46250524185132,
+              34.27713827375418
+            ],
+            [
+              -118.46613343081907,
+              34.27713827375418
+            ],
+            [
+              -118.46613343081907,
+              34.274638626683945
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_127",
+        "name": "Structure #127",
+        "height": 10,
+        "min_height": 0,
+        "render_height": 10,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.46012136322665,
+              34.2742557641457
+            ],
+            [
+              -118.45792559481984,
+              34.2742557641457
+            ],
+            [
+              -118.45792559481984,
+              34.27799022290271
+            ],
+            [
+              -118.46012136322665,
+              34.27799022290271
+            ],
+            [
+              -118.46012136322665,
+              34.2742557641457
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_128",
+        "name": "Structure #128",
+        "height": 8,
+        "min_height": 0,
+        "render_height": 8,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.45579101502496,
+              34.273844101961764
+            ],
+            [
+              -118.45251054929331,
+              34.273844101961764
+            ],
+            [
+              -118.45251054929331,
+              34.275792833350614
+            ],
+            [
+              -118.45579101502496,
+              34.275792833350614
+            ],
+            [
+              -118.45579101502496,
+              34.273844101961764
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_129",
+        "name": "Structure #129",
+        "height": 34,
+        "min_height": 0,
+        "render_height": 34,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.45148596533555,
+              34.27498829104608
+            ],
+            [
+              -118.44977413854691,
+              34.27498829104608
+            ],
+            [
+              -118.44977413854691,
+              34.27662434296513
+            ],
+            [
+              -118.45148596533555,
+              34.27662434296513
+            ],
+            [
+              -118.45148596533555,
+              34.27498829104608
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_130",
+        "name": "Structure #130",
+        "height": 25,
+        "min_height": 0,
+        "render_height": 25,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.4458142070811,
+              34.27227950425186
+            ],
+            [
+              -118.44437704774828,
+              34.27227950425186
+            ],
+            [
+              -118.44437704774828,
+              34.276475965970285
+            ],
+            [
+              -118.4458142070811,
+              34.276475965970285
+            ],
+            [
+              -118.4458142070811,
+              34.27227950425186
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_131",
+        "name": "Structure #131",
+        "height": 11,
+        "min_height": 0,
+        "render_height": 11,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.44352702371602,
+              34.27204162771944
+            ],
+            [
+              -118.43984072008884,
+              34.27204162771944
+            ],
+            [
+              -118.43984072008884,
+              34.27621355535104
+            ],
+            [
+              -118.44352702371602,
+              34.27621355535104
+            ],
+            [
+              -118.44352702371602,
+              34.27204162771944
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_134",
+        "name": "Structure #134",
+        "height": 31,
+        "min_height": 0,
+        "render_height": 31,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.42700836758387,
+              34.27364912897544
+            ],
+            [
+              -118.42523469569782,
+              34.27364912897544
+            ],
+            [
+              -118.42523469569782,
+              34.27528234649197
+            ],
+            [
+              -118.42700836758387,
+              34.27528234649197
+            ],
+            [
+              -118.42700836758387,
+              34.27364912897544
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_135",
+        "name": "Structure #135",
+        "height": 34,
+        "min_height": 0,
+        "render_height": 34,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.42365723572352,
+              34.27336402046209
+            ],
+            [
+              -118.42222256621882,
+              34.27336402046209
+            ],
+            [
+              -118.42222256621882,
+              34.275504096187454
+            ],
+            [
+              -118.42365723572352,
+              34.275504096187454
+            ],
+            [
+              -118.42365723572352,
+              34.27336402046209
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_139",
+        "name": "Structure #139",
+        "height": 10,
+        "min_height": 0,
+        "render_height": 10,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.47503179994284,
+              34.28057968246044
+            ],
+            [
+              -118.47299752762554,
+              34.28057968246044
+            ],
+            [
+              -118.47299752762554,
+              34.282356256874664
+            ],
+            [
+              -118.47503179994284,
+              34.282356256874664
+            ],
+            [
+              -118.47503179994284,
+              34.28057968246044
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_140",
+        "name": "Structure #140",
+        "height": 24,
+        "min_height": 0,
+        "render_height": 24,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.46890255344651,
+              34.27898526257524
+            ],
+            [
+              -118.46734195474538,
+              34.27898526257524
+            ],
+            [
+              -118.46734195474538,
+              34.280982519145546
+            ],
+            [
+              -118.46890255344651,
+              34.280982519145546
+            ],
+            [
+              -118.46890255344651,
+              34.27898526257524
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_141",
+        "name": "Structure #141",
+        "height": 34,
+        "min_height": 0,
+        "render_height": 34,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.46563647522802,
+              34.27750569194622
+            ],
+            [
+              -118.46388202239763,
+              34.27750569194622
+            ],
+            [
+              -118.46388202239763,
+              34.28159932711654
+            ],
+            [
+              -118.46563647522802,
+              34.28159932711654
+            ],
+            [
+              -118.46563647522802,
+              34.27750569194622
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_142",
+        "name": "Structure #142",
+        "height": 23,
+        "min_height": 0,
+        "render_height": 23,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.46226950981979,
+              34.278636078906764
+            ],
+            [
+              -118.4586735322584,
+              34.278636078906764
+            ],
+            [
+              -118.4586735322584,
+              34.28082203160573
+            ],
+            [
+              -118.46226950981979,
+              34.28082203160573
+            ],
+            [
+              -118.46226950981979,
+              34.278636078906764
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_145",
+        "name": "Structure #145",
+        "height": 32,
+        "min_height": 0,
+        "render_height": 32,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.44704650666193,
+              34.28002315908317
+            ],
+            [
+              -118.44532115825058,
+              34.28002315908317
+            ],
+            [
+              -118.44532115825058,
+              34.28255016825247
+            ],
+            [
+              -118.44704650666193,
+              34.28255016825247
+            ],
+            [
+              -118.44704650666193,
+              34.28002315908317
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_146",
+        "name": "Structure #146",
+        "height": 15,
+        "min_height": 0,
+        "render_height": 15,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.44139142104066,
+              34.277744494183644
+            ],
+            [
+              -118.43917161690763,
+              34.277744494183644
+            ],
+            [
+              -118.43917161690763,
+              34.281660604708485
+            ],
+            [
+              -118.44139142104066,
+              34.281660604708485
+            ],
+            [
+              -118.44139142104066,
+              34.277744494183644
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_147",
+        "name": "Structure #147",
+        "height": 33,
+        "min_height": 0,
+        "render_height": 33,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.43872640510926,
+              34.27878618184598
+            ],
+            [
+              -118.43528637076588,
+              34.27878618184598
+            ],
+            [
+              -118.43528637076588,
+              34.281519532824895
+            ],
+            [
+              -118.43872640510926,
+              34.281519532824895
+            ],
+            [
+              -118.43872640510926,
+              34.27878618184598
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_149",
+        "name": "Structure #149",
+        "height": 8,
+        "min_height": 0,
+        "render_height": 8,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.4275242183043,
+              34.27849331449006
+            ],
+            [
+              -118.42507839341296,
+              34.27849331449006
+            ],
+            [
+              -118.42507839341296,
+              34.28214254707619
+            ],
+            [
+              -118.4275242183043,
+              34.28214254707619
+            ],
+            [
+              -118.4275242183043,
+              34.27849331449006
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_150",
+        "name": "Structure #150",
+        "height": 32,
+        "min_height": 0,
+        "render_height": 32,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.4240686178597,
+              34.279503881831644
+            ],
+            [
+              -118.42086301747032,
+              34.279503881831644
+            ],
+            [
+              -118.42086301747032,
+              34.28121351350613
+            ],
+            [
+              -118.4240686178597,
+              34.28121351350613
+            ],
+            [
+              -118.4240686178597,
+              34.279503881831644
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_151",
+        "name": "Structure #151",
+        "height": 16,
+        "min_height": 0,
+        "render_height": 16,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.48851423713612,
+              34.284791585297846
+            ],
+            [
+              -118.48701244303774,
+              34.284791585297846
+            ],
+            [
+              -118.48701244303774,
+              34.28793468683997
+            ],
+            [
+              -118.48851423713612,
+              34.28793468683997
+            ],
+            [
+              -118.48851423713612,
+              34.284791585297846
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_152",
+        "name": "Structure #152",
+        "height": 17,
+        "min_height": 0,
+        "render_height": 17,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.48386935252267,
+              34.283359929692914
+            ],
+            [
+              -118.48110835352097,
+              34.283359929692914
+            ],
+            [
+              -118.48110835352097,
+              34.28626298098626
+            ],
+            [
+              -118.48386935252267,
+              34.28626298098626
+            ],
+            [
+              -118.48386935252267,
+              34.283359929692914
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_153",
+        "name": "Structure #153",
+        "height": 18,
+        "min_height": 0,
+        "render_height": 18,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.48046029705405,
+              34.28442672012995
+            ],
+            [
+              -118.47791016572187,
+              34.28442672012995
+            ],
+            [
+              -118.47791016572187,
+              34.287489742337435
+            ],
+            [
+              -118.48046029705405,
+              34.287489742337435
+            ],
+            [
+              -118.48046029705405,
+              34.28442672012995
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_155",
+        "name": "Structure #155",
+        "height": 15,
+        "min_height": 0,
+        "render_height": 15,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.47042295130679,
+              34.2841352534816
+            ],
+            [
+              -118.46760350522835,
+              34.2841352534816
+            ],
+            [
+              -118.46760350522835,
+              34.287653082050376
+            ],
+            [
+              -118.47042295130679,
+              34.287653082050376
+            ],
+            [
+              -118.47042295130679,
+              34.2841352534816
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_156",
+        "name": "Structure #156",
+        "height": 8,
+        "min_height": 0,
+        "render_height": 8,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.46577922831419,
+              34.284640685748215
+            ],
+            [
+              -118.46268905733614,
+              34.284640685748215
+            ],
+            [
+              -118.46268905733614,
+              34.28738223389465
+            ],
+            [
+              -118.46577922831419,
+              34.28738223389465
+            ],
+            [
+              -118.46577922831419,
+              34.284640685748215
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_157",
+        "name": "Structure #157",
+        "height": 13,
+        "min_height": 0,
+        "render_height": 13,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.46066857408785,
+              34.285427862326706
+            ],
+            [
+              -118.45826031218665,
+              34.285427862326706
+            ],
+            [
+              -118.45826031218665,
+              34.28708816338332
+            ],
+            [
+              -118.46066857408785,
+              34.28708816338332
+            ],
+            [
+              -118.46066857408785,
+              34.285427862326706
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_158",
+        "name": "Structure #158",
+        "height": 8,
+        "min_height": 0,
+        "render_height": 8,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.4553104268189,
+              34.28446527771165
+            ],
+            [
+              -118.45385196628288,
+              34.28446527771165
+            ],
+            [
+              -118.45385196628288,
+              34.28680869932265
+            ],
+            [
+              -118.4553104268189,
+              34.28680869932265
+            ],
+            [
+              -118.4553104268189,
+              34.28446527771165
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_159",
+        "name": "Structure #159",
+        "height": 25,
+        "min_height": 0,
+        "render_height": 25,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.45148932467683,
+              34.28392218669637
+            ],
+            [
+              -118.44943078961461,
+              34.28392218669637
+            ],
+            [
+              -118.44943078961461,
+              34.28562179499421
+            ],
+            [
+              -118.45148932467683,
+              34.28562179499421
+            ],
+            [
+              -118.45148932467683,
+              34.28392218669637
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_160",
+        "name": "Structure #160",
+        "height": 21,
+        "min_height": 0,
+        "render_height": 21,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.44729972619612,
+              34.28326416439371
+            ],
+            [
+              -118.44580673694625,
+              34.28326416439371
+            ],
+            [
+              -118.44580673694625,
+              34.2873728101839
+            ],
+            [
+              -118.44729972619612,
+              34.2873728101839
+            ],
+            [
+              -118.44729972619612,
+              34.28326416439371
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_162",
+        "name": "Structure #162",
+        "height": 8,
+        "min_height": 0,
+        "render_height": 8,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.43878700743045,
+              34.28484173282632
+            ],
+            [
+              -118.43559754310309,
+              34.28484173282632
+            ],
+            [
+              -118.43559754310309,
+              34.28861960043798
+            ],
+            [
+              -118.43878700743045,
+              34.28861960043798
+            ],
+            [
+              -118.43878700743045,
+              34.28484173282632
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_164",
+        "name": "Structure #164",
+        "height": 34,
+        "min_height": 0,
+        "render_height": 34,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.42724435948433,
+              34.28454459824156
+            ],
+            [
+              -118.42575916425857,
+              34.28454459824156
+            ],
+            [
+              -118.42575916425857,
+              34.28838748993709
+            ],
+            [
+              -118.42724435948433,
+              34.28838748993709
+            ],
+            [
+              -118.42724435948433,
+              34.28454459824156
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_165",
+        "name": "Structure #165",
+        "height": 25,
+        "min_height": 0,
+        "render_height": 25,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.42341964703486,
+              34.282837062525715
+            ],
+            [
+              -118.4200439304082,
+              34.282837062525715
+            ],
+            [
+              -118.4200439304082,
+              34.286755614492634
+            ],
+            [
+              -118.42341964703486,
+              34.286755614492634
+            ],
+            [
+              -118.42341964703486,
+              34.282837062525715
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_166",
+        "name": "Structure #166",
+        "height": 9,
+        "min_height": 0,
+        "render_height": 9,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.49025293331074,
+              34.28975215304516
+            ],
+            [
+              -118.48681075432803,
+              34.28975215304516
+            ],
+            [
+              -118.48681075432803,
+              34.29390897366768
+            ],
+            [
+              -118.49025293331074,
+              34.29390897366768
+            ],
+            [
+              -118.49025293331074,
+              34.28975215304516
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_168",
+        "name": "Structure #168",
+        "height": 10,
+        "min_height": 0,
+        "render_height": 10,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.4784431832606,
+              34.29031886079385
+            ],
+            [
+              -118.4768226637004,
+              34.29031886079385
+            ],
+            [
+              -118.4768226637004,
+              34.29384455220218
+            ],
+            [
+              -118.4784431832606,
+              34.29384455220218
+            ],
+            [
+              -118.4784431832606,
+              34.29031886079385
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_169",
+        "name": "Structure #169",
+        "height": 31,
+        "min_height": 0,
+        "render_height": 31,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.47434735365559,
+              34.28923860818785
+            ],
+            [
+              -118.47125027571258,
+              34.28923860818785
+            ],
+            [
+              -118.47125027571258,
+              34.291225552439634
+            ],
+            [
+              -118.47434735365559,
+              34.291225552439634
+            ],
+            [
+              -118.47434735365559,
+              34.28923860818785
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_170",
+        "name": "Structure #170",
+        "height": 34,
+        "min_height": 0,
+        "render_height": 34,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.47062961476831,
+              34.29024877808537
+            ],
+            [
+              -118.46888422060204,
+              34.29024877808537
+            ],
+            [
+              -118.46888422060204,
+              34.29290482816795
+            ],
+            [
+              -118.47062961476831,
+              34.29290482816795
+            ],
+            [
+              -118.47062961476831,
+              34.29024877808537
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_172",
+        "name": "Structure #172",
+        "height": 12,
+        "min_height": 0,
+        "render_height": 12,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.4614602258524,
+              34.28885154549612
+            ],
+            [
+              -118.45918714348154,
+              34.28885154549612
+            ],
+            [
+              -118.45918714348154,
+              34.292910634635994
+            ],
+            [
+              -118.4614602258524,
+              34.292910634635994
+            ],
+            [
+              -118.4614602258524,
+              34.28885154549612
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_174",
+        "name": "Structure #174",
+        "height": 20,
+        "min_height": 0,
+        "render_height": 20,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.45156078440765,
+              34.29084418664297
+            ],
+            [
+              -118.44957561713231,
+              34.29084418664297
+            ],
+            [
+              -118.44957561713231,
+              34.29316285598081
+            ],
+            [
+              -118.45156078440765,
+              34.29316285598081
+            ],
+            [
+              -118.45156078440765,
+              34.29084418664297
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_175",
+        "name": "Structure #175",
+        "height": 9,
+        "min_height": 0,
+        "render_height": 9,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.44588589094892,
+              34.28888137909672
+            ],
+            [
+              -118.44384909906,
+              34.28888137909672
+            ],
+            [
+              -118.44384909906,
+              34.29224696129765
+            ],
+            [
+              -118.44588589094892,
+              34.29224696129765
+            ],
+            [
+              -118.44588589094892,
+              34.28888137909672
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_176",
+        "name": "Structure #176",
+        "height": 32,
+        "min_height": 0,
+        "render_height": 32,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.44294341600916,
+              34.28969081823563
+            ],
+            [
+              -118.43998698301696,
+              34.28969081823563
+            ],
+            [
+              -118.43998698301696,
+              34.29153155270491
+            ],
+            [
+              -118.44294341600916,
+              34.29153155270491
+            ],
+            [
+              -118.44294341600916,
+              34.28969081823563
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_177",
+        "name": "Structure #177",
+        "height": 16,
+        "min_height": 0,
+        "render_height": 16,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.4375657126087,
+              34.29042475334674
+            ],
+            [
+              -118.43594875370236,
+              34.29042475334674
+            ],
+            [
+              -118.43594875370236,
+              34.29247267817473
+            ],
+            [
+              -118.4375657126087,
+              34.29247267817473
+            ],
+            [
+              -118.4375657126087,
+              34.29042475334674
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_178",
+        "name": "Structure #178",
+        "height": 14,
+        "min_height": 0,
+        "render_height": 14,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.43225433431502,
+              34.28879589772777
+            ],
+            [
+              -118.43045537289748,
+              34.28879589772777
+            ],
+            [
+              -118.43045537289748,
+              34.29166177742308
+            ],
+            [
+              -118.43225433431502,
+              34.29166177742308
+            ],
+            [
+              -118.43225433431502,
+              34.28879589772777
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_179",
+        "name": "Structure #179",
+        "height": 14,
+        "min_height": 0,
+        "render_height": 14,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.4290185055254,
+              34.289131240499096
+            ],
+            [
+              -118.4265010268911,
+              34.289131240499096
+            ],
+            [
+              -118.4265010268911,
+              34.29165793922568
+            ],
+            [
+              -118.4290185055254,
+              34.29165793922568
+            ],
+            [
+              -118.4290185055254,
+              34.289131240499096
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_182",
+        "name": "Structure #182",
+        "height": 11,
+        "min_height": 0,
+        "render_height": 11,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.48455790143925,
+              34.29509788279841
+            ],
+            [
+              -118.48199751493877,
+              34.29509788279841
+            ],
+            [
+              -118.48199751493877,
+              34.297031650188266
+            ],
+            [
+              -118.48455790143925,
+              34.297031650188266
+            ],
+            [
+              -118.48455790143925,
+              34.29509788279841
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_183",
+        "name": "Structure #183",
+        "height": 21,
+        "min_height": 0,
+        "render_height": 21,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.47948264413002,
+              34.29538163709051
+            ],
+            [
+              -118.47778396218756,
+              34.29538163709051
+            ],
+            [
+              -118.47778396218756,
+              34.29741942403536
+            ],
+            [
+              -118.47948264413002,
+              34.29741942403536
+            ],
+            [
+              -118.47948264413002,
+              34.29538163709051
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_184",
+        "name": "Structure #184",
+        "height": 22,
+        "min_height": 0,
+        "render_height": 22,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.47456671879108,
+              34.29383335905004
+            ],
+            [
+              -118.47277666280816,
+              34.29383335905004
+            ],
+            [
+              -118.47277666280816,
+              34.297398168773725
+            ],
+            [
+              -118.47456671879108,
+              34.297398168773725
+            ],
+            [
+              -118.47456671879108,
+              34.29383335905004
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_185",
+        "name": "Structure #185",
+        "height": 14,
+        "min_height": 0,
+        "render_height": 14,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.47126010812858,
+              34.29384240665753
+            ],
+            [
+              -118.46812866743014,
+              34.29384240665753
+            ],
+            [
+              -118.46812866743014,
+              34.29755555245423
+            ],
+            [
+              -118.47126010812858,
+              34.29755555245423
+            ],
+            [
+              -118.47126010812858,
+              34.29384240665753
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_188",
+        "name": "Structure #188",
+        "height": 10,
+        "min_height": 0,
+        "render_height": 10,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.45602042026539,
+              34.29526108963141
+            ],
+            [
+              -118.4528674563874,
+              34.29526108963141
+            ],
+            [
+              -118.4528674563874,
+              34.29687996710581
+            ],
+            [
+              -118.45602042026539,
+              34.29687996710581
+            ],
+            [
+              -118.45602042026539,
+              34.29526108963141
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_189",
+        "name": "Structure #189",
+        "height": 14,
+        "min_height": 0,
+        "render_height": 14,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.4513392781277,
+              34.295933332551186
+            ],
+            [
+              -118.44991720536586,
+              34.295933332551186
+            ],
+            [
+              -118.44991720536586,
+              34.29794706594089
+            ],
+            [
+              -118.4513392781277,
+              34.29794706594089
+            ],
+            [
+              -118.4513392781277,
+              34.295933332551186
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_190",
+        "name": "Structure #190",
+        "height": 13,
+        "min_height": 0,
+        "render_height": 13,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.44608209219032,
+              34.29410598738475
+            ],
+            [
+              -118.44431316560485,
+              34.29410598738475
+            ],
+            [
+              -118.44431316560485,
+              34.296621716574286
+            ],
+            [
+              -118.44608209219032,
+              34.296621716574286
+            ],
+            [
+              -118.44608209219032,
+              34.29410598738475
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_191",
+        "name": "Structure #191",
+        "height": 9,
+        "min_height": 0,
+        "render_height": 9,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.44302062284633,
+              34.294475157600466
+            ],
+            [
+              -118.4408107274014,
+              34.294475157600466
+            ],
+            [
+              -118.4408107274014,
+              34.29688431582306
+            ],
+            [
+              -118.44302062284633,
+              34.29688431582306
+            ],
+            [
+              -118.44302062284633,
+              34.294475157600466
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_194",
+        "name": "Structure #194",
+        "height": 16,
+        "min_height": 0,
+        "render_height": 16,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.42893841542535,
+              34.29350955005615
+            ],
+            [
+              -118.42578220297865,
+              34.29350955005615
+            ],
+            [
+              -118.42578220297865,
+              34.29764775589663
+            ],
+            [
+              -118.42893841542535,
+              34.29764775589663
+            ],
+            [
+              -118.42893841542535,
+              34.29350955005615
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_195",
+        "name": "Structure #195",
+        "height": 20,
+        "min_height": 0,
+        "render_height": 20,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.42487788544088,
+              34.295499981323836
+            ],
+            [
+              -118.42124275560454,
+              34.295499981323836
+            ],
+            [
+              -118.42124275560454,
+              34.298386334204075
+            ],
+            [
+              -118.42487788544088,
+              34.298386334204075
+            ],
+            [
+              -118.42487788544088,
+              34.295499981323836
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_197",
+        "name": "Structure #197",
+        "height": 20,
+        "min_height": 0,
+        "render_height": 20,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.48368641857414,
+              34.30041229543244
+            ],
+            [
+              -118.48060404035436,
+              34.30041229543244
+            ],
+            [
+              -118.48060404035436,
+              34.30296836917593
+            ],
+            [
+              -118.48368641857414,
+              34.30296836917593
+            ],
+            [
+              -118.48368641857414,
+              34.30041229543244
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_198",
+        "name": "Structure #198",
+        "height": 31,
+        "min_height": 0,
+        "render_height": 31,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.47948096401228,
+              34.30044117669824
+            ],
+            [
+              -118.47723562864545,
+              34.30044117669824
+            ],
+            [
+              -118.47723562864545,
+              34.30393565505919
+            ],
+            [
+              -118.47948096401228,
+              34.30393565505919
+            ],
+            [
+              -118.47948096401228,
+              34.30044117669824
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_199",
+        "name": "Structure #199",
+        "height": 12,
+        "min_height": 0,
+        "render_height": 12,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.47478892713565,
+              34.30042400618904
+            ],
+            [
+              -118.4717192677127,
+              34.30042400618904
+            ],
+            [
+              -118.4717192677127,
+              34.30242821180054
+            ],
+            [
+              -118.47478892713565,
+              34.30242821180054
+            ],
+            [
+              -118.47478892713565,
+              34.30042400618904
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_200",
+        "name": "Structure #200",
+        "height": 20,
+        "min_height": 0,
+        "render_height": 20,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.47013734358296,
+              34.30103699713097
+            ],
+            [
+              -118.46837678649678,
+              34.30103699713097
+            ],
+            [
+              -118.46837678649678,
+              34.303316668246545
+            ],
+            [
+              -118.47013734358296,
+              34.303316668246545
+            ],
+            [
+              -118.47013734358296,
+              34.30103699713097
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_201",
+        "name": "Structure #201",
+        "height": 22,
+        "min_height": 0,
+        "render_height": 22,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.46493220644182,
+              34.29929595470109
+            ],
+            [
+              -118.46292967181479,
+              34.29929595470109
+            ],
+            [
+              -118.46292967181479,
+              34.3026732742773
+            ],
+            [
+              -118.46493220644182,
+              34.3026732742773
+            ],
+            [
+              -118.46493220644182,
+              34.29929595470109
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_202",
+        "name": "Structure #202",
+        "height": 15,
+        "min_height": 0,
+        "render_height": 15,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.46179492606649,
+              34.29931623750039
+            ],
+            [
+              -118.45882818259562,
+              34.29931623750039
+            ],
+            [
+              -118.45882818259562,
+              34.303093736284524
+            ],
+            [
+              -118.46179492606649,
+              34.303093736284524
+            ],
+            [
+              -118.46179492606649,
+              34.29931623750039
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_204",
+        "name": "Structure #204",
+        "height": 10,
+        "min_height": 0,
+        "render_height": 10,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.45119466026954,
+              34.300945794053696
+            ],
+            [
+              -118.44883188351038,
+              34.300945794053696
+            ],
+            [
+              -118.44883188351038,
+              34.30386070400092
+            ],
+            [
+              -118.45119466026954,
+              34.30386070400092
+            ],
+            [
+              -118.45119466026954,
+              34.300945794053696
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_205",
+        "name": "Structure #205",
+        "height": 10,
+        "min_height": 0,
+        "render_height": 10,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.44634565541949,
+              34.30056662402297
+            ],
+            [
+              -118.4437851070737,
+              34.30056662402297
+            ],
+            [
+              -118.4437851070737,
+              34.30249950507406
+            ],
+            [
+              -118.44634565541949,
+              34.30249950507406
+            ],
+            [
+              -118.44634565541949,
+              34.30056662402297
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_206",
+        "name": "Structure #206",
+        "height": 18,
+        "min_height": 0,
+        "render_height": 18,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.44201206360334,
+              34.30070347901464
+            ],
+            [
+              -118.44031416024866,
+              34.30070347901464
+            ],
+            [
+              -118.44031416024866,
+              34.302722876900916
+            ],
+            [
+              -118.44201206360334,
+              34.302722876900916
+            ],
+            [
+              -118.44201206360334,
+              34.30070347901464
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_207",
+        "name": "Structure #207",
+        "height": 11,
+        "min_height": 0,
+        "render_height": 11,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.4372251792185,
+              34.29938376308654
+            ],
+            [
+              -118.43545127676154,
+              34.29938376308654
+            ],
+            [
+              -118.43545127676154,
+              34.3024713465952
+            ],
+            [
+              -118.4372251792185,
+              34.3024713465952
+            ],
+            [
+              -118.4372251792185,
+              34.29938376308654
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_208",
+        "name": "Structure #208",
+        "height": 12,
+        "min_height": 0,
+        "render_height": 12,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.43371779242594,
+              34.299916983465785
+            ],
+            [
+              -118.43100556220656,
+              34.299916983465785
+            ],
+            [
+              -118.43100556220656,
+              34.302076553152254
+            ],
+            [
+              -118.43371779242594,
+              34.302076553152254
+            ],
+            [
+              -118.43371779242594,
+              34.299916983465785
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_211",
+        "name": "Structure #211",
+        "height": 24,
+        "min_height": 0,
+        "render_height": 24,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.48998798785114,
+              34.30448441727501
+            ],
+            [
+              -118.48641675812677,
+              34.30448441727501
+            ],
+            [
+              -118.48641675812677,
+              34.30843607244157
+            ],
+            [
+              -118.48998798785114,
+              34.30843607244157
+            ],
+            [
+              -118.48998798785114,
+              34.30448441727501
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_212",
+        "name": "Structure #212",
+        "height": 11,
+        "min_height": 0,
+        "render_height": 11,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.48523721776627,
+              34.30594599087328
+            ],
+            [
+              -118.48176595989446,
+              34.30594599087328
+            ],
+            [
+              -118.48176595989446,
+              34.30994624898182
+            ],
+            [
+              -118.48523721776627,
+              34.30994624898182
+            ],
+            [
+              -118.48523721776627,
+              34.30594599087328
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_213",
+        "name": "Structure #213",
+        "height": 8,
+        "min_height": 0,
+        "render_height": 8,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.47928665899758,
+              34.3067754491587
+            ],
+            [
+              -118.47577270677675,
+              34.3067754491587
+            ],
+            [
+              -118.47577270677675,
+              34.3089346991078
+            ],
+            [
+              -118.47928665899758,
+              34.3089346991078
+            ],
+            [
+              -118.47928665899758,
+              34.3067754491587
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_214",
+        "name": "Structure #214",
+        "height": 31,
+        "min_height": 0,
+        "render_height": 31,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.47389137015078,
+              34.3070647486234
+            ],
+            [
+              -118.47199461725431,
+              34.3070647486234
+            ],
+            [
+              -118.47199461725431,
+              34.30872316435026
+            ],
+            [
+              -118.47389137015078,
+              34.30872316435026
+            ],
+            [
+              -118.47389137015078,
+              34.3070647486234
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_215",
+        "name": "Structure #215",
+        "height": 30,
+        "min_height": 0,
+        "render_height": 30,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.46897057375827,
+              34.30450467157962
+            ],
+            [
+              -118.46751376935507,
+              34.30450467157962
+            ],
+            [
+              -118.46751376935507,
+              34.30833762833893
+            ],
+            [
+              -118.46897057375827,
+              34.30833762833893
+            ],
+            [
+              -118.46897057375827,
+              34.30450467157962
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_216",
+        "name": "Structure #216",
+        "height": 32,
+        "min_height": 0,
+        "render_height": 32,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.466552759083,
+              34.30483655552268
+            ],
+            [
+              -118.463185769616,
+              34.30483655552268
+            ],
+            [
+              -118.463185769616,
+              34.30720440964031
+            ],
+            [
+              -118.466552759083,
+              34.30720440964031
+            ],
+            [
+              -118.466552759083,
+              34.30483655552268
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_217",
+        "name": "Structure #217",
+        "height": 17,
+        "min_height": 0,
+        "render_height": 17,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.46159455514871,
+              34.3066979414854
+            ],
+            [
+              -118.45951455780616,
+              34.3066979414854
+            ],
+            [
+              -118.45951455780616,
+              34.30882228932949
+            ],
+            [
+              -118.46159455514871,
+              34.30882228932949
+            ],
+            [
+              -118.46159455514871,
+              34.3066979414854
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_219",
+        "name": "Structure #219",
+        "height": 25,
+        "min_height": 0,
+        "render_height": 25,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.45203752498706,
+              34.30511097963308
+            ],
+            [
+              -118.44940781259818,
+              34.30511097963308
+            ],
+            [
+              -118.44940781259818,
+              34.307675476917446
+            ],
+            [
+              -118.45203752498706,
+              34.307675476917446
+            ],
+            [
+              -118.45203752498706,
+              34.30511097963308
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_220",
+        "name": "Structure #220",
+        "height": 13,
+        "min_height": 0,
+        "render_height": 13,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.44735349240075,
+              34.30500164465749
+            ],
+            [
+              -118.44510075753134,
+              34.30500164465749
+            ],
+            [
+              -118.44510075753134,
+              34.30917568862224
+            ],
+            [
+              -118.44735349240075,
+              34.30917568862224
+            ],
+            [
+              -118.44735349240075,
+              34.30500164465749
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_222",
+        "name": "Structure #222",
+        "height": 24,
+        "min_height": 0,
+        "render_height": 24,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.43763256456218,
+              34.30677095814856
+            ],
+            [
+              -118.4355363929801,
+              34.30677095814856
+            ],
+            [
+              -118.4355363929801,
+              34.30929501219504
+            ],
+            [
+              -118.43763256456218,
+              34.30929501219504
+            ],
+            [
+              -118.43763256456218,
+              34.30677095814856
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_223",
+        "name": "Structure #223",
+        "height": 12,
+        "min_height": 0,
+        "render_height": 12,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.43189531519499,
+              34.304609347198266
+            ],
+            [
+              -118.42967810693455,
+              34.304609347198266
+            ],
+            [
+              -118.42967810693455,
+              34.308596179611925
+            ],
+            [
+              -118.43189531519499,
+              34.308596179611925
+            ],
+            [
+              -118.43189531519499,
+              34.304609347198266
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_224",
+        "name": "Structure #224",
+        "height": 30,
+        "min_height": 0,
+        "render_height": 30,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.4291274754023,
+              34.30560627851212
+            ],
+            [
+              -118.42562531673305,
+              34.30560627851212
+            ],
+            [
+              -118.42562531673305,
+              34.30781970796223
+            ],
+            [
+              -118.4291274754023,
+              34.30781970796223
+            ],
+            [
+              -118.4291274754023,
+              34.30560627851212
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_225",
+        "name": "Structure #225",
+        "height": 11,
+        "min_height": 0,
+        "render_height": 11,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.42358507299328,
+              34.306772799279436
+            ],
+            [
+              -118.42164072712337,
+              34.306772799279436
+            ],
+            [
+              -118.42164072712337,
+              34.30899363258242
+            ],
+            [
+              -118.42358507299328,
+              34.30899363258242
+            ],
+            [
+              -118.42358507299328,
+              34.306772799279436
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_226",
+        "name": "Structure #226",
+        "height": 14,
+        "min_height": 0,
+        "render_height": 14,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.48789369788787,
+              34.310736463940465
+            ],
+            [
+              -118.48594284824131,
+              34.310736463940465
+            ],
+            [
+              -118.48594284824131,
+              34.312817523179696
+            ],
+            [
+              -118.48789369788787,
+              34.312817523179696
+            ],
+            [
+              -118.48789369788787,
+              34.310736463940465
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_227",
+        "name": "Structure #227",
+        "height": 34,
+        "min_height": 0,
+        "render_height": 34,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.48441189049935,
+              34.310521508837624
+            ],
+            [
+              -118.48258382277548,
+              34.310521508837624
+            ],
+            [
+              -118.48258382277548,
+              34.31304432444716
+            ],
+            [
+              -118.48441189049935,
+              34.31304432444716
+            ],
+            [
+              -118.48441189049935,
+              34.310521508837624
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_228",
+        "name": "Structure #228",
+        "height": 23,
+        "min_height": 0,
+        "render_height": 23,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.4799340471387,
+              34.310255616347156
+            ],
+            [
+              -118.47771792676014,
+              34.310255616347156
+            ],
+            [
+              -118.47771792676014,
+              34.31308657843561
+            ],
+            [
+              -118.4799340471387,
+              34.31308657843561
+            ],
+            [
+              -118.4799340471387,
+              34.310255616347156
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_229",
+        "name": "Structure #229",
+        "height": 16,
+        "min_height": 0,
+        "render_height": 16,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.4755009487774,
+              34.31006425049603
+            ],
+            [
+              -118.47301414286441,
+              34.31006425049603
+            ],
+            [
+              -118.47301414286441,
+              34.313984754479215
+            ],
+            [
+              -118.4755009487774,
+              34.313984754479215
+            ],
+            [
+              -118.4755009487774,
+              34.31006425049603
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_231",
+        "name": "Structure #231",
+        "height": 11,
+        "min_height": 0,
+        "render_height": 11,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.4656642576426,
+              34.312104749106346
+            ],
+            [
+              -118.46313018622993,
+              34.312104749106346
+            ],
+            [
+              -118.46313018622993,
+              34.314180557266745
+            ],
+            [
+              -118.4656642576426,
+              34.314180557266745
+            ],
+            [
+              -118.4656642576426,
+              34.312104749106346
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_232",
+        "name": "Structure #232",
+        "height": 21,
+        "min_height": 0,
+        "render_height": 21,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.4598766125497,
+              34.31122233458799
+            ],
+            [
+              -118.45805315753823,
+              34.31122233458799
+            ],
+            [
+              -118.45805315753823,
+              34.31340579548509
+            ],
+            [
+              -118.4598766125497,
+              34.31340579548509
+            ],
+            [
+              -118.4598766125497,
+              34.31122233458799
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_233",
+        "name": "Structure #233",
+        "height": 31,
+        "min_height": 0,
+        "render_height": 31,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.45598508647957,
+              34.309845810403104
+            ],
+            [
+              -118.45406706592682,
+              34.309845810403104
+            ],
+            [
+              -118.45406706592682,
+              34.31348798265353
+            ],
+            [
+              -118.45598508647957,
+              34.31348798265353
+            ],
+            [
+              -118.45598508647957,
+              34.309845810403104
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_234",
+        "name": "Structure #234",
+        "height": 13,
+        "min_height": 0,
+        "render_height": 13,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.45252760184198,
+              34.31027898055991
+            ],
+            [
+              -118.44932820347299,
+              34.31027898055991
+            ],
+            [
+              -118.44932820347299,
+              34.313227056875455
+            ],
+            [
+              -118.45252760184198,
+              34.313227056875455
+            ],
+            [
+              -118.45252760184198,
+              34.31027898055991
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_236",
+        "name": "Structure #236",
+        "height": 23,
+        "min_height": 0,
+        "render_height": 23,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.44152681376423,
+              34.311313491473534
+            ],
+            [
+              -118.43946081551204,
+              34.311313491473534
+            ],
+            [
+              -118.43946081551204,
+              34.31341593063134
+            ],
+            [
+              -118.44152681376423,
+              34.31341593063134
+            ],
+            [
+              -118.44152681376423,
+              34.311313491473534
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_237",
+        "name": "Structure #237",
+        "height": 13,
+        "min_height": 0,
+        "render_height": 13,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.43723834474481,
+              34.3099732143389
+            ],
+            [
+              -118.43539149622971,
+              34.3099732143389
+            ],
+            [
+              -118.43539149622971,
+              34.31380235390616
+            ],
+            [
+              -118.43723834474481,
+              34.31380235390616
+            ],
+            [
+              -118.43723834474481,
+              34.3099732143389
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_238",
+        "name": "Structure #238",
+        "height": 20,
+        "min_height": 0,
+        "render_height": 20,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.43374901956112,
+              34.31045213211292
+            ],
+            [
+              -118.43038538323536,
+              34.31045213211292
+            ],
+            [
+              -118.43038538323536,
+              34.31292427053956
+            ],
+            [
+              -118.43374901956112,
+              34.31292427053956
+            ],
+            [
+              -118.43374901956112,
+              34.31045213211292
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "layerType": "BUILDING_3D",
+        "id": "MISSION_BLD_239",
+        "name": "Structure #239",
+        "height": 25,
+        "min_height": 0,
+        "render_height": 25,
+        "render_min_height": 0,
+        "division": "Mission Division",
+        "bureau": "Valley Bureau",
+        "extrusionColor": "#1e293b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.42866165649689,
+              34.31134997720371
+            ],
+            [
+              -118.42649005254565,
+              34.31134997720371
+            ],
+            [
+              -118.42649005254565,
+              34.3147891461039
+            ],
+            [
+              -118.42866165649689,
+              34.3147891461039
+            ],
+            [
+              -118.42866165649689,
+              34.31134997720371
             ]
           ]
         ]
