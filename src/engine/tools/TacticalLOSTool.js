@@ -14,6 +14,31 @@ export class TacticalLOSTool {
   }
 
   /**
+   * Sets observer point preview marker on first click
+   */
+  setObserverPreview(observerPoint) {
+    this.clear();
+    if (this.markerManager) {
+      const obsEl = document.createElement('div');
+      obsEl.className =
+        'w-6 h-6 rounded-full bg-cyan-500/30 border-2 border-cyan-400 flex items-center justify-center text-[9px] font-mono text-cyan-200 font-bold shadow-lg animate-pulse';
+      obsEl.innerText = 'OBS';
+
+      this.markerManager.addMarker('tactical-los-observer', {
+        longitude: observerPoint.lng,
+        latitude: observerPoint.lat,
+        element: obsEl,
+        popupContent: `
+          <div style="font-family:monospace; padding:4px; font-size:11px; background:#090d16; color:#e2e8f0; border-radius:6px; border:1px solid #06b6d4;">
+            <div style="color:#06b6d4; font-weight:bold;">🔭 OBSERVER SET</div>
+            <div style="color:#94a3b8; font-size:10px;">Now click map to place Target point</div>
+          </div>
+        `
+      });
+    }
+  }
+
+  /**
    * Calculates and renders 3D Line-of-Sight between Observer and Target
    */
   async calculateAndRender(observerPoint, targetPoint) {

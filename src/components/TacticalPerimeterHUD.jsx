@@ -7,7 +7,8 @@ export default function TacticalPerimeterHUD({
   onToggleDeployMode,
   activePerimeter,
   onDeployPerimeter,
-  onClearPerimeter
+  onClearPerimeter,
+  onConfigChange
 }) {
   const [selectedPresetId, setSelectedPresetId] = useState('swat-barricade');
   const [customHot, setCustomHot] = useState(150);
@@ -26,6 +27,15 @@ export default function TacticalPerimeterHUD({
     setCustomHot(preset.hotRadius);
     setCustomWarm(preset.warmRadius);
     setCustomCold(preset.coldRadius);
+
+    if (onConfigChange) {
+      onConfigChange({
+        hotRadius: preset.hotRadius,
+        warmRadius: preset.warmRadius,
+        coldRadius: preset.coldRadius,
+        label: preset.name
+      });
+    }
 
     if (activePerimeter) {
       onDeployPerimeter(
@@ -55,9 +65,26 @@ export default function TacticalPerimeterHUD({
       setCustomCold(val);
     }
 
+    if (onConfigChange) {
+      onConfigChange({
+        hotRadius: nextHot,
+        warmRadius: nextWarm,
+        coldRadius: nextCold,
+        label: 'CUSTOM CORDON'
+      });
+    }
+
     if (activePerimeter) {
       onDeployPerimeter(
         activePerimeter.center[0],
+        activePerimeter.center[1],
+        nextHot,
+        nextWarm,
+        nextCold,
+        'CUSTOM CORDON'
+      );
+    }
+  };
         activePerimeter.center[1],
         nextHot,
         nextWarm,

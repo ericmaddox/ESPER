@@ -27,8 +27,6 @@ export class TacticalPerimeterTool {
   ) {
     if (!this.map || !this.layerManager) return;
 
-    this.clearPerimeter();
-
     const geojson = generateTacticalPerimeterGeoJSON(
       centerLng,
       centerLat,

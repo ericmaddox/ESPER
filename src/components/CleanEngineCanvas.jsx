@@ -24,6 +24,12 @@ const CleanEngineCanvas = forwardRef(
     // Tactical Tool States
     const [isCordonMode, setIsCordonMode] = useState(false);
     const [activePerimeter, setActivePerimeter] = useState(null);
+    const [cordonConfig, setCordonConfig] = useState({
+      hotRadius: 150,
+      warmRadius: 300,
+      coldRadius: 600,
+      label: 'SWAT Barricade / High Threat'
+    });
 
     const [isLOSMode, setIsLOSMode] = useState(false);
     const [losPoints, setLosPoints] = useState({ observer: null, target: null });
@@ -105,10 +111,10 @@ const CleanEngineCanvas = forwardRef(
     const handleDeployPerimeter = (
       lng,
       lat,
-      hot = 150,
-      warm = 300,
-      cold = 600,
-      label = 'ACTIVE CORDON'
+      hot = cordonConfig.hotRadius,
+      warm = cordonConfig.warmRadius,
+      cold = cordonConfig.coldRadius,
+      label = cordonConfig.label
     ) => {
       if (!perimeterToolRef.current) return;
       const res = perimeterToolRef.current.deployPerimeter(lng, lat, hot, warm, cold, label);
@@ -135,14 +141,25 @@ const CleanEngineCanvas = forwardRef(
     const handleMapClick = async ({ lng, lat }) => {
       // 1. If Cordon Deploy Mode is active
       if (isCordonMode) {
-        handleDeployPerimeter(lng, lat, 150, 300, 600, 'TACTICAL CORDON');
+        handleDeployPerimeter(
+          lng,
+          lat,
+          cordonConfig.hotRadius,
+          cordonConfig.warmRadius,
+          cordonConfig.coldRadius,
+          cordonConfig.label
+        );
         return;
       }
 
       // 2. If 3D LOS Mode is active
       if (isLOSMode) {
         if (!losPoints.observer) {
-          setLosPoints({ observer: { lng, lat, heightAboveGround: 25 }, target: null });
+          const obs = { lng, lat, heightAboveGround: 25 };
+          setLosPoints({ observer: obs, target: null });
+          if (losToolRef.current) {
+            losToolRef.current.setObserverPreview(obs);
+          }
         } else if (!losPoints.target) {
           const obs = losPoints.observer;
           const tgt = { lng, lat, heightAboveGround: 2 };
@@ -363,6 +380,7 @@ const CleanEngineCanvas = forwardRef(
           activePerimeter={activePerimeter}
           onDeployPerimeter={handleDeployPerimeter}
           onClearPerimeter={handleClearPerimeter}
+          onConfigChange={setCordonConfig}
         />
 
         {/* 3D Line-of-Sight & Overwatch Toggle Button */}

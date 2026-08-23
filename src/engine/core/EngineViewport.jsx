@@ -34,6 +34,18 @@ const EngineViewport = forwardRef(
     const layerManagerRef = useRef(null);
     const markerManagerRef = useRef(null);
 
+    const onMapClickRef = useRef(onMapClick);
+    onMapClickRef.current = onMapClick;
+
+    const onCameraMoveRef = useRef(onCameraMove);
+    onCameraMoveRef.current = onCameraMove;
+
+    const onSolarUpdateRef = useRef(onSolarUpdate);
+    onSolarUpdateRef.current = onSolarUpdate;
+
+    const onMapLoadRef = useRef(onMapLoad);
+    onMapLoadRef.current = onMapLoad;
+
     useImperativeHandle(ref, () => ({
       getMap: () => mapRef.current,
       getLayerManager: () => layerManagerRef.current,
@@ -156,15 +168,15 @@ const EngineViewport = forwardRef(
           );
         }
         updateSolarLighting();
-        if (onMapLoad) onMapLoad(map, layerManagerRef.current, markerManagerRef.current);
+        if (onMapLoadRef.current) onMapLoadRef.current(map, layerManagerRef.current, markerManagerRef.current);
       });
 
       const solarInterval = setInterval(updateSolarLighting, 60000);
 
       map.on('move', () => {
-        if (onCameraMove) {
+        if (onCameraMoveRef.current) {
           const center = map.getCenter();
-          onCameraMove({
+          onCameraMoveRef.current({
             lng: center.lng,
             lat: center.lat,
             zoom: map.getZoom(),
@@ -175,8 +187,8 @@ const EngineViewport = forwardRef(
       });
 
       map.on('click', (e) => {
-        if (onMapClick) {
-          onMapClick({
+        if (onMapClickRef.current) {
+          onMapClickRef.current({
             lng: e.lngLat.lng,
             lat: e.lngLat.lat,
             point: e.point
