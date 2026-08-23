@@ -8,7 +8,8 @@ export default function TacticalPerimeterHUD({
   activePerimeter,
   onDeployPerimeter,
   onClearPerimeter,
-  onConfigChange
+  onConfigChange,
+  zIndex = 'z-40'
 }) {
   const [selectedPresetId, setSelectedPresetId] = useState('swat-barricade');
   const [customHot, setCustomHot] = useState(150);
@@ -87,7 +88,9 @@ export default function TacticalPerimeterHUD({
   };
 
   return (
-    <div className="absolute top-20 left-4 z-40 flex flex-col items-start pointer-events-auto font-mono text-xs max-w-xs">
+    <div
+      className={`absolute top-20 left-4 ${zIndex} flex flex-col items-start pointer-events-auto font-mono text-xs max-w-xs`}
+    >
       {/* Primary Toggle Header Button */}
       <div className="flex items-center space-x-2">
         <button

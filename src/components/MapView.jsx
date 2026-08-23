@@ -883,10 +883,11 @@ const MapView = forwardRef(
             setActivePerimeter(null);
           }}
           onConfigChange={setCordonConfig}
+          zIndex="z-10"
         />
 
         {/* 3D Line-of-Sight & Overwatch Toggle Button */}
-        <div className="absolute top-32 left-4 z-40">
+        <div className="absolute top-32 left-4 z-10">
           <button
             onClick={() => {
               setIsLOSMode(!isLOSMode);

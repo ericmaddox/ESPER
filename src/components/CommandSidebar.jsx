@@ -55,13 +55,13 @@ export default function CommandSidebar({
 
   return (
     <div
-      className={`absolute top-16 left-4 bottom-6 z-20 transition-all duration-300 flex ${
+      className={`absolute top-16 left-4 bottom-6 z-30 transition-all duration-300 flex ${
         collapsed ? 'w-12' : 'w-96'
       }`}
     >
       {/* Sidebar Main Panel */}
       <div
-        className={`w-full h-full glass-panel rounded-xl flex flex-col overflow-hidden border border-cyan-500/20 shadow-2xl transition-all duration-300 ${collapsed ? 'hidden' : 'flex'}`}
+        className={`w-full h-full glass-panel rounded-xl flex flex-col overflow-hidden border border-cyan-500/20 shadow-2xl transition-all duration-300 bg-slate-950/95 backdrop-blur-xl ${collapsed ? 'hidden' : 'flex'}`}
       >
         {/* Panel Header & Search */}
         <div className="p-3 border-b border-cyan-500/20 bg-slate-900/60">
