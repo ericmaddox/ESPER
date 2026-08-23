@@ -168,7 +168,8 @@ const EngineViewport = forwardRef(
           );
         }
         updateSolarLighting();
-        if (onMapLoadRef.current) onMapLoadRef.current(map, layerManagerRef.current, markerManagerRef.current);
+        if (onMapLoadRef.current)
+          onMapLoadRef.current(map, layerManagerRef.current, markerManagerRef.current);
       });
 
       const solarInterval = setInterval(updateSolarLighting, 60000);

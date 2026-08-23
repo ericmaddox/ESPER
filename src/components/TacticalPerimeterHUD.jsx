@@ -85,14 +85,6 @@ export default function TacticalPerimeterHUD({
       );
     }
   };
-        activePerimeter.center[1],
-        nextHot,
-        nextWarm,
-        nextCold,
-        'CUSTOM CORDON'
-      );
-    }
-  };
 
   return (
     <div className="absolute top-20 left-4 z-40 flex flex-col items-start pointer-events-auto font-mono text-xs max-w-xs">
