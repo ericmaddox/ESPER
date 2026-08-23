@@ -1,0 +1,5 @@
+dist
+node_modules
+enterprise-deployment
+public/data
+package-lock.json

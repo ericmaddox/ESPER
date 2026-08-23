@@ -101,75 +101,106 @@ export class LayerManager {
       const beforeId = this.map.getLayer('road-label') ? 'road-label' : undefined;
 
       // ── Primary 3D Building Extrusions (height-graduated color ramp) ──
-      this.map.addLayer({
-        id: '3d-buildings',
-        source: 'openmaptiles',
-        'source-layer': 'building',
-        type: 'fill-extrusion',
-        minzoom: 12,
-        paint: {
-          'fill-extrusion-color': [
-            'interpolate', ['linear'], ['coalesce', ['get', 'render_height'], ['get', 'height'], 10],
-            0,   color,                // Ground-level: base theme color
-            20,  color,                // Low-rise: same base
-            60,  this._lightenHex(color, 25),  // Mid-rise: slightly brighter
-            120, this._lightenHex(color, 45),  // High-rise: noticeably brighter
-            250, edgeColor             // Skyscraper: accent color glow
-          ],
-          'fill-extrusion-height': [
-            'interpolate', ['linear'], ['zoom'],
-            12, 0,
-            14.5, ['coalesce', ['get', 'render_height'], ['get', 'height'], 10]
-          ],
-          'fill-extrusion-base': [
-            'interpolate', ['linear'], ['zoom'],
-            12, 0,
-            14.5, ['coalesce', ['get', 'render_min_height'], ['get', 'min_height'], 0]
-          ],
-          'fill-extrusion-opacity': opacity,
-          'fill-extrusion-vertical-gradient': true
-        }
-      }, beforeId);
+      this.map.addLayer(
+        {
+          id: '3d-buildings',
+          source: 'openmaptiles',
+          'source-layer': 'building',
+          type: 'fill-extrusion',
+          minzoom: 12,
+          paint: {
+            'fill-extrusion-color': [
+              'interpolate',
+              ['linear'],
+              ['coalesce', ['get', 'render_height'], ['get', 'height'], 10],
+              0,
+              color, // Ground-level: base theme color
+              20,
+              color, // Low-rise: same base
+              60,
+              this._lightenHex(color, 25), // Mid-rise: slightly brighter
+              120,
+              this._lightenHex(color, 45), // High-rise: noticeably brighter
+              250,
+              edgeColor // Skyscraper: accent color glow
+            ],
+            'fill-extrusion-height': [
+              'interpolate',
+              ['linear'],
+              ['zoom'],
+              12,
+              0,
+              14.5,
+              ['coalesce', ['get', 'render_height'], ['get', 'height'], 10]
+            ],
+            'fill-extrusion-base': [
+              'interpolate',
+              ['linear'],
+              ['zoom'],
+              12,
+              0,
+              14.5,
+              ['coalesce', ['get', 'render_min_height'], ['get', 'min_height'], 0]
+            ],
+            'fill-extrusion-opacity': opacity,
+            'fill-extrusion-vertical-gradient': true
+          }
+        },
+        beforeId
+      );
 
       // ── Tall Building Highlight Layer (skyscrapers > 50m get accent edge glow) ──
-      this.map.addLayer({
-        id: '3d-buildings-tall',
-        source: 'openmaptiles',
-        'source-layer': 'building',
-        type: 'fill-extrusion',
-        minzoom: 12,
-        filter: ['>', ['coalesce', ['get', 'render_height'], ['get', 'height'], 0], 50],
-        paint: {
-          'fill-extrusion-color': edgeColor,
-          'fill-extrusion-height': [
-            'interpolate', ['linear'], ['zoom'],
-            12, 0,
-            14.5, ['coalesce', ['get', 'render_height'], ['get', 'height'], 10]
-          ],
-          'fill-extrusion-base': [
-            'interpolate', ['linear'], ['zoom'],
-            12, 0,
-            14.5, ['coalesce', ['get', 'render_min_height'], ['get', 'min_height'], 0]
-          ],
-          'fill-extrusion-opacity': 0.15,
-          'fill-extrusion-vertical-gradient': true
-        }
-      }, beforeId);
+      this.map.addLayer(
+        {
+          id: '3d-buildings-tall',
+          source: 'openmaptiles',
+          'source-layer': 'building',
+          type: 'fill-extrusion',
+          minzoom: 12,
+          filter: ['>', ['coalesce', ['get', 'render_height'], ['get', 'height'], 0], 50],
+          paint: {
+            'fill-extrusion-color': edgeColor,
+            'fill-extrusion-height': [
+              'interpolate',
+              ['linear'],
+              ['zoom'],
+              12,
+              0,
+              14.5,
+              ['coalesce', ['get', 'render_height'], ['get', 'height'], 10]
+            ],
+            'fill-extrusion-base': [
+              'interpolate',
+              ['linear'],
+              ['zoom'],
+              12,
+              0,
+              14.5,
+              ['coalesce', ['get', 'render_min_height'], ['get', 'min_height'], 0]
+            ],
+            'fill-extrusion-opacity': 0.15,
+            'fill-extrusion-vertical-gradient': true
+          }
+        },
+        beforeId
+      );
 
       // ── 2D Building Footprint Edge Outlines ──
-      this.map.addLayer({
-        id: '3d-buildings-edges',
-        source: 'openmaptiles',
-        'source-layer': 'building',
-        type: 'line',
-        minzoom: 14,
-        paint: {
-          'line-color': edgeColor,
-          'line-width': 0.6,
-          'line-opacity': 0.35
-        }
-      }, beforeId);
-
+      this.map.addLayer(
+        {
+          id: '3d-buildings-edges',
+          source: 'openmaptiles',
+          'source-layer': 'building',
+          type: 'line',
+          minzoom: 14,
+          paint: {
+            'line-color': edgeColor,
+            'line-width': 0.6,
+            'line-opacity': 0.35
+          }
+        },
+        beforeId
+      );
     } catch (err) {
       console.warn('LayerManager: Error setting up 3D buildings:', err);
     }
@@ -191,8 +222,8 @@ export class LayerManager {
   _lightenHex(hex, percent) {
     const num = parseInt(hex.replace('#', ''), 16);
     const r = Math.min(255, (num >> 16) + Math.round(2.55 * percent));
-    const g = Math.min(255, ((num >> 8) & 0x00FF) + Math.round(2.55 * percent));
-    const b = Math.min(255, (num & 0x0000FF) + Math.round(2.55 * percent));
-    return `#${(r << 16 | g << 8 | b).toString(16).padStart(6, '0')}`;
+    const g = Math.min(255, ((num >> 8) & 0x00ff) + Math.round(2.55 * percent));
+    const b = Math.min(255, (num & 0x0000ff) + Math.round(2.55 * percent));
+    return `#${((r << 16) | (g << 8) | b).toString(16).padStart(6, '0')}`;
   }
 }

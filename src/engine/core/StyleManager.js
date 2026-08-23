@@ -47,13 +47,69 @@ export const MAP_STYLES = {
       },
       layers: [
         { id: 'background', type: 'background', paint: { 'background-color': '#080c16' } },
-        { id: 'water', type: 'fill', source: 'openmaptiles', 'source-layer': 'water', paint: { 'fill-color': '#0a1628', 'fill-opacity': 0.9 } },
-        { id: 'landuse-park', type: 'fill', source: 'openmaptiles', 'source-layer': 'landuse', filter: ['in', 'class', 'park', 'cemetery', 'grass'], paint: { 'fill-color': '#0b1a12', 'fill-opacity': 0.7 } },
-        { id: 'landuse-other', type: 'fill', source: 'openmaptiles', 'source-layer': 'landuse', filter: ['!in', 'class', 'park', 'cemetery', 'grass'], paint: { 'fill-color': '#0d111d', 'fill-opacity': 0.5 } },
-        { id: 'landcover', type: 'fill', source: 'openmaptiles', 'source-layer': 'landcover', paint: { 'fill-color': '#0b1a12', 'fill-opacity': 0.3 } },
-        { id: 'road-casing', type: 'line', source: 'openmaptiles', 'source-layer': 'transportation', filter: ['==', '$type', 'LineString'], minzoom: 10, paint: { 'line-color': '#000000', 'line-width': 2, 'line-opacity': 0.6 } },
-        { id: 'road', type: 'line', source: 'openmaptiles', 'source-layer': 'transportation', filter: ['==', '$type', 'LineString'], minzoom: 8, paint: { 'line-color': '#1e293b', 'line-width': ['interpolate', ['linear'], ['zoom'], 10, 1, 15, 4, 18, 10] } },
-        { id: 'road-motorway', type: 'line', source: 'openmaptiles', 'source-layer': 'transportation', filter: ['==', 'class', 'motorway'], minzoom: 6, paint: { 'line-color': '#0f2b3e', 'line-width': ['interpolate', ['linear'], ['zoom'], 6, 1, 12, 3, 16, 8] } },
+        {
+          id: 'water',
+          type: 'fill',
+          source: 'openmaptiles',
+          'source-layer': 'water',
+          paint: { 'fill-color': '#0a1628', 'fill-opacity': 0.9 }
+        },
+        {
+          id: 'landuse-park',
+          type: 'fill',
+          source: 'openmaptiles',
+          'source-layer': 'landuse',
+          filter: ['in', 'class', 'park', 'cemetery', 'grass'],
+          paint: { 'fill-color': '#0b1a12', 'fill-opacity': 0.7 }
+        },
+        {
+          id: 'landuse-other',
+          type: 'fill',
+          source: 'openmaptiles',
+          'source-layer': 'landuse',
+          filter: ['!in', 'class', 'park', 'cemetery', 'grass'],
+          paint: { 'fill-color': '#0d111d', 'fill-opacity': 0.5 }
+        },
+        {
+          id: 'landcover',
+          type: 'fill',
+          source: 'openmaptiles',
+          'source-layer': 'landcover',
+          paint: { 'fill-color': '#0b1a12', 'fill-opacity': 0.3 }
+        },
+        {
+          id: 'road-casing',
+          type: 'line',
+          source: 'openmaptiles',
+          'source-layer': 'transportation',
+          filter: ['==', '$type', 'LineString'],
+          minzoom: 10,
+          paint: { 'line-color': '#000000', 'line-width': 2, 'line-opacity': 0.6 }
+        },
+        {
+          id: 'road',
+          type: 'line',
+          source: 'openmaptiles',
+          'source-layer': 'transportation',
+          filter: ['==', '$type', 'LineString'],
+          minzoom: 8,
+          paint: {
+            'line-color': '#1e293b',
+            'line-width': ['interpolate', ['linear'], ['zoom'], 10, 1, 15, 4, 18, 10]
+          }
+        },
+        {
+          id: 'road-motorway',
+          type: 'line',
+          source: 'openmaptiles',
+          'source-layer': 'transportation',
+          filter: ['==', 'class', 'motorway'],
+          minzoom: 6,
+          paint: {
+            'line-color': '#0f2b3e',
+            'line-width': ['interpolate', ['linear'], ['zoom'], 6, 1, 12, 3, 16, 8]
+          }
+        },
 
         // ── Street / Road Name Labels ──
         {
@@ -115,12 +171,7 @@ export const MAP_STYLES = {
           layout: {
             'text-field': ['get', 'name'],
             'text-font': ['Open Sans Bold'],
-            'text-size': ['interpolate', ['linear'], ['zoom'],
-              5, 10,
-              8, 14,
-              12, 18,
-              15, 22
-            ],
+            'text-size': ['interpolate', ['linear'], ['zoom'], 5, 10, 8, 14, 12, 18, 15, 22],
             'text-anchor': 'center',
             'text-max-width': 8
           },
@@ -179,9 +230,33 @@ export const MAP_STYLES = {
       },
       layers: [
         { id: 'background', type: 'background', paint: { 'background-color': '#03140a' } },
-        { id: 'water', type: 'fill', source: 'openmaptiles', 'source-layer': 'water', paint: { 'fill-color': '#052912', 'fill-opacity': 0.9 } },
-        { id: 'landuse-park', type: 'fill', source: 'openmaptiles', 'source-layer': 'landuse', filter: ['in', 'class', 'park', 'cemetery', 'grass'], paint: { 'fill-color': '#083a1b', 'fill-opacity': 0.7 } },
-        { id: 'road', type: 'line', source: 'openmaptiles', 'source-layer': 'transportation', filter: ['==', '$type', 'LineString'], minzoom: 8, paint: { 'line-color': '#0a4220', 'line-width': ['interpolate', ['linear'], ['zoom'], 10, 1, 15, 4, 18, 10] } },
+        {
+          id: 'water',
+          type: 'fill',
+          source: 'openmaptiles',
+          'source-layer': 'water',
+          paint: { 'fill-color': '#052912', 'fill-opacity': 0.9 }
+        },
+        {
+          id: 'landuse-park',
+          type: 'fill',
+          source: 'openmaptiles',
+          'source-layer': 'landuse',
+          filter: ['in', 'class', 'park', 'cemetery', 'grass'],
+          paint: { 'fill-color': '#083a1b', 'fill-opacity': 0.7 }
+        },
+        {
+          id: 'road',
+          type: 'line',
+          source: 'openmaptiles',
+          'source-layer': 'transportation',
+          filter: ['==', '$type', 'LineString'],
+          minzoom: 8,
+          paint: {
+            'line-color': '#0a4220',
+            'line-width': ['interpolate', ['linear'], ['zoom'], 10, 1, 15, 4, 18, 10]
+          }
+        },
 
         // ── Street / Road Name Labels ──
         {
@@ -302,9 +377,33 @@ export const MAP_STYLES = {
       },
       layers: [
         { id: 'background', type: 'background', paint: { 'background-color': '#020617' } },
-        { id: 'water', type: 'fill', source: 'openmaptiles', 'source-layer': 'water', paint: { 'fill-color': '#0284c7', 'fill-opacity': 0.85 } },
-        { id: 'landuse-park', type: 'fill', source: 'openmaptiles', 'source-layer': 'landuse', filter: ['in', 'class', 'park', 'cemetery', 'grass'], paint: { 'fill-color': '#064e3b', 'fill-opacity': 0.6 } },
-        { id: 'road', type: 'line', source: 'openmaptiles', 'source-layer': 'transportation', filter: ['==', '$type', 'LineString'], minzoom: 8, paint: { 'line-color': '#38bdf8', 'line-width': ['interpolate', ['linear'], ['zoom'], 10, 1.5, 15, 5, 18, 12] } },
+        {
+          id: 'water',
+          type: 'fill',
+          source: 'openmaptiles',
+          'source-layer': 'water',
+          paint: { 'fill-color': '#0284c7', 'fill-opacity': 0.85 }
+        },
+        {
+          id: 'landuse-park',
+          type: 'fill',
+          source: 'openmaptiles',
+          'source-layer': 'landuse',
+          filter: ['in', 'class', 'park', 'cemetery', 'grass'],
+          paint: { 'fill-color': '#064e3b', 'fill-opacity': 0.6 }
+        },
+        {
+          id: 'road',
+          type: 'line',
+          source: 'openmaptiles',
+          'source-layer': 'transportation',
+          filter: ['==', '$type', 'LineString'],
+          minzoom: 8,
+          paint: {
+            'line-color': '#38bdf8',
+            'line-width': ['interpolate', ['linear'], ['zoom'], 10, 1.5, 15, 5, 18, 12]
+          }
+        },
 
         // ── Street / Road Name Labels ──
         {
@@ -407,7 +506,8 @@ export const MAP_STYLES = {
           ],
           tileSize: 256,
           maxzoom: 19,
-          attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+          attribution:
+            'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
         },
         openmaptiles: {
           type: 'vector',

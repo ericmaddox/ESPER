@@ -1,27 +1,43 @@
 import React, { useState } from 'react';
-import { Layers, Building2, Eye, Cone, AlertTriangle, Radio, Compass, Compass as Drone, ChevronUp, ChevronDown, SlidersHorizontal, Navigation, Radar } from 'lucide-react';
+import {
+  Layers,
+  Building2,
+  Eye,
+  Cone,
+  AlertTriangle,
+  Radio,
+  Compass,
+  Compass as Drone,
+  ChevronUp,
+  ChevronDown,
+  SlidersHorizontal,
+  Navigation,
+  Radar
+} from 'lucide-react';
 
 export default function LayerToolbar({ layers, onToggleLayer, onFlyToPreset, laPresets }) {
   const [isOpen, setIsOpen] = useState(true);
 
   return (
     <div className="absolute top-16 right-4 z-20 flex flex-col items-end space-y-2 pointer-events-auto">
-      
       {/* Toggle Open/Close Floating Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="glass-panel p-2.5 rounded-xl border border-cyan-500/40 text-cyan-300 hover:text-white hover:bg-slate-900/90 shadow-xl flex items-center space-x-2 font-mono text-xs font-bold transition-all active:scale-95"
-        title={isOpen ? "Hide Layers Menu" : "Open Layers Menu"}
+        title={isOpen ? 'Hide Layers Menu' : 'Open Layers Menu'}
       >
         <Layers className="w-4 h-4 text-cyan-400" />
-        <span className="text-[11px] uppercase tracking-wider">{isOpen ? "LAYERS" : "LAYERS"}</span>
-        {isOpen ? <ChevronUp className="w-4 h-4 text-slate-400" /> : <ChevronDown className="w-4 h-4 text-slate-400" />}
+        <span className="text-[11px] uppercase tracking-wider">{isOpen ? 'LAYERS' : 'LAYERS'}</span>
+        {isOpen ? (
+          <ChevronUp className="w-4 h-4 text-slate-400" />
+        ) : (
+          <ChevronDown className="w-4 h-4 text-slate-400" />
+        )}
       </button>
 
       {/* Collapsible Panel */}
       {isOpen && (
         <div className="flex flex-col space-y-2 animate-fade-in">
-          
           {/* 3D Map Layers Panel */}
           <div className="glass-panel p-2.5 rounded-xl border border-cyan-500/20 shadow-xl w-52 font-mono text-xs">
             <div className="flex items-center justify-between pb-2 mb-2 border-b border-cyan-500/20 text-cyan-400 font-bold uppercase text-[11px]">
@@ -156,8 +172,10 @@ export default function LayerToolbar({ layers, onToggleLayer, onFlyToPreset, laP
 
           {/* Quick Camera Angle Presets */}
           <div className="glass-panel p-2 rounded-xl border border-cyan-500/20 shadow-xl w-52 font-mono text-xs space-y-1">
-            <div className="px-1 text-[10px] text-slate-400 uppercase tracking-wider mb-1">CAMERA MODES</div>
-            
+            <div className="px-1 text-[10px] text-slate-400 uppercase tracking-wider mb-1">
+              CAMERA MODES
+            </div>
+
             <button
               onClick={() => onFlyToPreset(laPresets[0])} // DTLA Overhead
               className="w-full px-2.5 py-1.5 rounded bg-slate-900/60 hover:bg-slate-800 text-slate-300 border border-slate-800 flex items-center space-x-2 text-[11px]"
@@ -174,10 +192,8 @@ export default function LayerToolbar({ layers, onToggleLayer, onFlyToPreset, laP
               <span>Street Level View</span>
             </button>
           </div>
-
         </div>
       )}
-
     </div>
   );
 }

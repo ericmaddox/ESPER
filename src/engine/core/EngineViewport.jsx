@@ -11,185 +11,198 @@ import { getSolarPosition } from '../math/solarMath';
 
 const DEFAULT_CENTER = [-118.2437, 34.0522]; // DTLA Center
 
-const EngineViewport = forwardRef(({
-  stylePreset = MAP_STYLES.DARK_TACTICAL,
-  initialCenter = DEFAULT_CENTER,
-  initialZoom = 15.5,
-  initialPitch = 60,
-  initialBearing = 35,
-  enableTerrain = true,
-  enable3DBuildings = true,
-  onMapLoad,
-  onCameraMove,
-  onMapClick,
-  onSolarUpdate,
-  className = 'w-full h-full'
-}, ref) => {
-  const containerRef = useRef(null);
-  const mapRef = useRef(null);
-  const layerManagerRef = useRef(null);
-  const markerManagerRef = useRef(null);
-
-  useImperativeHandle(ref, () => ({
-    getMap: () => mapRef.current,
-    getLayerManager: () => layerManagerRef.current,
-    getMarkerManager: () => markerManagerRef.current,
-
-    flyToLocation: (latitude, longitude, zoom = 17, pitch = 55, bearing = 30) => {
-      if (!mapRef.current) return;
-      mapRef.current.flyTo({
-        center: [longitude, latitude],
-        zoom,
-        pitch,
-        bearing,
-        duration: 2000,
-        essential: true
-      });
+const EngineViewport = forwardRef(
+  (
+    {
+      stylePreset = MAP_STYLES.DARK_TACTICAL,
+      initialCenter = DEFAULT_CENTER,
+      initialZoom = 15.5,
+      initialPitch = 60,
+      initialBearing = 35,
+      enableTerrain = true,
+      enable3DBuildings = true,
+      onMapLoad,
+      onCameraMove,
+      onMapClick,
+      onSolarUpdate,
+      className = 'w-full h-full'
     },
+    ref
+  ) => {
+    const containerRef = useRef(null);
+    const mapRef = useRef(null);
+    const layerManagerRef = useRef(null);
+    const markerManagerRef = useRef(null);
 
-    setCameraView: (preset) => {
-      if (!mapRef.current) return;
-      mapRef.current.flyTo({
-        center: [preset.longitude, preset.latitude],
-        zoom: preset.height < 400 ? 17 : preset.height < 600 ? 16 : 15,
-        pitch: Math.abs(preset.pitch || 60),
-        bearing: preset.heading || 35,
-        duration: 2200,
-        essential: true
+    useImperativeHandle(ref, () => ({
+      getMap: () => mapRef.current,
+      getLayerManager: () => layerManagerRef.current,
+      getMarkerManager: () => markerManagerRef.current,
+
+      flyToLocation: (latitude, longitude, zoom = 17, pitch = 55, bearing = 30) => {
+        if (!mapRef.current) return;
+        mapRef.current.flyTo({
+          center: [longitude, latitude],
+          zoom,
+          pitch,
+          bearing,
+          duration: 2000,
+          essential: true
+        });
+      },
+
+      setCameraView: (preset) => {
+        if (!mapRef.current) return;
+        mapRef.current.flyTo({
+          center: [preset.longitude, preset.latitude],
+          zoom: preset.height < 400 ? 17 : preset.height < 600 ? 16 : 15,
+          pitch: Math.abs(preset.pitch || 60),
+          bearing: preset.heading || 35,
+          duration: 2200,
+          essential: true
+        });
+      },
+
+      setPitch: (pitchAngle) => {
+        if (!mapRef.current) return;
+        mapRef.current.easeTo({
+          pitch: pitchAngle,
+          duration: 1000
+        });
+      },
+
+      setStyle: (styleConfig) => {
+        const map = mapRef.current;
+        if (!map) return;
+
+        const applyTheme = () => {
+          if (layerManagerRef.current) {
+            const buildingColor = styleConfig.buildingColor || '#152238';
+            const edgeColor = styleConfig.buildingEdgeColor || '#00f3ff';
+            const isSatellite = !!styleConfig.isSatellite;
+            layerManagerRef.current.setup3DBuildings(
+              enable3DBuildings,
+              buildingColor,
+              edgeColor,
+              isSatellite
+            );
+          }
+          if (map.getSource('terrain')) {
+            try {
+              map.setTerrain({ source: 'terrain', exaggeration: enableTerrain ? 1.3 : 0 });
+            } catch (_e) {}
+          }
+        };
+
+        map.once('style.load', applyTheme);
+        map.setStyle(styleConfig.style);
+      }
+    }));
+
+    useEffect(() => {
+      if (!containerRef.current || mapRef.current) return;
+
+      const activeStyle = stylePreset.style || MAP_STYLES.DARK_TACTICAL.style;
+
+      const map = new maplibregl.Map({
+        container: containerRef.current,
+        style: activeStyle,
+        center: initialCenter,
+        zoom: initialZoom,
+        pitch: initialPitch,
+        bearing: initialBearing,
+        antialias: true,
+        maxPitch: 85
       });
-    },
 
-    setPitch: (pitchAngle) => {
-      if (!mapRef.current) return;
-      mapRef.current.easeTo({
-        pitch: pitchAngle,
-        duration: 1000
-      });
-    },
+      map.addControl(
+        new maplibregl.NavigationControl({
+          visualizePitch: true
+        }),
+        'bottom-right'
+      );
 
-    setStyle: (styleConfig) => {
-      const map = mapRef.current;
-      if (!map) return;
+      mapRef.current = map;
+      layerManagerRef.current = new LayerManager(map);
+      markerManagerRef.current = new MarkerManager(map);
 
-      const applyTheme = () => {
-        if (layerManagerRef.current) {
-          const buildingColor = styleConfig.buildingColor || '#152238';
-          const edgeColor = styleConfig.buildingEdgeColor || '#00f3ff';
-          const isSatellite = !!styleConfig.isSatellite;
-          layerManagerRef.current.setup3DBuildings(enable3DBuildings, buildingColor, edgeColor, isSatellite);
+      const updateSolarLighting = () => {
+        if (!mapRef.current) return;
+        const center = mapRef.current.getCenter();
+        const solar = getSolarPosition(new Date(), center.lat, center.lng);
+
+        try {
+          // Keep light neutral & crisp so vector land layers maintain pristine dark tactical navy hex colors
+          mapRef.current.setLight({
+            anchor: 'map',
+            color: '#ffffff',
+            intensity: 0.15,
+            position: [1.15, solar.azimuth || 210, 30]
+          });
+        } catch (_e) {
+          // Light property ignored on basic styles
         }
-        if (map.getSource('terrain')) {
-          try {
-            map.setTerrain({ source: 'terrain', exaggeration: enableTerrain ? 1.3 : 0 });
-          } catch (e) {}
-        }
+
+        if (onSolarUpdate) onSolarUpdate(solar);
       };
 
-      map.once('style.load', applyTheme);
-      map.setStyle(styleConfig.style);
-    }
-  }));
+      map.on('load', () => {
+        if (enable3DBuildings && layerManagerRef.current) {
+          layerManagerRef.current.setup3DBuildings(
+            true,
+            stylePreset.buildingColor,
+            stylePreset.buildingEdgeColor,
+            stylePreset.isSatellite
+          );
+        }
+        updateSolarLighting();
+        if (onMapLoad) onMapLoad(map, layerManagerRef.current, markerManagerRef.current);
+      });
 
-  useEffect(() => {
-    if (!containerRef.current || mapRef.current) return;
+      const solarInterval = setInterval(updateSolarLighting, 60000);
 
-    const activeStyle = stylePreset.style || MAP_STYLES.DARK_TACTICAL.style;
+      map.on('move', () => {
+        if (onCameraMove) {
+          const center = map.getCenter();
+          onCameraMove({
+            lng: center.lng,
+            lat: center.lat,
+            zoom: map.getZoom(),
+            pitch: map.getPitch(),
+            bearing: map.getBearing()
+          });
+        }
+      });
 
-    const map = new maplibregl.Map({
-      container: containerRef.current,
-      style: activeStyle,
-      center: initialCenter,
-      zoom: initialZoom,
-      pitch: initialPitch,
-      bearing: initialBearing,
-      antialias: true,
-      maxPitch: 85
-    });
+      map.on('click', (e) => {
+        if (onMapClick) {
+          onMapClick({
+            lng: e.lngLat.lng,
+            lat: e.lngLat.lat,
+            point: e.point
+          });
+        }
+      });
 
-    map.addControl(
-      new maplibregl.NavigationControl({
-        visualizePitch: true
-      }),
-      'bottom-right'
+      return () => {
+        clearInterval(solarInterval);
+        if (markerManagerRef.current) markerManagerRef.current.clearAll();
+        map.remove();
+        mapRef.current = null;
+        layerManagerRef.current = null;
+        markerManagerRef.current = null;
+      };
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    return (
+      <div className="relative w-full h-full">
+        <div ref={containerRef} className={className} />
+      </div>
     );
+  }
+);
 
-    mapRef.current = map;
-    layerManagerRef.current = new LayerManager(map);
-    markerManagerRef.current = new MarkerManager(map);
-
-    const updateSolarLighting = () => {
-      if (!mapRef.current) return;
-      const center = mapRef.current.getCenter();
-      const solar = getSolarPosition(new Date(), center.lat, center.lng);
-      
-      try {
-        // Keep light neutral & crisp so vector land layers maintain pristine dark tactical navy hex colors
-        mapRef.current.setLight({
-          anchor: 'map',
-          color: '#ffffff',
-          intensity: 0.15,
-          position: [1.15, solar.azimuth || 210, 30]
-        });
-      } catch (e) {
-        // Light property ignored on basic styles
-      }
-
-      if (onSolarUpdate) onSolarUpdate(solar);
-    };
-
-    map.on('load', () => {
-      if (enable3DBuildings && layerManagerRef.current) {
-        layerManagerRef.current.setup3DBuildings(
-          true,
-          stylePreset.buildingColor,
-          stylePreset.buildingEdgeColor,
-          stylePreset.isSatellite
-        );
-      }
-      updateSolarLighting();
-      if (onMapLoad) onMapLoad(map, layerManagerRef.current, markerManagerRef.current);
-    });
-
-    const solarInterval = setInterval(updateSolarLighting, 60000);
-
-    map.on('move', () => {
-      if (onCameraMove) {
-        const center = map.getCenter();
-        onCameraMove({
-          lng: center.lng,
-          lat: center.lat,
-          zoom: map.getZoom(),
-          pitch: map.getPitch(),
-          bearing: map.getBearing()
-        });
-      }
-    });
-
-    map.on('click', (e) => {
-      if (onMapClick) {
-        onMapClick({
-          lng: e.lngLat.lng,
-          lat: e.lngLat.lat,
-          point: e.point
-        });
-      }
-    });
-
-    return () => {
-      clearInterval(solarInterval);
-      if (markerManagerRef.current) markerManagerRef.current.clearAll();
-      map.remove();
-      mapRef.current = null;
-      layerManagerRef.current = null;
-      markerManagerRef.current = null;
-    };
-  }, []);
-
-  return (
-    <div className="relative w-full h-full">
-      <div ref={containerRef} className={className} />
-    </div>
-  );
-});
+EngineViewport.displayName = 'EngineViewport';
 
 export default EngineViewport;

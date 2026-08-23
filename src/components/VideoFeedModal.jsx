@@ -1,5 +1,18 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { X, Play, Pause, RefreshCw, ZoomIn, ZoomOut, ArrowUp, ArrowDown, ArrowLeft, ArrowRight, Video, Image as ImageIcon } from 'lucide-react';
+import {
+  X,
+  Play,
+  Pause,
+  RefreshCw,
+  ZoomIn,
+  ZoomOut,
+  ArrowUp,
+  ArrowDown,
+  ArrowLeft,
+  ArrowRight,
+  Video,
+  Image as ImageIcon
+} from 'lucide-react';
 import Hls from 'hls.js';
 
 export default function VideoFeedModal({ camera, onClose }) {
@@ -8,15 +21,15 @@ export default function VideoFeedModal({ camera, onClose }) {
   const [panX, setPanX] = useState(0);
   const [panY, setPanY] = useState(0);
   const [streamFailed, setStreamFailed] = useState(false);
-  const [posterKey, setPosterKey] = useState(Date.now());
+  const [posterKey, setPosterKey] = useState(() => Date.now());
   const videoRef = useRef(null);
   const hlsRef = useRef(null);
 
   useEffect(() => {
     if (!camera) return;
-    setStreamFailed(false);
 
     const timer = setTimeout(() => {
+      setStreamFailed(false);
       const video = videoRef.current;
       if (!video) return;
       const url = camera.videoUrl;
@@ -84,8 +97,8 @@ export default function VideoFeedModal({ camera, onClose }) {
   };
 
   const handlePan = (dx, dy) => {
-    setPanX(prev => Math.min(Math.max(prev + dx, -40), 40));
-    setPanY(prev => Math.min(Math.max(prev + dy, -40), 40));
+    setPanX((prev) => Math.min(Math.max(prev + dx, -40), 40));
+    setPanY((prev) => Math.min(Math.max(prev + dy, -40), 40));
   };
 
   const resetPtz = () => {
@@ -101,7 +114,6 @@ export default function VideoFeedModal({ camera, onClose }) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md animate-fade-in pointer-events-auto">
       <div className="relative w-full max-w-3xl glass-panel rounded-xl overflow-hidden border border-cyan-500/40 shadow-2xl flex flex-col">
-        
         {/* Header Bar */}
         <div className="px-4 py-2.5 bg-slate-900/80 border-b border-cyan-500/30 flex items-center justify-between">
           <div className="flex items-center space-x-2">
@@ -168,12 +180,23 @@ export default function VideoFeedModal({ camera, onClose }) {
             <div className="flex justify-between items-start">
               <div className="space-y-0.5 bg-slate-950/70 p-2 rounded border border-cyan-500/20 backdrop-blur max-w-sm">
                 <div className="text-white font-bold truncate">{camera.name}</div>
-                <div>LAT: <span className="text-white">{camera.latitude != null ? camera.latitude.toFixed(4) : '34.0522'}</span> | LNG: <span className="text-white">{camera.longitude != null ? camera.longitude.toFixed(4) : '-118.2437'}</span></div>
+                <div>
+                  LAT:{' '}
+                  <span className="text-white">
+                    {camera.latitude != null ? camera.latitude.toFixed(4) : '34.0522'}
+                  </span>{' '}
+                  | LNG:{' '}
+                  <span className="text-white">
+                    {camera.longitude != null ? camera.longitude.toFixed(4) : '-118.2437'}
+                  </span>
+                </div>
                 <div className="text-slate-300 truncate">NETWORK: {camera.network}</div>
               </div>
 
               <div className="bg-slate-950/70 p-2 rounded border border-cyan-500/20 backdrop-blur text-right">
-                <div className="text-emerald-400 font-bold">{streamFailed ? 'LIVE SNAPSHOT' : 'LIVE HLS STREAM'}</div>
+                <div className="text-emerald-400 font-bold">
+                  {streamFailed ? 'LIVE SNAPSHOT' : 'LIVE HLS STREAM'}
+                </div>
                 <div className="text-slate-300">CALTRANS D7 DOT</div>
               </div>
             </div>
@@ -222,30 +245,56 @@ export default function VideoFeedModal({ camera, onClose }) {
           {/* PTZ Pad */}
           <div className="flex items-center space-x-3">
             <span className="text-[10px] text-slate-400 uppercase">PTZ CONTROLS:</span>
-            
+
             <div className="grid grid-cols-3 gap-1 bg-slate-950 p-1 rounded border border-slate-800">
               <div></div>
-              <button onClick={() => handlePan(0, 10)} className="p-1 hover:bg-slate-800 text-cyan-400 rounded"><ArrowUp className="w-3 h-3" /></button>
+              <button
+                onClick={() => handlePan(0, 10)}
+                className="p-1 hover:bg-slate-800 text-cyan-400 rounded"
+              >
+                <ArrowUp className="w-3 h-3" />
+              </button>
               <div></div>
-              <button onClick={() => handlePan(10, 0)} className="p-1 hover:bg-slate-800 text-cyan-400 rounded"><ArrowLeft className="w-3 h-3" /></button>
-              <button onClick={resetPtz} className="p-1 hover:bg-slate-800 text-slate-400 rounded" title="Reset PTZ"><RefreshCw className="w-3 h-3" /></button>
-              <button onClick={() => handlePan(-10, 0)} className="p-1 hover:bg-slate-800 text-cyan-400 rounded"><ArrowRight className="w-3 h-3" /></button>
+              <button
+                onClick={() => handlePan(10, 0)}
+                className="p-1 hover:bg-slate-800 text-cyan-400 rounded"
+              >
+                <ArrowLeft className="w-3 h-3" />
+              </button>
+              <button
+                onClick={resetPtz}
+                className="p-1 hover:bg-slate-800 text-slate-400 rounded"
+                title="Reset PTZ"
+              >
+                <RefreshCw className="w-3 h-3" />
+              </button>
+              <button
+                onClick={() => handlePan(-10, 0)}
+                className="p-1 hover:bg-slate-800 text-cyan-400 rounded"
+              >
+                <ArrowRight className="w-3 h-3" />
+              </button>
               <div></div>
-              <button onClick={() => handlePan(0, -10)} className="p-1 hover:bg-slate-800 text-cyan-400 rounded"><ArrowDown className="w-3 h-3" /></button>
+              <button
+                onClick={() => handlePan(0, -10)}
+                className="p-1 hover:bg-slate-800 text-cyan-400 rounded"
+              >
+                <ArrowDown className="w-3 h-3" />
+              </button>
               <div></div>
             </div>
 
             {/* Zoom Controls */}
             <div className="flex items-center space-x-1">
               <button
-                onClick={() => setZoomLevel(prev => Math.min(prev + 0.3, 3))}
+                onClick={() => setZoomLevel((prev) => Math.min(prev + 0.3, 3))}
                 className="p-1.5 rounded bg-slate-800 hover:bg-slate-700 text-cyan-300 border border-slate-700"
                 title="Zoom In"
               >
                 <ZoomIn className="w-4 h-4" />
               </button>
               <button
-                onClick={() => setZoomLevel(prev => Math.max(prev - 0.3, 1))}
+                onClick={() => setZoomLevel((prev) => Math.max(prev - 0.3, 1))}
                 className="p-1.5 rounded bg-slate-800 hover:bg-slate-700 text-cyan-300 border border-slate-700"
                 title="Zoom Out"
               >
@@ -261,7 +310,6 @@ export default function VideoFeedModal({ camera, onClose }) {
             CLOSE STREAM
           </button>
         </div>
-
       </div>
     </div>
   );

@@ -33,8 +33,7 @@ export function getSolarPosition(date = new Date(), lat = 34.0522, lng = -118.24
 
   // Solar Altitude (Elevation angle above horizon)
   const sinAltitude =
-    Math.sin(latRad) * Math.sin(decRad) +
-    Math.cos(latRad) * Math.cos(decRad) * Math.cos(haRad);
+    Math.sin(latRad) * Math.sin(decRad) + Math.cos(latRad) * Math.cos(decRad) * Math.cos(haRad);
   const altitude = Math.asin(Math.max(-1, Math.min(1, sinAltitude))) * DEG;
 
   // Solar Azimuth (Compass Direction 0-360)

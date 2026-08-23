@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { Shield, Eye, AlertTriangle, Maximize2, Activity } from 'lucide-react';
+import { Shield, Eye, AlertTriangle, Maximize2 } from 'lucide-react';
 import AddressSearch from './AddressSearch';
 import RegionSelector from './RegionSelector';
 
-export default function Header({ 
-  mode = 'clean', 
-  onToggleMode, 
+export default function Header({
+  mode = 'clean',
+  onToggleMode,
   activeRegion,
   onSelectRegion,
-  activeIncidentsCount, 
-  activeCamerasCount, 
-  activeUnitsCount, 
-  toggleFullscreen, 
-  onSelectLocation 
+  activeIncidentsCount,
+  activeCamerasCount,
+  activeUnitsCount: _activeUnitsCount,
+  toggleFullscreen,
+  onSelectLocation
 }) {
   const [time, setTime] = useState('');
   const [date, setDate] = useState('');
@@ -20,8 +20,22 @@ export default function Header({
   useEffect(() => {
     const updateClock = () => {
       const now = new Date();
-      setTime(now.toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' }));
-      setDate(now.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: '2-digit', year: 'numeric' }));
+      setTime(
+        now.toLocaleTimeString('en-US', {
+          hour12: false,
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit'
+        })
+      );
+      setDate(
+        now.toLocaleDateString('en-US', {
+          weekday: 'short',
+          month: 'short',
+          day: '2-digit',
+          year: 'numeric'
+        })
+      );
     };
     updateClock();
     const interval = setInterval(updateClock, 1000);
@@ -45,7 +59,7 @@ export default function Header({
             {onSelectRegion && (
               <RegionSelector activeRegion={activeRegion} onSelectRegion={onSelectRegion} />
             )}
-            
+
             {/* Workspace Mode Switcher */}
             {onToggleMode && (
               <div className="flex items-center bg-slate-950 p-0.5 rounded border border-cyan-500/30 text-[10px] font-mono">
@@ -73,7 +87,9 @@ export default function Header({
             )}
           </div>
           <p className="text-[11px] text-slate-400 font-mono tracking-tight hidden xl:block">
-            {mode === 'clean' ? 'PRISTINE 3D GEOSPATIAL ENGINE CANVAS' : 'REAL-TIME 3D SITUATIONAL AWARENESS DEMO'}
+            {mode === 'clean'
+              ? 'PRISTINE 3D GEOSPATIAL ENGINE CANVAS'
+              : 'REAL-TIME 3D SITUATIONAL AWARENESS DEMO'}
           </p>
         </div>
       </div>
@@ -89,16 +105,24 @@ export default function Header({
           <div className="flex items-center space-x-2 px-3 py-1.5 rounded bg-slate-900/60 border border-slate-800">
             <AlertTriangle className="w-4 h-4 text-red-400 animate-pulse" />
             <div>
-              <span className="text-slate-400 text-[10px] uppercase block leading-none">ACTIVE INCIDENTS</span>
-              <span className="text-red-400 font-bold text-sm leading-tight">{activeIncidentsCount}</span>
+              <span className="text-slate-400 text-[10px] uppercase block leading-none">
+                ACTIVE INCIDENTS
+              </span>
+              <span className="text-red-400 font-bold text-sm leading-tight">
+                {activeIncidentsCount}
+              </span>
             </div>
           </div>
 
           <div className="flex items-center space-x-2 px-3 py-1.5 rounded bg-slate-900/60 border border-slate-800">
             <Eye className="w-4 h-4 text-cyan-400" />
             <div>
-              <span className="text-slate-400 text-[10px] uppercase block leading-none">CCTV NODES</span>
-              <span className="text-cyan-400 font-bold text-sm leading-tight">{activeCamerasCount} ONLINE</span>
+              <span className="text-slate-400 text-[10px] uppercase block leading-none">
+                CCTV NODES
+              </span>
+              <span className="text-cyan-400 font-bold text-sm leading-tight">
+                {activeCamerasCount} ONLINE
+              </span>
             </div>
           </div>
         </div>
@@ -107,7 +131,9 @@ export default function Header({
       {/* Time & Quick Actions */}
       <div className="flex items-center space-x-3">
         <div className="text-right font-mono hidden sm:block">
-          <div className="text-sm font-bold text-cyan-300 tracking-wider leading-none">{time} <span className="text-[10px] text-slate-400">PST</span></div>
+          <div className="text-sm font-bold text-cyan-300 tracking-wider leading-none">
+            {time} <span className="text-[10px] text-slate-400">PST</span>
+          </div>
           <div className="text-[10px] text-slate-400 leading-tight uppercase">{date}</div>
         </div>
 

@@ -25,12 +25,10 @@ export class MarkerManager {
         });
       }
 
-      const marker = new maplibregl.Marker({ element, anchor })
-        .setLngLat([longitude, latitude]);
+      const marker = new maplibregl.Marker({ element, anchor }).setLngLat([longitude, latitude]);
 
       if (popupContent) {
-        const popup = new maplibregl.Popup({ offset: 20, closeButton: true })
-          .setHTML(popupContent);
+        const popup = new maplibregl.Popup({ offset: 20, closeButton: true }).setHTML(popupContent);
         marker.setPopup(popup);
       }
 
@@ -65,7 +63,7 @@ export class MarkerManager {
     this.markers.forEach((marker) => {
       try {
         marker.remove();
-      } catch (err) {
+      } catch (_err) {
         // silent catch
       }
     });

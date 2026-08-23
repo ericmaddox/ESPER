@@ -24,30 +24,35 @@ export default function RegionSelector({ activeRegion = CITY_REGIONS[0], onSelec
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [isOpen]);
 
-  const filtered = CITY_REGIONS.filter((r) =>
-    r.name.toLowerCase().includes(search.toLowerCase()) ||
-    r.badge.toLowerCase().includes(search.toLowerCase()) ||
-    r.state?.toLowerCase().includes(search.toLowerCase()) ||
-    r.country?.toLowerCase().includes(search.toLowerCase())
+  const filtered = CITY_REGIONS.filter(
+    (r) =>
+      r.name.toLowerCase().includes(search.toLowerCase()) ||
+      r.badge.toLowerCase().includes(search.toLowerCase()) ||
+      r.state?.toLowerCase().includes(search.toLowerCase()) ||
+      r.country?.toLowerCase().includes(search.toLowerCase())
   );
 
   return (
     <div className="relative font-mono text-xs" ref={dropdownRef}>
       {/* Trigger Button */}
       <button
-        onClick={() => { setIsOpen(!isOpen); setSearch(''); }}
+        onClick={() => {
+          setIsOpen(!isOpen);
+          setSearch('');
+        }}
         className="flex items-center space-x-2 px-2.5 py-1 rounded bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 hover:bg-cyan-500/20 hover:border-cyan-400/50 transition-all font-bold group"
         title="Select 3D Mapping Region"
       >
         <MapPin className="w-3.5 h-3.5 text-cyan-400 group-hover:animate-pulse" />
         <span>{activeRegion.badge}</span>
-        <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
+        <ChevronDown
+          className={`w-3.5 h-3.5 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+        />
       </button>
 
       {/* Dropdown Panel */}
       {isOpen && (
         <div className="absolute top-full left-0 mt-2 w-72 glass-panel rounded-xl border border-cyan-500/40 shadow-2xl shadow-cyan-900/30 z-50 animate-fade-in overflow-hidden">
-          
           {/* Header */}
           <div className="px-3 py-2 border-b border-slate-700/60 bg-slate-950/60">
             <div className="flex items-center space-x-2 text-[9px] font-bold text-slate-400 uppercase tracking-wider">
@@ -96,15 +101,21 @@ export default function RegionSelector({ activeRegion = CITY_REGIONS[0], onSelec
                     }`}
                   >
                     <div className="flex items-center space-x-2.5 min-w-0">
-                      <div className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${
-                        isActive 
-                          ? 'bg-cyan-400 shadow-sm shadow-cyan-400/50' 
-                          : 'bg-slate-600 group-hover/item:bg-slate-400'
-                      }`} />
+                      <div
+                        className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${
+                          isActive
+                            ? 'bg-cyan-400 shadow-sm shadow-cyan-400/50'
+                            : 'bg-slate-600 group-hover/item:bg-slate-400'
+                        }`}
+                      />
                       <div className="min-w-0">
-                        <div className={`text-xs font-bold truncate ${
-                          isActive ? 'text-cyan-200' : 'text-slate-300 group-hover/item:text-white'
-                        }`}>
+                        <div
+                          className={`text-xs font-bold truncate ${
+                            isActive
+                              ? 'text-cyan-200'
+                              : 'text-slate-300 group-hover/item:text-white'
+                          }`}
+                        >
                           {region.name}
                         </div>
                         <div className="text-[9px] text-slate-500 font-mono">
@@ -113,9 +124,7 @@ export default function RegionSelector({ activeRegion = CITY_REGIONS[0], onSelec
                       </div>
                     </div>
 
-                    {isActive && (
-                      <Check className="w-3.5 h-3.5 text-cyan-400 flex-shrink-0" />
-                    )}
+                    {isActive && <Check className="w-3.5 h-3.5 text-cyan-400 flex-shrink-0" />}
                   </button>
                 );
               })

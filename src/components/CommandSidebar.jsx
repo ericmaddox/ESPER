@@ -1,7 +1,19 @@
 import React, { useState } from 'react';
-import { 
-  AlertTriangle, Eye, Navigation, MapPin, ChevronLeft, ChevronRight, 
-  Radio, Shield, Search, Play, Crosshair, Radar, ShieldAlert, Cpu
+import {
+  AlertTriangle,
+  Eye,
+  Navigation,
+  MapPin,
+  ChevronLeft,
+  ChevronRight,
+  Radio,
+  Shield,
+  Search,
+  Play,
+  Crosshair,
+  Radar,
+  ShieldAlert,
+  Cpu
 } from 'lucide-react';
 
 export default function CommandSidebar({
@@ -11,39 +23,43 @@ export default function CommandSidebar({
   skydioDrones = [],
   cuasSensors = [],
   rogueDrones = [],
+  citizenStreams = [],
   laPresets,
   onFlyToPreset,
   onSelectCamera,
   onFlyToIncident,
   onFlyToLocation,
   selectedIncident,
-  selectedCamera
+  selectedCamera: _selectedCamera
 }) {
   const [activeTab, setActiveTab] = useState('incidents');
   const [collapsed, setCollapsed] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
-  const filteredIncidents = incidents.filter(inc => 
-    inc.type.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    inc.address.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    inc.id.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredIncidents = incidents.filter(
+    (inc) =>
+      inc.type.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      inc.address.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      inc.id.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  const filteredCameras = cameras.filter(cam =>
-    cam.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    cam.location.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    cam.id.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredCameras = cameras.filter(
+    (cam) =>
+      cam.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      cam.location.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      cam.id.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   return (
-    <div 
+    <div
       className={`absolute top-16 left-4 bottom-6 z-20 transition-all duration-300 flex ${
         collapsed ? 'w-12' : 'w-96'
       }`}
     >
       {/* Sidebar Main Panel */}
-      <div className={`w-full h-full glass-panel rounded-xl flex flex-col overflow-hidden border border-cyan-500/20 shadow-2xl transition-all duration-300 ${collapsed ? 'hidden' : 'flex'}`}>
-        
+      <div
+        className={`w-full h-full glass-panel rounded-xl flex flex-col overflow-hidden border border-cyan-500/20 shadow-2xl transition-all duration-300 ${collapsed ? 'hidden' : 'flex'}`}
+      >
         {/* Panel Header & Search */}
         <div className="p-3 border-b border-cyan-500/20 bg-slate-900/60">
           <div className="flex items-center justify-between mb-2.5">
@@ -115,7 +131,9 @@ export default function CommandSidebar({
               <Radar className="w-3 h-3 text-sky-400" />
               <span>UAS</span>
             </div>
-            <span className="text-[9px] text-slate-500">({skydioDrones.length + rogueDrones.length})</span>
+            <span className="text-[9px] text-slate-500">
+              ({skydioDrones.length + rogueDrones.length})
+            </span>
           </button>
 
           <button
@@ -151,15 +169,18 @@ export default function CommandSidebar({
 
         {/* Tab Body Content */}
         <div className="flex-1 overflow-y-auto p-2.5 space-y-2">
-          
           {/* TAB 1: INCIDENTS / 911 CALLS */}
           {activeTab === 'incidents' && (
             <div className="space-y-2">
               {filteredIncidents.map((inc) => {
                 const isSelected = selectedIncident && selectedIncident.id === inc.id;
-                const borderClass = inc.severity === 'critical' ? 'border-red-500/40 hover:border-red-500' :
-                                    inc.severity === 'warning' ? 'border-amber-500/40 hover:border-amber-500' : 'border-cyan-500/30';
-                
+                const borderClass =
+                  inc.severity === 'critical'
+                    ? 'border-red-500/40 hover:border-red-500'
+                    : inc.severity === 'warning'
+                      ? 'border-amber-500/40 hover:border-amber-500'
+                      : 'border-cyan-500/30';
+
                 return (
                   <div
                     key={inc.id}
@@ -168,11 +189,15 @@ export default function CommandSidebar({
                     }`}
                   >
                     <div className="flex items-center justify-between mb-1.5">
-                      <span className={`text-[10px] font-mono font-bold px-1.5 py-0.5 rounded ${
-                        inc.severity === 'critical' ? 'bg-red-500/20 text-red-400 border border-red-500/40' :
-                        inc.severity === 'warning' ? 'bg-amber-500/20 text-amber-400 border border-amber-500/40' :
-                        'bg-cyan-500/20 text-cyan-400 border border-cyan-500/40'
-                      }`}>
+                      <span
+                        className={`text-[10px] font-mono font-bold px-1.5 py-0.5 rounded ${
+                          inc.severity === 'critical'
+                            ? 'bg-red-500/20 text-red-400 border border-red-500/40'
+                            : inc.severity === 'warning'
+                              ? 'bg-amber-500/20 text-amber-400 border border-amber-500/40'
+                              : 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/40'
+                        }`}
+                      >
                         {inc.id}
                       </span>
                       <span className="text-[10px] font-mono text-slate-400">{inc.time}</span>
@@ -180,7 +205,9 @@ export default function CommandSidebar({
 
                     <h3 className="text-xs font-bold text-slate-100 flex items-center justify-between">
                       <span>{inc.type}</span>
-                      <span className="text-[10px] font-normal text-slate-400 uppercase">[{inc.status}]</span>
+                      <span className="text-[10px] font-normal text-slate-400 uppercase">
+                        [{inc.status}]
+                      </span>
                     </h3>
 
                     <p className="text-[11px] text-slate-300 font-mono mt-1 flex items-center space-x-1">
@@ -195,8 +222,13 @@ export default function CommandSidebar({
                     <div className="mt-2.5 pt-2 border-t border-slate-800 flex items-center justify-between">
                       <div className="flex items-center space-x-1 text-[10px] font-mono text-slate-400">
                         <span>UNITS:</span>
-                        {inc.unitsAssigned.map(u => (
-                          <span key={u} className="px-1 py-0.2 rounded bg-slate-800 text-cyan-300 font-bold">{u}</span>
+                        {inc.unitsAssigned.map((u) => (
+                          <span
+                            key={u}
+                            className="px-1 py-0.2 rounded bg-slate-800 text-cyan-300 font-bold"
+                          >
+                            {u}
+                          </span>
                         ))}
                       </div>
 
@@ -243,23 +275,27 @@ export default function CommandSidebar({
 
                         <h3 className="text-xs font-bold text-slate-100">{stream.title}</h3>
                         <p className="text-[10px] text-slate-400 mt-0.5">{stream.address}</p>
-                        <p className="text-[10px] text-orange-400 font-semibold mt-0.5">{stream.broadcaster}</p>
-                        
+                        <p className="text-[10px] text-orange-400 font-semibold mt-0.5">
+                          {stream.broadcaster}
+                        </p>
+
                         <div className="mt-2 pt-1.5 border-t border-slate-800 flex items-center justify-between text-[10px]">
                           <button
-                            onClick={() => onSelectCamera({
-                              id: stream.id,
-                              name: `${stream.title} (${stream.broadcaster})`,
-                              location: stream.address,
-                              latitude: stream.latitude,
-                              longitude: stream.longitude,
-                              videoUrl: stream.videoUrl,
-                              posterUrl: stream.posterUrl,
-                              status: `LIVE CITIZEN BROADCAST (${stream.viewersCount} VIEWERS)`,
-                              network: 'Citizen Mobile Broadcaster Network',
-                              height: 15,
-                              fov: 75
-                            })}
+                            onClick={() =>
+                              onSelectCamera({
+                                id: stream.id,
+                                name: `${stream.title} (${stream.broadcaster})`,
+                                location: stream.address,
+                                latitude: stream.latitude,
+                                longitude: stream.longitude,
+                                videoUrl: stream.videoUrl,
+                                posterUrl: stream.posterUrl,
+                                status: `LIVE CITIZEN BROADCAST (${stream.viewersCount} VIEWERS)`,
+                                network: 'Citizen Mobile Broadcaster Network',
+                                height: 15,
+                                fov: 75
+                              })
+                            }
                             className="px-2.5 py-1 rounded bg-orange-500/20 hover:bg-orange-500/40 border border-orange-500/40 text-orange-300 font-bold flex items-center space-x-1 transition-all"
                           >
                             <Play className="w-3 h-3 text-orange-300" />
@@ -267,7 +303,10 @@ export default function CommandSidebar({
                           </button>
 
                           <button
-                            onClick={() => onFlyToLocation && onFlyToLocation(stream.latitude, stream.longitude, 17.5)}
+                            onClick={() =>
+                              onFlyToLocation &&
+                              onFlyToLocation(stream.latitude, stream.longitude, 17.5)
+                            }
                             className="px-2 py-1 rounded bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 font-bold flex items-center space-x-1"
                           >
                             <Crosshair className="w-3 h-3 text-orange-400" />
@@ -305,9 +344,11 @@ export default function CommandSidebar({
 
                       <h3 className="text-xs font-bold text-slate-100">{cam.name}</h3>
                       <p className="text-[11px] text-slate-400 font-mono mt-0.5">{cam.location}</p>
-                      
+
                       <div className="mt-2 flex items-center justify-between text-[10px] font-mono text-slate-400">
-                        <span>ALT: {cam.height}m | FOV: {cam.fov}°</span>
+                        <span>
+                          ALT: {cam.height}m | FOV: {cam.fov}°
+                        </span>
                         <button
                           onClick={() => onSelectCamera(cam)}
                           className="px-2.5 py-1 rounded bg-cyan-500/20 hover:bg-cyan-500/40 border border-cyan-500/40 text-cyan-300 font-bold flex items-center space-x-1 transition-all"
@@ -326,7 +367,6 @@ export default function CommandSidebar({
           {/* TAB 3: SKYDIO DFR & C-UAS DETECTION */}
           {activeTab === 'drones' && (
             <div className="space-y-3 font-mono">
-              
               {/* SECTION: C-UAS Detected Unauthorized UAS */}
               <div>
                 <div className="text-[10px] font-bold text-red-400 uppercase tracking-wider mb-1.5 flex items-center space-x-1">
@@ -334,8 +374,11 @@ export default function CommandSidebar({
                   <span>C-UAS DETECTED UNAUTHORIZED UAS ({rogueDrones.length})</span>
                 </div>
 
-                {rogueDrones.map(rogue => (
-                  <div key={rogue.id} className="p-3 rounded-lg border border-red-500/50 bg-red-950/20 space-y-1.5">
+                {rogueDrones.map((rogue) => (
+                  <div
+                    key={rogue.id}
+                    className="p-3 rounded-lg border border-red-500/50 bg-red-950/20 space-y-1.5"
+                  >
                     <div className="flex items-center justify-between">
                       <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-red-500/30 text-red-300 border border-red-500/50">
                         🚨 {rogue.id}
@@ -349,27 +392,52 @@ export default function CommandSidebar({
                     <p className="text-[10px] text-red-300 font-semibold">{rogue.violation}</p>
 
                     <div className="p-2 rounded bg-slate-950/80 border border-red-500/30 space-y-1 text-[10px]">
-                      <div>SN: <strong className="text-sky-400">{rogue.serialNumber}</strong></div>
-                      <div>REMOTE ID: <strong className="text-purple-400">{rogue.remoteIdBroadcast}</strong></div>
-                      <div>MAC ADDR: <strong className="text-slate-400">{rogue.macAddress}</strong></div>
-                      <div>FAA REG: <strong className="text-amber-400">{rogue.faaRegistration}</strong></div>
+                      <div>
+                        SN: <strong className="text-sky-400">{rogue.serialNumber}</strong>
+                      </div>
+                      <div>
+                        REMOTE ID:{' '}
+                        <strong className="text-purple-400">{rogue.remoteIdBroadcast}</strong>
+                      </div>
+                      <div>
+                        MAC ADDR: <strong className="text-slate-400">{rogue.macAddress}</strong>
+                      </div>
+                      <div>
+                        FAA REG: <strong className="text-amber-400">{rogue.faaRegistration}</strong>
+                      </div>
                     </div>
 
                     <div className="pt-1 grid grid-cols-2 gap-1 text-[10px] text-slate-300">
-                      <div>ALTITUDE: <span className="text-red-400 font-bold">{rogue.altitude}m AGL ({rogue.altitudeMsl}m MSL)</span></div>
-                      <div>CLIMB: <span className="text-slate-300 font-bold">{rogue.verticalRate}</span></div>
-                      <div>SPEED: <span className="text-red-400 font-bold">{rogue.speed}</span></div>
-                      <div>RF FREQ: <span className="text-purple-300">{rogue.rfFrequency}</span></div>
+                      <div>
+                        ALTITUDE:{' '}
+                        <span className="text-red-400 font-bold">
+                          {rogue.altitude}m AGL ({rogue.altitudeMsl}m MSL)
+                        </span>
+                      </div>
+                      <div>
+                        CLIMB:{' '}
+                        <span className="text-slate-300 font-bold">{rogue.verticalRate}</span>
+                      </div>
+                      <div>
+                        SPEED: <span className="text-red-400 font-bold">{rogue.speed}</span>
+                      </div>
+                      <div>
+                        RF FREQ: <span className="text-purple-300">{rogue.rfFrequency}</span>
+                      </div>
                     </div>
 
                     <div className="text-[10px] text-amber-300 bg-slate-950/90 p-2 rounded border border-amber-500/30 space-y-0.5">
-                      <div className="font-bold text-amber-400">📍 PILOT LOC: {rogue.pilotLocationEst}</div>
+                      <div className="font-bold text-amber-400">
+                        📍 PILOT LOC: {rogue.pilotLocationEst}
+                      </div>
                       <div className="text-slate-400">BEARING & RANGE: {rogue.pilotDistance}</div>
                       <div className="text-slate-400">HOME POINT: {rogue.homePoint}</div>
                     </div>
 
                     <button
-                      onClick={() => onFlyToLocation && onFlyToLocation(rogue.latitude, rogue.longitude, 18)}
+                      onClick={() =>
+                        onFlyToLocation && onFlyToLocation(rogue.latitude, rogue.longitude, 18)
+                      }
                       className="w-full mt-1 py-1 rounded bg-red-500/20 hover:bg-red-500/40 border border-red-500/40 text-red-300 text-[10px] font-bold flex items-center justify-center space-x-1 transition-all"
                     >
                       <Crosshair className="w-3 h-3 text-red-400" />
@@ -386,8 +454,11 @@ export default function CommandSidebar({
                   <span>SKYDIO DFR FLEET ({skydioDrones.length})</span>
                 </div>
 
-                {skydioDrones.map(drone => (
-                  <div key={drone.id} className="p-3 rounded-lg border border-sky-500/30 bg-slate-900/70 space-y-1.5">
+                {skydioDrones.map((drone) => (
+                  <div
+                    key={drone.id}
+                    className="p-3 rounded-lg border border-sky-500/30 bg-slate-900/70 space-y-1.5"
+                  >
                     <div className="flex items-center justify-between">
                       <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-sky-500/20 text-sky-300 border border-sky-500/40">
                         🚁 {drone.id}
@@ -399,25 +470,37 @@ export default function CommandSidebar({
                     <p className="text-[10px] text-slate-400">{drone.mission}</p>
 
                     <div className="pt-1.5 border-t border-slate-800 grid grid-cols-2 gap-1 text-[10px] text-slate-300">
-                      <div>ALT: <span className="text-sky-300 font-bold">{drone.altitude}m</span></div>
-                      <div>SPEED: <span className="text-sky-300 font-bold">{drone.speed}</span></div>
-                      <div>BATTERY: <span className="text-emerald-400 font-bold">{drone.battery}</span></div>
-                      <div>AUTONOMY: <span className="text-sky-400 font-bold">{drone.autonomyMode}</span></div>
+                      <div>
+                        ALT: <span className="text-sky-300 font-bold">{drone.altitude}m</span>
+                      </div>
+                      <div>
+                        SPEED: <span className="text-sky-300 font-bold">{drone.speed}</span>
+                      </div>
+                      <div>
+                        BATTERY: <span className="text-emerald-400 font-bold">{drone.battery}</span>
+                      </div>
+                      <div>
+                        AUTONOMY:{' '}
+                        <span className="text-sky-400 font-bold">{drone.autonomyMode}</span>
+                      </div>
                     </div>
 
                     <div className="flex items-center justify-between pt-1">
                       <button
-                        onClick={() => onSelectCamera && onSelectCamera({
-                          id: drone.id,
-                          name: drone.callsign,
-                          videoUrl: drone.videoUrl,
-                          latitude: drone.latitude,
-                          longitude: drone.longitude,
-                          height: drone.altitude,
-                          fov: 80,
-                          status: 'LIVE SKYDIO EO/IR',
-                          network: 'Skydio DFR Fleet Link'
-                        })}
+                        onClick={() =>
+                          onSelectCamera &&
+                          onSelectCamera({
+                            id: drone.id,
+                            name: drone.callsign,
+                            videoUrl: drone.videoUrl,
+                            latitude: drone.latitude,
+                            longitude: drone.longitude,
+                            height: drone.altitude,
+                            fov: 80,
+                            status: 'LIVE SKYDIO EO/IR',
+                            network: 'Skydio DFR Fleet Link'
+                          })
+                        }
                         className="px-2 py-1 rounded bg-sky-500/20 hover:bg-sky-500/40 border border-sky-500/40 text-sky-300 text-[10px] font-bold flex items-center space-x-1"
                       >
                         <Play className="w-3 h-3 text-sky-300" />
@@ -425,7 +508,9 @@ export default function CommandSidebar({
                       </button>
 
                       <button
-                        onClick={() => onFlyToLocation && onFlyToLocation(drone.latitude, drone.longitude, 17.5)}
+                        onClick={() =>
+                          onFlyToLocation && onFlyToLocation(drone.latitude, drone.longitude, 17.5)
+                        }
                         className="px-2 py-1 rounded bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 text-[10px] font-bold flex items-center space-x-1"
                       >
                         <Crosshair className="w-3 h-3 text-sky-400" />
@@ -443,21 +528,29 @@ export default function CommandSidebar({
                   <span>C-UAS RF SENSOR GRID ({cuasSensors.length})</span>
                 </div>
 
-                {cuasSensors.map(sensor => (
-                  <div key={sensor.id} className="p-2.5 rounded-lg border border-purple-500/30 bg-slate-900/70 text-[10px]">
+                {cuasSensors.map((sensor) => (
+                  <div
+                    key={sensor.id}
+                    className="p-2.5 rounded-lg border border-purple-500/30 bg-slate-900/70 text-[10px]"
+                  >
                     <div className="flex items-center justify-between font-bold text-purple-300">
                       <span>{sensor.name}</span>
                       <span className="text-emerald-400">● {sensor.status}</span>
                     </div>
                     <div className="text-slate-400 mt-0.5">{sensor.location}</div>
                     <div className="text-slate-400 mt-1 flex justify-between">
-                      <span>RF RADIUS: <strong className="text-purple-300">{sensor.detectionRadiusMeters}m</strong></span>
-                      <span>THREATS: <strong className="text-red-400">{sensor.detectedThreatsCount}</strong></span>
+                      <span>
+                        RF RADIUS:{' '}
+                        <strong className="text-purple-300">{sensor.detectionRadiusMeters}m</strong>
+                      </span>
+                      <span>
+                        THREATS:{' '}
+                        <strong className="text-red-400">{sensor.detectedThreatsCount}</strong>
+                      </span>
                     </div>
                   </div>
                 ))}
               </div>
-
             </div>
           )}
 
@@ -473,14 +566,20 @@ export default function CommandSidebar({
                     <span className="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/40">
                       {unit.id}
                     </span>
-                    <span className="text-[10px] font-mono text-amber-400 font-bold">{unit.status}</span>
+                    <span className="text-[10px] font-mono text-amber-400 font-bold">
+                      {unit.status}
+                    </span>
                   </div>
                   <h3 className="text-xs font-bold text-slate-100">{unit.callsign}</h3>
                   <p className="text-[11px] text-slate-400 font-mono mt-0.5">{unit.type}</p>
 
                   <div className="mt-2 pt-2 border-t border-slate-800 grid grid-cols-2 gap-2 text-[10px] font-mono text-slate-300">
-                    <div>ALTITUDE: <span className="text-amber-300 font-bold">{unit.altitude}m</span></div>
-                    <div>SPEED: <span className="text-amber-300 font-bold">{unit.speed}</span></div>
+                    <div>
+                      ALTITUDE: <span className="text-amber-300 font-bold">{unit.altitude}m</span>
+                    </div>
+                    <div>
+                      SPEED: <span className="text-amber-300 font-bold">{unit.speed}</span>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -509,7 +608,6 @@ export default function CommandSidebar({
               ))}
             </div>
           )}
-
         </div>
       </div>
 
@@ -517,7 +615,7 @@ export default function CommandSidebar({
       <button
         onClick={() => setCollapsed(!collapsed)}
         className="h-10 w-6 glass-panel rounded-r-lg border-l-0 my-auto flex items-center justify-center text-cyan-400 hover:text-cyan-300 transition-colors border border-cyan-500/20"
-        title={collapsed ? "Expand Command Sidebar" : "Collapse Sidebar"}
+        title={collapsed ? 'Expand Command Sidebar' : 'Collapse Sidebar'}
       >
         {collapsed ? <ChevronRight className="w-4 h-4" /> : <ChevronLeft className="w-4 h-4" />}
       </button>

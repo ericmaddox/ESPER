@@ -21,14 +21,14 @@ export default function AddressSearch({ activeRegion, onSelectLocation }) {
 
   // Debounced address search fetch using Nominatim API (Universal Global Search)
   useEffect(() => {
-    if (!query.trim() || query.length < 2) {
-      setResults([]);
-      setIsLoading(false);
-      return;
-    }
-
-    setIsLoading(true);
     const timer = setTimeout(async () => {
+      if (!query.trim() || query.length < 2) {
+        setResults([]);
+        setIsLoading(false);
+        return;
+      }
+
+      setIsLoading(true);
       try {
         // Universal search for exact query string
         let searchUrl = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&limit=6&addressdetails=1`;
@@ -41,7 +41,7 @@ export default function AddressSearch({ activeRegion, onSelectLocation }) {
 
         if (response.ok) {
           let data = await response.json();
-          
+
           // If no global match found and query has no comma, try biasing with active region context
           if (data.length === 0 && activeRegion && !query.includes(',')) {
             const biasedQuery = `${query}, ${activeRegion.name}`;
@@ -95,7 +95,7 @@ export default function AddressSearch({ activeRegion, onSelectLocation }) {
     <div ref={searchRef} className="relative w-64 md:w-80 pointer-events-auto font-mono text-xs">
       <div className="relative flex items-center">
         <Search className="absolute left-3 w-3.5 h-3.5 text-cyan-400 pointer-events-none" />
-        
+
         <input
           type="text"
           value={query}

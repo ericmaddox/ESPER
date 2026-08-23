@@ -1,5 +1,17 @@
 import React, { useState } from 'react';
-import { Layers, Mountain, Building2, Palette, Navigation, Crosshair, ChevronRight, ChevronLeft, Compass, Type, Globe } from 'lucide-react';
+import {
+  Layers,
+  Mountain,
+  Building2,
+  Palette,
+  Navigation,
+  Crosshair,
+  ChevronRight,
+  ChevronLeft,
+  Compass,
+  Type,
+  Globe
+} from 'lucide-react';
 import { MAP_STYLES } from '../engine';
 
 export default function EngineToolbar({
@@ -26,13 +38,14 @@ export default function EngineToolbar({
         title="Toggle Engine Toolbar"
       >
         <Layers className="w-4 h-4 text-cyan-400" />
-        <span className="text-xs font-mono font-bold uppercase tracking-wider">ENGINE CONTROLS</span>
+        <span className="text-xs font-mono font-bold uppercase tracking-wider">
+          ENGINE CONTROLS
+        </span>
         {isOpen ? <ChevronRight className="w-4 h-4" /> : <ChevronLeft className="w-4 h-4" />}
       </button>
 
       {isOpen && (
         <div className="mt-2 w-64 glass-panel rounded-xl border border-cyan-500/30 p-3 shadow-2xl space-y-3 animate-fade-in font-mono text-xs max-h-[calc(100vh-8rem)] overflow-y-auto custom-scrollbar">
-          
           {/* Map Themes */}
           <div>
             <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1.5 flex items-center space-x-1">
@@ -56,7 +69,10 @@ export default function EngineToolbar({
                     {style.isSatellite && <Globe className="w-3 h-3 text-emerald-400" />}
                     <span>{style.name}</span>
                   </div>
-                  <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: style.accentColor }}></span>
+                  <span
+                    className="w-2.5 h-2.5 rounded-full"
+                    style={{ backgroundColor: style.accentColor }}
+                  ></span>
                 </button>
               ))}
             </div>
@@ -144,7 +160,7 @@ export default function EngineToolbar({
                 </button>
               ))}
             </div>
-            
+
             <p className="text-[9px] text-slate-500 mt-1">
               💡 Tip: Right-click + Drag or Ctrl + Drag to tilt manually.
             </p>

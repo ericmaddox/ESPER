@@ -1,10 +1,53 @@
 import React, { useState, useEffect } from 'react';
-import { UploadCloud, FileText, CheckCircle, AlertCircle } from 'lucide-react';
+import { UploadCloud } from 'lucide-react';
 
 export default function DragDropOverlay({ onFileDrop }) {
   const [isDragging, setIsDragging] = useState(false);
 
   useEffect(() => {
+    const parseAndEmitFile = (file) => {
+      const fileName = file.name;
+      const ext = fileName.split('.').pop().toLowerCase();
+
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        try {
+          const content = event.target.result;
+
+          if (ext === 'geojson' || ext === 'json') {
+            const geojson = JSON.parse(content);
+            if (onFileDrop) {
+              onFileDrop({
+                fileName,
+                type: 'GeoJSON',
+                data: geojson
+              });
+            }
+          } else if (ext === 'kml') {
+            const geojson = parseKMLToGeoJSON(content);
+            if (onFileDrop) {
+              onFileDrop({
+                fileName,
+                type: 'KML',
+                data: geojson
+              });
+            }
+          } else {
+            alert(
+              `Unsupported spatial file type ".${ext}". Please drop a .geojson, .json, or .kml file.`
+            );
+          }
+        } catch (err) {
+          console.error('Error parsing dropped spatial file:', err);
+          alert(
+            `Failed to parse file "${fileName}". Ensure it contains valid GeoJSON or KML structure.`
+          );
+        }
+      };
+
+      reader.readAsText(file);
+    };
+
     let dragCounter = 0;
 
     const handleDragEnter = (e) => {
@@ -54,46 +97,7 @@ export default function DragDropOverlay({ onFileDrop }) {
       window.removeEventListener('dragover', handleDragOver);
       window.removeEventListener('drop', handleDrop);
     };
-  }, []);
-
-  const parseAndEmitFile = (file) => {
-    const fileName = file.name;
-    const ext = fileName.split('.').pop().toLowerCase();
-
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      try {
-        const content = event.target.result;
-
-        if (ext === 'geojson' || ext === 'json') {
-          const geojson = JSON.parse(content);
-          if (onFileDrop) {
-            onFileDrop({
-              fileName,
-              type: 'GeoJSON',
-              data: geojson
-            });
-          }
-        } else if (ext === 'kml') {
-          const geojson = parseKMLToGeoJSON(content);
-          if (onFileDrop) {
-            onFileDrop({
-              fileName,
-              type: 'KML',
-              data: geojson
-            });
-          }
-        } else {
-          alert(`Unsupported spatial file type ".${ext}". Please drop a .geojson, .json, or .kml file.`);
-        }
-      } catch (err) {
-        console.error('Error parsing dropped spatial file:', err);
-        alert(`Failed to parse file "${fileName}". Ensure it contains valid GeoJSON or KML structure.`);
-      }
-    };
-
-    reader.readAsText(file);
-  };
+  }, [onFileDrop]);
 
   if (!isDragging) return null;
 
@@ -106,7 +110,9 @@ export default function DragDropOverlay({ onFileDrop }) {
             DROP SPATIAL DATA FILE HERE
           </h3>
           <p className="text-xs text-cyan-400 mt-1">
-            Supports <strong className="text-white">.geojson</strong>, <strong className="text-white">.json</strong>, and <strong className="text-white">.kml</strong> formats
+            Supports <strong className="text-white">.geojson</strong>,{' '}
+            <strong className="text-white">.json</strong>, and{' '}
+            <strong className="text-white">.kml</strong> formats
           </p>
         </div>
         <div className="text-[10px] text-slate-400 border-t border-slate-800 pt-2">

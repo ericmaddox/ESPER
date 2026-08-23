@@ -30,7 +30,7 @@ export async function searchLocation(query) {
     if (!res.ok) throw new Error(`Geocoding HTTP error: ${res.status}`);
     const data = await res.json();
 
-    const results = data.map(item => ({
+    const results = data.map((item) => ({
       id: item.place_id,
       name: item.display_name.split(',')[0],
       address: item.display_name,

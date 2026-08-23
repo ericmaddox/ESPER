@@ -41,7 +41,13 @@ export default function App() {
   const handleSelectRegion = (region) => {
     setActiveRegion(region);
     if (mapRef.current) {
-      mapRef.current.flyToLocation(region.center[1], region.center[0], region.zoom, region.pitch, region.bearing);
+      mapRef.current.flyToLocation(
+        region.center[1],
+        region.center[0],
+        region.zoom,
+        region.pitch,
+        region.bearing
+      );
     }
   };
 
@@ -58,7 +64,7 @@ export default function App() {
   });
 
   const handleToggleLayer = (layerKey) => {
-    setLayers(prev => ({
+    setLayers((prev) => ({
       ...prev,
       [layerKey]: !prev[layerKey]
     }));
@@ -91,7 +97,7 @@ export default function App() {
 
   const toggleFullscreen = () => {
     if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen().catch(err => console.error(err));
+      document.documentElement.requestFullscreen().catch((err) => console.error(err));
     } else {
       if (document.exitFullscreen) document.exitFullscreen();
     }
@@ -106,7 +112,7 @@ export default function App() {
         activeRegion={activeRegion}
         onSelectRegion={handleSelectRegion}
         activeIncidentsCount={incidents.length}
-        activeCamerasCount={cameras.filter(c => c.status === 'LIVE').length}
+        activeCamerasCount={cameras.filter((c) => c.status === 'LIVE').length}
         activeUnitsCount={units.length + skydioDrones.length}
         toggleFullscreen={toggleFullscreen}
         onSelectLocation={handleSelectSearchLocation}
@@ -114,11 +120,11 @@ export default function App() {
 
       {workspaceMode === 'clean' ? (
         /* Pristine 3D Geospatial Engine Workspace (Zero Demo Noise) */
-        <CleanEngineCanvas 
+        <CleanEngineCanvas
           ref={mapRef}
           key={activeRegion.id}
-          activeRegion={activeRegion} 
-          onSelectSearchLocation={handleSelectSearchLocation} 
+          activeRegion={activeRegion}
+          onSelectSearchLocation={handleSelectSearchLocation}
         />
       ) : (
         /* Public Safety Demo Scenario Workspace */
@@ -164,10 +170,7 @@ export default function App() {
           />
 
           {selectedCamera && (
-            <VideoFeedModal
-              camera={selectedCamera}
-              onClose={() => setSelectedCamera(null)}
-            />
+            <VideoFeedModal camera={selectedCamera} onClose={() => setSelectedCamera(null)} />
           )}
         </>
       )}
