@@ -4,6 +4,7 @@ import MapView from './components/MapView';
 import CommandSidebar from './components/CommandSidebar';
 import LayerToolbar from './components/LayerToolbar';
 import VideoFeedModal from './components/VideoFeedModal';
+import CameraMatrixModal from './components/CameraMatrixModal';
 import CleanEngineCanvas from './components/CleanEngineCanvas';
 
 import {
@@ -37,6 +38,7 @@ export default function App() {
 
   const [selectedCamera, setSelectedCamera] = useState(null);
   const [selectedIncident, setSelectedIncident] = useState(null);
+  const [matrixIncident, setMatrixIncident] = useState(null);
 
   const handleSelectRegion = (region) => {
     setActiveRegion(region);
@@ -158,6 +160,7 @@ export default function App() {
             onSelectCamera={setSelectedCamera}
             onFlyToIncident={handleFlyToIncident}
             onFlyToLocation={handleFlyToLocation}
+            onOpenMatrix={setMatrixIncident}
             selectedIncident={selectedIncident}
             selectedCamera={selectedCamera}
           />
@@ -171,6 +174,14 @@ export default function App() {
 
           {selectedCamera && (
             <VideoFeedModal camera={selectedCamera} onClose={() => setSelectedCamera(null)} />
+          )}
+
+          {matrixIncident && (
+            <CameraMatrixModal
+              incident={matrixIncident}
+              cameras={cameras}
+              onClose={() => setMatrixIncident(null)}
+            />
           )}
         </>
       )}

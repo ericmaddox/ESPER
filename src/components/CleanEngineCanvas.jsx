@@ -2,19 +2,32 @@ import React, { useState, useRef, useImperativeHandle, forwardRef } from 'react'
 import EngineViewport from '../engine/core/EngineViewport';
 import EngineToolbar from './EngineToolbar';
 import DragDropOverlay from './DragDropOverlay';
-import { MAP_STYLES, reverseGeocode } from '../engine';
+import TacticalPerimeterHUD from './TacticalPerimeterHUD';
+import LOSProfileHUD from './LOSProfileHUD';
+import { MAP_STYLES, reverseGeocode, TacticalPerimeterTool, TacticalLOSTool } from '../engine';
 import { LA_PRESETS } from '../data/mockData';
-import { Compass, MapPin, Sun, Moon, UploadCloud, X } from 'lucide-react';
+import { Compass, MapPin, Sun, Moon, UploadCloud, X, Eye } from 'lucide-react';
 
 const CleanEngineCanvas = forwardRef(
   ({ activeRegion, onSelectSearchLocation: _onSelectSearchLocation }, ref) => {
     const engineRef = useRef(null);
+    const perimeterToolRef = useRef(null);
+    const losToolRef = useRef(null);
+
     const [activeStyle, setActiveStyle] = useState(MAP_STYLES.DARK_TACTICAL);
     const [show3DBuildings, setShow3DBuildings] = useState(true);
     const [showTerrain, setShowTerrain] = useState(true);
     const [showLabels, setShowLabels] = useState(true);
     const [solarMetrics, setSolarMetrics] = useState(null);
     const [importedFile, setImportedFile] = useState(null);
+
+    // Tactical Tool States
+    const [isCordonMode, setIsCordonMode] = useState(false);
+    const [activePerimeter, setActivePerimeter] = useState(null);
+
+    const [isLOSMode, setIsLOSMode] = useState(false);
+    const [losPoints, setLosPoints] = useState({ observer: null, target: null });
+    const [losData, setLosData] = useState(null);
 
     const regionPresets = activeRegion?.presets || LA_PRESETS;
 
@@ -28,6 +41,11 @@ const CleanEngineCanvas = forwardRef(
     });
 
     const [clickedLocation, setClickedLocation] = useState(null);
+
+    const handleEngineLoad = (map, layerManager, markerManager) => {
+      perimeterToolRef.current = new TacticalPerimeterTool(map, layerManager, markerManager);
+      losToolRef.current = new TacticalLOSTool(map, layerManager, markerManager);
+    };
 
     useImperativeHandle(ref, () => ({
       flyToLocation: (latitude, longitude, zoom = 17, pitch = 55, bearing = 30) => {
@@ -84,13 +102,67 @@ const CleanEngineCanvas = forwardRef(
       }
     }));
 
+    const handleDeployPerimeter = (
+      lng,
+      lat,
+      hot = 150,
+      warm = 300,
+      cold = 600,
+      label = 'ACTIVE CORDON'
+    ) => {
+      if (!perimeterToolRef.current) return;
+      const res = perimeterToolRef.current.deployPerimeter(lng, lat, hot, warm, cold, label);
+      setActivePerimeter(res);
+      setIsCordonMode(false);
+    };
+
+    const handleClearPerimeter = () => {
+      if (perimeterToolRef.current) {
+        perimeterToolRef.current.clearPerimeter();
+      }
+      setActivePerimeter(null);
+    };
+
+    const handleClearLOS = () => {
+      if (losToolRef.current) {
+        losToolRef.current.clear();
+      }
+      setLosPoints({ observer: null, target: null });
+      setLosData(null);
+      setIsLOSMode(false);
+    };
+
     const handleMapClick = async ({ lng, lat }) => {
+      // 1. If Cordon Deploy Mode is active
+      if (isCordonMode) {
+        handleDeployPerimeter(lng, lat, 150, 300, 600, 'TACTICAL CORDON');
+        return;
+      }
+
+      // 2. If 3D LOS Mode is active
+      if (isLOSMode) {
+        if (!losPoints.observer) {
+          setLosPoints({ observer: { lng, lat, heightAboveGround: 25 }, target: null });
+        } else if (!losPoints.target) {
+          const obs = losPoints.observer;
+          const tgt = { lng, lat, heightAboveGround: 2 };
+          setLosPoints({ observer: obs, target: tgt });
+
+          if (losToolRef.current) {
+            const res = await losToolRef.current.calculateAndRender(obs, tgt);
+            setLosData(res);
+          }
+          setIsLOSMode(false);
+        }
+        return;
+      }
+
+      // 3. Normal Spatial Location Inspection
       const markerMgr = engineRef.current?.getMarkerManager();
       if (!markerMgr) return;
 
       markerMgr.removeMarker('inspect-target');
 
-      // Create target inspection pin
       const el = document.createElement('div');
       el.innerHTML = `
       <div style="position:relative; width:36px; height:36px;">
@@ -171,9 +243,7 @@ const CleanEngineCanvas = forwardRef(
         } else {
           map.setTerrain({ source: 'terrain', exaggeration: 0 });
         }
-      } catch (e) {
-        console.warn('Error setting terrain:', e);
-      }
+      } catch (_e) {}
     };
 
     const handleToggleLabels = () => {
@@ -236,7 +306,6 @@ const CleanEngineCanvas = forwardRef(
         }
       });
 
-      // Compute bounding box
       const bounds = computeGeoJSONBounds(data);
       if (bounds) {
         map.fitBounds(bounds, { padding: 100, maxZoom: 16, duration: 2000 });
@@ -278,10 +347,51 @@ const CleanEngineCanvas = forwardRef(
           initialBearing={activeRegion?.bearing || 35}
           enable3DBuildings={show3DBuildings}
           enableTerrain={showTerrain}
+          onMapLoad={handleEngineLoad}
           onCameraMove={setCameraMetrics}
           onMapClick={handleMapClick}
           onSolarUpdate={setSolarMetrics}
         />
+
+        {/* Tactical Perimeter Cordon HUD */}
+        <TacticalPerimeterHUD
+          isDeployMode={isCordonMode}
+          onToggleDeployMode={() => {
+            setIsCordonMode(!isCordonMode);
+            setIsLOSMode(false);
+          }}
+          activePerimeter={activePerimeter}
+          onDeployPerimeter={handleDeployPerimeter}
+          onClearPerimeter={handleClearPerimeter}
+        />
+
+        {/* 3D Line-of-Sight & Overwatch Toggle Button */}
+        <div className="absolute top-32 left-4 z-40">
+          <button
+            onClick={() => {
+              setIsLOSMode(!isLOSMode);
+              setIsCordonMode(false);
+              if (losData) handleClearLOS();
+            }}
+            className={`px-3 py-2 rounded-lg border flex items-center space-x-2 transition-all shadow-xl font-mono text-xs ${
+              isLOSMode
+                ? 'bg-emerald-500/25 border-emerald-400 text-emerald-200 animate-pulse font-bold'
+                : 'glass-panel border-cyan-500/30 text-cyan-300 hover:bg-slate-900/90'
+            }`}
+          >
+            <Eye className="w-4 h-4 text-emerald-400" />
+            <span className="uppercase tracking-wider font-bold">
+              {isLOSMode
+                ? !losPoints.observer
+                  ? 'CLICK OBSERVER (ROOFTOP)'
+                  : 'CLICK TARGET (POINT B)'
+                : '3D LINE-OF-SIGHT'}
+            </span>
+          </button>
+        </div>
+
+        {/* 3D Elevation Cross-Section & LOS Slide-up HUD */}
+        {losData && <LOSProfileHUD losData={losData} onClose={handleClearLOS} />}
 
         {/* Engine Controls Toolbar */}
         <EngineToolbar
@@ -300,7 +410,7 @@ const CleanEngineCanvas = forwardRef(
         />
 
         {/* Bottom Telemetry & Coordinate HUD */}
-        <div className="absolute bottom-4 left-4 right-4 z-40 pointer-events-none flex items-end justify-between font-mono text-xs">
+        <div className="absolute bottom-4 left-4 right-4 z-30 pointer-events-none flex items-end justify-between font-mono text-xs">
           {/* Left Coordinates & Astronomical Solar HUD */}
           <div className="glass-panel rounded-xl border border-cyan-500/30 p-3 shadow-2xl space-y-1.5 backdrop-blur-md pointer-events-auto">
             <div className="flex items-center justify-between text-cyan-400 font-bold text-[11px]">
@@ -366,7 +476,6 @@ const CleanEngineCanvas = forwardRef(
 
           {/* Right Active Inspection Banner or Imported File Banner */}
           <div className="space-y-2 flex flex-col items-end">
-            {/* Imported File HUD Card */}
             {importedFile && (
               <div className="glass-panel rounded-xl border border-emerald-500/40 p-3 shadow-2xl max-w-sm backdrop-blur-md pointer-events-auto animate-fade-in space-y-1">
                 <div className="flex items-center justify-between text-[11px] font-bold text-emerald-300">
@@ -402,8 +511,7 @@ const CleanEngineCanvas = forwardRef(
               </div>
             )}
 
-            {/* Inspected Target Location Card */}
-            {clickedLocation && (
+            {clickedLocation && !isCordonMode && !isLOSMode && (
               <div className="glass-panel rounded-xl border border-cyan-500/40 p-3 shadow-2xl max-w-sm backdrop-blur-md pointer-events-auto animate-fade-in space-y-1.5">
                 <div className="flex items-center justify-between text-[11px] font-bold text-cyan-300">
                   <span className="flex items-center space-x-1">
@@ -443,7 +551,6 @@ CleanEngineCanvas.displayName = 'CleanEngineCanvas';
 
 export default CleanEngineCanvas;
 
-// Utility to calculate bounding box for any GeoJSON FeatureCollection
 function computeGeoJSONBounds(geojson) {
   if (!geojson) return null;
 
