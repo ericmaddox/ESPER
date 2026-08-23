@@ -482,7 +482,7 @@ export const MAP_STYLES = {
 
   SATELLITE_3D: {
     id: 'satellite-3d',
-    name: 'Satellite 3D (Esri)',
+    name: 'Satellite 3D (Global HD)',
     backgroundColor: '#000000',
     skyColor: '#1e3a8a',
     horizonColor: '#38bdf8',
@@ -497,17 +497,16 @@ export const MAP_STYLES = {
     isSatellite: true,
     style: {
       version: 8,
-      name: 'ESPER Esri Satellite 3D',
+      name: 'ESPER Global Satellite 3D',
       sources: {
-        'esri-satellite': {
+        'satellite-hd': {
           type: 'raster',
           tiles: [
             'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'
           ],
           tileSize: 256,
           maxzoom: 19,
-          attribution:
-            'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+          attribution: 'Global Satellite Imagery (High Resolution Orthomosaic)'
         },
         openmaptiles: {
           type: 'vector',
@@ -536,9 +535,9 @@ export const MAP_STYLES = {
       layers: [
         { id: 'background', type: 'background', paint: { 'background-color': '#000000' } },
         {
-          id: 'esri-satellite-layer',
+          id: 'satellite-hd-layer',
           type: 'raster',
-          source: 'esri-satellite',
+          source: 'satellite-hd',
           paint: {
             'raster-opacity': 1.0,
             'raster-fade-duration': 300

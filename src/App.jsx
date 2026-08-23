@@ -11,7 +11,7 @@ import {
   MOCK_INCIDENTS,
   MOCK_CAMERAS,
   MOCK_UNITS,
-  MOCK_SKYDIO_DRONES,
+  MOCK_TACTICAL_DRONES,
   MOCK_CUAS_SENSORS,
   MOCK_ROGUE_DRONES,
   MOCK_CITIZEN_STREAMS,
@@ -31,7 +31,7 @@ export default function App() {
   const [incidents] = useState(MOCK_INCIDENTS);
   const [cameras] = useState(MOCK_CAMERAS);
   const [units] = useState(MOCK_UNITS);
-  const [skydioDrones] = useState(MOCK_SKYDIO_DRONES);
+  const [tacticalDrones] = useState(MOCK_TACTICAL_DRONES);
   const [cuasSensors] = useState(MOCK_CUAS_SENSORS);
   const [rogueDrones] = useState(MOCK_ROGUE_DRONES);
   const [citizenStreams] = useState(MOCK_CITIZEN_STREAMS);
@@ -129,7 +129,7 @@ export default function App() {
         onSelectRegion={handleSelectRegion}
         activeIncidentsCount={incidents.length}
         activeCamerasCount={cameras.filter((c) => c.status === 'LIVE').length}
-        activeUnitsCount={units.length + skydioDrones.length}
+        activeUnitsCount={units.length + tacticalDrones.length}
         toggleFullscreen={toggleFullscreen}
         onSelectLocation={handleSelectSearchLocation}
       />
@@ -152,7 +152,7 @@ export default function App() {
             incidents={incidents}
             cameras={cameras}
             units={units}
-            skydioDrones={skydioDrones}
+            tacticalDrones={tacticalDrones}
             cuasSensors={cuasSensors}
             rogueDrones={rogueDrones}
             citizenStreams={citizenStreams}
@@ -165,7 +165,7 @@ export default function App() {
             incidents={incidents}
             cameras={cameras}
             units={units}
-            skydioDrones={skydioDrones}
+            tacticalDrones={tacticalDrones}
             cuasSensors={cuasSensors}
             rogueDrones={rogueDrones}
             citizenStreams={citizenStreams}

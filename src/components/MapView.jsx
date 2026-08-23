@@ -27,7 +27,7 @@ const MapView = forwardRef(
       incidents,
       cameras,
       units,
-      skydioDrones = [],
+      tacticalDrones = [],
       cuasSensors = [],
       rogueDrones = [],
       citizenStreams = [],
@@ -639,11 +639,11 @@ const MapView = forwardRef(
             });
           }
 
-          // ── Skydio Autonomous Drones ──
+          // ── Tactical Autonomous UAS ──
           if (layers?.drones) {
-            skydioDrones.forEach((drone) => {
+            tacticalDrones.forEach((drone) => {
               const el = document.createElement('div');
-              el.className = 'skydio-drone-marker cursor-pointer';
+              el.className = 'drone-marker cursor-pointer';
               el.innerHTML = `
               <div style="position:relative; width:34px; height:34px;">
                 <div class="pulse-ring" style="position:absolute; inset:-2px; border-radius:50%; border:2px solid #38bdf8;"></div>
@@ -653,14 +653,23 @@ const MapView = forwardRef(
               </div>
             `;
 
+              const batteryText = String(drone.battery || '').includes('%')
+                ? drone.battery
+                : `${drone.battery}%`;
+              const speedText =
+                String(drone.speed || '').includes('mph') ||
+                String(drone.speed || '').includes('kts')
+                  ? drone.speed
+                  : `${drone.speed} kts`;
+
               const popup = new maplibregl.Popup({ offset: 20, closeButton: true }).setHTML(`
                 <div style="min-width:190px">
                   <div style="color:#38bdf8; font-weight:700; font-size:12px; display:flex; align-items:center; gap:4px;">
                     <span style="display:inline-flex; width:14px; height:14px;">${TACTICAL_SVG_ICONS.DRONE}</span>
-                    <span>${drone.callsign} (${drone.model})</span>
+                    <span>${drone.callsign}${drone.model ? ` (${drone.model})` : ''}</span>
                   </div>
-                  <div style="color:#94a3b8; font-size:10px;">BATTERY: ${drone.battery}% | ALT: ${drone.altitude}m</div>
-                  <div style="color:#cbd5e1; font-size:10px; margin-top:2px;">SPEED: ${drone.speed} kts</div>
+                  <div style="color:#94a3b8; font-size:10px;">BATTERY: ${batteryText} | ALT: ${drone.altitude}m</div>
+                  <div style="color:#cbd5e1; font-size:10px; margin-top:2px;">SPEED: ${speedText}</div>
                   <div style="color:#38bdf8; font-size:10px; margin-top:4px; font-weight:600;">MISSION: ${drone.mission}</div>
                 </div>
               `);
@@ -822,7 +831,7 @@ const MapView = forwardRef(
       incidents,
       cameras,
       units,
-      skydioDrones,
+      tacticalDrones,
       cuasSensors,
       rogueDrones,
       citizenStreams,

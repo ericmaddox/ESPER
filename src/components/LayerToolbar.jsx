@@ -73,7 +73,7 @@ export default function LayerToolbar({ layers, onToggleLayer, onFlyToPreset, laP
               >
                 <div className="flex items-center space-x-2">
                   <Navigation className="w-3.5 h-3.5 text-sky-400" />
-                  <span>Skydio Drones</span>
+                  <span>Tactical UAS</span>
                 </div>
                 <span className="text-[10px]">{layers.drones ? 'ON' : 'OFF'}</span>
               </button>
@@ -103,7 +103,7 @@ export default function LayerToolbar({ layers, onToggleLayer, onFlyToPreset, laP
               >
                 <div className="flex items-center space-x-2">
                   <Radio className="w-3.5 h-3.5 text-orange-400" />
-                  <span>Citizen Feeds</span>
+                  <span>Mobile Feeds</span>
                 </div>
                 <span className="text-[10px]">{layers.citizen ? 'ON' : 'OFF'}</span>
               </button>

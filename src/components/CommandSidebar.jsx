@@ -20,7 +20,7 @@ export default function CommandSidebar({
   incidents,
   cameras,
   units,
-  skydioDrones = [],
+  tacticalDrones = [],
   cuasSensors = [],
   rogueDrones = [],
   citizenStreams = [],
@@ -135,7 +135,7 @@ export default function CommandSidebar({
               <span>UAS</span>
             </div>
             <span className="text-[9px] text-slate-500">
-              ({skydioDrones.length + rogueDrones.length})
+              ({tacticalDrones.length + rogueDrones.length})
             </span>
           </button>
 
@@ -283,15 +283,15 @@ export default function CommandSidebar({
             </div>
           )}
 
-          {/* TAB 2: CCTV CAMERAS & CITIZEN MOBILE FEEDS */}
+          {/* TAB 2: CCTV CAMERAS & PUBLIC MOBILE FEEDS */}
           {activeTab === 'cameras' && (
             <div className="space-y-3">
-              {/* SECTION: Citizen Mobile Streams */}
+              {/* SECTION: Public Mobile Streams */}
               {citizenStreams.length > 0 && (
                 <div>
                   <div className="text-[10px] font-mono font-bold text-orange-400 uppercase tracking-wider mb-1.5 flex items-center space-x-1">
                     <Radio className="w-3.5 h-3.5 text-orange-400" />
-                    <span>CITIZEN LIVE MOBILE FEEDS ({citizenStreams.length})</span>
+                    <span>PUBLIC LIVE MOBILE FEEDS ({citizenStreams.length})</span>
                   </div>
 
                   <div className="space-y-2">
@@ -302,7 +302,7 @@ export default function CommandSidebar({
                       >
                         <div className="flex items-center justify-between mb-1">
                           <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-orange-500/20 text-orange-300 border border-orange-500/40">
-                            📱 {stream.id}
+                            {stream.id}
                           </span>
                           <span className="text-[10px] text-emerald-400 font-bold flex items-center space-x-1">
                             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
@@ -327,8 +327,8 @@ export default function CommandSidebar({
                                 longitude: stream.longitude,
                                 videoUrl: stream.videoUrl,
                                 posterUrl: stream.posterUrl,
-                                status: `LIVE CITIZEN BROADCAST (${stream.viewersCount} VIEWERS)`,
-                                network: 'Citizen Mobile Broadcaster Network',
+                                status: `LIVE BROADCAST (${stream.viewersCount} VIEWERS)`,
+                                network: 'Public Video Network',
                                 height: 15,
                                 fov: 75
                               })
@@ -356,11 +356,11 @@ export default function CommandSidebar({
                 </div>
               )}
 
-              {/* SECTION: Caltrans DOT CCTV Cameras */}
+              {/* SECTION: Regional DOT Traffic Cameras */}
               <div>
                 <div className="text-[10px] font-mono font-bold text-cyan-400 uppercase tracking-wider mb-1.5 flex items-center space-x-1">
                   <Eye className="w-3.5 h-3.5" />
-                  <span>CALTRANS D7 TRAFFIC CAMERAS ({filteredCameras.length})</span>
+                  <span>REGIONAL DOT TRAFFIC CAMERAS ({filteredCameras.length})</span>
                 </div>
 
                 <div className="space-y-2">
@@ -401,7 +401,7 @@ export default function CommandSidebar({
             </div>
           )}
 
-          {/* TAB 3: SKYDIO DFR & C-UAS DETECTION */}
+          {/* TAB 3: TACTICAL DFR & C-UAS DETECTION */}
           {activeTab === 'drones' && (
             <div className="space-y-3 font-mono">
               {/* SECTION: C-UAS Detected Unauthorized UAS */}
@@ -418,7 +418,7 @@ export default function CommandSidebar({
                   >
                     <div className="flex items-center justify-between">
                       <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-red-500/30 text-red-300 border border-red-500/50">
-                        🚨 {rogue.id}
+                        {rogue.id}
                       </span>
                       <span className="text-[10px] text-red-400 font-bold animate-pulse">
                         {rogue.threatLevel} THREAT
@@ -465,7 +465,7 @@ export default function CommandSidebar({
 
                     <div className="text-[10px] text-amber-300 bg-slate-950/90 p-2 rounded border border-amber-500/30 space-y-0.5">
                       <div className="font-bold text-amber-400">
-                        📍 PILOT LOC: {rogue.pilotLocationEst}
+                        PILOT LOC: {rogue.pilotLocationEst}
                       </div>
                       <div className="text-slate-400">BEARING & RANGE: {rogue.pilotDistance}</div>
                       <div className="text-slate-400">HOME POINT: {rogue.homePoint}</div>
@@ -484,21 +484,21 @@ export default function CommandSidebar({
                 ))}
               </div>
 
-              {/* SECTION: Skydio DFR Autonomous Fleet */}
+              {/* SECTION: Tactical DFR Autonomous Fleet */}
               <div>
                 <div className="text-[10px] font-bold text-sky-400 uppercase tracking-wider mb-1.5 flex items-center space-x-1">
                   <Cpu className="w-3.5 h-3.5" />
-                  <span>SKYDIO DFR FLEET ({skydioDrones.length})</span>
+                  <span>TACTICAL DFR FLEET ({tacticalDrones.length})</span>
                 </div>
 
-                {skydioDrones.map((drone) => (
+                {tacticalDrones.map((drone) => (
                   <div
                     key={drone.id}
                     className="p-3 rounded-lg border border-sky-500/30 bg-slate-900/70 space-y-1.5"
                   >
                     <div className="flex items-center justify-between">
                       <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-sky-500/20 text-sky-300 border border-sky-500/40">
-                        🚁 {drone.id}
+                        {drone.id}
                       </span>
                       <span className="text-[10px] text-emerald-400 font-bold">{drone.status}</span>
                     </div>
@@ -534,8 +534,8 @@ export default function CommandSidebar({
                             longitude: drone.longitude,
                             height: drone.altitude,
                             fov: 80,
-                            status: 'LIVE SKYDIO EO/IR',
-                            network: 'Skydio DFR Fleet Link'
+                            status: 'LIVE TACTICAL EO/IR',
+                            network: 'Tactical DFR Fleet Link'
                           })
                         }
                         className="px-2 py-1 rounded bg-sky-500/20 hover:bg-sky-500/40 border border-sky-500/40 text-sky-300 text-[10px] font-bold flex items-center space-x-1"
@@ -572,7 +572,10 @@ export default function CommandSidebar({
                   >
                     <div className="flex items-center justify-between font-bold text-purple-300">
                       <span>{sensor.name}</span>
-                      <span className="text-emerald-400">● {sensor.status}</span>
+                      <span className="text-emerald-400 flex items-center space-x-1">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                        <span>{sensor.status}</span>
+                      </span>
                     </div>
                     <div className="text-slate-400 mt-0.5">{sensor.location}</div>
                     <div className="text-slate-400 mt-1 flex justify-between">

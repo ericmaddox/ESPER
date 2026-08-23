@@ -92,7 +92,7 @@ const CleanEngineCanvas = forwardRef(
         `;
           const popupHtml = `
           <div style="min-width:210px; font-family:'JetBrains Mono',monospace; font-size:11px;">
-            <div style="color:${activeStyle.accentColor}; font-weight:700; font-size:12px; margin-bottom:2px;">📍 SEARCHED LOCATION</div>
+            <div style="color:${activeStyle.accentColor}; font-weight:700; font-size:12px; margin-bottom:2px;">SEARCHED LOCATION</div>
             <div style="color:#e2e8f0; font-size:11px; margin-bottom:4px;">${loc.address || loc.name}</div>
             <div style="color:#94a3b8; font-size:10px;">LAT: ${lat.toFixed(5)}</div>
             <div style="color:#94a3b8; font-size:10px;">LNG: ${lng.toFixed(5)}</div>
@@ -202,7 +202,7 @@ const CleanEngineCanvas = forwardRef(
 
       const popupHtml = `
       <div style="min-width:210px; font-family:'JetBrains Mono',monospace; font-size:11px;">
-        <div style="color:${activeStyle.accentColor}; font-weight:700; font-size:12px; margin-bottom:2px;">📍 SPATIAL INSPECTION</div>
+        <div style="color:${activeStyle.accentColor}; font-weight:700; font-size:12px; margin-bottom:2px;">SPATIAL INSPECTION</div>
         <div style="color:#e2e8f0; font-size:11px; margin-bottom:4px;">${geocodeResult.address}</div>
         <div style="color:#94a3b8; font-size:10px;">LAT: ${lat.toFixed(5)}</div>
         <div style="color:#94a3b8; font-size:10px;">LNG: ${lng.toFixed(5)}</div>

@@ -197,7 +197,7 @@ export default function VideoFeedModal({ camera, onClose }) {
                 <div className="text-emerald-400 font-bold">
                   {streamFailed ? 'LIVE SNAPSHOT' : 'LIVE HLS STREAM'}
                 </div>
-                <div className="text-slate-300">CALTRANS D7 DOT</div>
+                <div className="text-slate-300">REGIONAL TRAFFIC DOT</div>
               </div>
             </div>
 
@@ -238,7 +238,7 @@ export default function VideoFeedModal({ camera, onClose }) {
               </button>
             )}
             <span className="text-slate-400 text-[11px]">
-              {streamFailed ? 'FEED: CALTRANS LIVE SNAPSHOT' : 'FORMAT: CALTRANS HLS STREAM'}
+              {streamFailed ? 'FEED: LIVE SNAPSHOT' : 'FORMAT: HLS LIVE STREAM'}
             </span>
           </div>
 
