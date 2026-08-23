@@ -30,6 +30,8 @@ export default function CommandSidebar({
   onFlyToIncident,
   onFlyToLocation,
   onOpenMatrix,
+  onDeployCordon,
+  onCheckLOS,
   selectedIncident,
   selectedCamera: _selectedCamera
 }) {
@@ -233,24 +235,45 @@ export default function CommandSidebar({
                         ))}
                       </div>
 
-                      <div className="flex items-center space-x-1.5">
+                      <div className="flex items-center space-x-1">
+                        {onDeployCordon && (
+                          <button
+                            onClick={() => onDeployCordon(inc)}
+                            className="px-1.5 py-1 rounded bg-red-500/20 hover:bg-red-500/40 border border-red-500/40 text-red-300 text-[9px] font-mono font-bold flex items-center space-x-1 transition-all"
+                            title="Deploy Tactical Containment Cordon"
+                          >
+                            <ShieldAlert className="w-3 h-3 text-red-400" />
+                            <span>CORDON</span>
+                          </button>
+                        )}
+
+                        {onCheckLOS && (
+                          <button
+                            onClick={() => onCheckLOS(inc)}
+                            className="px-1.5 py-1 rounded bg-emerald-500/20 hover:bg-emerald-500/40 border border-emerald-500/40 text-emerald-300 text-[9px] font-mono font-bold flex items-center space-x-1 transition-all"
+                            title="Calculate 3D Line-of-Sight & Overwatch"
+                          >
+                            <Eye className="w-3 h-3 text-emerald-400" />
+                            <span>LOS</span>
+                          </button>
+                        )}
+
                         {onOpenMatrix && (
                           <button
                             onClick={() => onOpenMatrix(inc)}
-                            className="px-2 py-1 rounded bg-cyan-500/20 hover:bg-cyan-500/40 border border-cyan-500/40 text-cyan-300 text-[10px] font-mono font-bold flex items-center space-x-1 transition-all"
+                            className="px-1.5 py-1 rounded bg-cyan-500/20 hover:bg-cyan-500/40 border border-cyan-500/40 text-cyan-300 text-[9px] font-mono font-bold flex items-center space-x-1 transition-all"
                             title="Open Quad CCTV Matrix"
                           >
-                            <Eye className="w-3 h-3 text-cyan-400" />
                             <span>EYES</span>
                           </button>
                         )}
 
                         <button
                           onClick={() => onFlyToIncident(inc)}
-                          className="px-2.5 py-1 rounded bg-red-500/20 hover:bg-red-500/40 border border-red-500/40 text-red-300 text-[10px] font-mono font-bold flex items-center space-x-1 transition-all"
+                          className="px-2 py-1 rounded bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 hover:text-white text-[9px] font-mono font-bold flex items-center space-x-1 transition-all"
                         >
-                          <Crosshair className="w-3 h-3 text-red-400" />
-                          <span>FLY TO 3D</span>
+                          <Crosshair className="w-3 h-3 text-cyan-400" />
+                          <span>FLY</span>
                         </button>
                       </div>
                     </div>

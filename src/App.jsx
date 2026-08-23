@@ -91,6 +91,20 @@ export default function App() {
     }
   };
 
+  const handleDeployCordonIncident = (inc) => {
+    setSelectedIncident(inc);
+    if (mapRef.current?.deployCordonAtIncident) {
+      mapRef.current.deployCordonAtIncident(inc);
+    }
+  };
+
+  const handleCheckLOSIncident = (inc) => {
+    setSelectedIncident(inc);
+    if (mapRef.current?.checkLOSAtIncident) {
+      mapRef.current.checkLOSAtIncident(inc);
+    }
+  };
+
   const handleSelectSearchLocation = (loc) => {
     if (mapRef.current) {
       mapRef.current.showSearchLocation(loc);
@@ -161,6 +175,8 @@ export default function App() {
             onFlyToIncident={handleFlyToIncident}
             onFlyToLocation={handleFlyToLocation}
             onOpenMatrix={setMatrixIncident}
+            onDeployCordon={handleDeployCordonIncident}
+            onCheckLOS={handleCheckLOSIncident}
             selectedIncident={selectedIncident}
             selectedCamera={selectedCamera}
           />

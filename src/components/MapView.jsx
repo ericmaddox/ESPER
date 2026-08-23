@@ -1,9 +1,19 @@
 import React, { useState, useEffect, useRef, useImperativeHandle, forwardRef } from 'react';
 import maplibregl from 'maplibre-gl';
-import { MAP_STYLES, LayerManager, getSolarPosition } from '../engine';
+import {
+  MAP_STYLES,
+  LayerManager,
+  MarkerManager,
+  TacticalPerimeterTool,
+  TacticalLOSTool,
+  getSolarPosition
+} from '../engine';
 import EngineToolbar from './EngineToolbar';
 import DragDropOverlay from './DragDropOverlay';
+import TacticalPerimeterHUD from './TacticalPerimeterHUD';
+import LOSProfileHUD from './LOSProfileHUD';
 import { LA_PRESETS } from '../data/mockData';
+import { Eye } from 'lucide-react';
 
 const LA_CENTER = [-118.257, 34.046];
 
@@ -27,6 +37,9 @@ const MapView = forwardRef(
     const containerRef = useRef(null);
     const mapRef = useRef(null);
     const layerManagerRef = useRef(null);
+    const markerManagerRef = useRef(null);
+    const perimeterToolRef = useRef(null);
+    const losToolRef = useRef(null);
     const markersRef = useRef([]);
     const droneAnimRefs = useRef([]);
     const searchMarkerRef = useRef(null);
@@ -38,6 +51,20 @@ const MapView = forwardRef(
     const [showTerrain, setShowTerrain] = useState(true);
     const [showLabels, setShowLabels] = useState(true);
     const [_importedFile, setImportedFile] = useState(null);
+
+    // Tactical Tool States
+    const [isCordonMode, setIsCordonMode] = useState(false);
+    const [activePerimeter, setActivePerimeter] = useState(null);
+    const [cordonConfig, setCordonConfig] = useState({
+      hotRadius: 150,
+      warmRadius: 300,
+      coldRadius: 600,
+      label: 'SWAT Barricade / High Threat'
+    });
+
+    const [isLOSMode, setIsLOSMode] = useState(false);
+    const [losPoints, setLosPoints] = useState({ observer: null, target: null });
+    const [losData, setLosData] = useState(null);
 
     const regionPresets = activeRegion?.presets || LA_PRESETS;
 
@@ -117,6 +144,62 @@ const MapView = forwardRef(
 
         marker.togglePopup();
         searchMarkerRef.current = marker;
+      },
+      deployCordonAtIncident: (inc) => {
+        if (!mapRef.current) return;
+        mapRef.current.flyTo({
+          center: [inc.longitude, inc.latitude],
+          zoom: 17,
+          pitch: 55,
+          bearing: 30,
+          duration: 2000,
+          essential: true
+        });
+        if (perimeterToolRef.current) {
+          const res = perimeterToolRef.current.deployPerimeter(
+            inc.longitude,
+            inc.latitude,
+            cordonConfig.hotRadius,
+            cordonConfig.warmRadius,
+            cordonConfig.coldRadius,
+            `${inc.type} CORDON`
+          );
+          setActivePerimeter(res);
+          setIsCordonMode(false);
+        }
+      },
+      checkLOSAtIncident: async (inc) => {
+        if (!mapRef.current) return;
+        mapRef.current.flyTo({
+          center: [inc.longitude, inc.latitude],
+          zoom: 17,
+          pitch: 60,
+          bearing: 35,
+          duration: 2000,
+          essential: true
+        });
+        const tgt = { lng: inc.longitude, lat: inc.latitude, heightAboveGround: 2 };
+        const obs = {
+          lng: inc.longitude + 0.0025,
+          lat: inc.latitude + 0.002,
+          heightAboveGround: 45
+        };
+        setLosPoints({ observer: obs, target: tgt });
+        if (losToolRef.current) {
+          const res = await losToolRef.current.calculateAndRender(obs, tgt);
+          setLosData(res);
+        }
+      },
+      clearCordon: () => {
+        if (perimeterToolRef.current) perimeterToolRef.current.clearPerimeter();
+        setActivePerimeter(null);
+        setIsCordonMode(false);
+      },
+      clearLOS: () => {
+        if (losToolRef.current) losToolRef.current.clear();
+        setLosPoints({ observer: null, target: null });
+        setLosData(null);
+        setIsLOSMode(false);
       }
     }));
 
@@ -279,6 +362,48 @@ const MapView = forwardRef(
       });
     };
 
+    const handleMapClick = async ({ lng, lat }) => {
+      if (isCordonMode) {
+        if (perimeterToolRef.current) {
+          const res = perimeterToolRef.current.deployPerimeter(
+            lng,
+            lat,
+            cordonConfig.hotRadius,
+            cordonConfig.warmRadius,
+            cordonConfig.coldRadius,
+            cordonConfig.label
+          );
+          setActivePerimeter(res);
+        }
+        setIsCordonMode(false);
+        return;
+      }
+
+      if (isLOSMode) {
+        if (!losPoints.observer) {
+          const obs = { lng, lat, heightAboveGround: 25 };
+          setLosPoints({ observer: obs, target: null });
+          if (losToolRef.current) {
+            losToolRef.current.setObserverPreview(obs);
+          }
+        } else if (!losPoints.target) {
+          const obs = losPoints.observer;
+          const tgt = { lng, lat, heightAboveGround: 2 };
+          setLosPoints({ observer: obs, target: tgt });
+
+          if (losToolRef.current) {
+            const res = await losToolRef.current.calculateAndRender(obs, tgt);
+            setLosData(res);
+          }
+          setIsLOSMode(false);
+        }
+        return;
+      }
+    };
+
+    const onMapClickRef = useRef(handleMapClick);
+    onMapClickRef.current = handleMapClick;
+
     useEffect(() => {
       if (!containerRef.current || mapRef.current) return;
 
@@ -302,6 +427,17 @@ const MapView = forwardRef(
 
       mapRef.current = map;
       layerManagerRef.current = new LayerManager(map);
+      markerManagerRef.current = new MarkerManager(map);
+      perimeterToolRef.current = new TacticalPerimeterTool(
+        map,
+        layerManagerRef.current,
+        markerManagerRef.current
+      );
+      losToolRef.current = new TacticalLOSTool(
+        map,
+        layerManagerRef.current,
+        markerManagerRef.current
+      );
 
       const updateSolarLighting = () => {
         if (!mapRef.current) return;
@@ -341,6 +477,16 @@ const MapView = forwardRef(
           pitch: map.getPitch(),
           bearing: map.getBearing()
         });
+      });
+
+      map.on('click', (e) => {
+        if (onMapClickRef.current) {
+          onMapClickRef.current({
+            lng: e.lngLat.lng,
+            lat: e.lngLat.lat,
+            point: e.point
+          });
+        }
       });
 
       const solarInterval = setInterval(updateSolarLighting, 60000);
@@ -709,6 +855,77 @@ const MapView = forwardRef(
           presets={regionPresets}
           onSelectPreset={handleSelectPreset}
         />
+
+        {/* Tactical Perimeter Cordon HUD */}
+        <TacticalPerimeterHUD
+          isDeployMode={isCordonMode}
+          onToggleDeployMode={() => {
+            setIsCordonMode(!isCordonMode);
+            setIsLOSMode(false);
+          }}
+          activePerimeter={activePerimeter}
+          onDeployPerimeter={(lng, lat, hot, warm, cold, label) => {
+            if (perimeterToolRef.current) {
+              const res = perimeterToolRef.current.deployPerimeter(
+                lng,
+                lat,
+                hot,
+                warm,
+                cold,
+                label
+              );
+              setActivePerimeter(res);
+            }
+            setIsCordonMode(false);
+          }}
+          onClearPerimeter={() => {
+            if (perimeterToolRef.current) perimeterToolRef.current.clearPerimeter();
+            setActivePerimeter(null);
+          }}
+          onConfigChange={setCordonConfig}
+        />
+
+        {/* 3D Line-of-Sight & Overwatch Toggle Button */}
+        <div className="absolute top-32 left-4 z-40">
+          <button
+            onClick={() => {
+              setIsLOSMode(!isLOSMode);
+              setIsCordonMode(false);
+              if (losData && losToolRef.current) {
+                losToolRef.current.clear();
+                setLosPoints({ observer: null, target: null });
+                setLosData(null);
+              }
+            }}
+            className={`px-3 py-2 rounded-lg border flex items-center space-x-2 transition-all shadow-xl font-mono text-xs ${
+              isLOSMode
+                ? 'bg-emerald-500/25 border-emerald-400 text-emerald-200 animate-pulse font-bold'
+                : 'glass-panel border-cyan-500/30 text-cyan-300 hover:bg-slate-900/90'
+            }`}
+          >
+            <Eye className="w-4 h-4 text-emerald-400" />
+            <span className="uppercase tracking-wider font-bold">
+              {isLOSMode
+                ? !losPoints.observer
+                  ? 'CLICK OBSERVER (ROOFTOP)'
+                  : 'CLICK TARGET (POINT B)'
+                : '3D LINE-OF-SIGHT'}
+            </span>
+          </button>
+        </div>
+
+        {/* 3D Elevation Cross-Section & LOS Slide-up HUD */}
+        {losData && (
+          <LOSProfileHUD
+            losData={losData}
+            onClose={() => {
+              if (losToolRef.current) losToolRef.current.clear();
+              setLosPoints({ observer: null, target: null });
+              setLosData(null);
+              setIsLOSMode(false);
+            }}
+          />
+        )}
 
         {/* Subtle Tactical Crosshair Reticle Overlay */}
         <div className="absolute inset-0 pointer-events-none flex items-center justify-center opacity-[0.08]">
