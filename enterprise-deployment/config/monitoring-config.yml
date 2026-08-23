@@ -1,0 +1,593 @@
+# ESPER Enterprise Monitoring and Logging Configuration
+global:
+  # Monitoring settings
+  monitoring:
+    enabled: true
+    interval: 30
+    retention_days: 365
+    alerting:
+      enabled: true
+      channels:
+        - email
+        - slack
+        - pagerduty
+      escalation:
+        critical: 5
+        high: 15
+        medium: 30
+        low: 60
+    
+  # Logging settings
+  logging:
+    level: INFO
+    format: json
+    retention_days: 365
+    rotation: daily
+    compression: true
+    destinations:
+      - file
+      - elasticsearch
+      - redis
+    
+  # Metrics settings
+  metrics:
+    enabled: true
+    interval: 30
+    retention_days: 90
+    prometheus:
+      enabled: true
+      port: 8000
+      path: /metrics
+    
+  # Alerting settings
+  alerting:
+    enabled: true
+    rules:
+      - name: high_cpu_usage
+        condition: "cpu_usage > 90"
+        severity: critical
+        duration: 5m
+        message: "High CPU usage detected"
+        enabled: true
+      
+      - name: high_memory_usage
+        condition: "memory_usage > 85"
+        severity: high
+        duration: 5m
+        message: "High memory usage detected"
+        enabled: true
+      
+      - name: high_disk_usage
+        condition: "disk_usage > 90"
+        severity: critical
+        duration: 5m
+        message: "High disk usage detected"
+        enabled: true
+      
+      - name: high_error_rate
+        condition: "error_rate > 0.1"
+        severity: high
+        duration: 5m
+        message: "High error rate detected"
+        enabled: true
+      
+      - name: high_response_time
+        condition: "response_time > 2.0"
+        severity: medium
+        duration: 5m
+        message: "High response time detected"
+        enabled: true
+      
+      - name: low_disk_space
+        condition: "disk_free < 1GB"
+        severity: critical
+        duration: 1m
+        message: "Low disk space detected"
+        enabled: true
+
+# Service-specific monitoring configurations
+services:
+  esper-frontend:
+    health_check:
+      enabled: true
+      endpoint: /health
+      interval: 30
+      timeout: 10
+      expected_status: 200
+    
+    metrics:
+      - name: render_fps
+        type: gauge
+        description: "3D rendering FPS"
+        unit: fps
+      
+      - name: memory_usage
+        type: gauge
+        description: "Memory usage percentage"
+        unit: percent
+      
+      - name: data_load_time
+        type: histogram
+        description: "Data load time"
+        unit: seconds
+    
+    alerts:
+      - name: low_render_fps
+        condition: "render_fps < 30"
+        severity: medium
+        message: "Low render FPS detected"
+      
+      - name: high_memory_usage
+        condition: "memory_usage > 80"
+        severity: high
+        message: "High memory usage detected"
+
+  esper-api-gateway:
+    health_check:
+      enabled: true
+      endpoint: /health
+      interval: 30
+      timeout: 10
+      expected_status: 200
+    
+    metrics:
+      - name: request_count
+        type: counter
+        description: "Total requests"
+        unit: count
+      
+      - name: response_time
+        type: histogram
+        description: "Response time"
+        unit: seconds
+      
+      - name: error_rate
+        type: gauge
+        description: "Error rate"
+        unit: percent
+    
+    alerts:
+      - name: high_error_rate
+        condition: "error_rate > 0.1"
+        severity: high
+        message: "High error rate detected"
+      
+      - name: high_response_time
+        condition: "response_time > 2.0"
+        severity: medium
+        message: "High response time detected"
+
+  ralph-api:
+    health_check:
+      enabled: true
+      endpoint: /health
+      interval: 30
+      timeout: 10
+      expected_status: 200
+    
+    metrics:
+      - name: task_count
+        type: counter
+        description: "Total tasks processed"
+        unit: count
+      
+      - name: task_duration
+        type: histogram
+        description: "Task duration"
+        unit: seconds
+      
+      - name: active_sessions
+        type: gauge
+        description: "Active sessions"
+        unit: count
+    
+    alerts:
+      - name: high_task_duration
+        condition: "task_duration > 10.0"
+        severity: medium
+        message: "High task duration detected"
+      
+      - name: too_many_active_sessions
+        condition: "active_sessions > 100"
+        severity: high
+        message: "Too many active sessions"
+
+  ralph-dashboard:
+    health_check:
+      enabled: true
+      endpoint: /health
+      interval: 30
+      timeout: 10
+      expected_status: 200
+    
+    metrics:
+      - name: dashboard_load_time
+        type: histogram
+        description: "Dashboard load time"
+        unit: seconds
+      
+      - name: active_users
+        type: gauge
+        description: "Active users"
+        unit: count
+      
+      - name: api_calls
+        type: counter
+        description: "Total API calls"
+        unit: count
+    
+    alerts:
+      - name: slow_dashboard_load
+        condition: "dashboard_load_time > 5.0"
+        severity: medium
+        message: "Slow dashboard load detected"
+      
+      - name: high_api_calls
+        condition: "api_calls > 1000"
+        severity: low
+        message: "High API calls detected"
+
+# Database monitoring
+database:
+  postgres:
+    health_check:
+      enabled: true
+      query: "SELECT 1"
+      interval: 60
+      timeout: 10
+    
+    metrics:
+      - name: connection_count
+        type: gauge
+        description: "Active connections"
+        unit: count
+      
+      - name: query_duration
+        type: histogram
+        description: "Query duration"
+        unit: seconds
+      
+      - name: slow_queries
+        type: counter
+        description: "Slow queries"
+        unit: count
+    
+    alerts:
+      - name: too_many_connections
+        condition: "connection_count > 100"
+        severity: high
+        message: "Too many database connections"
+      
+      - name: high_query_duration
+        condition: "query_duration > 1.0"
+        severity: medium
+        message: "High query duration detected"
+
+  redis:
+    health_check:
+      enabled: true
+      command: "PING"
+      interval: 30
+      timeout: 10
+    
+    metrics:
+      - name: memory_usage
+        type: gauge
+        description: "Memory usage percentage"
+        unit: percent
+      
+      - name: connected_clients
+        type: gauge
+        description: "Connected clients"
+        unit: count
+      
+      - name: operations_per_second
+        type: gauge
+        description: "Operations per second"
+        unit: ops
+    
+    alerts:
+      - name: high_memory_usage
+        condition: "memory_usage > 80"
+        severity: high
+        message: "High Redis memory usage"
+      
+      - name: too_many_clients
+        condition: "connected_clients > 1000"
+        severity: medium
+        message: "Too many connected clients"
+
+  elasticsearch:
+    health_check:
+      enabled: true
+      endpoint: /_cluster/health
+      interval: 60
+      timeout: 10
+    
+    metrics:
+      - name: cluster_status
+        type: gauge
+        description: "Cluster status"
+        unit: status
+      
+      - name: active_shards
+        type: gauge
+        description: "Active shards"
+        unit: count
+      
+      - name: indexing_rate
+        type: gauge
+        description: "Indexing rate"
+        unit: docs_per_second
+    
+    alerts:
+      - name: cluster_yellow
+        condition: "cluster_status == 'yellow'"
+        severity: high
+        message: "Elasticsearch cluster is yellow"
+      
+      - name: cluster_red
+        condition: "cluster_status == 'red'"
+        severity: critical
+        message: "Elasticsearch cluster is red"
+
+# Security monitoring
+security:
+  authentication:
+    metrics:
+      - name: login_attempts
+        type: counter
+        description: "Login attempts"
+        unit: count
+      
+      - name: failed_logins
+        type: counter
+        description: "Failed logins"
+        unit: count
+      
+      - name: successful_logins
+        type: counter
+        description: "Successful logins"
+        unit: count
+    
+    alerts:
+      - name: high_failed_login_rate
+        condition: "failed_logins / login_attempts > 0.1"
+        severity: high
+        message: "High failed login rate detected"
+      
+      - name: brute_force_attempt
+        condition: "login_attempts > 100"
+        severity: critical
+        message: "Potential brute force attack detected"
+
+  authorization:
+    metrics:
+      - name: access_denied
+        type: counter
+        description: "Access denied events"
+        unit: count
+      
+      - name: successful_access
+        type: counter
+        description: "Successful access events"
+        unit: count
+    
+    alerts:
+      - name: high_access_denied_rate
+        condition: "access_denied / (access_denied + successful_access) > 0.05"
+        severity: medium
+        message: "High access denied rate detected"
+
+# Business monitoring
+business:
+  metrics:
+    - name: active_users
+      type: gauge
+      description: "Active users"
+      unit: count
+    
+    - name: transactions
+      type: counter
+      description: "Total transactions"
+      unit: count
+    
+    - name: revenue
+      type: counter
+      description: "Total revenue"
+      unit: dollars
+    
+    - name: conversion_rate
+      type: gauge
+      description: "Conversion rate"
+      unit: percent
+  
+  alerts:
+    - name: low_active_users
+      condition: "active_users < 100"
+      severity: medium
+      message: "Low active users detected"
+    
+    - name: low_conversion_rate
+      condition: "conversion_rate < 0.01"
+      severity: medium
+      message: "Low conversion rate detected"
+
+# Notification configuration
+notifications:
+  email:
+    enabled: true
+    smtp_server: "smtp.company.com"
+    smtp_port: 587
+    from_address: "monitoring@esper-enterprise.com"
+    to_addresses:
+      - "admin@esper-enterprise.com"
+      - "devops@esper-enterprise.com"
+    
+    templates:
+      critical: "templates/alert-critical.html"
+      high: "templates/alert-high.html"
+      medium: "templates/alert-medium.html"
+      low: "templates/alert-low.html"
+  
+  slack:
+    enabled: true
+    webhook_url: "https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK"
+    channel: "#alerts"
+    username: "ESPER Monitor"
+    
+    templates:
+      critical: "templates/slack-critical.json"
+      high: "templates/slack-high.json"
+      medium: "templates/slack-medium.json"
+      low: "templates/slack-low.json"
+  
+  pagerduty:
+    enabled: true
+    service_key: "YOUR_PAGERDUTY_SERVICE_KEY"
+    escalation_policy: "Monitoring Escalation"
+    
+    templates:
+      critical: "templates/pagerduty-critical.json"
+      high: "templates/pagerduty-high.json"
+      medium: "templates/pagerduty-medium.json"
+      low: "templates/pagerduty-low.json"
+  
+  webhook:
+    enabled: true
+    url: "https://your-webhook-endpoint.com/alerts"
+    headers:
+      Authorization: "Bearer YOUR_WEBHOOK_TOKEN"
+    
+    templates:
+      critical: "templates/webhook-critical.json"
+      high: "templates/webhook-high.json"
+      medium: "templates/webhook-medium.json"
+      low: "templates/webhook-low.json"
+
+# Dashboard configuration
+dashboards:
+  main:
+    title: "ESPER Enterprise Dashboard"
+    refresh_interval: 30
+    
+    panels:
+      - title: "System Overview"
+        type: "stat"
+        metrics:
+          - "esper_cpu_usage_percent"
+          - "esper_memory_usage_bytes"
+          - "esper_disk_usage_percent"
+      
+      - title: "Application Health"
+        type: "graph"
+        metrics:
+          - "esper_requests_total"
+          - "esper_errors_total"
+          - "esper_response_time_seconds"
+      
+      - title: "Business Metrics"
+        type: "graph"
+        metrics:
+          - "esper_active_users"
+          - "esper_transactions"
+          - "esper_revenue"
+      
+      - title: "Alerts"
+        type: "table"
+        query: "esper_alerts"
+    
+  performance:
+    title: "Performance Dashboard"
+    refresh_interval: 30
+    
+    panels:
+      - title: "3D Rendering Performance"
+        type: "graph"
+        metrics:
+          - "esper_render_fps"
+          - "esper_data_load_time_seconds"
+      
+      - title: "API Performance"
+        type: "graph"
+        metrics:
+          - "esper_api_response_time_seconds"
+          - "esper_api_error_rate"
+      
+      - title: "Resource Usage"
+        type: "graph"
+        metrics:
+          - "esper_cpu_usage_percent"
+          - "esper_memory_usage_bytes"
+          - "esper_disk_usage_percent"
+
+# Retention policies
+retention:
+  logs:
+    default: 365
+    debug: 30
+    info: 90
+    warning: 180
+    error: 365
+    critical: 365
+  
+  metrics:
+    default: 90
+    system: 365
+    application: 180
+    business: 365
+  
+  alerts:
+    default: 365
+    critical: 365
+    high: 180
+    medium: 90
+    low: 30
+
+# Compliance settings
+compliance:
+  pci_dss:
+    enabled: true
+    requirements:
+      - "log_all_access"
+      - "encrypt_sensitive_data"
+      - "access_control"
+      - "audit_trail"
+  
+  hipaa:
+    enabled: true
+    requirements:
+      - "protect_phi"
+      - "access_controls"
+      - "audit_logs"
+      - "data_encryption"
+  
+  soc2:
+    enabled: true
+    requirements:
+      - "availability"
+      - "processing_integrity"
+      - "confidentiality"
+      - "privacy"
+      - "security"
+
+# Backup and recovery
+backup:
+  logs:
+    enabled: true
+    frequency: "daily"
+    retention: 30
+    compression: true
+    encryption: true
+  
+  metrics:
+    enabled: true
+    frequency: "daily"
+    retention: 90
+    compression: true
+  
+  alerts:
+    enabled: true
+    frequency: "daily"
+    retention: 365
+    compression: true

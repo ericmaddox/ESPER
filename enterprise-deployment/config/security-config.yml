@@ -1,0 +1,355 @@
+# ESPER Enterprise Security Configuration
+global:
+  # Security settings
+  encryption:
+    algorithm: "AES-256-GCM"
+    key_rotation_days: 90
+    backup_keys: 3
+    
+  # Authentication settings
+  authentication:
+    max_login_attempts: 5
+    lockout_duration_minutes: 30
+    session_timeout_minutes: 30
+    concurrent_sessions: 3
+    mfa_required: true
+    password_policy:
+      minimum_length: 12
+      require_uppercase: true
+      require_lowercase: true
+      require_numbers: true
+      require_special: true
+      no_common_passwords: true
+      expiration_days: 90
+      history_count: 5
+    
+  # Authorization settings
+  authorization:
+    role_based_access: true
+    principle_of_least_privilege: true
+    segregation_of_duties: true
+    access_review_days: 30
+    
+  # Audit logging settings
+  audit_logging:
+    log_all_actions: true
+    log_failed_attempts: true
+    log_sensitive_operations: true
+    retention_days: 365
+    immutable_logging: true
+    log_format: "json"
+    
+  # Network security settings
+  network_security:
+    firewall_enabled: true
+    intrusion_detection: true
+    ddos_protection: true
+    ssl_tls:
+      protocol: "TLS 1.3"
+      cipher_suites: [
+        "TLS_AES_256_GCM_SHA384",
+        "TLS_CHACHA20_POLY1305_SHA256",
+        "TLS_AES_128_GCM_SHA256"
+      ]
+      certificate_chain_validation: true
+    
+  # Data security settings
+  data_security:
+    encryption_at_rest: true
+    encryption_in_transit: true
+    data_classification: "high"
+    backup_encryption: true
+    tokenization_enabled: true
+    
+  # Application security settings
+  application_security:
+    input_validation: true
+    output_encoding: true
+    csrf_protection: true
+    xss_protection: true
+    sql_injection_protection: true
+    api_rate_limiting: true
+    request_timeout_seconds: 30
+    
+  # Monitoring and alerting settings
+  monitoring:
+    security_monitoring: true
+    anomaly_detection: true
+    real_time_alerting: true
+    alert_channels:
+      - email
+      - slack
+      - pagerduty
+    
+  # Compliance settings
+  compliance:
+    pci_dss: true
+    hipaa: true
+    soc2: true
+    iso27001: true
+    gdpr: true
+    ccpa: true
+    
+  # Incident response settings
+  incident_response:
+    automated_response: true
+    escalation_paths: true
+    recovery_plan: true
+    communication_plan: true
+
+# User roles and permissions
+roles:
+  admin:
+    name: "Administrator"
+    description: "Full system access"
+    permissions:
+      - "read:all"
+      - "write:all"
+      - "delete:all"
+      - "admin:all"
+      - "execute:all"
+    
+  operator:
+    name: "Operator"
+    description: "System operations and monitoring"
+    permissions:
+      - "read:system"
+      - "write:system"
+      - "execute:system"
+      - "read:data"
+      - "write:data"
+    
+  analyst:
+    name: "Analyst"
+    description: "Data analysis and reporting"
+    permissions:
+      - "read:data"
+      - "write:reports"
+      - "read:analytics"
+      - "export:data"
+    
+  viewer:
+    name: "Viewer"
+    description: "Read-only access"
+    permissions:
+      - "read:data"
+      - "read:reports"
+      - "read:analytics"
+    
+  guest:
+    name: "Guest"
+    description: "Limited access"
+    permissions:
+      - "read:public"
+
+# Security policies
+policies:
+  password_policy:
+    name: "Password Policy"
+    description: "Password complexity and security requirements"
+    level: "high"
+    enabled: true
+    rules:
+      - "minimum_length: 12"
+      - "require_uppercase: true"
+      - "require_lowercase: true"
+      - "require_numbers: true"
+      - "require_special: true"
+      - "no_common_passwords: true"
+      - "expiration_days: 90"
+      - "history_count: 5"
+    
+  session_policy:
+    name: "Session Management"
+    description: "Session security and timeout requirements"
+    level: "medium"
+    enabled: true
+    rules:
+      - "timeout_minutes: 30"
+      - "concurrent_sessions: 3"
+      - "ip_binding: true"
+      - "mfa_required: true"
+      - "idle_timeout: 15"
+    
+  access_control_policy:
+    name: "Access Control"
+    description: "Role-based access control and permissions"
+    level: "critical"
+    enabled: true
+    rules:
+      - "principle_of_least_privilege: true"
+      - "segregation_of_duties: true"
+      - "access_review_days: 30"
+      - "justification_required: true"
+    
+  data_protection_policy:
+    name: "Data Protection"
+    description: "Data encryption and protection requirements"
+    level: "high"
+    enabled: true
+    rules:
+      - "encryption_at_rest: true"
+      - "encryption_in_transit: true"
+      - "key_rotation_days: 90"
+      - "data_classification: high"
+      - "backup_encryption: true"
+    
+  audit_policy:
+    name: "Audit Logging"
+    description: "Comprehensive audit logging requirements"
+    level: "critical"
+    enabled: true
+    rules:
+      - "log_all_actions: true"
+      - "log_failed_attempts: true"
+      - "retention_days: 365"
+      - "immutable_logging: true"
+      - "log_format: json"
+    
+  network_policy:
+    name: "Network Security"
+    description: "Network security and firewall rules"
+    level: "high"
+    enabled: true
+    rules:
+      - "firewall_enabled: true"
+      - "intrusion_detection: true"
+      - "ddos_protection: true"
+      - "ssl_tls_protocol: TLS 1.3"
+      - "certificate_chain_validation: true"
+    
+  application_policy:
+    name: "Application Security"
+    description: "Application security best practices"
+    level: "high"
+    enabled: true
+    rules:
+      - "input_validation: true"
+      - "output_encoding: true"
+      - "csrf_protection: true"
+      - "xss_protection: true"
+      - "sql_injection_protection: true"
+      - "api_rate_limiting: true"
+    
+  compliance_policy:
+    name: "Compliance"
+    description: "Regulatory compliance requirements"
+    level: "critical"
+    enabled: true
+    rules:
+      - "pci_dss: true"
+      - "hipaa: true"
+      - "soc2: true"
+      - "iso27001: true"
+      - "gdpr: true"
+      - "ccpa: true"
+
+# Security monitoring configuration
+monitoring:
+  metrics:
+    - "failed_login_attempts"
+    - "successful_logins"
+    - "session_timeouts"
+    - "security_incidents"
+    - "policy_violations"
+    - "data_access_patterns"
+    - "network_anomalies"
+  
+  thresholds:
+    failed_login_attempts: 10
+    session_timeouts: 50
+    security_incidents: 5
+    policy_violations: 20
+  
+  alerts:
+    critical:
+      - "multiple_failed_logins"
+      - "security_breach"
+      - "data_exfiltration"
+      - "system_compromise"
+    warning:
+      - "policy_violation"
+      - "unusual_activity"
+      - "resource_exhaustion"
+    info:
+      - "system_update"
+      - "configuration_change"
+
+# Notification configuration
+notifications:
+  email:
+    enabled: true
+    smtp_server: "smtp.company.com"
+    smtp_port: 587
+    from_address: "security@esper-enterprise.com"
+    to_addresses:
+      - "security-team@esper-enterprise.com"
+      - "admin@esper-enterprise.com"
+    
+  slack:
+    enabled: true
+    webhook_url: "https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK"
+    channel: "#security-alerts"
+    username: "ESPER Security Bot"
+    
+  pagerduty:
+    enabled: true
+    service_key: "YOUR_PAGERDUTY_SERVICE_KEY"
+    escalation_policy: "Security Escalation"
+    
+  webhook:
+    enabled: true
+    url: "https://your-webhook-endpoint.com/security-alerts"
+    headers:
+      Authorization: "Bearer YOUR_WEBHOOK_TOKEN"
+
+# Backup and recovery configuration
+backup:
+  encryption:
+    algorithm: "AES-256"
+    key_rotation_days: 90
+    
+  retention:
+    daily: 7
+    weekly: 4
+    monthly: 12
+    yearly: 3
+    
+  recovery:
+    rpo_hours: 1
+    rto_hours: 4
+    test_frequency: "monthly"
+    
+  locations:
+    - "primary"
+    - "secondary"
+    - "offsite"
+
+# Testing and validation configuration
+testing:
+  penetration_testing: true
+  frequency: "quarterly"
+  scope: "full_system"
+  
+  vulnerability_scanning: true
+  frequency: "daily"
+  tools:
+    - "nmap"
+    - "nessus"
+    - "openvas"
+    - "burp_suite"
+  
+  code_scanning: true
+  frequency: "commit"
+  tools:
+    - "sonarqube"
+    - "semgrep"
+    - "bandit"
+  
+  compliance_scanning: true
+  frequency: "monthly"
+  standards:
+    - "pci_dss"
+    - "hipaa"
+    - "soc2"
+    - "iso27001"

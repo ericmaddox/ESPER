@@ -1,0 +1,254 @@
+version: '3.8'
+
+services:
+  # Database Services
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: esper_enterprise
+      POSTGRES_USER: esper_admin
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-securepassword}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-scripts:/docker-entrypoint-initdb.d
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U esper_admin -d esper_enterprise"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  redis:
+    image: redis:7-alpine
+    command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD:-redispassword}
+    volumes:
+      - redis_data:/data
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Search Engine
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.11.0
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
+    volumes:
+      - elasticsearch_data:/usr/share/elasticsearch/data
+    ports:
+      - "9200:9200"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:9200/_cluster/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Monitoring Stack
+  prometheus:
+    image: prom/prometheus:latest
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--web.enable-lifecycle'
+      - '--storage.tsdb.retention.time=15d'
+    volumes:
+      - ./prometheus:/etc/prometheus
+      - prometheus_data:/prometheus
+    ports:
+      - "9090:9090"
+    restart: unless-stopped
+    depends_on:
+      - postgres
+      - redis
+      - elasticsearch
+
+  grafana:
+    image: grafana/grafana:latest
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD:-adminpassword}
+      - GF_USERS_ALLOW_SIGN_UP=false
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./grafana/provisioning:/etc/grafana/provisioning
+    ports:
+      - "3001:3000"
+    restart: unless-stopped
+    depends_on:
+      - prometheus
+
+  # Message Queue
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER:-rabbituser}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD:-rabbitpassword}
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "rabbitmq-diagnostics -q status"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # ESPER Core Services
+  esper-frontend:
+    build:
+      context: ..
+      dockerfile: Dockerfile.frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - REACT_APP_API_URL=http://esper-api-gateway:8080
+      - REACT_APP_WS_URL=ws://esper-api-gateway:8080
+      - REACT_APP_MAPBOX_TOKEN=${MAPBOX_TOKEN:-your_mapbox_token}
+    volumes:
+      - ../src:/app/src:ro
+      - ../public:/app/public:ro
+    restart: unless-stopped
+    depends_on:
+      - esper-api-gateway
+
+  esper-api-gateway:
+    build:
+      context: ..
+      dockerfile: Dockerfile.gateway
+    ports:
+      - "8080:8080"
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=postgresql://esper_admin:${POSTGRES_PASSWORD:-securepassword}@postgres:5432/esper_enterprise
+      - REDIS_URL=redis://:${REDIS_PASSWORD:-redispassword}@redis:6379
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
+      - RABBITMQ_URL=amqp://${RABBITMQ_USER:-rabbituser}:${RABBITMQ_PASSWORD:-rabbitpassword}@rabbitmq:5672
+    volumes:
+      - ./gateway-config:/app/config
+    restart: unless-stopped
+    depends_on:
+      - postgres
+      - redis
+      - elasticsearch
+      - rabbitmq
+
+  # Ralph Loop Services
+  ralph-master:
+    build:
+      context: .
+      dockerfile: Dockerfile.ralph
+    command: python scripts/ralph-master.py --daemon --config /app/config/ralph-loop-config.yml
+    environment:
+      - PYTHONPATH=/app
+      - RALPH_CONFIG_PATH=/app/config/ralph-loop-config.yml
+    volumes:
+      - ./config:/app/config
+      - ./scripts:/app/scripts
+      - /var/log:/var/log
+    restart: unless-stopped
+    depends_on:
+      - postgres
+      - redis
+      - elasticsearch
+
+  ralph-api:
+    build:
+      context: .
+      dockerfile: Dockerfile.ralph
+    command: python scripts/ralph-api.py
+    ports:
+      - "8081:8081"
+    environment:
+      - PYTHONPATH=/app
+      - RALPH_CONFIG_PATH=/app/config/ralph-loop-config.yml
+    volumes:
+      - ./config:/app/config
+      - ./scripts:/app/scripts
+    restart: unless-stopped
+    depends_on:
+      - ralph-master
+
+  ralph-dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile.ralph
+    command: python scripts/ralph-dashboard.py
+    ports:
+      - "8082:8082"
+    environment:
+      - PYTHONPATH=/app
+      - RALPH_CONFIG_PATH=/app/config/ralph-loop-config.yml
+    volumes:
+      - ./config:/app/config
+      - ./scripts:/app/scripts
+    restart: unless-stopped
+    depends_on:
+      - ralph-api
+
+  ralph-notifications:
+    build:
+      context: .
+      dockerfile: Dockerfile.ralph
+    command: python scripts/ralph-notifications.py --config /app/config/sub-agents-config.yml
+    environment:
+      - PYTHONPATH=/app
+      - RALPH_CONFIG_PATH=/app/config/ralph-loop-config.yml
+    volumes:
+      - ./config:/app/config
+      - ./scripts:/app/scripts
+    restart: unless-stopped
+    depends_on:
+      - ralph-api
+
+  ralph-data-processor:
+    build:
+      context: .
+      dockerfile: Dockerfile.ralph
+    command: python scripts/ralph-data-processor.py --config /app/config/sub-agents-config.yml
+    environment:
+      - PYTHONPATH=/app
+      - RALPH_CONFIG_PATH=/app/config/ralph-loop-config.yml
+    volumes:
+      - ./config:/app/config
+      - ./scripts:/app/scripts
+    restart: unless-stopped
+    depends_on:
+      - elasticsearch
+      - redis
+
+  # Reverse Proxy
+  nginx:
+    image: nginx:alpine
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/conf.d:/etc/nginx/conf.d
+    ports:
+      - "80:80"
+      - "443:443"
+    restart: unless-stopped
+    depends_on:
+      - esper-frontend
+      - esper-api-gateway
+      - ralph-api
+      - ralph-dashboard
+
+volumes:
+  postgres_data:
+  redis_data:
+  elasticsearch_data:
+  prometheus_data:
+  grafana_data:
+  rabbitmq_data:

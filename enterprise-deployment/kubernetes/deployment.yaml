@@ -1,0 +1,390 @@
+# Kubernetes Production Deployment for ESPER Enterprise
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: esper-frontend
+  namespace: esper-enterprise
+  labels:
+    app: esper-frontend
+    version: v2.0.0
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: esper-frontend
+  template:
+    metadata:
+      labels:
+        app: esper-frontend
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "3000"
+        prometheus.io/path: "/metrics"
+    spec:
+      containers:
+      - name: esper-frontend
+        image: esper-enterprise/frontend:v2.0.0
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+        env:
+        - name: NODE_ENV
+          value: "production"
+        - name: REACT_APP_API_BASE_URL
+          value: "https://api.esper-enterprise.com"
+        - name: REACT_APP_MAPBOX_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: mapbox-token
+              key: token
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "250m"
+          limits:
+            memory: "1Gi"
+            cpu: "500m"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        volumeMounts:
+        - name: config
+          mountPath: /app/config
+        - name: ssl-certs
+          mountPath: /app/ssl
+      volumes:
+      - name: config
+        configMap:
+          name: frontend-config
+      - name: ssl-certs
+        secret:
+          secretName: ssl-certificates
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: esper-frontend-service
+  namespace: esper-enterprise
+  labels:
+    app: esper-frontend
+spec:
+  selector:
+    app: esper-frontend
+  ports:
+  - port: 80
+    targetPort: 3000
+  type: ClusterIP
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: esper-frontend-ingress
+  namespace: esper-enterprise
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/rate-limit: "100"
+    nginx.ingress.kubernetes.io/rate-limit-window: "1m"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+spec:
+  tls:
+  - hosts:
+    - esper-enterprise.com
+    - www.esper-enterprise.com
+    secretName: esper-enterprise-tls
+  rules:
+  - host: esper-enterprise.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: esper-frontend-service
+            port:
+              number: 80
+  - host: www.esper-enterprise.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: esper-frontend-service
+            port:
+              number: 80
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: esper-api-gateway
+  namespace: esper-enterprise
+  labels:
+    app: esper-api-gateway
+    version: v2.0.0
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: esper-api-gateway
+  template:
+    metadata:
+      labels:
+        app: esper-api-gateway
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8080"
+        prometheus.io/path: "/metrics"
+    spec:
+      containers:
+      - name: esper-api-gateway
+        image: esper-enterprise/api-gateway:v2.0.0
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        - containerPort: 8443
+        env:
+        - name: NODE_ENV
+          value: "production"
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: database-url
+              key: url
+        - name: REDIS_URL
+          valueFrom:
+            secretKeyRef:
+              name: redis-url
+              key: url
+        - name: JWT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: jwt-secret
+              key: secret
+        - name: CORS_ORIGIN
+          value: "https://esper-enterprise.com"
+        resources:
+          requests:
+            memory: "1Gi"
+            cpu: "500m"
+          limits:
+            memory: "2Gi"
+            cpu: "1000m"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        volumeMounts:
+        - name: config
+          mountPath: /app/config
+        - name: ssl-certs
+          mountPath: /app/ssl
+      volumes:
+      - name: config
+        configMap:
+          name: api-gateway-config
+      - name: ssl-certs
+        secret:
+          secretName: ssl-certificates
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: esper-api-gateway-service
+  namespace: esper-enterprise
+  labels:
+    app: esper-api-gateway
+spec:
+  selector:
+    app: esper-api-gateway
+  ports:
+  - port: 8080
+    targetPort: 8080
+  - port: 8443
+    targetPort: 8443
+  type: ClusterIP
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres
+  namespace: esper-enterprise
+  labels:
+    app: postgres
+    version: 15
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres
+  template:
+    metadata:
+      labels:
+        app: postgres
+    spec:
+      containers:
+      - name: postgres
+        image: postgres:15-alpine
+        ports:
+        - containerPort: 5432
+        env:
+        - name: POSTGRES_DB
+          value: "esper_enterprise"
+        - name: POSTGRES_USER
+          value: "esper"
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: postgres-password
+              key: password
+        resources:
+          requests:
+            memory: "1Gi"
+            cpu: "500m"
+          limits:
+            memory: "2Gi"
+            cpu: "1000m"
+        volumeMounts:
+        - name: postgres-data
+          mountPath: /var/lib/postgresql/data
+        - name: init-sql
+          mountPath: /docker-entrypoint-initdb.d
+      volumes:
+      - name: postgres-data
+        persistentVolumeClaim:
+          claimName: postgres-pvc
+      - name: init-sql
+        configMap:
+          name: postgres-init-sql
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-service
+  namespace: esper-enterprise
+spec:
+  selector:
+    app: postgres
+  ports:
+  - port: 5432
+    targetPort: 5432
+  type: ClusterIP
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis
+  namespace: esper-enterprise
+  labels:
+    app: redis
+    version: 7
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis
+  template:
+    metadata:
+      labels:
+        app: redis
+    spec:
+      containers:
+      - name: redis
+        image: redis:7-alpine
+        ports:
+        - containerPort: 6379
+        env:
+        - name: REDIS_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: redis-password
+              key: password
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        volumeMounts:
+        - name: redis-data
+          mountPath: /data
+      volumes:
+      - name: redis-data
+        persistentVolumeClaim:
+          claimName: redis-pvc
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-service
+  namespace: esper-enterprise
+spec:
+  selector:
+    app: redis
+  ports:
+  - port: 6379
+    targetPort: 6379
+  type: ClusterIP
+
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: esper-frontend-hpa
+  namespace: esper-enterprise
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: esper-frontend
+  minReplicas: 3
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: 80

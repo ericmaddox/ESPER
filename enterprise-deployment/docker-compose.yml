@@ -1,0 +1,181 @@
+version: '3.8'
+
+services:
+  # ESPER Frontend Application
+  esper-frontend:
+    build:
+      context: ..
+      dockerfile: Dockerfile.frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - REACT_APP_API_BASE_URL=https://api.esper-enterprise.com
+      - REACT_APP_MAPBOX_TOKEN=${MAPBOX_TOKEN}
+    volumes:
+      - ../public:/app/public:ro
+    depends_on:
+      - redis
+      - postgres
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # ESPER API Gateway
+  esper-api-gateway:
+    build:
+      context: ../backend
+      dockerfile: Dockerfile.gateway
+    ports:
+      - "8080:8080"
+      - "8443:8443"
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=postgresql://esper:${POSTGRES_PASSWORD}@postgres:5432/esper_enterprise
+      - REDIS_URL=redis://redis:6379
+      - JWT_SECRET=${JWT_SECRET}
+      - CORS_ORIGIN=https://esper-enterprise.com
+    depends_on:
+      - postgres
+      - redis
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_DB=esper_enterprise
+      - POSTGRES_USER=esper
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+      - ./database/backups:/backups
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U esper -d esper_enterprise"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # Redis Cache & Session Store
+  redis:
+    image: redis:7-alpine
+    command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD}
+    volumes:
+      - redis_data:/data
+      - ./redis/redis.conf:/usr/local/etc/redis/redis.conf:ro
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Elasticsearch for Search & Analytics
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.8.0
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    volumes:
+      - elasticsearch_data:/usr/share/elasticsearch/data
+    ports:
+      - "9200:9200"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:9200/_cluster/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # Grafana Monitoring
+  grafana:
+    image: grafana/grafana:10.2.0
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD}
+      - GF_USERS_ALLOW_SIGN_UP=false
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./monitoring/grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./monitoring/grafana/dashboards:/var/lib/grafana/dashboards:ro
+    ports:
+      - "3001:3000"
+    depends_on:
+      - prometheus
+    restart: unless-stopped
+
+  # Prometheus Metrics
+  prometheus:
+    image: prom/prometheus:2.45.0
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--storage.tsdb.retention.time=200h'
+      - '--web.enable-lifecycle'
+    volumes:
+      - prometheus_data:/prometheus
+      - ./monitoring/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    ports:
+      - "9090:9090"
+    restart: unless-stopped
+
+  # Loki Log Aggregation
+  loki:
+    image: grafana/loki:2.8.0
+    command: -config.file=/etc/loki/local-config.yaml
+    volumes:
+      - loki_data:/loki
+      - ./monitoring/loki/loki-config.yml:/etc/loki/local-config.yaml:ro
+    ports:
+      - "3100:3100"
+    restart: unless-stopped
+
+  # Nginx Reverse Proxy
+  nginx:
+    image: nginx:alpine
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+    ports:
+      - "443:443"   # HTTPS
+      - "80:80"     # HTTP (redirect to HTTPS)
+    depends_on:
+      - esper-frontend
+      - esper-api-gateway
+    restart: unless-stopped
+
+  # Jaeger Distributed Tracing
+  jaeger:
+    image: jaegertracing/all-in-one:1.52
+    environment:
+      - COLLECTOR_ZIPKIN_HOST_PORT=:9411
+    ports:
+      - "16686:16686"  # Jaeger UI
+      - "14268:14268"  # Collector
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  redis_data:
+  elasticsearch_data:
+  grafana_data:
+  prometheus_data:
+  loki_data:

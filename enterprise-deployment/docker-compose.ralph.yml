@@ -1,0 +1,201 @@
+version: '3.8'
+
+services:
+  # Ralph Loop Master Orchestrator
+  ralph-master:
+    build:
+      context: ..
+      dockerfile: Dockerfile.ralph
+    command: python scripts/ralph-master.py --daemon --config /app/config/ralph-loop-config.yml
+    environment:
+      - PYTHONPATH=/app
+      - LOG_LEVEL=INFO
+      - CONFIG_PATH=/app/config/ralph-loop-config.yml
+    volumes:
+      - ./config:/app/config:ro
+      - ./logs:/app/logs
+      - ./scripts:/app/scripts
+    depends_on:
+      - prometheus
+      - grafana
+      - loki
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import sys; sys.exit(0)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Health Check Sub-Agent
+  health-check-agent:
+    build:
+      context: ..
+      dockerfile: Dockerfile.ralph
+    command: python scripts/sub-agents.py --agent health --config /app/config/sub-agents-config.yml
+    environment:
+      - PYTHONPATH=/app
+      - HEALTH_CHECK_SERVICES=http://esper-frontend:3000/health,http://esper-api-gateway:8080/health
+      - HEALTH_CHECK_TIMEOUT=30
+    volumes:
+      - ./config:/app/config:ro
+      - ./logs:/app/logs
+    depends_on:
+      - esper-frontend
+      - esper-api-gateway
+    restart: unless-stopped
+
+  # Performance Optimization Sub-Agent
+  performance-agent:
+    build:
+      context: ..
+      dockerfile: Dockerfile.ralph
+    command: python scripts/sub-agents.py --agent performance --config /app/config/sub-agents-config.yml
+    environment:
+      - PYTHONPATH=/app
+      - PROMETHEUS_URL=http://prometheus:9090
+      - GRAFANA_URL=http://grafana:3000
+    volumes:
+      - ./config:/app/config:ro
+      - ./logs:/app/logs
+    depends_on:
+      - prometheus
+      - grafana
+    restart: unless-stopped
+
+  # Security Scan Sub-Agent
+  security-agent:
+    build:
+      context: ..
+      dockerfile: Dockerfile.ralph
+    command: python scripts/sub-agents.py --agent security --config /app/config/sub-agents-config.yml
+    environment:
+      - PYTHONPATH=/app
+      - SECURITY_API_KEY=${SECURITY_API_KEY}
+      - SCAN_TARGETS=http://esper-frontend:3000,http://esper-api-gateway:8080
+    volumes:
+      - ./config:/app/config:ro
+      - ./logs:/app/logs
+    depends_on:
+      - esper-frontend
+      - esper-api-gateway
+    restart: unless-stopped
+
+  # Database Maintenance Sub-Agent
+  database-agent:
+    build:
+      context: ..
+      dockerfile: Dockerfile.ralph
+    command: python scripts/sub-agents.py --agent database --config /app/config/sub-agents-config.yml
+    environment:
+      - PYTHONPATH=/app
+      - DATABASE_URL=postgresql://esper:${POSTGRES_PASSWORD}@postgres:5432/esper_enterprise
+      - BACKUP_BUCKET=${BACKUP_BUCKET}
+    volumes:
+      - ./config:/app/config:ro
+      - ./logs:/app/logs
+      - ./backups:/backups
+    depends_on:
+      - postgres
+    restart: unless-stopped
+
+  # Ralph Loop API Gateway (for external integrations)
+  ralph-api:
+    build:
+      context: ..
+      dockerfile: Dockerfile.ralph
+    command: python scripts/ralph-api.py
+    ports:
+      - "8081:8081"
+    environment:
+      - PYTHONPATH=/app
+      - CONFIG_PATH=/app/config/ralph-loop-config.yml
+    volumes:
+      - ./config:/app/config:ro
+      - ./logs:/app/logs
+    depends_on:
+      - ralph-master
+    restart: unless-stopped
+
+  # Ralph Loop Dashboard (for monitoring)
+  ralph-dashboard:
+    build:
+      context: ..
+      dockerfile: Dockerfile.ralph
+    command: python scripts/ralph-dashboard.py
+    ports:
+      - "8082:8082"
+    environment:
+      - PYTHONPATH=/app
+      - CONFIG_PATH=/app/config/ralph-loop-config.yml
+      - GRAFANA_URL=http://grafana:3000
+      - PROMETHEUS_URL=http://prometheus:9090
+    volumes:
+      - ./config:/app/config:ro
+      - ./logs:/app/logs
+    depends_on:
+      - prometheus
+      - grafana
+      - ralph-master
+    restart: unless-stopped
+
+  # Ralph Loop Notification Service
+  ralph-notifications:
+    build:
+      context: ..
+      dockerfile: Dockerfile.ralph
+    command: python scripts/ralph-notifications.py
+    environment:
+      - PYTHONPATH=/app
+      - SLACK_WEBHOOK=${SLACK_WEBHOOK}
+      - EMAIL_SERVER=${EMAIL_SERVER}
+      - EMAIL_PORT=${EMAIL_PORT}
+      - EMAIL_USERNAME=${EMAIL_USERNAME}
+      - EMAIL_PASSWORD=${EMAIL_PASSWORD}
+    volumes:
+      - ./config:/app/config:ro
+      - ./logs:/app/logs
+    depends_on:
+      - ralph-master
+    restart: unless-stopped
+
+  # Ralph Loop Data Processing Service
+  ralph-data-processor:
+    build:
+      context: ..
+      dockerfile: Dockerfile.ralph
+    command: python scripts/ralph-data-processor.py
+    environment:
+      - PYTHONPATH=/app
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
+      - REDIS_URL=redis://redis:6379
+    volumes:
+      - ./config:/app/config:ro
+      - ./logs:/app/logs
+      - ./data:/app/data
+    depends_on:
+      - elasticsearch
+      - redis
+    restart: unless-stopped
+
+  # Ralph Loop Analytics Service
+  ralph-analytics:
+    build:
+      context: ..
+      dockerfile: Dockerfile.ralph
+    command: python scripts/ralph-analytics.py
+    environment:
+      - PYTHONPATH=/app
+      - DATABASE_URL=postgresql://esper:${POSTGRES_PASSWORD}@postgres:5432/esper_enterprise
+      - PROMETHEUS_URL=http://prometheus:9090
+    volumes:
+      - ./config:/app/config:ro
+      - ./logs:/app/logs
+    depends_on:
+      - postgres
+      - prometheus
+    restart: unless-stopped
+
+volumes:
+  ralph_logs:
+  ralph_data:
+  ralph_config:

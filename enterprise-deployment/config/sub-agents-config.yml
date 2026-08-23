@@ -1,0 +1,205 @@
+# Ralph Loop Sub-Agent Configuration
+health_check:
+  services:
+    - name: "esper-frontend"
+      url: "http://esper-frontend:3000/health"
+      expected_status: 200
+      timeout: 30
+    - name: "esper-api-gateway"
+      url: "http://esper-api-gateway:8080/health"
+      expected_status: 200
+      timeout: 30
+    - name: "postgres"
+      url: "http://postgres:5432"
+      expected_status: 200
+      timeout: 30
+    - name: "redis"
+      url: "http://redis:6379"
+      expected_status: 200
+      timeout: 30
+  timeout: 30
+  retry_count: 3
+
+performance_optimization:
+  prometheus_url: "http://prometheus:9090"
+  grafana_url: "http://grafana:3000"
+  optimization_rules:
+    - name: "scale_up_on_high_cpu"
+      condition:
+        metric: "cpu_usage"
+        operator: ">"
+        threshold: 80
+      action:
+        type: "scale_up"
+        target: "esper-frontend"
+        replicas: 5
+    - name: "scale_down_on_low_cpu"
+      condition:
+        metric: "cpu_usage"
+        operator: "<"
+        threshold: 30
+      action:
+        type: "scale_down"
+        target: "esper-frontend"
+        replicas: 2
+    - name: "optimize_cache_on_high_memory"
+      condition:
+        metric: "memory_usage"
+        operator: ">"
+        threshold: 80
+      action:
+        type: "cache_optimization"
+        target: "redis"
+    - name: "optimize_connections_on_high_requests"
+      condition:
+        metric: "request_rate"
+        operator: ">"
+        threshold: 1000
+      action:
+        type: "connection_pool"
+        target: "esper-api-gateway"
+  optimization_interval: 300  # 5 minutes
+
+security_scan:
+  scan_targets:
+    - type: "vulnerability_scan"
+      target: "esper-frontend"
+    - type: "vulnerability_scan"
+      target: "esper-api-gateway"
+    - type: "compliance_scan"
+      target: "esper-enterprise"
+    - type: "network_scan"
+      target: "192.168.1.0/24"
+  security_tools:
+    - "nmap"
+    - "openvas"
+    - "lynis"
+  scan_interval: 3600  # 1 hour
+  alert_thresholds:
+    critical: 1
+    high: 5
+    medium: 10
+
+database_maintenance:
+  database_url: "postgresql://esper:${POSTGRES_PASSWORD}@postgres:5432/esper_enterprise"
+  maintenance_tasks:
+    - name: "vacuum_analyze"
+      type: "vacuum"
+      schedule: "0 2 * * *"  # Daily at 2 AM
+      severity: "high"
+    - name: "reindex_tables"
+      type: "reindex"
+      schedule: "0 3 1 * *"  # Monthly on 1st at 3 AM
+      severity: "medium"
+    - name: "analyze_statistics"
+      type: "analyze"
+      schedule: "0 1 * * *"  # Daily at 1 AM
+      severity: "medium"
+    - name: "cleanup_old_data"
+      type: "cleanup"
+      schedule: "0 4 * * *"  # Daily at 4 AM
+      severity: "low"
+  backup_config:
+    retention_days: 30
+    backup_schedule: "0 5 * * *"  # Daily at 5 AM
+    compression: true
+    encryption: true
+  optimization_config:
+    update_statistics: true
+    optimize_query_plans: true
+    analyze_query_performance: true
+
+notification_settings:
+  email:
+    enabled: true
+    smtp_server: "${SMTP_SERVER}"
+    smtp_port: "${SMTP_PORT}"
+    username: "${SMTP_USERNAME}"
+    password: "${SMTP_PASSWORD}"
+    from_address: "ralph@esper-enterprise.com"
+    to_addresses:
+      - "admin@esper-enterprise.com"
+      - "ops@esper-enterprise.com"
+  slack:
+    enabled: true
+    webhook_url: "${SLACK_WEBHOOK}"
+    channel: "#ralph-alerts"
+    username: "Ralph Loop"
+  pagerduty:
+    enabled: true
+    service_key: "${PAGERDUTY_SERVICE_KEY}"
+    escalation_policy: "ESPER_Escalation"
+
+logging:
+  level: "INFO"
+  format: "json"
+  outputs:
+    - type: "file"
+      path: "/app/logs/ralph.log"
+      max_size: "100MB"
+      max_files: 10
+    - type: "elasticsearch"
+      url: "http://elasticsearch:9200"
+      index: "ralph-logs"
+      retention_days: 30
+    - type: "loki"
+      url: "http://loki:3100"
+      retention_days: 7
+
+monitoring:
+  metrics:
+    prometheus:
+      enabled: true
+      port: 8080
+      path: "/metrics"
+      interval: "30s"
+    grafana:
+      enabled: true
+      dashboard: "ralph-dashboard"
+      refresh_interval: "30s"
+  tracing:
+    jaeger:
+      enabled: true
+      service_name: "ralph-loop"
+      sampling_rate: 0.1
+  health_checks:
+    enabled: true
+    interval: "30s"
+    timeout: "10s"
+
+storage:
+  data_dir: "/app/data"
+  backup_dir: "/app/backups"
+  cache_dir: "/app/cache"
+  temp_dir: "/app/temp"
+  retention:
+    data_days: 90
+    backup_days: 365
+    cache_days: 7
+    temp_days: 1
+
+performance:
+  worker_threads: 4
+  max_concurrent_tasks: 100
+  task_timeout: "30m"
+  retry_attempts: 3
+  retry_delay: "1m"
+  queue_size: 1000
+
+security:
+  encryption:
+    enabled: true
+    algorithm: "AES-256"
+    key_rotation_days: 90
+  authentication:
+    enabled: true
+    method: "jwt"
+    token_expiry: "24h"
+  authorization:
+    enabled: true
+    role_based_access: true
+    admin_roles: ["system_admin", "security_admin"]
+  audit:
+    enabled: true
+    log_all_operations: true
+    retention_days: 365
