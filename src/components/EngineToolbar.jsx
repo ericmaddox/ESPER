@@ -162,7 +162,7 @@ export default function EngineToolbar({
             </div>
 
             <p className="text-[9px] text-slate-500 mt-1">
-              💡 Tip: Right-click + Drag or Ctrl + Drag to tilt manually.
+              TIP: Right-click + Drag or Ctrl + Drag to tilt manually.
             </p>
           </div>
 

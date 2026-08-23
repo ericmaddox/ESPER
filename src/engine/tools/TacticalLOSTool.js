@@ -30,7 +30,7 @@ export class TacticalLOSTool {
         element: obsEl,
         popupContent: `
           <div style="font-family:monospace; padding:4px; font-size:11px; background:#090d16; color:#e2e8f0; border-radius:6px; border:1px solid #06b6d4;">
-            <div style="color:#06b6d4; font-weight:bold;">🔭 OBSERVER SET</div>
+            <div style="color:#06b6d4; font-weight:bold;">OBSERVER SET</div>
             <div style="color:#94a3b8; font-size:10px;">Now click map to place Target point</div>
           </div>
         `
@@ -103,7 +103,7 @@ export class TacticalLOSTool {
         element: obsEl,
         popupContent: `
           <div style="font-family:monospace; padding:4px; font-size:11px; background:#090d16; color:#e2e8f0; border-radius:6px; border:1px solid #06b6d4;">
-            <div style="color:#06b6d4; font-weight:bold;">🔭 OBSERVER / OVERWATCH</div>
+            <div style="color:#06b6d4; font-weight:bold;">OBSERVER / OVERWATCH</div>
             <div>ELEVATION: ${losResult.observerAltitude}m ASL</div>
           </div>
         `
@@ -126,7 +126,7 @@ export class TacticalLOSTool {
             losResult.clearLineOfSight ? '#22c55e' : '#ef4444'
           };">
             <div style="color:${losResult.clearLineOfSight ? '#22c55e' : '#ef4444'}; font-weight:bold;">
-              🎯 TARGET (${losResult.clearLineOfSight ? 'DIRECT SIGHT' : 'OCCLUDED'})
+              TARGET (${losResult.clearLineOfSight ? 'DIRECT SIGHT' : 'OCCLUDED'})
             </div>
             <div>ELEVATION: ${losResult.targetAltitude}m ASL</div>
             <div>DISTANCE: ${losResult.totalDistance}m</div>
@@ -147,7 +147,7 @@ export class TacticalLOSTool {
           element: obsPointEl,
           popupContent: `
             <div style="font-family:monospace; padding:4px; font-size:11px; background:#090d16; color:#e2e8f0; border-radius:6px; border:1px solid #ef4444;">
-              <div style="color:#ef4444; font-weight:bold;">⚠️ TERRAIN OBSTRUCTION</div>
+              <div style="color:#ef4444; font-weight:bold;">TERRAIN OBSTRUCTION</div>
               <div>DISTANCE: ${losResult.firstObstruction.distance}m</div>
               <div>BLOCK DEPTH: +${losResult.firstObstruction.depth}m</div>
             </div>

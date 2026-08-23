@@ -6,7 +6,10 @@ import {
   MarkerManager,
   TacticalPerimeterTool,
   TacticalLOSTool,
-  getSolarPosition
+  getSolarPosition,
+  getIncidentTacticalIcon,
+  getUnitTacticalIcon,
+  TACTICAL_SVG_ICONS
 } from '../engine';
 import EngineToolbar from './EngineToolbar';
 import DragDropOverlay from './DragDropOverlay';
@@ -131,7 +134,7 @@ const MapView = forwardRef(
 
         const popup = new maplibregl.Popup({ offset: 25, closeButton: true }).setHTML(`
           <div style="min-width:200px">
-            <div style="color:#00f3ff; font-weight:700; font-size:12px; margin-bottom:2px;">📍 ${loc.name}</div>
+            <div style="color:#00f3ff; font-weight:700; font-size:12px; margin-bottom:2px;">${loc.name}</div>
             <div style="color:#94a3b8; font-size:10px; word-break:break-word;">${loc.address}</div>
             <div style="color:#64748b; font-size:9px; margin-top:4px;">GPS: ${loc.latitude.toFixed(5)}, ${loc.longitude.toFixed(5)}</div>
           </div>
@@ -533,31 +536,23 @@ const MapView = forwardRef(
             const el = document.createElement('div');
             el.className = 'incident-marker cursor-pointer';
 
-            let icon = '🔥';
-            let color = '#ef4444';
-            if (inc.type.includes('Drone') || inc.type.includes('UAV')) {
-              icon = '🛸';
-              color = '#a855f7';
-            } else if (inc.type.includes('Shots') || inc.type.includes('Robbery')) {
-              icon = '⚠️';
-              color = '#f97316';
-            } else if (inc.type.includes('Medical')) {
-              icon = '🚑';
-              color = '#3b82f6';
-            }
+            const { svg: iconSvg, color } = getIncidentTacticalIcon(inc.type);
 
             el.innerHTML = `
             <div style="position:relative; width:36px; height:36px;">
               <div class="pulse-ring" style="position:absolute; inset:0; border-radius:50%; border:2px solid ${color};"></div>
-              <div style="position:absolute; inset:4px; background:rgba(15,23,42,0.9); border:2px solid ${color}; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow: 0 0 12px ${color}88;">
-                <span style="font-size:14px;">${icon}</span>
+              <div style="position:absolute; inset:4px; background:rgba(15,23,42,0.95); border:2px solid ${color}; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow: 0 0 14px ${color}aa; color:${color};">
+                ${iconSvg}
               </div>
             </div>
           `;
 
             const popup = new maplibregl.Popup({ offset: 20, closeButton: true }).setHTML(`
               <div style="min-width:200px">
-                <div style="color:${color}; font-weight:700; font-size:12px; margin-bottom:2px;">${icon} ${inc.type} (${inc.id})</div>
+                <div style="color:${color}; font-weight:700; font-size:12px; margin-bottom:2px; display:flex; align-items:center; gap:6px;">
+                  <span style="display:inline-flex; width:14px; height:14px;">${iconSvg}</span>
+                  <span>${inc.type} (${inc.id})</span>
+                </div>
                 <div style="color:#f8fafc; font-size:11px; font-weight:600;">${inc.address}</div>
                 <div style="color:#94a3b8; font-size:10px; margin-top:2px;">REPORTED: ${inc.time}</div>
                 <div style="color:#cbd5e1; font-size:10px; margin-top:4px;">${inc.details || ''}</div>
@@ -614,16 +609,19 @@ const MapView = forwardRef(
               el.className = 'camera-marker cursor-pointer';
               const color = cam.status === 'alert' ? '#ef4444' : '#00f3ff';
               el.innerHTML = `
-              <div style="width:28px; height:28px; background:rgba(15,23,42,0.9); border:2px solid ${color}; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow: 0 0 10px ${color}aa;">
-                <span style="font-size:12px;">📷</span>
+              <div style="width:28px; height:28px; background:rgba(15,23,42,0.92); border:2px solid ${color}; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow: 0 0 10px ${color}aa; color:${color};">
+                ${TACTICAL_SVG_ICONS.CAMERA}
               </div>
             `;
 
               const popup = new maplibregl.Popup({ offset: 15, closeButton: true }).setHTML(`
                 <div style="min-width:180px">
-                  <div style="color:${color}; font-weight:700; font-size:11px;">📷 ${cam.name}</div>
+                  <div style="color:${color}; font-weight:700; font-size:11px; display:flex; align-items:center; gap:4px;">
+                    <span style="display:inline-flex; width:12px; height:12px;">${TACTICAL_SVG_ICONS.CAMERA}</span>
+                    <span>${cam.name}</span>
+                  </div>
                   <div style="color:#94a3b8; font-size:10px;">ID: ${cam.id} | HEADING: ${cam.heading}°</div>
-                  <div style="color:#cbd5e1; font-size:10px; margin-top:2px;">STREAM: ${cam.streamUrl ? 'LIVE CALTRANS HLS' : 'SIMULATION'}</div>
+                  <div style="color:#cbd5e1; font-size:10px; margin-top:2px;">STREAM: ${cam.streamUrl ? 'LIVE FEED' : 'SIMULATION'}</div>
                   <div style="margin-top:6px; color:#00f3ff; font-size:10px; font-weight:600;">CLICK TO LAUNCH FEED</div>
                 </div>
               `);
@@ -649,15 +647,18 @@ const MapView = forwardRef(
               el.innerHTML = `
               <div style="position:relative; width:34px; height:34px;">
                 <div class="pulse-ring" style="position:absolute; inset:-2px; border-radius:50%; border:2px solid #38bdf8;"></div>
-                <div style="position:absolute; inset:0; background:rgba(15,23,42,0.95); border:2px solid #38bdf8; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 0 14px rgba(56,189,248,0.6);">
-                  <span style="font-size:14px;">🛸</span>
+                <div style="position:absolute; inset:0; background:rgba(15,23,42,0.95); border:2px solid #38bdf8; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 0 14px rgba(56,189,248,0.6); color:#38bdf8;">
+                  ${TACTICAL_SVG_ICONS.DRONE}
                 </div>
               </div>
             `;
 
               const popup = new maplibregl.Popup({ offset: 20, closeButton: true }).setHTML(`
                 <div style="min-width:190px">
-                  <div style="color:#38bdf8; font-weight:700; font-size:12px;">🛸 ${drone.callsign} (${drone.model})</div>
+                  <div style="color:#38bdf8; font-weight:700; font-size:12px; display:flex; align-items:center; gap:4px;">
+                    <span style="display:inline-flex; width:14px; height:14px;">${TACTICAL_SVG_ICONS.DRONE}</span>
+                    <span>${drone.callsign} (${drone.model})</span>
+                  </div>
                   <div style="color:#94a3b8; font-size:10px;">BATTERY: ${drone.battery}% | ALT: ${drone.altitude}m</div>
                   <div style="color:#cbd5e1; font-size:10px; margin-top:2px;">SPEED: ${drone.speed} kts</div>
                   <div style="color:#38bdf8; font-size:10px; margin-top:4px; font-weight:600;">MISSION: ${drone.mission}</div>
@@ -719,14 +720,17 @@ const MapView = forwardRef(
               const el = document.createElement('div');
               el.className = 'cuas-sensor-marker cursor-pointer';
               el.innerHTML = `
-              <div style="width:30px; height:30px; background:rgba(15,23,42,0.92); border:2px solid #c084fc; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow: 0 0 12px rgba(192,132,252,0.5);">
-                <span style="font-size:13px;">📡</span>
+              <div style="width:30px; height:30px; background:rgba(15,23,42,0.92); border:2px solid #c084fc; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow: 0 0 12px rgba(192,132,252,0.5); color:#c084fc;">
+                ${TACTICAL_SVG_ICONS.RADAR}
               </div>
             `;
 
               const popup = new maplibregl.Popup({ offset: 18, closeButton: true }).setHTML(`
                 <div style="min-width:190px">
-                  <div style="color:#c084fc; font-weight:700; font-size:11px;">📡 C-UAS RF SENSOR (${sensor.name})</div>
+                  <div style="color:#c084fc; font-weight:700; font-size:11px; display:flex; align-items:center; gap:4px;">
+                    <span style="display:inline-flex; width:12px; height:12px;">${TACTICAL_SVG_ICONS.RADAR}</span>
+                    <span>C-UAS RF SENSOR (${sensor.name})</span>
+                  </div>
                   <div style="color:#94a3b8; font-size:10px;">BAND: ${sensor.frequencyBand} | RANGE: ${sensor.rangeMeters}m</div>
                   <div style="color:#ef4444; font-size:10px; margin-top:3px; font-weight:700;">STATUS: ${sensor.status}</div>
                 </div>
@@ -746,15 +750,18 @@ const MapView = forwardRef(
               el.innerHTML = `
               <div style="position:relative; width:34px; height:34px;">
                 <div class="pulse-ring" style="position:absolute; inset:-2px; border-radius:50%; border:2px solid #ef4444;"></div>
-                <div style="position:absolute; inset:0; background:rgba(15,23,42,0.95); border:2px solid #ef4444; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 0 16px rgba(239,68,68,0.8);">
-                  <span style="font-size:14px;">👾</span>
+                <div style="position:absolute; inset:0; background:rgba(15,23,42,0.95); border:2px solid #ef4444; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 0 16px rgba(239,68,68,0.8); color:#ef4444;">
+                  ${TACTICAL_SVG_ICONS.HOSTILE}
                 </div>
               </div>
             `;
 
               const popup = new maplibregl.Popup({ offset: 20, closeButton: true }).setHTML(`
                 <div style="min-width:200px">
-                  <div style="color:#ef4444; font-weight:700; font-size:12px;">👾 ROGUE UAV INTRUSION</div>
+                  <div style="color:#ef4444; font-weight:700; font-size:12px; display:flex; align-items:center; gap:4px;">
+                    <span style="display:inline-flex; width:14px; height:14px;">${TACTICAL_SVG_ICONS.HOSTILE}</span>
+                    <span>ROGUE UAV INTRUSION</span>
+                  </div>
                   <div style="color:#fca5a5; font-size:10px; font-weight:600;">FREQ: ${drone.freq} | ALT: ${drone.alt}m</div>
                   <div style="color:#cbd5e1; font-size:10px; margin-top:2px;">SPEED: ${drone.speed} kts</div>
                   <div style="color:#ef4444; font-size:10px; margin-top:4px; font-weight:700;">THREAT: ${drone.threatLevel}</div>
@@ -777,28 +784,20 @@ const MapView = forwardRef(
               el.style.cursor = 'pointer';
               el.className = 'unit-marker';
 
-              let iconSymbol = '🚓';
-              let color = '#3b82f6';
-              if (unit.type === 'FIRE ENGINE' || unit.type === 'FIRE LADDER') {
-                iconSymbol = '🚒';
-                color = '#ef4444';
-              } else if (unit.type === 'RESCUE AMBULANCE') {
-                iconSymbol = '🚑';
-                color = '#10b981';
-              } else if (unit.type === 'AIR SUPPORT') {
-                iconSymbol = '🚁';
-                color = '#eab308';
-              }
+              const { svg: iconSvg, color } = getUnitTacticalIcon(unit.type);
 
               el.innerHTML = `
-              <div style="width:32px; height:32px; background:rgba(15,23,42,0.92); border:2px solid ${color}; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow: 0 0 12px ${color}88;">
-                <span style="font-size:14px;">${iconSymbol}</span>
+              <div style="width:32px; height:32px; background:rgba(15,23,42,0.92); border:2px solid ${color}; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow: 0 0 12px ${color}88; color:${color};">
+                ${iconSvg}
               </div>
             `;
 
               const popup = new maplibregl.Popup({ offset: 20, closeButton: true }).setHTML(`
                 <div style="min-width:180px">
-                  <div style="color:${color}; font-weight:700; font-size:12px; margin-bottom:4px;">${iconSymbol} ${unit.callsign} (${unit.id})</div>
+                  <div style="color:${color}; font-weight:700; font-size:12px; margin-bottom:4px; display:flex; align-items:center; gap:4px;">
+                    <span style="display:inline-flex; width:12px; height:12px;">${iconSvg}</span>
+                    <span>${unit.callsign} (${unit.id})</span>
+                  </div>
                   <div style="color:#94a3b8; font-size:10px;">TYPE: ${unit.type}</div>
                   <div style="color:#cbd5e1; font-size:10px; margin-top:2px;">SPEED: ${unit.speed}</div>
                   ${unit.driver ? `<div style="color:#cbd5e1; font-size:10px; margin-top:2px;">CREW: ${unit.driver}</div>` : ''}

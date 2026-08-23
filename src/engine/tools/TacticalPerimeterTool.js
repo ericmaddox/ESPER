@@ -81,7 +81,7 @@ export class TacticalPerimeterTool {
         element: centerEl,
         popupContent: `
           <div style="font-family:monospace; padding:4px; font-size:11px; background:#090d16; color:#e2e8f0; border-radius:6px; border:1px solid rgba(239,68,68,0.4);">
-            <div style="color:#ef4444; font-weight:bold; font-size:12px; margin-bottom:2px;">⚠️ ${label}</div>
+            <div style="color:#ef4444; font-weight:bold; font-size:12px; margin-bottom:2px;">${label}</div>
             <div>HOT ZONE: ${hotRadius}m</div>
             <div>STAGING: ${warmRadius}m</div>
             <div>OUTER CORDON: ${coldRadius}m</div>

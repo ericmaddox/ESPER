@@ -12,4 +12,5 @@ export * from './math/geoMath';
 export * from './math/solarMath';
 export * from './services/geocodingService';
 export * from './services/elevationService';
+export * from './core/tacticalIcons';
 export { useEngine } from './hooks/useEngine';
