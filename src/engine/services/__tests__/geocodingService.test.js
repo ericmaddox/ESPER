@@ -4,6 +4,7 @@ import { searchLocation, reverseGeocode } from '../geocodingService';
 describe('geocodingService', () => {
   beforeEach(() => {
     vi.restoreAllMocks();
+    vi.spyOn(console, 'warn').mockImplementation(() => {});
   });
 
   describe('searchLocation', () => {

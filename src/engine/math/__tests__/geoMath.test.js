@@ -64,10 +64,10 @@ describe('geoMath Utilities', () => {
       const steps = 12;
       const cone = generateConeFan(centerLng, centerLat, 90, 60, 300, steps);
 
-      // First and last point must be the center point
+      // First and last point must be the center point (1 apex + (steps + 1) arc points + 1 closing apex = steps + 3)
       expect(cone[0]).toEqual([centerLng, centerLat]);
       expect(cone[cone.length - 1]).toEqual([centerLng, centerLat]);
-      expect(cone.length).toBe(steps + 2);
+      expect(cone.length).toBe(steps + 3);
     });
   });
 });
